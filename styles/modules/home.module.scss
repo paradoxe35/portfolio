@@ -1,0 +1,58 @@
+@import "../dist/mixins";
+
+.hero__body {
+  position: relative;
+  z-index: 4;
+  .hero__hello {
+    color: var(--primary);
+    font-size: 1em;
+    font-weight: 500;
+  }
+
+  .hero__title {
+    font-size: 100px;
+    line-height: 1;
+    font-weight: 600;
+    margin: 8px 0 16px;
+    max-width: 640px;
+  }
+
+  .hero__job {
+    font-size: 0.75em;
+    font-weight: 500;
+  }
+}
+
+.hero__icons {
+  @include media-min(1280px) {
+    --floating-object-size: 1;
+  }
+
+  @include media-min(1024px) {
+    --floating-object-size: 0.9;
+  }
+
+  @include media-min(768px) {
+    --floating-object-size: 0.8;
+  }
+
+  --floating-object-size: 0.7;
+  
+  & > img {
+    --y: 20%;
+    --x: 22%;
+    @include media-min(768px) {
+      --y: 26%;
+      --x: 24%;
+    }
+    --width: calc(11rem * var(--floating-object-size));
+  }
+
+  & > img {
+    position: absolute;
+    width: var(--width);
+    transform: translateZ(0);
+    transition: transform linear;
+    transition-duration: 1s;
+  }
+}

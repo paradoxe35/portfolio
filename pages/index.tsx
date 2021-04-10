@@ -1,65 +1,65 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import Application from "layouts/application";
+import { Container } from "layouts/layouts";
+import Head from "next/head";
+import { useEffect, useRef } from "react";
+import style from 'styles/modules/home.module.scss'
+import { animate } from "utils/animate";
+import { getRandomArbitrary } from "utils/functions";
+
+type Position = {
+    left: number,
+    top: number
+}
+
 
 export default function Home() {
-  return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next Ap dfds p</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    return <Application>
+        <Head>
+            <title>Home</title>
+        </Head>
+        <Hero />
+    </Application >
+}
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
+function Hero() {
+    const objectsRef = useRef<HTMLDivElement>(null)
 
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
+    useEffect(() => {
+        const positions = [
+            { left: 59.1977, top: 59.3489 },
+            { left: 76.4234, top: 43.2874 },
+            { left: 68.0684, top: 74.9761 },
+            { left: 67.8254, top: 27.2987 },
+        ] as Readonly<Position[]>
 
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
+        if (objectsRef.current) {
+            objectsRef.current.querySelectorAll<HTMLImageElement>('img')
+                .forEach((el, i) => {
+                    el.style.top = `${positions[i].top || getRandomArbitrary(10, 80) + i}%`
+                    el.style.left = `${positions[i].left || getRandomArbitrary(50, 90) + i}%`
+                    animate(el, 30)
+                })
+        }
+    }, [])
 
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+    return <main>
+        <div className="home-hero" style={{ backgroundImage: `url(/jonathan-boyer.png)` }}>
+            <div className={style.hero__body}>
+                <Container>
+                    <div className={style.hero__hello}>
+                        Bonjour, je suis
+            </div>
+                    <div className={style.hero__title}>Paradoxe Ngwasi</div>
+                    <div className={style.hero__job}>Développeur Web FullStack</div>
+                </Container>
+            </div>
+            <div ref={objectsRef} className={style.hero__icons}>
+                <img src="/laravel.svg" alt="Laravel" />
+                <img src="/vue.svg" alt="null" />
+                <img src="/react.svg" alt="React" />
+                <img src="/node.svg" alt="null" />
+            </div>
         </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
-  )
+    </main>
 }
