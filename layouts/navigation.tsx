@@ -7,7 +7,9 @@ const Navigation: React.FC = () => {
         <nav className={style.nav}>
             <Container>
                 <Link href="/">
-                    <a className={`${style['page-link']} ${style.logo}`}>Paradoxe Ng</a>
+                    <a className={`${style['page-link']} ${style.logo}`}>
+                        <span className={style.firstname}>Paradoxe</span> <span className={style.lastname}>Ng</span>
+                    </a>
                 </Link>
                 <ul className={style.list}>
                     <li className={style['page-link']}>
@@ -18,11 +20,6 @@ const Navigation: React.FC = () => {
                     <li className={style['page-link']}>
                         <Link href="/about">
                             <a>About</a>
-                        </Link>
-                    </li>
-                    <li className={style['page-link']}>
-                        <Link href="/contact">
-                            <a>Contact</a>
                         </Link>
                     </li>
                 </ul>

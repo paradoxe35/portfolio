@@ -44,21 +44,21 @@ function Hero() {
     }, [])
 
     return <main>
-        <div className="home-hero" style={{ backgroundImage: `url(/jonathan-boyer.png)` }}>
+        <div className={style.home__hero} data-aos="fade-up" data-aos-duration="500" style={{ backgroundImage: `url(/jonathan-boyer.png)` }}>
             <div className={style.hero__body}>
                 <Container>
-                    <div className={style.hero__hello}>
+                    <div data-aos="fade-up" data-aos-duration="1000" className={style.hero__hello}>
                         Bonjour, je suis
-            </div>
-                    <div className={style.hero__title}>Paradoxe Ngwasi</div>
-                    <div className={style.hero__job}>Développeur Web FullStack</div>
+                    </div>
+                    <div data-aos="fade-up" data-aos-duration="2000" className={style.hero__title}>Paradoxe Ngwasi</div>
+                    <div data-aos="fade-up" data-aos-duration="3000" className={style.hero__job}>Développeur Web FullStack</div>
                 </Container>
             </div>
             <div ref={objectsRef} className={style.hero__icons}>
                 <img src="/laravel.svg" alt="Laravel" />
-                <img src="/vue.svg" alt="null" />
+                <img src="/vue.svg" alt="VueJs" />
                 <img src="/react.svg" alt="React" />
-                <img src="/node.svg" alt="null" />
+                <img src="/node.svg" alt="NodeJs" />
             </div>
         </div>
     </main>

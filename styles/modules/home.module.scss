@@ -3,6 +3,8 @@
 .hero__body {
   position: relative;
   z-index: 4;
+  padding: 0.5rem;
+  overflow: hidden;
   .hero__hello {
     color: var(--primary);
     font-size: 1em;
@@ -10,11 +12,15 @@
   }
 
   .hero__title {
-    font-size: 100px;
+    font-size: 90px;
     line-height: 1;
     font-weight: 600;
     margin: 8px 0 16px;
     max-width: 640px;
+    @include media-max(940px) {
+      max-width: none;
+      font-size: 60px;
+    }
   }
 
   .hero__job {
@@ -24,20 +30,6 @@
 }
 
 .hero__icons {
-  @include media-min(1280px) {
-    --floating-object-size: 1;
-  }
-
-  @include media-min(1024px) {
-    --floating-object-size: 0.9;
-  }
-
-  @include media-min(768px) {
-    --floating-object-size: 0.8;
-  }
-
-  --floating-object-size: 0.7;
-  
   & > img {
     --y: 20%;
     --x: 22%;
@@ -45,7 +37,7 @@
       --y: 26%;
       --x: 24%;
     }
-    --width: calc(11rem * var(--floating-object-size));
+    --width: 4em;
   }
 
   & > img {
@@ -54,5 +46,34 @@
     transform: translateZ(0);
     transition: transform linear;
     transition-duration: 1s;
+  }
+}
+
+.home__hero {
+  min-height: 100vh;
+  padding: 5rem 0 2rem 0;
+  background-repeat: no-repeat;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  overflow: hidden;
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 3;
+    background-color: var(--color-bg-alt);
+    opacity: 0.8;
+    overflow: hidden;
   }
 }
