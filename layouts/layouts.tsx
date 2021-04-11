@@ -24,6 +24,6 @@ export const Grid: React.FC = ({ children }) => {
     return <div className={style.grid}>{children}</div>
 }
 
-export const Card: React.FC = ({ children }) => {
-    return <div className={style.card}>{children}</div>
+export const Card: React.FC = ({ children, ...props }) => {
+    return <div className={style.card} {...props}>{children}</div>
 }

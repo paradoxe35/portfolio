@@ -77,3 +77,28 @@
     overflow: hidden;
   }
 }
+
+.skills__section {
+  padding: 120px 0;
+}
+
+.section__top-title {
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+.section__title {
+  font-size: 40px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.service__logo {
+  display: block;
+  margin-bottom: 32px;
+  width: auto;
+  height: 42px;
+  max-width: 100%;
+}

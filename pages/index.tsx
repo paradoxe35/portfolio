@@ -1,5 +1,5 @@
 import Application from "layouts/application";
-import { Container } from "layouts/layouts";
+import { Card, Container, Grid } from "layouts/layouts";
 import Head from "next/head";
 import { useEffect, useRef } from "react";
 import style from 'styles/modules/home.module.scss'
@@ -17,10 +17,43 @@ export default function Home() {
         <Head>
             <title>Home</title>
         </Head>
-        <Hero />
+        <main>
+            <Hero />
+            <Skills />
+        </main>
     </Application >
 }
 
+
+
+function Skills() {
+    return <section className={style.skills__section}>
+        <Container>
+            <div data-aos="fade-up" className={style['section__top-title']}>Skills</div>
+            <div data-aos="fade-up" className={style['section__title']}>Services</div>
+
+            <Grid>
+                <Card data-aos="fade-right" data-aos-duration="500">
+                    <img src="/laravel.svg" alt="Laravel" className={style.service__logo} />
+                    <h3>Backend Laravel</h3>
+                </Card>
+                <Card data-aos="fade-right" data-aos-duration="600">
+                    <div style={{ display: "flex" }}>
+                        <img src="/vue.svg" alt="Vue" className={style.service__logo} />
+                        <img src="/react.svg" alt="React" className={style.service__logo} />
+                    </div>
+                    <h3>Frontend VueJS or React</h3>
+                </Card>
+
+                <Card data-aos="fade-right" data-aos-duration="700">
+                    <img src="/node.svg" alt="NodeJs" className={style.service__logo} />
+                    <h3>NodeJs</h3>
+                </Card>
+
+            </Grid>
+        </Container>
+    </section>
+}
 
 function Hero() {
     const objectsRef = useRef<HTMLDivElement>(null)
@@ -43,7 +76,7 @@ function Hero() {
         }
     }, [])
 
-    return <main>
+    return <section>
         <div className={style.home__hero} data-aos="fade-up" data-aos-duration="500" style={{ backgroundImage: `url(/jonathan-boyer.png)` }}>
             <div className={style.hero__body}>
                 <Container>
@@ -61,5 +94,5 @@ function Hero() {
                 <img src="/node.svg" alt="NodeJs" />
             </div>
         </div>
-    </main>
+    </section>
 }

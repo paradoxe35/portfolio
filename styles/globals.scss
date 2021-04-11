@@ -34,8 +34,6 @@ body {
   color: var(--color-text);
 }
 
-
-
 a {
   color: inherit;
   text-decoration: none;
@@ -49,4 +47,8 @@ a {
   :root {
     scroll-behavior: smooth !important;
   }
+}
+
+.text__center {
+  text-align: center;
 }
