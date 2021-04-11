@@ -81,10 +81,10 @@ function Hero() {
             <div className={style.hero__body}>
                 <Container>
                     <div data-aos="fade-up" data-aos-duration="1000" className={style.hero__hello}>
-                        Bonjour, je suis
+                        Hello, I am
                     </div>
                     <div data-aos="fade-up" data-aos-duration="2000" className={style.hero__title}>Paradoxe Ngwasi</div>
-                    <div data-aos="fade-up" data-aos-duration="3000" className={style.hero__job}>Développeur Web FullStack</div>
+                    <div data-aos="fade-up" data-aos-duration="3000" className={style.hero__job}>FullStack Web Developer</div>
                 </Container>
             </div>
             <div ref={objectsRef} className={style.hero__icons}>
