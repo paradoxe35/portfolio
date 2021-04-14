@@ -20,8 +20,18 @@ export default function Home() {
         <main>
             <Hero />
             <Skills />
+            <Works />
         </main>
     </Application >
+}
+
+function Works() {
+    return <section className={`${style.skills__section} ${style.works__section}`}>
+        <Container>
+            <div data-aos="fade-up" className={style['section__top-title']}>Works</div>
+            <div data-aos="fade-up" className={style['section__title']}>Projects</div>
+        </Container>
+    </section>
 }
 
 
@@ -32,7 +42,7 @@ function Skills() {
             <div data-aos="fade-up" className={style['section__top-title']}>Skills</div>
             <div data-aos="fade-up" className={style['section__title']}>Services</div>
 
-            <Grid>
+            <Grid col={4}>
                 <Card data-aos="fade-right" data-aos-duration="500">
                     <img src="/laravel.svg" alt="Laravel" className={style.service__logo} />
                     <h3>Backend Laravel</h3>
@@ -50,6 +60,10 @@ function Skills() {
                     <h3>NodeJs</h3>
                 </Card>
 
+                <Card data-aos="fade-right" data-aos-duration="800">
+                    <img src="/flutter.svg" alt="Flutter" className={style.service__logo} />
+                    <h3>Flutter Mobile development</h3>
+                </Card>
             </Grid>
         </Container>
     </section>
@@ -64,6 +78,7 @@ function Hero() {
             { left: 76.4234, top: 43.2874 },
             { left: 68.0684, top: 74.9761 },
             { left: 67.8254, top: 27.2987 },
+            { left: 80.8254, top: 65.2987 },
         ] as Readonly<Position[]>
 
         if (objectsRef.current) {
@@ -77,7 +92,7 @@ function Hero() {
     }, [])
 
     return <section>
-        <div className={style.home__hero} data-aos="fade-up" data-aos-duration="500" style={{ backgroundImage: `url(/jonathan-boyer.png)` }}>
+        <div className={style.home__hero} data-aos="fade-up" data-aos-duration="500" style={{ backgroundImage: `url(/paradoxe-ngwasi.png)` }}>
             <div className={style.hero__body}>
                 <Container>
                     <div data-aos="fade-up" data-aos-duration="1000" className={style.hero__hello}>
@@ -92,6 +107,7 @@ function Hero() {
                 <img src="/vue.svg" alt="VueJs" />
                 <img src="/react.svg" alt="React" />
                 <img src="/node.svg" alt="NodeJs" />
+                <img src="/flutter.svg" alt="Flutter" />
             </div>
         </div>
     </section>

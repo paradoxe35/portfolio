@@ -1,5 +1,10 @@
 import style from 'styles/layout.module.scss'
 
+type GridProps = {
+    col?: number;
+}
+
+
 export const Container: React.FC = ({ children }) => {
     return <div className={style.container}>{children}</div>
 }
@@ -20,8 +25,8 @@ export const Description: React.FC = ({ children }) => {
     return <div className={style.description}>{children}</div>
 }
 
-export const Grid: React.FC = ({ children }) => {
-    return <div className={style.grid}>{children}</div>
+export const Grid: React.FC<GridProps> = ({ children, col }) => {
+    return <div className={`${style.grid} ${col ? style['grid__' + col] : ''}`}>{children}</div>
 }
 
 export const Card: React.FC = ({ children, ...props }) => {

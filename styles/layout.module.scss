@@ -40,16 +40,14 @@
 
 .grid {
   display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  & > .card:first-child {
-    margin-left: 0;
-  }
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 100%;
 }
 
 .card {
-  margin: 1rem;
-  flex-basis: 30.86%;
+  flex-basis: 100%;
+  margin: 1rem 1rem 1rem 0;
   padding: 1.5rem;
   text-align: left;
   color: inherit;
@@ -70,7 +68,8 @@
 
 .card h3 {
   margin: 0 0 1rem 0;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+  color: var(--muted-2);
 }
 
 .card p {
@@ -83,6 +82,12 @@
   .grid {
     width: 100%;
     flex-direction: column;
+  }
+}
+
+@media (max-width: 992px) {
+  .grid {
+    flex-wrap: wrap;
   }
 }
 
