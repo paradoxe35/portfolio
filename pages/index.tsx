@@ -6,6 +6,7 @@ import style from 'styles/modules/home.module.scss'
 import { animate } from "utils/animate";
 import { getRandomArbitrary } from "utils/functions";
 
+
 type Position = {
     left: number,
     top: number
@@ -15,7 +16,7 @@ type Position = {
 export default function Home() {
     return <Application>
         <Head>
-            <title>Home</title>
+            <title>Paradoxe Ng | Portfolio</title>
         </Head>
         <main>
             <Hero />
@@ -26,10 +27,32 @@ export default function Home() {
 }
 
 function Works() {
+    const carouselRef = useRef<HTMLDivElement | null>(null)
+
+    useEffect(() => {
+        if (carouselRef.current) {
+                // const flkty = new Flickity(carouselRef.current, {
+                //     freeScroll: false,
+                //     prevNextButtons: false,
+                // });
+                // return () => {
+                //     flkty.destroy()
+                // }
+            // }
+        }
+    }, [])
+
     return <section className={`${style.skills__section} ${style.works__section}`}>
         <Container>
             <div data-aos="fade-up" className={style['section__top-title']}>Works</div>
             <div data-aos="fade-up" className={style['section__title']}>Projects</div>
+
+            <Grid elRef={carouselRef}>
+                <div style={{ width: "400px", height: "400px", backgroundColor: "gray" }}></div>
+                <div style={{ width: "400px", height: "400px", backgroundColor: "red" }}></div>
+                <div style={{ width: "400px", height: "400px", backgroundColor: "green" }}></div>
+                <div style={{ width: "400px", height: "400px", backgroundColor: "blue" }}></div>
+            </Grid>
         </Container>
     </section>
 }
@@ -73,13 +96,13 @@ function Hero() {
     const objectsRef = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
-        const positions = [
+        const positions: Readonly<Position[]> = [
             { left: 59.1977, top: 59.3489 },
             { left: 76.4234, top: 43.2874 },
             { left: 68.0684, top: 74.9761 },
             { left: 67.8254, top: 27.2987 },
             { left: 80.8254, top: 65.2987 },
-        ] as Readonly<Position[]>
+        ] as const
 
         if (objectsRef.current) {
             objectsRef.current.querySelectorAll<HTMLImageElement>('img')

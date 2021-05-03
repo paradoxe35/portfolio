@@ -86,8 +86,13 @@
 }
 
 @media (max-width: 992px) {
-  .grid {
+  .grid__4.grid {
     flex-wrap: wrap;
+  }
+  .grid__4 {
+    .card {
+      flex: 45%;
+    }
   }
 }
 
