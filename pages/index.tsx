@@ -1,11 +1,10 @@
 import Application from "layouts/application";
 import { Card, Container, Grid } from "layouts/layouts";
 import Head from "next/head";
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import style from 'styles/modules/home.module.scss'
 import { animate } from "utils/animate";
-import { getRandomArbitrary } from "utils/functions";
-
+import { getBrowserWidth, getRandomArbitrary } from "utils/functions";
 
 type Position = {
     left: number,
@@ -26,19 +25,64 @@ export default function Home() {
     </Application >
 }
 
+
+
+function WorksItem({ aosDuration = 0 }) {
+    return <div className={style.project} data-aos-duration={aosDuration} >
+        <a className={style.project__image} href="/projets/kls">
+            <img src="https://jonathan-boyer.fr/images/projects/kls/thumbnail.jpg" alt="Aperçu du site Jeremy.design" />
+        </a>
+        <div className={style.project__body}>
+            <div className={style.project__tags}>React</div>
+            <a className={style.project__name} href="/projets/kls">KLS Syndication</a>
+            <p className={style.project__desc}>Développement React au sein d'une équipe pour le lancement du projet KLS Syndication</p>
+            <a className={style.project__action} href="/projets/kls">
+                En savoir plus
+            </a>
+        </div>
+    </div>
+}
+
 function Works() {
     const carouselRef = useRef<HTMLDivElement | null>(null)
+    const flkty = useRef<Flickity | null>(null)
 
     useEffect(() => {
-        if (carouselRef.current) {
-                // const flkty = new Flickity(carouselRef.current, {
-                //     freeScroll: false,
-                //     prevNextButtons: false,
-                // });
-                // return () => {
-                //     flkty.destroy()
-                // }
-            // }
+        let flickity: typeof import('flickity') = require('flickity');
+
+        function mountFlickity() {
+            if (carouselRef.current) {
+                flkty.current = new flickity(carouselRef.current, {
+                    freeScroll: false,
+                    prevNextButtons: false,
+                    contain: true,
+                    draggable: true,
+                    groupCells: true,
+                });
+            }
+        }
+
+        if (getBrowserWidth() !== 'xs') {
+            mountFlickity()
+        }
+
+        let sm = getBrowserWidth()
+
+        function responsiveFlickity() {
+            if (window.innerWidth < 768 && sm !== 'xs') {
+                flkty.current?.destroy()
+                sm = getBrowserWidth()
+            } else if (window.innerWidth >= 768 && sm === 'xs') {
+                mountFlickity()
+                sm = getBrowserWidth()
+            }
+        }
+
+        window.addEventListener('resize', responsiveFlickity)
+
+        return () => {
+            flkty.current?.destroy()
+            window.removeEventListener('resize', responsiveFlickity)
         }
     }, [])
 
@@ -46,13 +90,12 @@ function Works() {
         <Container>
             <div data-aos="fade-up" className={style['section__top-title']}>Works</div>
             <div data-aos="fade-up" className={style['section__title']}>Projects</div>
-
-            <Grid elRef={carouselRef}>
-                <div style={{ width: "400px", height: "400px", backgroundColor: "gray" }}></div>
-                <div style={{ width: "400px", height: "400px", backgroundColor: "red" }}></div>
-                <div style={{ width: "400px", height: "400px", backgroundColor: "green" }}></div>
-                <div style={{ width: "400px", height: "400px", backgroundColor: "blue" }}></div>
-            </Grid>
+            <div className={style.projects} ref={carouselRef}>
+                <WorksItem aosDuration={100} />
+                <WorksItem aosDuration={200} />
+                <WorksItem aosDuration={300} />
+                <WorksItem aosDuration={400} />
+            </div>
         </Container>
     </section>
 }

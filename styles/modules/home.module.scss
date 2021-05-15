@@ -87,6 +87,109 @@
   background-color: #e9e9e9;
 }
 
+.projects {
+  & > * + * {
+    margin-top: 32px;
+  }
+
+  .project {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border-radius: 4px;
+    transition: border-color 0.3s;
+    border: 1px solid #dbdbdb;
+
+    &:hover {
+      border-color: rgba(138, 105, 59, 0.534);
+    }
+
+    @include media-min(768px) {
+      margin-top: 0 !important;
+      margin-left: 32px;
+      width: 40%;
+      max-width: 450px;
+      min-height: 100%;
+    }
+  }
+
+  .project__image {
+    border-radius: 4px;
+    overflow: hidden;
+    height: auto;
+    flex: none;
+    img {
+      display: block;
+      opacity: 1;
+      transition: 0.5s;
+      will-change: transform;
+    }
+
+    &:hover img {
+      transform: scale(1.1);
+      opacity: 0.5;
+    }
+  }
+
+  .project__body {
+    padding: 40px 32px;
+    height: 100%;
+    display: flex;
+    flex: auto;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .project__tags {
+    font-weight: 600;
+    color: var(--primary);
+    text-transform: uppercase;
+    font-size: 12px;
+  }
+
+  .project__name {
+    font-size: 24px;
+    margin: 10px 0 20px;
+    font-weight: 600;
+    transition: color 0.3s;
+    &:hover {
+      color: var(--primary);
+    }
+  }
+
+  .project__desc {
+    margin-bottom: 50px;
+    a:hover {
+      color: var(--primary);
+      text-decoration: underline;
+    }
+  }
+
+  .project__action {
+    margin-top: auto;
+    justify-self: flex-end;
+
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    color: var(--primary);
+    font-size: 12px;
+    line-height: 2;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 7px 30px;
+    border: 1px solid rgba(255, 197, 118, 0.75);
+    border-radius: 2px 2px 2px 2px;
+    transition: 0.3s;
+    text-decoration: none !important;
+
+    &:hover {
+      color: #1f2235 !important;
+      background-color: #ffc576;
+    }
+  }
+}
+
 .section__top-title {
   font-size: 14px;
   font-weight: 600;

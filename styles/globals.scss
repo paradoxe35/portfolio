@@ -2,7 +2,7 @@
 @import "./dist/variables";
 @import "./dist/mixins";
 @import "./dist/typography";
-@import "flickity/dist/flickity.min.css";
+@import "./plugins/flickity";
 
 html {
   -webkit-text-size-adjust: 100%;
@@ -26,12 +26,6 @@ body {
   line-height: 1.4;
   font-weight: 400;
   @extend %font-sans;
-  @include media-min(620px) {
-    font-size: 21px;
-  }
-  @include media-min(820px) {
-    font-size: 22px;
-  }
   color: var(--color-text);
 }
 
@@ -52,4 +46,9 @@ a {
 
 .text__center {
   text-align: center;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
 }
