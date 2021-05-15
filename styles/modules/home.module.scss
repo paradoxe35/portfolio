@@ -211,3 +211,32 @@
   height: 42px;
   max-width: 100%;
 }
+
+.social__links {
+  strong {
+    display: block;
+    font-size: 24px;
+    line-height: 27px;
+    font-weight: 700;
+    color: var(--muted-2);
+    margin-bottom: 5px;
+    transition: color 0.3s;
+  }
+
+  span {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--primary);
+    transition: color 0.3s;
+  }
+
+  .icon {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    right: 50px;
+    top: calc(50% - 25px);
+    color: #1f2235;
+    transition: color 0.3s;
+  }
+}

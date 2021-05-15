@@ -57,6 +57,16 @@
   transition: color 0.65s ease, border-color 0.15s ease;
 }
 
+.card__item {
+  flex-basis: 100%;
+  margin: 1rem 1rem 1rem 0;
+  padding: 30px;
+  color: inherit;
+  border: 1px solid #eaeaea;
+  border-radius: 7px;
+  transition: color 0.65s ease, border-color 0.15s ease;
+}
+
 .card:hover,
 .card:focus,
 .card:active {

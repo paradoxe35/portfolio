@@ -1,3 +1,4 @@
+import { WorksItem } from "components/WorksItem";
 import Application from "layouts/application";
 import { Card, Container, Grid } from "layouts/layouts";
 import Head from "next/head";
@@ -21,26 +22,51 @@ export default function Home() {
             <Hero />
             <Skills />
             <Works />
+            <Socials />
         </main>
     </Application >
 }
 
+type Title = {
+    title: string;
+    subtitle: string;
+}
 
 
-function WorksItem({ aosDuration = 0 }) {
-    return <div className={style.project} data-aos-duration={aosDuration} >
-        <a className={style.project__image} href="/projets/kls">
-            <img src="https://jonathan-boyer.fr/images/projects/kls/thumbnail.jpg" alt="Aperçu du site Jeremy.design" />
-        </a>
-        <div className={style.project__body}>
-            <div className={style.project__tags}>React</div>
-            <a className={style.project__name} href="/projets/kls">KLS Syndication</a>
-            <p className={style.project__desc}>Développement React au sein d'une équipe pour le lancement du projet KLS Syndication</p>
-            <a className={style.project__action} href="/projets/kls">
-                En savoir plus
-            </a>
-        </div>
-    </div>
+const Titles: React.FC<Title> = function ({ title, subtitle }) {
+    return <>
+        <div data-aos="fade-up" className={style['section__top-title']}>{title}</div>
+        <div data-aos="fade-up" className={style['section__title']}>{subtitle}</div>
+    </>
+}
+
+function Socials() {
+    return <section className={style.skills__section}>
+        <Container>
+            <Titles title="Socials" subtitle="Find me" />
+
+            <Grid col={3}>
+                <Card data-aos="fade-right" data-aos-duration="500">
+                    <a href="https://github.com/paradoxe35" className={style.social__links}>
+                        <strong>Github</strong>
+                        <span>github.com/paradoxe35</span>
+                    </a>
+                </Card>
+                <Card data-aos="fade-right" data-aos-duration="500">
+                    <a href="https://www.instagram.com/paradoxe_ng/" className={style.social__links}>
+                        <strong>Instagram</strong>
+                        <span>instagram.com/paradoxe_ng</span>
+                    </a>
+                </Card>
+                <Card data-aos="fade-right" data-aos-duration="500">
+                    <a href="https://twitter.com/paradoxe_ng" className={style.social__links}>
+                        <strong>Twitter</strong>
+                        <span>twitter.com/paradoxe_ng</span>
+                    </a>
+                </Card>
+            </Grid>
+        </Container>
+    </section>
 }
 
 function Works() {
@@ -88,8 +114,7 @@ function Works() {
 
     return <section className={`${style.skills__section} ${style.works__section}`}>
         <Container>
-            <div data-aos="fade-up" className={style['section__top-title']}>Works</div>
-            <div data-aos="fade-up" className={style['section__title']}>Projects</div>
+            <Titles title="Works" subtitle="Projects" />
             <div className={style.projects} ref={carouselRef}>
                 <WorksItem aosDuration={100} />
                 <WorksItem aosDuration={200} />
@@ -100,13 +125,10 @@ function Works() {
     </section>
 }
 
-
-
 function Skills() {
     return <section className={style.skills__section}>
         <Container>
-            <div data-aos="fade-up" className={style['section__top-title']}>Skills</div>
-            <div data-aos="fade-up" className={style['section__title']}>Services</div>
+            <Titles title="Skills" subtitle="Services" />
 
             <Grid col={4}>
                 <Card data-aos="fade-right" data-aos-duration="500">

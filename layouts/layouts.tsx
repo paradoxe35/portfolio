@@ -35,3 +35,7 @@ export const Grid: React.FC<GridProps> = forwardRef<HTMLDivElement, GridProps>((
 export const Card: React.FC = ({ children, ...props }) => {
     return <div className={style.card} {...props}>{children}</div>
 }
+
+export const CardItem: React.FC = ({ children, ...props }) => {
+    return <div className={style.card__item} {...props}>{children}</div>
+}

@@ -18,8 +18,8 @@ const Navigation: React.FC = () => {
                         </Link>
                     </li>
                     <li className={style['page-link']}>
-                        <Link href="/about">
-                            <a>About</a>
+                        <Link href="/contact">
+                            <a>Contact</a>
                         </Link>
                     </li>
                 </ul>
