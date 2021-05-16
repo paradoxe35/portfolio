@@ -1,7 +1,7 @@
 import style from 'styles/modules/home.module.scss'
 
 
-export function WorksItem({ aosDuration = 0 }) {
+export default function WorksItem({ aosDuration = 0 }) {
     return <div className={style.project} data-aos-duration={aosDuration} >
         <a className={style.project__image} href="/projets/kls">
             <img src="https://jonathan-boyer.fr/images/projects/kls/thumbnail.jpg" alt="Aperçu du site Jeremy.design" />

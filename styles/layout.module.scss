@@ -104,6 +104,10 @@
       flex: 45%;
     }
   }
+
+  .grid__3.grid {
+    flex-wrap: wrap;
+  }
 }
 
 @media (min-width: 576px) {

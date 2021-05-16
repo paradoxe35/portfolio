@@ -1,4 +1,5 @@
-import { WorksItem } from "components/WorksItem";
+import Titles from "components/titles";
+import WorksItem from "components/works-item";
 import Application from "layouts/application";
 import { Card, Container, Grid } from "layouts/layouts";
 import Head from "next/head";
@@ -22,52 +23,10 @@ export default function Home() {
             <Hero />
             <Skills />
             <Works />
-            <Socials />
         </main>
     </Application >
 }
 
-type Title = {
-    title: string;
-    subtitle: string;
-}
-
-
-const Titles: React.FC<Title> = function ({ title, subtitle }) {
-    return <>
-        <div data-aos="fade-up" className={style['section__top-title']}>{title}</div>
-        <div data-aos="fade-up" className={style['section__title']}>{subtitle}</div>
-    </>
-}
-
-function Socials() {
-    return <section className={style.skills__section}>
-        <Container>
-            <Titles title="Socials" subtitle="Find me" />
-
-            <Grid col={3}>
-                <Card data-aos="fade-right" data-aos-duration="500">
-                    <a href="https://github.com/paradoxe35" className={style.social__links}>
-                        <strong>Github</strong>
-                        <span>github.com/paradoxe35</span>
-                    </a>
-                </Card>
-                <Card data-aos="fade-right" data-aos-duration="500">
-                    <a href="https://www.instagram.com/paradoxe_ng/" className={style.social__links}>
-                        <strong>Instagram</strong>
-                        <span>instagram.com/paradoxe_ng</span>
-                    </a>
-                </Card>
-                <Card data-aos="fade-right" data-aos-duration="500">
-                    <a href="https://twitter.com/paradoxe_ng" className={style.social__links}>
-                        <strong>Twitter</strong>
-                        <span>twitter.com/paradoxe_ng</span>
-                    </a>
-                </Card>
-            </Grid>
-        </Container>
-    </section>
-}
 
 function Works() {
     const carouselRef = useRef<HTMLDivElement | null>(null)
@@ -161,20 +120,20 @@ function Hero() {
     const objectsRef = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
-        const positions: Readonly<Position[]> = [
-            { left: 59.1977, top: 59.3489 },
-            { left: 76.4234, top: 43.2874 },
-            { left: 68.0684, top: 74.9761 },
-            { left: 67.8254, top: 27.2987 },
-            { left: 80.8254, top: 65.2987 },
-        ] as const
+        const positions: Position[] = [
+            { left: 59.1977 - 30, top: 59.3489 + 10 },
+            { left: 76.4234 - 30, top: 43.2874 + 10 },
+            { left: 68.0684 - 30, top: 74.9761 + 10 },
+            { left: 67.8254 - 30, top: 27.2987 + 10 },
+            { left: 80.8254 - 30, top: 65.2987 + 10 },
+        ]
 
         if (objectsRef.current) {
             objectsRef.current.querySelectorAll<HTMLImageElement>('img')
                 .forEach((el, i) => {
                     el.style.top = `${positions[i].top || getRandomArbitrary(10, 80) + i}%`
                     el.style.left = `${positions[i].left || getRandomArbitrary(50, 90) + i}%`
-                    animate(el, 30)
+                    // animate(el, 30)
                 })
         }
     }, [])
