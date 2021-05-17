@@ -116,25 +116,64 @@ function Skills() {
     </section>
 }
 
+const functions: Function[] = []
+function animation(imgs: NodeListOf<HTMLImageElement>, positions: Position[], anime: boolean = true) {
+    imgs.forEach((el, i) => {
+        el.style.top = `${positions[i].top || getRandomArbitrary(10, 80) + i}%`
+        el.style.left = `${positions[i].left || getRandomArbitrary(50, 90) + i}%`
+
+        const animeFn = anime ? animate(el, 30) : animate(el, 0, 0, 0)
+        functions.push(animeFn)
+
+        !anime && functions.forEach(fn => fn())
+    })
+}
+
+
+function dataPositions(sm: boolean = false): Position[] {
+    return [
+        { left: 59.1977 - (sm ? 30 : 0), top: 59.3489 + (sm ? 10 : 0) },
+        { left: 76.4234 - (sm ? 30 : 0), top: 43.2874 + (sm ? 10 : 0) },
+        { left: 68.0684 - (sm ? 30 : 0), top: 74.9761 + (sm ? 10 : 0) },
+        { left: 67.8254 - (sm ? 30 : 0), top: 27.2987 + (sm ? 10 : 0) },
+        { left: 80.8254 - (sm ? 30 : 0), top: 65.2987 + (sm ? 10 : 0) },
+    ]
+}
+
 function Hero() {
-    const objectsRef = useRef<HTMLDivElement>(null)
+    const objectsRef = useRef<HTMLDivElement | null>(null)
 
     useEffect(() => {
-        const positions: Position[] = [
-            { left: 59.1977 - 30, top: 59.3489 + 10 },
-            { left: 76.4234 - 30, top: 43.2874 + 10 },
-            { left: 68.0684 - 30, top: 74.9761 + 10 },
-            { left: 67.8254 - 30, top: 27.2987 + 10 },
-            { left: 80.8254 - 30, top: 65.2987 + 10 },
-        ]
+        let positions: Position[] = dataPositions(true)
+
+        if (getBrowserWidth() !== 'xs') {
+            positions = dataPositions(false)
+        }
+
+        let sm = getBrowserWidth()
+
+        function responsive() {
+            if (window.innerWidth < 768 && sm !== 'xs' && objectsRef.current) {
+                const images = objectsRef.current.querySelectorAll<HTMLImageElement>('img')
+                animation(images, dataPositions(true), false)
+                sm = getBrowserWidth()
+            } else if (window.innerWidth >= 768 && sm === 'xs' && objectsRef.current) {
+                const images = objectsRef.current.querySelectorAll<HTMLImageElement>('img')
+                animation(images, dataPositions(false), true)
+                sm = getBrowserWidth()
+            }
+        }
+
 
         if (objectsRef.current) {
-            objectsRef.current.querySelectorAll<HTMLImageElement>('img')
-                .forEach((el, i) => {
-                    el.style.top = `${positions[i].top || getRandomArbitrary(10, 80) + i}%`
-                    el.style.left = `${positions[i].left || getRandomArbitrary(50, 90) + i}%`
-                    // animate(el, 30)
-                })
+            const images = objectsRef.current.querySelectorAll<HTMLImageElement>('img')
+            animation(images, positions, sm !== 'xs')
+        }
+
+        window.addEventListener('resize', responsive)
+
+        return () => {
+            window.removeEventListener('resize', responsive)
         }
     }, [])
 

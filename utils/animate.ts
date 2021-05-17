@@ -2,6 +2,8 @@ export function animate(el: HTMLElement, amplitude: number, speed = 150, maxAmpl
     let x = 0;
     let y = 0;
     let z = 0;
+    let timeout: NodeJS.Timeout | null = null
+
     const move = () => {
         const deltaX = Math.random() * amplitude * 2 - amplitude;
         const deltaY = Math.random() * amplitude * 2 - amplitude;
@@ -21,7 +23,9 @@ export function animate(el: HTMLElement, amplitude: number, speed = 150, maxAmpl
             el.style.transitionDuration = delay + "ms";
             el.style.transform = `translate3d(${x}px, ${y}px, ${z}px)`;
         }
-        setTimeout(move, delay);
+        timeout = setTimeout(move, delay);
     };
     move();
+
+    return () => timeout && clearTimeout(timeout)
 }

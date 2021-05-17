@@ -98,7 +98,8 @@
     flex-direction: column;
     border-radius: 4px;
     transition: border-color 0.3s;
-    border: 1px solid #dbdbdb;
+    border: 1px solid var(--border-card);
+    background-color: rgba(245, 245, 245, 0.849);
 
     &:hover {
       border-color: rgba(138, 105, 59, 0.534);
@@ -186,6 +187,28 @@
     &:hover {
       color: #1f2235 !important;
       background-color: #ffc576;
+    }
+
+    .icon__action {
+      vertical-align: middle;
+      width: 12px;
+      height: 12px;
+      opacity: 0;
+      transition: opacity 0.5s, margin 0.5s, transform 0.5s;
+      margin-left: -5px;
+      display: inline-block;
+    }
+
+    &:hover {
+      .icon__action {
+        margin-left: 5px;
+        opacity: 1;
+        transform: translateX(5px);
+      }
+    }
+
+    &:disabled {
+      opacity: 0.8;
     }
   }
 }

@@ -7,6 +7,7 @@ $aside-width: calc(33.3333% - 1rem);
 $column-breakpoint: 960px;
 
 :root {
+  --border-card: rgba(199, 199, 199, 0.699);
   --primary: #{$primary};
   --muted-1: #868e96;
   --muted-2: #686969;
