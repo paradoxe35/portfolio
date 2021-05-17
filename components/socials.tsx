@@ -6,7 +6,6 @@ export default function Socials() {
     return <section className={style.skills__section}>
         <Container>
             <Titles title="Socials" subtitle="Find me" />
-
             <Grid col={3}>
                 <Card data-aos="fade-right" data-aos-duration="500">
                     <a href="https://github.com/paradoxe35" className={style.social__links}>
