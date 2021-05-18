@@ -12,6 +12,7 @@
     "animejs": "^3.2.1",
     "aos": "^2.3.4",
     "firebase": "^8.6.1",
+    "flamelink": "^1.0.0-alpha.34",
     "flickity": "^2.2.2",
     "next": "^10.2.0",
     "react": "17.0.2",

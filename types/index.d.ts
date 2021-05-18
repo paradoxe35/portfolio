@@ -9,6 +9,15 @@ interface Folder {
     parentId: number;
 }
 
+export interface SerializedProject {
+    title: string;
+    content: string;
+    description: string;
+    id: string;
+    imageId: string | null;
+    technology: string;
+}
+
 interface Sizes {
     height: number;
     path: string;

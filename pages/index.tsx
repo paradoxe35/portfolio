@@ -3,13 +3,14 @@ import WorksItem from "components/works-item";
 import Application from "layouts/application";
 import { Card, Container, Grid } from "layouts/layouts";
 import Head from "next/head";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import style from 'styles/modules/home.module.scss'
 import { animate } from "utils/animate";
 import { db } from "utils/db";
 import { getBrowserWidth, getRandomArbitrary } from "utils/functions";
 import { GetStaticProps } from 'next'
 import ProjectModel from "models/project";
+import { SerializedProject } from "types";
 
 
 type Position = {
@@ -17,16 +18,32 @@ type Position = {
     top: number
 }
 
-const functions: Function[] = []
-
-async function getProjects(): Promise<ProjectModel[]> {
-    return (await db.projects.limit(5).get()).docs.map((p) => new ProjectModel(p.data()))
+type Projects = {
+    projects: SerializedProject[]
 }
 
+const functions: Function[] = []
+function animation(imgs: NodeListOf<HTMLImageElement>, positions: Position[], anime: boolean = true) {
+    imgs.forEach((el, i) => {
+        el.style.top = `${positions[i].top || getRandomArbitrary(10, 80) + i}%`
+        el.style.left = `${positions[i].left || getRandomArbitrary(50, 90) + i}%`
 
-function Works() {
+        const animeFn = anime ? animate(el, 30) : animate(el, 0, 0, 0)
+        functions.push(animeFn)
+
+        !anime && functions.forEach(fn => fn())
+    })
+}
+
+function Works({ projects }: Projects) {
     const carouselRef = useRef<HTMLDivElement | null>(null)
     const flkty = useRef<Flickity | null>(null)
+    const [works, setWorks] = useState<SerializedProject[]>(projects)
+
+
+    useEffect(() => {
+        getProjects().then(ps => setWorks(ps || []))
+    }, [])
 
     useEffect(() => {
         let flickity: typeof import('flickity') = require('flickity');
@@ -112,18 +129,6 @@ function Skills() {
     </section>
 }
 
-function animation(imgs: NodeListOf<HTMLImageElement>, positions: Position[], anime: boolean = true) {
-    imgs.forEach((el, i) => {
-        el.style.top = `${positions[i].top || getRandomArbitrary(10, 80) + i}%`
-        el.style.left = `${positions[i].left || getRandomArbitrary(50, 90) + i}%`
-
-        const animeFn = anime ? animate(el, 30) : animate(el, 0, 0, 0)
-        functions.push(animeFn)
-
-        !anime && functions.forEach(fn => fn())
-    })
-}
-
 function dataPositions(sm: boolean = false): Position[] {
     return [
         { left: 59.1977 - (sm ? 30 : 0), top: 59.3489 + (sm ? 10 : 0) },
@@ -193,9 +198,12 @@ function Hero() {
     </section>
 }
 
+async function getProjects() {
+    return db.projects.then(async projects => projects.map(p => (new ProjectModel(p)).toJson()))
+}
 
-export default function Home() {
 
+export default function Home({ projects }: Projects) {
     return <Application>
         <Head>
             <title>Paradoxe Ng | Portfolio</title>
@@ -203,7 +211,7 @@ export default function Home() {
         <main>
             <Hero />
             <Skills />
-            <Works />
+            <Works projects={projects} />
         </main>
     </Application >
 }
@@ -211,6 +219,8 @@ export default function Home() {
 
 export const getStaticProps: GetStaticProps = async (context) => {
     return {
-        props: {}
+        props: {
+            projects: await getProjects()
+        }
     }
 }

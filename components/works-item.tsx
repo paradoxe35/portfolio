@@ -1,7 +1,13 @@
+import ProjectModel from 'models/project'
 import style from 'styles/modules/home.module.scss'
 
 
-export default function WorksItem({ aosDuration = 0 }) {
+interface Work {
+    aosDuration: number;
+    project?: ProjectModel;
+}
+
+export default function WorksItem({ aosDuration = 0 }: Work) {
     return <div className={style.project} data-aos="fade-right" data-aos-duration={aosDuration} >
         <a className={style.project__image} href="/projets/kls">
             <img src="https://jonathan-boyer.fr/images/projects/kls/thumbnail.jpg" alt="Aperçu du site Jeremy.design" />

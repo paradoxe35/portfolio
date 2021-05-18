@@ -1,14 +1,12 @@
-import firebase from 'firebase/app';
-import { Project, File } from 'types';
+import { Project, SerializedProject } from 'types';
 
-
-export default class ProjectModel {
+export default class ProjectModel implements SerializedProject {
 
     public title: string;
     public content: string;
     public description: string;
     public id: string;
-    private image: firebase.firestore.DocumentReference<File>[];
+    public imageId: string | null;
     public technology: string;
 
     constructor(project: Project) {
@@ -16,11 +14,18 @@ export default class ProjectModel {
         this.content = project.content
         this.description = project.description
         this.id = project.id
-        this.image = project.image
+        this.imageId = project.image[0]?.id;
         this.technology = project.technology
     }
 
-    public async getImage() {
-        return (await this.image[0].get()).data()
+    public toJson() {
+        return {
+            title: this.title,
+            content: this.content,
+            description: this.description,
+            id: this.id,
+            imageId: this.imageId,
+            technology: this.technology
+        } as SerializedProject
     }
 }
