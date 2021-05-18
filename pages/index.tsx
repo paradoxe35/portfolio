@@ -6,25 +6,21 @@ import Head from "next/head";
 import React, { useEffect, useRef } from "react";
 import style from 'styles/modules/home.module.scss'
 import { animate } from "utils/animate";
+import { db } from "utils/db";
 import { getBrowserWidth, getRandomArbitrary } from "utils/functions";
+import { GetStaticProps } from 'next'
+import ProjectModel from "models/project";
+
 
 type Position = {
     left: number,
     top: number
 }
 
+const functions: Function[] = []
 
-export default function Home() {
-    return <Application>
-        <Head>
-            <title>Paradoxe Ng | Portfolio</title>
-        </Head>
-        <main>
-            <Hero />
-            <Skills />
-            <Works />
-        </main>
-    </Application >
+async function getProjects(): Promise<ProjectModel[]> {
+    return (await db.projects.limit(5).get()).docs.map((p) => new ProjectModel(p.data()))
 }
 
 
@@ -116,7 +112,6 @@ function Skills() {
     </section>
 }
 
-const functions: Function[] = []
 function animation(imgs: NodeListOf<HTMLImageElement>, positions: Position[], anime: boolean = true) {
     imgs.forEach((el, i) => {
         el.style.top = `${positions[i].top || getRandomArbitrary(10, 80) + i}%`
@@ -128,7 +123,6 @@ function animation(imgs: NodeListOf<HTMLImageElement>, positions: Position[], an
         !anime && functions.forEach(fn => fn())
     })
 }
-
 
 function dataPositions(sm: boolean = false): Position[] {
     return [
@@ -197,4 +191,26 @@ function Hero() {
             </div>
         </div>
     </section>
+}
+
+
+export default function Home() {
+
+    return <Application>
+        <Head>
+            <title>Paradoxe Ng | Portfolio</title>
+        </Head>
+        <main>
+            <Hero />
+            <Skills />
+            <Works />
+        </main>
+    </Application >
+}
+
+
+export const getStaticProps: GetStaticProps = async (context) => {
+    return {
+        props: {}
+    }
 }

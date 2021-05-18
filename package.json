@@ -5,11 +5,13 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "deploy": "next build && next export && firebase deploy"
   },
   "dependencies": {
     "animejs": "^3.2.1",
     "aos": "^2.3.4",
+    "firebase": "^8.6.1",
     "flickity": "^2.2.2",
     "next": "^10.2.0",
     "react": "17.0.2",
