@@ -31,7 +31,8 @@ const dataPoint = <T>(param: Param) => {
 
 
 const db = {
-    projects: dataPoint({ schemaKey: 'projects' }) as Promise<Project[]>
+    projects: dataPoint({ schemaKey: 'projects' }) as Promise<Project[]>,
+    getProject: (entryId: string) => dataPoint({ schemaKey: 'projects', entryId }) as Promise<Project>
 }
 
 

@@ -9,18 +9,8 @@ import { animate } from "utils/animate";
 import { db } from "utils/db";
 import { getBrowserWidth, getRandomArbitrary } from "utils/functions";
 import { GetStaticProps } from 'next'
-import ProjectModel from "models/project";
-import { SerializedProject } from "types";
-
-
-type Position = {
-    left: number,
-    top: number
-}
-
-type Projects = {
-    projects: SerializedProject[]
-}
+import { getSerializedProjects } from "models/project";
+import { Position, Projects, SerializedProject } from "types";
 
 const functions: Function[] = []
 function animation(imgs: NodeListOf<HTMLImageElement>, positions: Position[], anime: boolean = true) {
@@ -40,9 +30,9 @@ function Works({ projects }: Projects) {
     const flkty = useRef<Flickity | null>(null)
     const [works, setWorks] = useState<SerializedProject[]>(projects)
 
-
     useEffect(() => {
-        getProjects().then(ps => setWorks(ps || []))
+        getSerializedProjects(db.projects)
+            .then(ps => setWorks(ps || []))
     }, [])
 
     useEffect(() => {
@@ -88,10 +78,7 @@ function Works({ projects }: Projects) {
         <Container>
             <Titles title="Works" subtitle="Projects" />
             <div className={style.projects} ref={carouselRef}>
-                <WorksItem aosDuration={100} />
-                <WorksItem aosDuration={200} />
-                <WorksItem aosDuration={300} />
-                <WorksItem aosDuration={400} />
+                {works.map((work, i) => <WorksItem key={work.id} project={work} aosDuration={i * 100} />)}
             </div>
         </Container>
     </section>
@@ -198,11 +185,6 @@ function Hero() {
     </section>
 }
 
-async function getProjects() {
-    return db.projects.then(async projects => projects.map(p => (new ProjectModel(p)).toJson()))
-}
-
-
 export default function Home({ projects }: Projects) {
     return <Application>
         <Head>
@@ -220,7 +202,7 @@ export default function Home({ projects }: Projects) {
 export const getStaticProps: GetStaticProps = async (context) => {
     return {
         props: {
-            projects: await getProjects()
+            projects: await getSerializedProjects(db.projects)
         }
     }
 }

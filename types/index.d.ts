@@ -14,7 +14,18 @@ export interface SerializedProject {
     content: string;
     description: string;
     id: string;
-    imageId: string | null;
+    imageId: string;
+    link?: string;
+    technology: string;
+}
+
+export interface Project {
+    title: string;
+    content: string;
+    description: string;
+    id: string;
+    link?: string;
+    image: firebase.firestore.DocumentReference<File>[];
     technology: string;
 }
 
@@ -35,11 +46,11 @@ export interface File {
     sizes: Sizes[];
 }
 
-export interface Project {
-    title: string;
-    content: string;
-    description: string;
-    id: string;
-    image: firebase.firestore.DocumentReference<File>[];
-    technology: string;
+export type Position = {
+    left: number,
+    top: number
+}
+
+export type Projects = {
+    projects: SerializedProject[]
 }

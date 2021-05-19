@@ -52,3 +52,16 @@ img {
   max-width: 100%;
   height: auto;
 }
+
+.content-columns {
+  margin-top: 50px;
+  margin-bottom: 20px;
+  div {
+    margin-bottom: 40px;
+  }
+
+  @include media-min(768px) {
+    display: flex;
+    justify-content: space-between;
+  }
+}
