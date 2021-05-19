@@ -3,28 +3,67 @@ import Titles from "components/titles";
 import Application from "layouts/application";
 import { Container } from "layouts/layouts";
 import Head from "next/head";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import style from 'styles/modules/contact.module.scss'
 import styleHome from 'styles/modules/home.module.scss'
+import { db, flamelinkApp } from "utils/db";
 import { throttle } from "utils/functions";
+import homeStyle from 'styles/modules/home.module.scss'
+import emailjs from 'emailjs-com';
 
 
+
+const Alert: React.FC<{ success?: boolean }> = function ({ children, success }) {
+    return <div className={`${style.alert} ${success ? style.alert__success : ''}`}>{children}</div>
+}
 
 function Contact() {
+    const [submitted, setSubmitted] = useState<boolean>(false)
+
+
+    const [success, setSuccess] = useState<string>()
+    const [error, setError] = useState<string>()
+
+    function sendEmail(e: React.FormEvent<HTMLFormElement>) {
+        e.preventDefault();
+
+        setSubmitted(true)
+        emailjs.sendForm(
+            process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID as string,
+            process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID as string,
+            e.target as HTMLFormElement,
+            process.env.NEXT_PUBLIC_EMAILJS_USER_ID as string,
+        ).then((_) => {
+            setSuccess('Your message has been sent successfully, thank you again for showing me this interest.')
+            const target = e.target as HTMLFormElement
+            Array.from(target.querySelectorAll('[name]'))
+                .forEach((element) => {
+                    if (element instanceof HTMLInputElement || element instanceof HTMLTextAreaElement) {
+                        element.value = ''
+                    }
+                })
+        }).catch((error) => setError(error.text))
+            .finally(() => setSubmitted(false));
+    }
+
     return <div className={style.contact__page}>
         <div className={style.contact__card}>
-            <h1 className={style.section__title}>Contact me</h1>
-            <p>Please give as much detail as possible on the project so that I can correctly assess the workload that your project represents.</p>
-
-            <form className={style.contact__form} autoComplete="off">
+            <h1 className={style.section__title} data-aos="fade-up">Contact me</h1>
+            <p data-aos="fade-up">
+                If it's about a project,
+                please give as much detail as possible about the project so that i can properly assess the workload your project represents.
+            </p>
+            {(success || error) && <Alert success={!!success}>{success || error}</Alert>}
+            <form data-aos="fade-up" onSubmit={sendEmail} className={style.contact__form} autoComplete="off">
+                <input type="hidden" name="to_name" value="Paradoxe Ngwasi" />
                 <div>
-                    <input type="text" name="name" placeholder="Name" required minLength={3} />
-                    <input type="email" name="email" placeholder="Email" required />
+                    <input type="text" name="from_name" placeholder="Name" required minLength={3} />
+                    <input type="email" name="reply_to" placeholder="Email" required />
                 </div>
-                <textarea name="description" placeholder="Description" required minLength={20} />
+                <textarea name="message" placeholder="Description" required minLength={20} />
                 <div>
-                    <button className={`${styleHome.project__action} font-sans`} type="submit">
-                        Get in touch
+                    <button disabled={submitted} className={`${styleHome.project__action} font-sans`} type="submit">
+                        {submitted ? '...' : 'Get in touch'}
                     </button>
                 </div>
             </form>
@@ -36,12 +75,37 @@ function About() {
     return <section className={styleHome.skills__section}>
         <Container>
             <Titles title="About" subtitle="I believe in moving at a sustainable pace and fixing what’s broken." />
-            <p>My name is Paradoxe Ngwasi. I design and build digital products that are intuitive, accessible, beautiful, and fun. I’ve done this professionally since 2012, and I’ve been designing for the web since 2007.</p>
-            <p>This is a home for things I’ve made and how I’ve made them. My goal is for anyone (and anyone’s grandma) to understand what I’ve written. Although the focus is on my design and the process behind it, case studies occasionally detour to explore interesting, relevant topics.</p>
+            <p data-aos="fade-up">My name is Paradoxe Ngwasi. I design and manufacture digital products that are intuitive, accessible, beautiful and fun. I've been doing this professionally since 2015 and designing for the web since 2016.</p>
+            <p data-aos="fade-up">The world is changing, the needs are increasing, my goal is not to remove these needs but to facilitate their accessibility.</p>
+            <Resume />
         </Container>
     </section>
 }
 
+function Resume() {
+    const [link, setLink] = useState<string | undefined>(undefined)
+
+
+    useEffect(() => {
+        (async () => {
+            const resume = (await db.resume)
+            if (resume) {
+                flamelinkApp.storage.getURL({ fileId: resume.resume[0].id })
+                    .then((url: string) => setLink(url))
+            }
+        })()
+    }, [])
+
+    return <>
+        {link && (
+            <a data-aos="fade-up" href={link}
+                className={`${homeStyle.project__action}`}
+                style={{ borderRadius: '5px' }} target="_blank">
+                Download Resume
+            </a>
+        )}
+    </>
+}
 
 export default function Home() {
 

@@ -37,6 +37,11 @@ interface Sizes {
 }
 
 
+export interface Resume {
+    resume: firebase.firestore.DocumentReference<File>[];
+}
+
+
 export interface File {
     contentType: string;
     file: string;
