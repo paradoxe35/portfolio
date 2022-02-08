@@ -121,7 +121,7 @@ function About() {
         <p data-aos="fade-up">
           My name is {constants.full_name}. I design and manufacture web
           applications that are intuitive, accessible, beautiful and fun. I've
-          been doing this professionally since 2017.
+          been doing this passionately since 2017.
         </p>
         <Resume />
       </Container>
