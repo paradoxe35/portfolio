@@ -6,6 +6,7 @@
   padding: 0.5rem;
   overflow: hidden;
   .hero__hello {
+    margin-top: 1rem;
     color: var(--primary);
     font-size: 1em;
     font-weight: 500;
@@ -25,12 +26,16 @@
   }
 
   .hero__job {
-    font-size: 0.75em;
+    font-size: 0.85em;
     font-weight: 500;
+    color: var(--muted-2);
   }
 }
 
 .hero__icons {
+  @include media-max(940px) {
+    display: none;
+  }
   & > img {
     --y: 20%;
     --x: 22%;
@@ -54,6 +59,35 @@
   min-height: 100vh;
   padding: 5rem 0 2rem 0;
   background-repeat: no-repeat;
+
+  @include media-min(1250px) {
+    background-position: -30%;
+    background-size: 50%;
+  }
+
+  @include media-min-max(1190px, 1251px) {
+    background-position: -50%;
+    background-size: 60%;
+  }
+
+  @include media-min-max(940px, 1190px) {
+    background-position: -70%;
+    background-size: 69%;
+  }
+
+  @include media-min-max(768px, 940px) {
+    background-position: -90%;
+    background-size: 80%;
+  }
+
+  @include media-min(768px) {
+    background-position-y: 10%;
+  }
+
+  @include media-max(768px) {
+    background-position: 0% 10%;
+  }
+
   position: relative;
   z-index: 1;
   display: flex;
@@ -74,7 +108,7 @@
     left: 0;
     z-index: 3;
     background-color: var(--color-bg-alt);
-    opacity: 0.8;
+    opacity: 0.6;
     overflow: hidden;
   }
 }

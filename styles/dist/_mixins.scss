@@ -12,10 +12,16 @@
   }
 }
 
+@mixin media-min-max($min, $max) {
+  @media only screen and (min-width: $min) and (max-width: $max - 1) {
+    @content;
+  }
+}
+
 %unselectable {
-     -moz-user-select: none; // Firefox
-      -ms-user-select: none; // Internet Explorer
-   -khtml-user-select: none; // KHTML browsers (e.g. Konqueror)
+  -moz-user-select: none; // Firefox
+  -ms-user-select: none; // Internet Explorer
+  -khtml-user-select: none; // KHTML browsers (e.g. Konqueror)
   -webkit-user-select: none; // Chrome, Safari, and Opera
   -webkit-touch-callout: none; // Disable Android and iOS callouts
 }
@@ -23,7 +29,8 @@
 .visually-hidden {
   // https://snook.ca/archives/html_and_css/hiding-content-for-accessibility
   position: absolute !important;
-  height: 1px; width: 1px;
+  height: 1px;
+  width: 1px;
   overflow: hidden;
   clip: rect(1px 1px 1px 1px); // IE6, IE7
   clip: rect(1px, 1px, 1px, 1px);
