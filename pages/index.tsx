@@ -115,8 +115,13 @@ function Skills() {
                 alt="React"
                 className={style.service__logo}
               />
+              <img
+                src="/angular.svg"
+                alt="Angular"
+                className={style.service__logo}
+              />
             </div>
-            <h3>Frontend VueJS or React</h3>
+            <h3>Frontend VueJS, React, Angular</h3>
           </Card>
 
           <Card data-aos="fade-right" data-aos-duration="700">
