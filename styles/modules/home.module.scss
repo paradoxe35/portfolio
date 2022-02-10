@@ -88,6 +88,10 @@
     background-position: 0% 10%;
   }
 
+  @include media-max(537px) {
+    background-size: 170%;
+  }
+
   position: relative;
   z-index: 1;
   display: flex;
