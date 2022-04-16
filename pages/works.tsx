@@ -1,6 +1,6 @@
 import Header from "components/header";
-import Application from "layouts/application";
-import { Container } from "layouts/layouts";
+import Application from "components/layouts/application";
+import { Container } from "components/layouts/layouts";
 import Head from "next/head";
 import React, { useEffect, useState } from "react";
 import homeStyle from "styles/modules/home.module.scss";

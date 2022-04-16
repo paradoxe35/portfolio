@@ -1,7 +1,7 @@
 import Titles from "components/titles";
 import WorksItem from "components/works-item";
-import Application from "layouts/application";
-import { Card, Container, Grid } from "layouts/layouts";
+import Application from "components/layouts/application";
+import { Card, Container, Grid } from "components/layouts/layouts";
 import Head from "next/head";
 import React, { useEffect, useRef, useState } from "react";
 import style from "styles/modules/home.module.scss";

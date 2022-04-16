@@ -1,7 +1,7 @@
 import Header from "components/header";
 import Titles from "components/titles";
-import Application from "layouts/application";
-import { Container } from "layouts/layouts";
+import Application from "components/layouts/application";
+import { Container } from "components/layouts/layouts";
 import Head from "next/head";
 import React, { useEffect, useRef, useState } from "react";
 import style from "styles/modules/contact.module.scss";
