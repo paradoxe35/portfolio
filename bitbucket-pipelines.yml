@@ -26,6 +26,6 @@ pipelines:
       - step:
           name: "Deployment to Production"
           deployment: production
-          trigger: "manual"
+          trigger: "automatic"
           script:
             - echo "pnpm install && pnpm deploy"
