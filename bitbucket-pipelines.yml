@@ -12,6 +12,10 @@ pipelines:
         script:
           - echo "hello"
     - step:
+        name: "Install dependencies"
+        script:
+          - pnpm install
+    - step:
         name: "Deployment to Production"
         deployment: production
         trigger: "manual"
