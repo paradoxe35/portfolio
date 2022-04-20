@@ -5,20 +5,27 @@
 
 image: atlassian/default-image:3
 
+definitions:
+  caches:
+    pnpm: $BITBUCKET_CLONE_DIR/.pnpm-store
+
 pipelines:
   default:
     - step:
-        name: "Install pnpm"
+        name: Build and test
+        image: node:14.16.0
         script:
-          - npm install -g pnpm@next-7
-    - step:
-        name: "Install dependencies"
-        script:
+          - curl -f https://get.pnpm.io/v6.16.js | node - add --global pnpm@7.0.0-rc.7
           - pnpm install
-    # deployment section
-    - step:
-        name: "Deployment to Production"
-        deployment: production
-        trigger: "manual"
-        script:
-          - echo "pnpm install && pnpm deploy"
+          - pnpm run build # Replace with your build/test…etc. commands
+        caches:
+          - pnpm
+  # deployment section
+  branches:
+    main:
+      - step:
+          name: "Deployment to Production"
+          deployment: production
+          trigger: "manual"
+          script:
+            - echo "pnpm install && pnpm deploy"
