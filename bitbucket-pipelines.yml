@@ -17,7 +17,6 @@ pipelines:
         script:
           - curl -f https://get.pnpm.io/v6.16.js | node - add --global pnpm@7.0.0-rc.7
           - pnpm install
-          - pnpm run build # Replace with your build/test…etc. commands
         caches:
           - pnpm
   # deployment section
@@ -28,4 +27,4 @@ pipelines:
           deployment: production
           trigger: "automatic"
           script:
-            - echo "pnpm install && pnpm deploy"
+            - pnpm deploy
