@@ -5,30 +5,20 @@
 
 image: atlassian/default-image:3
 
-definitions:
-  caches:
-    pnpm: $BITBUCKET_CLONE_DIR/.pnpm-store
-
 pipelines:
   # Deployment section
   branches:
     main:
       - step:
-          name: "Install pnpm"
-          image: node:14.19
-          script:
-            - curl -fsSL https://get.pnpm.io/install.sh | PNPM_VERSION=7.0.0-rc.7 sh -
-
-      - step:
           name: "Build and export"
           script:
-            - pnpm install
-            - pnpm run build
-            - pnpm run export
+            - npm install
+            - npm run build
+            - npm run export
 
       - step:
           name: "Deployment to Production"
           deployment: production
           trigger: "automatic"
           script:
-            - pnpm deploy
+            - npm deploy
