@@ -20,11 +20,11 @@ pipelines:
             - curl -fsSL https://get.pnpm.io/install.sh | PNPM_VERSION=7.0.0-rc.7 sh -
 
       - step:
-        name: "Build and export"
-        script:
-          - pnpm install
-          - pnpm run build
-          - pnpm run export
+          name: "Build and export"
+          script:
+            - pnpm install
+            - pnpm run build
+            - pnpm run export
 
       - step:
           name: "Deployment to Production"
