@@ -14,15 +14,18 @@ pipelines:
   branches:
     main:
       - step:
-          name: Build and test
+          name: "Install pnpm"
           image: node:14.19
           script:
             - curl -fsSL https://get.pnpm.io/install.sh | PNPM_VERSION=7.0.0-rc.7 sh -
-            - pnpm install
-            - pnpm run build
-            - pnpm run export
-          caches:
-            - pnpm
+
+      - step:
+        name: "Build and export"
+        script:
+          - pnpm install
+          - pnpm run build
+          - pnpm run export
+
       - step:
           name: "Deployment to Production"
           deployment: production
