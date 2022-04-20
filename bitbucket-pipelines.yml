@@ -8,13 +8,14 @@ image: atlassian/default-image:3
 pipelines:
   default:
     - step:
-        name: "Echo Hello"
+        name: "Install pnpm"
         script:
-          - echo "hello"
+          - npm install -g pnpm@next-7
     - step:
         name: "Install dependencies"
         script:
           - pnpm install
+    # deployment section
     - step:
         name: "Deployment to Production"
         deployment: production
