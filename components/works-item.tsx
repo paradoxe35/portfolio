@@ -12,7 +12,7 @@ interface Work {
 export default function WorksItem({ aosDuration = 0, project }: Work) {
     const image = useFlamelinkStorage(project.imageId)
 
-    return <div className={style.project} data-aos="fade-right" data-aos-duration={aosDuration} >
+    return <div className={style.project} data-aos="fade-right" data-aos-duration={aosDuration}>
         <Link href={`/works/${project.id}`}>
             <a className={style.project__image}>
                 <img src={image} alt={project.title} />
