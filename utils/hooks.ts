@@ -8,9 +8,7 @@ export const useFlamelinkStorage = (
   const [image, setImage] = useState<string | undefined>(defaultValue);
 
   useEffect(() => {
-    flamelinkApp.storage
-      .getURL({ fileId: imageId })
-      .then((src: string) => setImage(src));
+    
   }, [imageId]);
 
   return image;

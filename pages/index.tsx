@@ -1,7 +1,7 @@
 import Titles from "components/titles";
 import WorksItem from "components/works-item";
 import Application from "components/layouts/application";
-import { Card, Container, Grid } from "components/layouts/layouts";
+import { Container } from "components/layouts/layouts";
 import Head from "next/head";
 import React, { useEffect, useRef, useState } from "react";
 import style from "styles/modules/home.module.scss";
@@ -10,10 +10,14 @@ import { db } from "utils/db";
 import { getBrowserWidth, getRandomArbitrary } from "utils/functions";
 import { GetStaticProps } from "next";
 import { getSerializedProjects } from "models/project";
-import { Position, Projects, SerializedProject } from "types";
+import { Position, SerializedProject, Skill } from "types";
 import constants from "utils/constants";
+import { default_skills } from "utils/data";
+import { getSerializedSkills } from "models/skill";
+import { SkillCard } from "components/skill-card";
 
 const functions: Function[] = [];
+
 function animation(
   imgs: NodeListOf<HTMLImageElement>,
   positions: Position[],
@@ -30,7 +34,7 @@ function animation(
   });
 }
 
-function Works({ projects }: Projects) {
+function Works({ projects }: { projects: SerializedProject[] }) {
   const carouselRef = useRef<HTMLDivElement | null>(null);
   const flkty = useRef<Flickity | null>(null);
   const [works, setWorks] = useState<SerializedProject[]>(projects);
@@ -92,52 +96,21 @@ function Works({ projects }: Projects) {
   );
 }
 
-function Skills() {
+function Skills({ skills: nskills }: { skills: Skill[] }) {
+  const [skills, setSkills] = useState(nskills || []);
+
+  useEffect(() => {
+    getSerializedSkills(db.skills).then((skll) => {
+      setSkills(skll);
+    });
+  }, []);
+
   return (
     <section className={style.skills__section}>
       <Container>
         <Titles title="Skills" subtitle="Services" />
-
-        <Grid col={4}>
-          <Card data-aos="fade-right" data-aos-duration="500">
-            <img
-              src="/laravel.svg"
-              alt="Laravel"
-              className={style.service__logo}
-            />
-            <h3>Backend Laravel</h3>
-          </Card>
-          <Card data-aos="fade-right" data-aos-duration="600">
-            <div style={{ display: "flex" }}>
-              <img src="/vue.svg" alt="Vue" className={style.service__logo} />
-              <img
-                src="/react.svg"
-                alt="React"
-                className={style.service__logo}
-              />
-              <img
-                src="/angular.svg"
-                alt="Angular"
-                className={style.service__logo}
-              />
-            </div>
-            <h3>Frontend VueJS, React, Angular</h3>
-          </Card>
-
-          <Card data-aos="fade-right" data-aos-duration="700">
-            <img src="/node.svg" alt="NodeJs" className={style.service__logo} />
-            <h3>NodeJs</h3>
-          </Card>
-
-          <Card data-aos="fade-right" data-aos-duration="800">
-            <img
-              src="/flutter.svg"
-              alt="Flutter"
-              className={style.service__logo}
-            />
-            <h3>Flutter Mobile development</h3>
-          </Card>
-        </Grid>
+        <SkillCard skills={default_skills} />
+        {skills.length > 0 && <SkillCard skills={skills} />}
       </Container>
     </section>
   );
@@ -241,7 +214,7 @@ function Hero() {
   );
 }
 
-export default function Home({ projects }: Projects) {
+export default function Home({ projects, skills }: StaticProps) {
   return (
     <Application>
       <Head>
@@ -249,17 +222,23 @@ export default function Home({ projects }: Projects) {
       </Head>
       <main>
         <Hero />
-        <Skills />
+        <Skills skills={skills} />
         <Works projects={projects} />
       </main>
     </Application>
   );
 }
 
+type StaticProps = {
+  projects: SerializedProject[];
+  skills: Skill[];
+};
+
 export const getStaticProps: GetStaticProps = async (context) => {
   return {
     props: {
       projects: await getSerializedProjects(db.projects),
+      skills: await getSerializedSkills(db.skills),
     },
   };
 };

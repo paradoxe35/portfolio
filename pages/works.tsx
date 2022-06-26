@@ -8,9 +8,13 @@ import WorksItem from "components/works-item";
 import { GetStaticProps } from "next";
 import { getSerializedProjects } from "models/project";
 import { db } from "utils/db";
-import { Projects, SerializedProject } from "types";
+import { SerializedProject } from "types";
 
-function WorksItems({ projects }: Projects) {
+type StaticProps = {
+  projects: SerializedProject[];
+};
+
+function WorksItems({ projects }: StaticProps) {
   const [works, setWorks] = useState<SerializedProject[]>(projects);
 
   useEffect(() => {
@@ -32,7 +36,7 @@ function WorksItems({ projects }: Projects) {
   );
 }
 
-export default function Works({ projects }: Projects) {
+export default function Works({ projects }: StaticProps) {
   return (
     <Application>
       <Head>
