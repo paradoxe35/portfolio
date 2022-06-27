@@ -3,7 +3,7 @@ import WorksItem from "components/works-item";
 import Application from "components/layouts/application";
 import { Container } from "components/layouts/layouts";
 import Head from "next/head";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import style from "styles/modules/home.module.scss";
 import { animate } from "utils/animate";
 import { db } from "utils/db";
@@ -105,12 +105,32 @@ function Skills({ skills: nskills }: { skills: Skill[] }) {
     });
   }, []);
 
+  const splitter = useCallback(
+    (acc: Skill[][], skill: Skill, index: number, array: Skill[]) => {
+      if (index % 4 === 0) {
+        acc.push([skill]);
+      } else {
+        acc[acc.length - 1].push(skill);
+      }
+      if (index === array.length - 1) {
+        const ls = acc[acc.length - 1];
+        new Array(4 - ls.length).fill(null).forEach(() => {
+          acc[acc.length - 1].push({ icons: [], name: "" });
+        });
+      }
+      return acc;
+    },
+    []
+  );
+
   return (
     <section className={style.skills__section}>
       <Container>
         <Titles title="Skills" subtitle="Services" />
         <SkillCard skills={default_skills} />
-        {skills.length > 0 && <SkillCard skills={skills} />}
+        {skills.reduce(splitter, [] as Skill[][]).map((sklls, i) => {
+          return <SkillCard skills={sklls} key={i} />;
+        })}
       </Container>
     </section>
   );

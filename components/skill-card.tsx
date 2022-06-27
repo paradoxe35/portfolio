@@ -13,6 +13,7 @@ export function SkillCard({
       {skills.map((skill, i) => {
         return (
           <Card
+            hidden={!skill.name.length}
             data-aos="fade-right"
             data-aos-duration={500 + i * 100}
             key={skill.id || i}

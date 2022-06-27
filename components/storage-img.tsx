@@ -9,7 +9,9 @@ export function StorageImg(
 ) {
   const { storageSrc, ...nprops } = props;
   const [image, setImage] = useState(
-    typeof storageSrc === "string" ? storageSrc : undefined
+    typeof storageSrc === "string"
+      ? storageSrc
+      : "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAwIiBoZWlnaHQ9IjEwMDAiPjwvc3ZnPg=="
   );
 
   useEffect(() => {

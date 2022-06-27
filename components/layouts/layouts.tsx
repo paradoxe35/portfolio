@@ -4,6 +4,7 @@ import style from "styles/layout.module.scss";
 type GridProps = {
   col?: number;
   ref?: React.MutableRefObject<HTMLDivElement | null>;
+  hidden?: boolean;
   children?: ReactNode;
 };
 
@@ -28,7 +29,7 @@ export const Description: React.FC = ({ children }) => {
 };
 
 export const Grid = forwardRef<HTMLDivElement, GridProps>(
-  ({ children, col }, ref) => {
+  ({ children, col, hidden }, ref) => {
     return (
       <div
         ref={ref}
@@ -40,9 +41,13 @@ export const Grid = forwardRef<HTMLDivElement, GridProps>(
   }
 );
 
-export const Card: React.FC = ({ children, ...props }) => {
+export const Card: React.FC<{ hidden?: boolean }> = ({
+  children,
+  hidden,
+  ...props
+}) => {
   return (
-    <div className={style.card} {...props}>
+    <div className={`${style.card} ${hidden ? style.hidden : ""}`} {...props}>
       {children}
     </div>
   );
