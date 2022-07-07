@@ -58,9 +58,9 @@ export type Position = {
   top: number;
 };
 
-export type Skill<IMG = Partial<firebase.firestore.DocumentReference<File>>> =
-  {
-    id?: string;
-    name: string;
-    icons: IMG[];
-  };
+export type Skill<IMG = Partial<firebase.firestore.DocumentReference<File>>> = {
+  id?: string;
+  name: string;
+  icons: IMG[];
+  className?: string;
+};

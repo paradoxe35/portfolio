@@ -25,7 +25,7 @@ export function SkillCard({
                 className={style.service__logo}
               />
             ) : (
-              <div style={{ display: "flex" }}>
+              <div style={{ display: "flex" }} className={skill.className}>
                 {skill.icons.map((img, i) => {
                   return (
                     <StorageImg

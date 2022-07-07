@@ -10,8 +10,9 @@ export const default_skills: Skill<string>[] = [
     icons: ["/vue.svg", "/react.svg", "/angular.svg"],
   },
   {
-    name: "NodeJs",
-    icons: ["/node.svg"],
+    name: "NodeJs, Python",
+    icons: ["/node.svg", "/python.svg"],
+    className: "skills-icons-left",
   },
   {
     name: "Flutter Mobile development",

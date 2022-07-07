@@ -65,3 +65,14 @@ img {
     justify-content: space-between;
   }
 }
+
+
+.skills-icons-left {
+  & > img {
+    margin-right: 10px;
+  }
+
+  & > img:last-child {
+    margin-right: 0;
+  }
+}
