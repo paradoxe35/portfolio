@@ -101,6 +101,8 @@ function Skills({ skills: nskills }: { skills: Skill[] }) {
 
   useEffect(() => {
     getSerializedSkills(db.skills).then((skll) => {
+      console.log(skll);
+      
       setSkills(skll);
     });
   }, []);
