@@ -2,6 +2,7 @@ import { Card, Grid } from "./layouts/layouts";
 import style from "styles/modules/home.module.scss";
 import { Skill } from "types";
 import { StorageImg } from "./storage-img";
+import styleLayout from "styles/layout.module.scss";
 
 export function SkillCard({
   skills,
@@ -11,9 +12,13 @@ export function SkillCard({
   return (
     <Grid col={4}>
       {skills.map((skill, i) => {
+        const hidden = !skill.name.length;
         return (
           <Card
-            hidden={!skill.name.length}
+            hidden={hidden}
+            className={`${hidden && i > 1 ? styleLayout["hidden:992"] : ""} ${
+              hidden && i === 1 ? styleLayout["hidden:600"] : ""
+            }`}
             data-aos="fade-right"
             data-aos-duration={500 + i * 100}
             key={skill.id || i}

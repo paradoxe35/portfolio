@@ -41,13 +41,19 @@ export const Grid = forwardRef<HTMLDivElement, GridProps>(
   }
 );
 
-export const Card: React.FC<{ hidden?: boolean }> = ({
+export const Card: React.FC<{ hidden?: boolean; className?: string }> = ({
   children,
   hidden,
+  className,
   ...props
 }) => {
   return (
-    <div className={`${style.card} ${hidden ? style.hidden : ""}`} {...props}>
+    <div
+      className={`${style.card} ${hidden ? style.hidden : ""} ${
+        className || ""
+      }`}
+      {...props}
+    >
       {children}
     </div>
   );

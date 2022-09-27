@@ -97,15 +97,21 @@
     width: 100%;
     flex-direction: column;
   }
+  .card.hidden\:600 {
+    display: none;
+  }
 }
 
 @media (max-width: 992px) {
-  .grid__4.grid {
-    flex-wrap: wrap;
-  }
   .grid__4 {
+    &.grid {
+      flex-wrap: wrap;
+    }
     .card {
       flex: 45%;
+    }
+    .card.hidden\:992 {
+      display: none;
     }
   }
 
