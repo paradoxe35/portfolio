@@ -36,7 +36,8 @@ export const useImageCacheLocalStorage = (
 
   useEffect(() => {
     if (!id) return;
-    localStorage.getItem(id);
+    const simage = localStorage.getItem(id);
+    if (simage) setImage(simage);
   }, [id]);
 
   return {
