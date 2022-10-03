@@ -3,7 +3,7 @@ import WorksItem from "components/works-item";
 import Application from "components/layouts/application";
 import { Container } from "components/layouts/layouts";
 import Head from "next/head";
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import style from "styles/modules/home.module.scss";
 import { animate } from "utils/animate";
 import { db } from "utils/db";
@@ -86,9 +86,13 @@ function Works({ projects }: { projects: SerializedProject[] }) {
     <section className={`${style.skills__section} ${style.works__section}`}>
       <Container>
         <Titles title="Works" subtitle="Projects" />
-        <div className={style.projects} ref={carouselRef}>
+        <div className={style.projects} data-aos="fade-up" ref={carouselRef}>
           {works.map((work, i) => (
-            <WorksItem key={work.id} project={work} aosDuration={i * 100} />
+            <WorksItem
+              key={work.id}
+              project={work}
+              aosDuration={(i + 1) * 100}
+            />
           ))}
         </div>
       </Container>
@@ -102,7 +106,7 @@ function Skills({ skills: nskills }: { skills: Skill[] }) {
   useEffect(() => {
     getSerializedSkills(db.skills).then((skll) => {
       console.log(skll);
-      
+
       setSkills(skll);
     });
   }, []);
@@ -195,29 +199,27 @@ function Hero() {
     <section>
       <div
         className={style.home__hero}
-        data-aos="fade-up"
-        data-aos-duration="500"
         style={{ backgroundImage: `url(/paradoxe-ngwasi.png)` }}
       >
         <div className={style.hero__body}>
           <Container>
             <div
               data-aos="fade-up"
-              data-aos-duration="1000"
+              data-aos-delay="100"
               className={style.hero__hello}
             >
               Hello, I am
             </div>
             <div
               data-aos="fade-up"
-              data-aos-duration="2000"
+              data-aos-delay="300"
               className={style.hero__title}
             >
               {constants.full_name}
             </div>
             <div
               data-aos="fade-up"
-              data-aos-duration="3000"
+              data-aos-delay="500"
               className={style.hero__job}
             >
               FullStack Web Developer
@@ -225,11 +227,36 @@ function Hero() {
           </Container>
         </div>
         <div ref={objectsRef} className={style.hero__icons}>
-          <img src="/laravel.svg" alt="Laravel" />
-          <img src="/vue.svg" alt="VueJs" />
-          <img src="/react.svg" alt="React" />
-          <img src="/node.svg" alt="NodeJs" />
-          <img src="/flutter.svg" alt="Flutter" />
+          <img
+            data-aos="fade-up"
+            data-aos-delay="500"
+            src="/laravel.svg"
+            alt="Laravel"
+          />
+          <img
+            data-aos="fade-up"
+            data-aos-delay="600"
+            src="/vue.svg"
+            alt="VueJs"
+          />
+          <img
+            data-aos="fade-up"
+            data-aos-delay="700"
+            src="/react.svg"
+            alt="React"
+          />
+          <img
+            data-aos="fade-up"
+            data-aos-delay="800"
+            src="/node.svg"
+            alt="NodeJs"
+          />
+          <img
+            data-aos="fade-up"
+            data-aos-delay="900"
+            src="/flutter.svg"
+            alt="Flutter"
+          />
         </div>
       </div>
     </section>

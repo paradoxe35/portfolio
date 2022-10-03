@@ -7,7 +7,7 @@ export default function Socials() {
         <Container>
             <Titles title="Socials" subtitle="Find me" />
             <Grid col={3}>
-                <Card data-aos="fade-right" data-aos-duration="500">
+                <Card data-aos="fade-up" data-aos-delay="100">
                     <a href="https://github.com/paradoxe35" className={style.social__links}>
                         <strong>Github</strong>
                         <span>github.com/paradoxe35</span>
@@ -16,7 +16,7 @@ export default function Socials() {
                         </svg>
                     </a>
                 </Card>
-                <Card data-aos="fade-right" data-aos-duration="500">
+                <Card data-aos="fade-up" data-aos-delay="200">
                     <a href="https://www.instagram.com/paradoxe_ng/" className={style.social__links}>
                         <strong>Instagram</strong>
                         <span>instagram.com/paradoxe_ng</span>
@@ -25,7 +25,7 @@ export default function Socials() {
                         </svg>
                     </a>
                 </Card>
-                <Card data-aos="fade-right" data-aos-duration="500">
+                <Card data-aos="fade-up" data-aos-delay="300">
                     <a href="https://twitter.com/paradoxe_ng" className={style.social__links}>
                         <strong>Twitter</strong>
                         <span>twitter.com/paradoxe_ng</span>

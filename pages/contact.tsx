@@ -61,10 +61,14 @@ function Contact() {
   return (
     <div className={style.contact__page}>
       <div className={style.contact__card}>
-        <h1 className={style.section__title} data-aos="fade-up">
+        <h1
+          className={style.section__title}
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
           Contact me
         </h1>
-        <p data-aos="fade-up">
+        <p data-aos="fade-up" data-aos-delay="200">
           If it's about a project, please give as much detail as possible about
           the project so that i can properly assess the workload your project
           represents.
@@ -74,6 +78,7 @@ function Contact() {
         )}
         <form
           data-aos="fade-up"
+          data-aos-delay="300"
           onSubmit={sendEmail}
           className={style.contact__form}
           autoComplete="off"

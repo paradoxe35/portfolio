@@ -23,10 +23,18 @@ export default function Header({
       }}
     >
       <Container>
-        <h1 data-aos="fade-up" className={style.page__title}>
+        <h1
+          data-aos="fade-up"
+          data-aos-delay="100"
+          className={style.page__title}
+        >
           {title}
         </h1>
-        <p data-aos="fade-up" className={style.page__subtitle}>
+        <p
+          data-aos="fade-up"
+          data-aos-delay="200"
+          className={style.page__subtitle}
+        >
           {subtitle}{" "}
         </p>
       </Container>

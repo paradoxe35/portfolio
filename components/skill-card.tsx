@@ -19,8 +19,8 @@ export function SkillCard({
             className={`${hidden && i > 1 ? styleLayout["hidden:992"] : ""} ${
               hidden && i === 1 ? styleLayout["hidden:600"] : ""
             }`}
-            data-aos="fade-right"
-            data-aos-duration={500 + i * 100}
+            data-aos="fade-up"
+            data-aos-delay={(i + 1) * 100}
             key={skill.id || i}
           >
             {skill.icons.length === 1 ? (

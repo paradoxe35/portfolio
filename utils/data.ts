@@ -2,8 +2,8 @@ import { Skill } from "types";
 
 export const default_skills: Skill<string>[] = [
   {
-    name: "Backend Laravel",
-    icons: ["/laravel.svg"],
+    name: "Backend Symfony, Laravel",
+    icons: ["/laravel-symfony.svg"],
   },
   {
     name: "Frontend VueJS, React, Angular",

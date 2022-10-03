@@ -2,7 +2,7 @@ import Header from "components/header";
 import Application from "components/layouts/application";
 import { Container } from "components/layouts/layouts";
 import Head from "next/head";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import homeStyle from "styles/modules/home.module.scss";
 import WorksItem from "components/works-item";
 import { GetStaticProps } from "next";
@@ -26,9 +26,16 @@ function WorksItems({ projects }: StaticProps) {
       className={`${homeStyle.skills__section} ${homeStyle.works__section}`}
     >
       <Container>
-        <div className={`${homeStyle.projects} ${homeStyle.projects__grid}`}>
+        <div
+          className={`${homeStyle.projects} ${homeStyle.projects__grid}`}
+          data-aos="fade-up"
+        >
           {works.map((work, i) => (
-            <WorksItem key={work.id} project={work} aosDuration={i * 100} />
+            <WorksItem
+              key={work.id}
+              project={work}
+              aosDuration={(i + 1) * 100}
+            />
           ))}
         </div>
       </Container>

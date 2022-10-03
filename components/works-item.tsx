@@ -10,11 +10,7 @@ interface Work {
 
 export default function WorksItem({ aosDuration = 0, project }: Work) {
   return (
-    <div
-      className={style.project}
-      data-aos="fade-right"
-      data-aos-duration={aosDuration}
-    >
+    <div className={style.project}>
       <Link href={`/works/${project.id}`}>
         <a className={style.project__image}>
           <StorageImg

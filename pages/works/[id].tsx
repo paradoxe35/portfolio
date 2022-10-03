@@ -63,8 +63,6 @@ export default function Work({
   const [project, setProject] = useState<SerializedProject>(_project);
 
   useEffect(() => {
-    console.log(_project);
-
     db.getProject(_project.id).then((data) => {
       setProject(new ProjectModel(data).toJson());
     });

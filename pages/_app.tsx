@@ -1,15 +1,15 @@
-import '../styles/globals.scss'
-import type { AppProps /*, AppContext */ } from 'next/app'
-import { useEffect } from 'react'
-import aos from 'aos'
+import "../styles/globals.scss";
+import type { AppProps /*, AppContext */ } from "next/app";
+import { useEffect } from "react";
+import "aos/dist/aos.css";
+import aos from "aos";
 
 function MyApp({ Component, pageProps }: AppProps) {
-
   useEffect(() => {
-    aos.init({ once: true })
-  }, [])
+    aos.init({ once: true });
+  }, []);
 
-  return <Component {...pageProps} />
+  return <Component {...pageProps} />;
 }
 
-export default MyApp
+export default MyApp;
