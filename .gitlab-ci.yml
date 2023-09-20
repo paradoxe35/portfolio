@@ -10,7 +10,6 @@ before_script:
 clone-project-job:
   stage: clone-project
   tags:
-    - global
     - png-projects
   only:
     refs:
