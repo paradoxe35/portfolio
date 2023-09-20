@@ -1,26 +1,37 @@
-# Porfolio
+# Portfolio
+
+## Overview
+
+This is a personal portfolio website built with Next.js, showcasing skills, projects, and achievements. It serves as an online resume and a platform to share my work with the world.
 
 ## Getting Started
 
-First, run the development server:
+To set up your own portfolio using this template, follow these steps:
 
-```bash
+1. Clone the repository to your local machine:
+
+```shell
+git clone https://github.com/paradoxe35/portfolio.git
+```
+
+2. Customize the content in the `pages` directory to reflect your personal information and projects.
+
+3. Install the required dependencies:
+
+```shell
+pnpm install
+```
+
+4. Build and run the project:
+
+```shell
 pnpm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+5. Open your web browser and visit `http://localhost:3000` to view your portfolio.
 
 ## Deploy on Firebase
 
 ```bash
-pnpm deploy
+pnpm deploy:auto
 ```
