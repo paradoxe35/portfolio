@@ -15,8 +15,6 @@ clone-project-job:
   only:
     refs:
       - main
-    variables:
-      - $CI_PIPELINE_TRIGGERED == 'true'
   script:
     - git clone https://pngwasi@bitbucket.org/pngwasi/portfolio.git portfolio
     - export NEXT_PUBLIC_FIREBASE_CONFIG=$NEXT_PUBLIC_FIREBASE_CONFIG
@@ -28,3 +26,4 @@ clone-project-job:
     - pnpm run build && pnpm run export
     - firebase deploy --token "$FIREBASE_TOKEN"
     - ls
+  when: manual
