@@ -1,19 +1,12 @@
-import firebase from 'firebase/app';
+import { FIREBASE_CONFIG } from "./constants";
 
-import 'firebase/firestore';
-import 'firebase/storage';
+import firebase from "firebase/app";
 
-const config = {
-    apiKey: process.env.NEXT_PUBLIC_FIRE_APIKEY,
-    authDomain: process.env.NEXT_PUBLIC_FIRE_AUTHDOMAIN,
-    databaseURL: process.env.NEXT_PUBLIC_FIRE_DATABASEURL,
-    projectId: process.env.NEXT_PUBLIC_FIRE_PROJECTID,
-    storageBucket: process.env.NEXT_PUBLIC_FIRE_STORAGEBUCKET,
-    messagingSenderId: process.env.NEXT_PUBLIC_FIRE_MESSAGINGSENDERID,
-    appId: process.env.NEXT_PUBLIC_FIRE_APPID,
-    measurementId: process.env.NEXT_PUBLIC_FIRE_MEASUREMENTID
-}
+import "firebase/firestore";
+import "firebase/storage";
 
-const FirebaseApp: firebase.app.App = !firebase.apps.length ? firebase.initializeApp(config) : firebase.app()
+const FirebaseApp: firebase.app.App = !firebase.apps.length
+  ? firebase.initializeApp(FIREBASE_CONFIG)
+  : firebase.app();
 
-export default FirebaseApp
+export default FirebaseApp;

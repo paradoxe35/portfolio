@@ -8,29 +8,22 @@ before_script:
   - npm install pnpm --location=global
 
 clone-project-job:
-    stage: clone-project
-    tags:
-        - global
-    only:
-        refs:
-          - main
-        variables:
-          - $CI_PIPELINE_TRIGGERED == 'true'
-    script:
-        - git clone https://pngwasi@bitbucket.org/pngwasi/portfolio.git portfolio
-        - export NEXT_PUBLIC_FIRE_APIKEY=$NEXT_PUBLIC_FIRE_APIKEY
-        - export NEXT_PUBLIC_FIRE_AUTHDOMAIN=$NEXT_PUBLIC_FIRE_AUTHDOMAIN
-        - export NEXT_PUBLIC_FIRE_DATABASEURL=$NEXT_PUBLIC_FIRE_DATABASEURL
-        - export NEXT_PUBLIC_FIRE_PROJECTID=$NEXT_PUBLIC_FIRE_PROJECTID
-        - export NEXT_PUBLIC_FIRE_STORAGEBUCKET=$NEXT_PUBLIC_FIRE_STORAGEBUCKET
-        - export NEXT_PUBLIC_FIRE_MESSAGINGSENDERID=$NEXT_PUBLIC_FIRE_MESSAGINGSENDERID
-        - export NEXT_PUBLIC_FIRE_APPID=$NEXT_PUBLIC_FIRE_APPID
-        - export NEXT_PUBLIC_FIRE_MEASUREMENTID=$NEXT_PUBLIC_FIRE_MEASUREMENTID
-        - export NEXT_PUBLIC_EMAILJS_USER_ID=$NEXT_PUBLIC_EMAILJS_USER_ID
-        - export NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=$NEXT_PUBLIC_EMAILJS_TEMPLATE_ID
-        - export NEXT_PUBLIC_EMAILJS_SERVICE_ID=$NEXT_PUBLIC_EMAILJS_SERVICE_ID
-        - cd portfolio
-        - pnpm install
-        - pnpm run build && pnpm run export
-        - firebase deploy --token "$FIREBASE_TOKEN"
-        - ls
+  stage: clone-project
+  tags:
+    - global
+  only:
+    refs:
+      - main
+    variables:
+      - $CI_PIPELINE_TRIGGERED == 'true'
+  script:
+    - git clone https://pngwasi@bitbucket.org/pngwasi/portfolio.git portfolio
+    - export NEXT_PUBLIC_FIREBASE_CONFIG=$NEXT_PUBLIC_FIREBASE_CONFIG
+    - export NEXT_PUBLIC_EMAILJS_USER_ID=$NEXT_PUBLIC_EMAILJS_USER_ID
+    - export NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=$NEXT_PUBLIC_EMAILJS_TEMPLATE_ID
+    - export NEXT_PUBLIC_EMAILJS_SERVICE_ID=$NEXT_PUBLIC_EMAILJS_SERVICE_ID
+    - cd portfolio
+    - pnpm install
+    - pnpm run build && pnpm run export
+    - firebase deploy --token "$FIREBASE_TOKEN"
+    - ls
