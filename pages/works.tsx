@@ -18,7 +18,9 @@ function WorksItems({ projects }: StaticProps) {
   const [works, setWorks] = useState<SerializedProject[]>(projects);
 
   useEffect(() => {
-    getSerializedProjects(db.projects).then((ps) => setWorks(ps || []));
+    getSerializedProjects(db.projects).then((ps) => {
+      Array.isArray(ps) && setWorks(ps || []);
+    });
   }, []);
 
   return (
