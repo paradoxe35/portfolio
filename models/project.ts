@@ -1,13 +1,14 @@
 import { Project, SerializedProject } from "types";
 
 export default class ProjectModel implements SerializedProject {
-  public title: string;
-  public content: string;
-  public description: string;
-  public id: string;
-  public link?: string;
-  public imageId: string;
-  public technology: string;
+  public readonly title: string;
+  public readonly content: string;
+  public readonly description: string;
+  public readonly id: string;
+  public readonly link?: string;
+  public readonly imageId: string;
+  public readonly technology: string;
+  public readonly active: boolean;
 
   constructor(project: Project) {
     this.title = project.title;
@@ -17,6 +18,7 @@ export default class ProjectModel implements SerializedProject {
     this.link = project.link;
     this.imageId = project.image[0]?.id;
     this.technology = project.technology;
+    this.active = project.active;
   }
 
   public toJson() {
@@ -34,6 +36,6 @@ export default class ProjectModel implements SerializedProject {
 
 export async function getSerializedProjects(projects: Promise<Project[]>) {
   return projects.then(async (projects) =>
-    projects.map((p) => new ProjectModel(p).toJson())
+    projects.filter((p) => p.active).map((p) => new ProjectModel(p).toJson())
   );
 }

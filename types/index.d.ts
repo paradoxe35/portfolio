@@ -10,6 +10,7 @@ interface Folder {
 export interface SerializedProject {
   title: string;
   content: string;
+  active: boolean;
   description: string;
   id: string;
   imageId: string;
@@ -27,6 +28,7 @@ export interface Project {
   title: string;
   content: string;
   description: string;
+  active: boolean;
   id: string;
   link?: string;
   image: firebase.firestore.DocumentReference<File>[];
