@@ -6,8 +6,8 @@ export const default_skills: Skill<string>[] = [
     icons: ["/laravel-symfony.svg"],
   },
   {
-    name: "Frontend VueJS, React, Angular",
-    icons: ["/vue.svg", "/react.svg", "/angular.svg"],
+    name: "Frontend VueJS, React, Svelte",
+    icons: ["/vue.svg", "/react.svg", "/svelte.svg"],
   },
   {
     name: "NodeJs, Python",
