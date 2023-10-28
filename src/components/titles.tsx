@@ -1,4 +1,4 @@
-import style from 'styles/modules/home.module.scss'
+import style from '@/styles/modules/home.module.scss'
 
 type Title = {
     title: string | JSX.Element;

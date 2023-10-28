@@ -1,4 +1,4 @@
-import { Skill, SerializedSkill } from "types";
+import { Skill, SerializedSkill } from "@/types";
 
 export default class SkillModel implements SerializedSkill {
   public name: string;

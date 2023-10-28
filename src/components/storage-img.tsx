@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { flamelinkApp } from "utils/db";
-import { useImageCacheLocalStorage } from "utils/hooks";
+import { flamelinkApp } from "@/utils/db";
+import { useImageCacheLocalStorage } from "@/utils/hooks";
 
 export function StorageImg(
   props: React.DetailedHTMLProps<

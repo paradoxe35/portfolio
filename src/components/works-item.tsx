@@ -1,6 +1,6 @@
 import Link from "next/link";
-import style from "styles/modules/home.module.scss";
-import { SerializedProject } from "types";
+import style from "@/styles/modules/home.module.scss";
+import { SerializedProject } from "@/types";
 import { StorageImg } from "./storage-img";
 
 interface Work {

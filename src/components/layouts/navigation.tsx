@@ -1,7 +1,7 @@
-import style from "styles/navigation.module.scss";
+import style from "@/styles/navigation.module.scss";
 import { Container } from "./layouts";
 import Link from "next/link";
-import constants from "utils/constants";
+import constants from "@/utils/constants";
 
 const Navigation: React.FC = () => {
   return (

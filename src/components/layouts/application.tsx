@@ -1,4 +1,4 @@
-import Socials from "components/socials";
+import Socials from "@/components/socials";
 import React, { useEffect } from "react";
 import Footer from "./footer";
 import Navigation from "./navigation";

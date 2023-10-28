@@ -1,20 +1,20 @@
-import Titles from "components/titles";
-import WorksItem from "components/works-item";
-import Application from "components/layouts/application";
-import { Container } from "components/layouts/layouts";
+import Titles from "@/components/titles";
+import WorksItem from "@/components/works-item";
+import Application from "@/components/layouts/application";
+import { Container } from "@/components/layouts/layouts";
 import Head from "next/head";
 import { useCallback, useEffect, useRef, useState } from "react";
-import style from "styles/modules/home.module.scss";
-import { animate } from "utils/animate";
-import { db } from "utils/db";
-import { getBrowserWidth, getRandomArbitrary } from "utils/functions";
+import style from "@/styles/modules/home.module.scss";
+import { animate } from "@/utils/animate";
+import { db } from "@/utils/db";
+import { getBrowserWidth, getRandomArbitrary } from "@/utils/functions";
 import { GetStaticProps } from "next";
-import { getSerializedProjects } from "models/project";
-import { Position, SerializedProject, Skill } from "types";
-import constants from "utils/constants";
-import { default_skills } from "utils/data";
-import { getSerializedSkills } from "models/skill";
-import { SkillCard } from "components/skill-card";
+import { getSerializedProjects } from "@/models/project";
+import { Position, SerializedProject, Skill } from "@/types";
+import constants from "@/utils/constants";
+import { default_skills } from "@/utils/data";
+import { getSerializedSkills } from "@/models/skill";
+import { SkillCard } from "@/components/skill-card";
 
 const functions: Function[] = [];
 

@@ -1,5 +1,5 @@
 import { Container } from "./layouts";
-import style from "styles/footer.module.scss";
+import style from "@/styles/footer.module.scss";
 
 export default function Footer() {
   return (
@@ -7,7 +7,7 @@ export default function Footer() {
       <Container>
         Designed by{" "}
         <a
-          href="https://bitbucket.org/pngwasi/portfolio/src/main/"
+          href="https://bitbucket.org/pngwasi/portfolio/@/main/"
           target="_blank"
         >
           @PNG_

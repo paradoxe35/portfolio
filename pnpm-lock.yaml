@@ -25,7 +25,7 @@ dependencies:
     version: 2.3.0
   next:
     specifier: ^12.3.4
-    version: 12.3.4(react-dom@17.0.2)(react@17.0.2)(sass@1.67.0)
+    version: 12.3.4(react-dom@17.0.2)(react@17.0.2)(sass@1.69.5)
   react:
     specifier: 17.0.2
     version: 17.0.2
@@ -38,20 +38,20 @@ dependencies:
 
 devDependencies:
   '@types/aos':
-    specifier: ^3.0.4
-    version: 3.0.4
+    specifier: ^3.0.6
+    version: 3.0.6
   '@types/flickity':
-    specifier: ^2.2.9
-    version: 2.2.9
+    specifier: ^2.2.10
+    version: 2.2.10
   '@types/node':
-    specifier: ^14.18.62
-    version: 14.18.62
+    specifier: ^14.18.63
+    version: 14.18.63
   '@types/react':
-    specifier: ^17.0.65
-    version: 17.0.65
+    specifier: ^17.0.69
+    version: 17.0.69
   sass:
-    specifier: ^1.67.0
-    version: 1.67.0
+    specifier: ^1.69.5
+    version: 1.69.5
   typescript:
     specifier: ^4.9.5
     version: 4.9.5
@@ -229,7 +229,7 @@ packages:
       '@firebase/logger': 0.2.6
       '@firebase/util': 1.3.0
       '@firebase/webchannel-wrapper': 0.5.1
-      '@grpc/grpc-js': 1.9.3
+      '@grpc/grpc-js': 1.9.8
       '@grpc/proto-loader': 0.6.13
       node-fetch: 2.6.7
       tslib: 2.6.2
@@ -419,7 +419,7 @@ packages:
     dependencies:
       '@flamelink/sdk-app-types': 1.0.0-rc.1
       '@flamelink/sdk-utils': 1.0.0-alpha.34(@firebase/app-types@0.9.0)
-      '@types/lodash': 4.14.198
+      '@types/lodash': 4.14.200
       lodash: 4.17.21
     transitivePeerDependencies:
       - '@firebase/app-types'
@@ -634,12 +634,12 @@ packages:
       - '@firebase/app-types'
     dev: false
 
-  /@grpc/grpc-js@1.9.3:
-    resolution: {integrity: sha512-b8iWtdrYIeT5fdZdS4Br/6h/kuk0PW5EVBUGk1amSbrpL8DlktJD43CdcCWwRdd6+jgwHhADSbL9CsNnm6EUPA==}
+  /@grpc/grpc-js@1.9.8:
+    resolution: {integrity: sha512-FFPzDS333Vw8hvf+1FaEsaCYVPBdNdUCw7zArTiF7+6gOzln967b4GBCBekKGqoKEgna8d3Ayxv8t+IvazXG3g==}
     engines: {node: ^8.13.0 || >=10.10.0}
     dependencies:
       '@grpc/proto-loader': 0.7.10
-      '@types/node': 14.18.62
+      '@types/node': 14.18.63
     dev: false
 
   /@grpc/proto-loader@0.6.13:
@@ -835,39 +835,39 @@ packages:
       tslib: 2.6.2
     dev: false
 
-  /@types/aos@3.0.4:
-    resolution: {integrity: sha512-mna6Jd6bdK1NpwarLopGvXOgUoCfj0470IwLxuVOFDElTGI0JTd7xSGQ0AjbAEnHErC/b3fA9t2uB3IXVKmckA==}
+  /@types/aos@3.0.6:
+    resolution: {integrity: sha512-H6RbMQXco8pZWhh7Wjpqrd9ISVwH5EId0hM5vxebcDiK6HgIizbVj1718Q8PQLQ7cVBsxTK0rbVy0T3dR6eoow==}
     dev: true
 
-  /@types/flickity@2.2.9:
-    resolution: {integrity: sha512-NmagE2VJkm7FG2Wv1CBgIfFlXpVHQRy6x1j2Pin5q/RP2S/Bup6kpphxtdE1SywFcacf/fBdew5Iezg+QRpPdw==}
+  /@types/flickity@2.2.10:
+    resolution: {integrity: sha512-sLKsw42sPYs8JrWijsoG0DcvalzHTnVYs+a3dCrHdlilUv5ddKz5+x4d4H8bouy93T0tU3VWaQyA0Tt6RBfJsQ==}
     dev: true
 
-  /@types/lodash@4.14.198:
-    resolution: {integrity: sha512-trNJ/vtMZYMLhfN45uLq4ShQSw0/S7xCTLLVM+WM1rmFpba/VS42jVUgaO3w/NOLiWR/09lnYk0yMaA/atdIsg==}
+  /@types/lodash@4.14.200:
+    resolution: {integrity: sha512-YI/M/4HRImtNf3pJgbF+W6FrXovqj+T+/HpENLTooK9PnkacBsDpeP3IpHab40CClUfhNmdM2WTNP2sa2dni5Q==}
     dev: false
 
   /@types/long@4.0.2:
     resolution: {integrity: sha512-MqTGEo5bj5t157U6fA/BiDynNkn0YknVdh48CMPkTSpFTVmvao5UQmm7uEF6xBEo7qIMAlY/JSleYaE6VOdpaA==}
     dev: false
 
-  /@types/node@14.18.62:
-    resolution: {integrity: sha512-53Fhb08qfKwSNCIUtysIqw0ye+v1d5QCdL2kl8liKQFlOZTAo+nEYr/FztzMaHBFwB5H0ugF0PF0gmtojaNNiQ==}
+  /@types/node@14.18.63:
+    resolution: {integrity: sha512-fAtCfv4jJg+ExtXhvCkCqUKZ+4ok/JQk01qDKhL5BDDoS3AxKXhV5/MAVUZyQnSEd2GT92fkgZl0pz0Q0AzcIQ==}
 
-  /@types/prop-types@15.7.6:
-    resolution: {integrity: sha512-RK/kBbYOQQHLYj9Z95eh7S6t7gq4Ojt/NT8HTk8bWVhA5DaF+5SMnxHKkP4gPNN3wAZkKP+VjAf0ebtYzf+fxg==}
+  /@types/prop-types@15.7.9:
+    resolution: {integrity: sha512-n1yyPsugYNSmHgxDFjicaI2+gCNjsBck8UX9kuofAKlc0h1bL+20oSF72KeNaW2DUlesbEVCFgyV2dPGTiY42g==}
     dev: true
 
-  /@types/react@17.0.65:
-    resolution: {integrity: sha512-oxur785xZYHvnI7TRS61dXbkIhDPnGfsXKv0cNXR/0ml4SipRIFpSMzA7HMEfOywFwJ5AOnPrXYTEiTRUQeGlQ==}
+  /@types/react@17.0.69:
+    resolution: {integrity: sha512-klEeru//GhiQvXUBayz0Q4l3rKHWsBR/EUOhOeow6hK2jV7MlO44+8yEk6+OtPeOlRfnpUnrLXzGK+iGph5aeg==}
     dependencies:
-      '@types/prop-types': 15.7.6
-      '@types/scheduler': 0.16.3
+      '@types/prop-types': 15.7.9
+      '@types/scheduler': 0.16.5
       csstype: 3.1.2
     dev: true
 
-  /@types/scheduler@0.16.3:
-    resolution: {integrity: sha512-5cJ8CB4yAx7BH1oMvdU0Jh9lrEXyPkar6F9G/ERswkCuvP4KQZfZkSjcMbAICCpQTN4OuZn8tz0HiKv9TGZgrQ==}
+  /@types/scheduler@0.16.5:
+    resolution: {integrity: sha512-s/FPdYRmZR8SjLWGMCuax7r3qCWQw9QKHzXVukAuuIJkXkDRwp+Pu5LMIVFi0Fxbav35WURicYr8u1QsoybnQw==}
     dev: true
 
   /animejs@3.2.1:
@@ -915,8 +915,8 @@ packages:
     resolution: {integrity: sha512-xMiB6BnRsD6RWmkD6Av90qXY7uaAOXJPaS5D8cSazyao/bx6ENCm67XGl6BIhn1ETjK52yEs8A/atmMPp74M4A==}
     dev: false
 
-  /caniuse-lite@1.0.30001538:
-    resolution: {integrity: sha512-HWJnhnID+0YMtGlzcp3T9drmBJUVDchPJ08tpUGFLs9CYlwWPH2uLgpHn8fND5pCgXVtnGS3H4QR9XLMHVNkHw==}
+  /caniuse-lite@1.0.30001555:
+    resolution: {integrity: sha512-NzbUFKUnJ3DTcq6YyZB6+qqhfD112uR3uoEnkmfzm2wVzUNsFkU7AwBjKQ654Sp5cau0JxhFyRSn/tQZ+XfygA==}
     dev: false
 
   /chokidar@3.5.3:
@@ -1176,7 +1176,7 @@ packages:
     hasBin: true
     dev: false
 
-  /next@12.3.4(react-dom@17.0.2)(react@17.0.2)(sass@1.67.0):
+  /next@12.3.4(react-dom@17.0.2)(react@17.0.2)(sass@1.69.5):
     resolution: {integrity: sha512-VcyMJUtLZBGzLKo3oMxrEF0stxh8HwuW976pAzlHhI3t8qJ4SROjCrSh1T24bhrbjw55wfZXAbXPGwPt5FLRfQ==}
     engines: {node: '>=12.22.0'}
     hasBin: true
@@ -1196,11 +1196,11 @@ packages:
     dependencies:
       '@next/env': 12.3.4
       '@swc/helpers': 0.4.11
-      caniuse-lite: 1.0.30001538
+      caniuse-lite: 1.0.30001555
       postcss: 8.4.14
       react: 17.0.2
       react-dom: 17.0.2(react@17.0.2)
-      sass: 1.67.0
+      sass: 1.69.5
       styled-jsx: 5.0.7(react@17.0.2)
       use-sync-external-store: 1.2.0(react@17.0.2)
     optionalDependencies:
@@ -1288,7 +1288,7 @@ packages:
       '@protobufjs/pool': 1.1.0
       '@protobufjs/utf8': 1.1.0
       '@types/long': 4.0.2
-      '@types/node': 14.18.62
+      '@types/node': 14.18.63
       long: 4.0.0
     dev: false
 
@@ -1307,7 +1307,7 @@ packages:
       '@protobufjs/path': 1.1.2
       '@protobufjs/pool': 1.1.0
       '@protobufjs/utf8': 1.1.0
-      '@types/node': 14.18.62
+      '@types/node': 14.18.63
       long: 5.2.3
     dev: false
 
@@ -1366,8 +1366,8 @@ packages:
     resolution: {integrity: sha512-rp3So07KcdmmKbGvgaNxQSJr7bGVSVk5S9Eq1F+ppbRo70+YeaDxkw5Dd8NPN+GD6bjnYm2VuPuCXmpuYvmCXQ==}
     dev: false
 
-  /sass@1.67.0:
-    resolution: {integrity: sha512-SVrO9ZeX/QQyEGtuZYCVxoeAL5vGlYjJ9p4i4HFuekWl8y/LtJ7tJc10Z+ck1c8xOuoBm2MYzcLfTAffD0pl/A==}
+  /sass@1.69.5:
+    resolution: {integrity: sha512-qg2+UCJibLr2LCVOt3OlPhr/dqVHWOa9XtZf2OjbLs/T4VPSJ00udtgJxH3neXZm+QqX8B+3cU7RaLqp1iVfcQ==}
     engines: {node: '>=14.0.0'}
     hasBin: true
     dependencies:

@@ -1,16 +1,16 @@
-import Header from "components/header";
-import Titles from "components/titles";
-import Application from "components/layouts/application";
-import { Container } from "components/layouts/layouts";
+import Header from "@/components/header";
+import Titles from "@/components/titles";
+import Application from "@/components/layouts/application";
+import { Container } from "@/components/layouts/layouts";
 import Head from "next/head";
 import React, { useEffect, useRef, useState } from "react";
-import style from "styles/modules/contact.module.scss";
-import styleHome from "styles/modules/home.module.scss";
-import { db, flamelinkApp } from "utils/db";
-import { throttle } from "utils/functions";
-import homeStyle from "styles/modules/home.module.scss";
+import style from "@/styles/modules/contact.module.scss";
+import styleHome from "@/styles/modules/home.module.scss";
+import { db, flamelinkApp } from "@/utils/db";
+import { throttle } from "@/utils/functions";
+import homeStyle from "@/styles/modules/home.module.scss";
 import emailjs from "@emailjs/browser";
-import constants from "utils/constants";
+import constants from "@/utils/constants";
 
 const Alert: React.FC<{ success?: boolean }> = function ({
   children,

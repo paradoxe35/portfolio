@@ -1,5 +1,5 @@
-import FirebaseApp from "utils/firebase";
-import { Project, Resume, Skill } from "types";
+import FirebaseApp from "@/utils/firebase";
+import { Project, Resume, Skill } from "@/types";
 
 import flamelink from "flamelink/app";
 import "flamelink/cf/content";

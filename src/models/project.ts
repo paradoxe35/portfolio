@@ -1,4 +1,4 @@
-import { Project, SerializedProject } from "types";
+import { Project, SerializedProject } from "@/types";
 
 export default class ProjectModel implements SerializedProject {
   public readonly title: string;

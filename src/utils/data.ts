@@ -1,4 +1,4 @@
-import { Skill } from "types";
+import { Skill } from "@/types";
 
 export const default_skills: Skill<string>[] = [
   {
