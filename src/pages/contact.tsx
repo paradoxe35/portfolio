@@ -1,7 +1,7 @@
-import Header from "@/components/header";
-import Titles from "@/components/titles";
-import Application from "@/components/layouts/application";
-import { Container } from "@/components/layouts/layouts";
+import Header from "@/ui/components/header";
+import Titles from "@/ui/components/titles";
+import Application from "@/ui/components/layouts/application";
+import { Container } from "@/ui/components/layouts/layouts";
 import Head from "next/head";
 import React, { PropsWithChildren, useEffect, useRef, useState } from "react";
 import style from "@/styles/modules/contact.module.scss";

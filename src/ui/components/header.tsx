@@ -1,4 +1,4 @@
-import { Container } from "@/components/layouts/layouts";
+import { Container } from "@/ui/components/layouts/layouts";
 import style from "@/styles/modules/page.module.scss";
 
 export default function Header({

@@ -1,5 +1,5 @@
-import Header from "@/components/header";
-import Application from "@/components/layouts/application";
+import Header from "@/ui/components/header";
+import Application from "@/ui/components/layouts/application";
 import ProjectModel, { getSerializedProjects } from "@/models/project";
 import { GetStaticProps, GetStaticPaths } from "next";
 import Head from "next/head";
@@ -9,7 +9,7 @@ import { useFlamelinkStorage } from "@/utils/hooks";
 
 import style from "@/styles/modules/project.module.scss";
 import homeStyle from "@/styles/modules/home.module.scss";
-import { Container } from "@/components/layouts/layouts";
+import { Container } from "@/ui/components/layouts/layouts";
 import { useEffect, useState } from "react";
 
 const Content = ({ project }: { project: SerializedProject }) => {

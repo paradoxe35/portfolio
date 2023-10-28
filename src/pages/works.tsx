@@ -1,10 +1,10 @@
-import Header from "@/components/header";
-import Application from "@/components/layouts/application";
-import { Container } from "@/components/layouts/layouts";
+import Header from "@/ui/components/header";
+import Application from "@/ui/components/layouts/application";
+import { Container } from "@/ui/components/layouts/layouts";
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import homeStyle from "@/styles/modules/home.module.scss";
-import WorksItem from "@/components/works-item";
+import WorksItem from "@/ui/components/works-item";
 import { GetStaticProps } from "next";
 import { getSerializedProjects } from "@/models/project";
 import { db } from "@/utils/db";
