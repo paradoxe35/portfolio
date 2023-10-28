@@ -12,7 +12,7 @@ export default function WorksItem({ aosDuration = 0, project }: Work) {
   return (
     <div className={style.project}>
       <Link href={`/works/${project.id}`} className={style.project__image}>
-        <StorageImg storageSrc={{ id: project.image }} alt={project.title} />
+        <StorageImg src={project.image} alt={project.title} />
       </Link>
 
       <div className={style.project__body}>

@@ -6,6 +6,12 @@
   "hosting": {
     "public": "out",
     "cleanUrls": true,
+    "rewrites": [
+      {
+        "source": "/admin/**",
+        "destination": "/admin/[...index].html"
+      }
+    ],
     "ignore": [
       "firebase.json",
       "**/.*",

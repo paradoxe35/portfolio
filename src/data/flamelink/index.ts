@@ -1,4 +1,4 @@
-import FirebaseApp from "@/data/firebase";
+import { FirebaseApp } from "@/data/firebase";
 
 import flamelink from "flamelink/app";
 import "flamelink/cf/content";
