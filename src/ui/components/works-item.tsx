@@ -1,11 +1,11 @@
 import Link from "next/link";
-import style from "@/styles/modules/home.module.scss";
-import { SerializedProject } from "@/types";
+import style from "@/ui/styles/modules/home.module.scss";
 import { StorageImg } from "./storage-img";
+import { Project } from "@/features/project";
 
 interface Work {
   aosDuration: number;
-  project: SerializedProject;
+  project: Project;
 }
 
 export default function WorksItem({ aosDuration = 0, project }: Work) {
@@ -14,7 +14,7 @@ export default function WorksItem({ aosDuration = 0, project }: Work) {
       <Link href={`/works/${project.id}`}>
         <a className={style.project__image}>
           <StorageImg
-            storageSrc={{ id: project.imageId }}
+            storageSrc={{ id: project.imageLink }}
             alt={project.title}
           />
         </a>

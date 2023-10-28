@@ -4,13 +4,13 @@ import Application from "@/ui/components/layouts/application";
 import { Container } from "@/ui/components/layouts/layouts";
 import Head from "next/head";
 import React, { PropsWithChildren, useEffect, useRef, useState } from "react";
-import style from "@/styles/modules/contact.module.scss";
-import styleHome from "@/styles/modules/home.module.scss";
-import { db, flamelinkApp } from "@/utils/db";
+import style from "@/ui/styles/modules/contact.module.scss";
+import styleHome from "@/ui/styles/modules/home.module.scss";
 import { throttle } from "@/utils/functions";
-import homeStyle from "@/styles/modules/home.module.scss";
+import homeStyle from "@/ui/styles/modules/home.module.scss";
 import emailjs from "@emailjs/browser";
 import constants from "@/utils/constants";
+import { getResumeUsecase } from "@/data/usecases/resume";
 
 const Alert: React.FC<PropsWithChildren<{ success?: boolean }>> = function ({
   children,
@@ -33,6 +33,7 @@ function Contact() {
     e.preventDefault();
 
     setSubmitted(true);
+
     emailjs
       .sendForm(
         process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID as string,
@@ -138,14 +139,7 @@ function Resume() {
   const [link, setLink] = useState<string | undefined>(undefined);
 
   useEffect(() => {
-    (async () => {
-      const resume = await db.resume;
-      if (resume) {
-        flamelinkApp.storage
-          .getURL({ fileId: resume.resume[0].id })
-          .then((url: string) => setLink(url));
-      }
-    })();
+    getResumeUsecase().then((resume) => setLink(resume.fileLink));
   }, []);
 
   return (

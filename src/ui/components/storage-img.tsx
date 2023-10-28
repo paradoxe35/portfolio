@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { flamelinkApp } from "@/utils/db";
 import { useImageCacheLocalStorage } from "@/utils/hooks";
 
 export function StorageImg(
@@ -22,10 +21,10 @@ export function StorageImg(
 
   useEffect(() => {
     if (!imageId) return;
-    flamelinkApp.storage
-      .getURL({ fileId: imageId })
-      .then((src: string) => cacheImage(src));
+    // flamelinkApp.storage
+    //   .getURL({ fileId: imageId })
+    //   .then((src: string) => cacheImage(src));
   }, [imageId]);
 
-  return <img {...nprops} src={image} />;
+  return <img {...nprops} src={imageId} />;
 }

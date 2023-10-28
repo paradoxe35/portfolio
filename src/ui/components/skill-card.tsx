@@ -1,14 +1,10 @@
 import { Card, Grid } from "./layouts/layouts";
-import style from "@/styles/modules/home.module.scss";
-import { Skill } from "@/types";
+import style from "@/ui/styles/modules/home.module.scss";
 import { StorageImg } from "./storage-img";
-import styleLayout from "@/styles/layout.module.scss";
+import styleLayout from "@/ui/styles/layout.module.scss";
+import { Skill } from "@/features/skill";
 
-export function SkillCard({
-  skills,
-}: {
-  skills: Skill<string | { id?: string }>[];
-}) {
+export function SkillCard({ skills }: { skills: Skill[] }) {
   return (
     <Grid col={4}>
       {skills.map((skill, i) => {

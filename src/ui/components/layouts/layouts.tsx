@@ -1,5 +1,5 @@
 import { forwardRef, PropsWithChildren, ReactNode } from "react";
-import style from "@/styles/layout.module.scss";
+import style from "@/ui/styles/layout.module.scss";
 
 type GridProps = {
   col?: number;

@@ -3,22 +3,21 @@ import Application from "@/ui/components/layouts/application";
 import { Container } from "@/ui/components/layouts/layouts";
 import Head from "next/head";
 import { useEffect, useState } from "react";
-import homeStyle from "@/styles/modules/home.module.scss";
+import homeStyle from "@/ui/styles/modules/home.module.scss";
 import WorksItem from "@/ui/components/works-item";
 import { GetStaticProps } from "next";
-import { getSerializedProjects } from "@/models/project";
-import { db } from "@/utils/db";
-import { SerializedProject } from "@/types";
+import { Project } from "@/features/project";
+import { getProjectsUsecase } from "@/data/usecases";
 
 type StaticProps = {
-  projects: SerializedProject[];
+  projects: Project[];
 };
 
 function WorksItems({ projects }: StaticProps) {
-  const [works, setWorks] = useState<SerializedProject[]>(projects);
+  const [works, setWorks] = useState<Project[]>(projects);
 
   useEffect(() => {
-    getSerializedProjects(db.projects).then((ps) => {
+    getProjectsUsecase().then((ps) => {
       Array.isArray(ps) && setWorks(ps || []);
     });
   }, []);
@@ -65,7 +64,7 @@ export default function Works({ projects }: StaticProps) {
 export const getStaticProps: GetStaticProps = async (context) => {
   return {
     props: {
-      projects: await getSerializedProjects(db.projects),
+      projects: await getProjectsUsecase(),
     },
   };
 };

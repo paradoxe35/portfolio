@@ -1,4 +1,4 @@
-import "@/styles/globals.scss";
+import "@/ui/styles/globals.scss";
 import type { AppProps /*, AppContext */ } from "next/app";
 import { useEffect } from "react";
 import "aos/dist/aos.css";

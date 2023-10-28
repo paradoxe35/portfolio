@@ -1,18 +1,16 @@
 import Header from "@/ui/components/header";
 import Application from "@/ui/components/layouts/application";
-import ProjectModel, { getSerializedProjects } from "@/models/project";
 import { GetStaticProps, GetStaticPaths } from "next";
 import Head from "next/head";
-import { SerializedProject } from "@/types";
-import { db } from "@/utils/db";
-import { useFlamelinkStorage } from "@/utils/hooks";
 
-import style from "@/styles/modules/project.module.scss";
-import homeStyle from "@/styles/modules/home.module.scss";
+import style from "@/ui/styles/modules/project.module.scss";
+import homeStyle from "@/ui/styles/modules/home.module.scss";
 import { Container } from "@/ui/components/layouts/layouts";
 import { useEffect, useState } from "react";
+import { Project } from "@/features/project";
+import { getProjectByIDUsecase, getProjectsUsecase } from "@/data/usecases";
 
-const Content = ({ project }: { project: SerializedProject }) => {
+const Content = ({ project }: { project: Project }) => {
   return (
     <section
       className={`${homeStyle.skills__section} ${homeStyle.works__section}`}
@@ -54,18 +52,11 @@ const Content = ({ project }: { project: SerializedProject }) => {
   );
 };
 
-export default function Work({
-  project: _project,
-}: {
-  project: SerializedProject;
-}) {
-  const image = useFlamelinkStorage(_project.imageId, " ");
-  const [project, setProject] = useState<SerializedProject>(_project);
+export default function Work({ project: _project }: { project: Project }) {
+  const [project, setProject] = useState<Project>(_project);
 
   useEffect(() => {
-    db.getProject(_project.id).then((data) => {
-      setProject(new ProjectModel(data).toJson());
-    });
+    getProjectByIDUsecase(_project.id).then((data) => setProject(data));
   }, []);
 
   return (
@@ -76,7 +67,7 @@ export default function Work({
       <main>
         <Header
           title={project.title}
-          image={image}
+          image={project.imageLink}
           subtitle={project.description}
         />
         <Content project={project} />
@@ -88,7 +79,7 @@ export default function Work({
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   let project;
   if (params && typeof params.id === "string") {
-    project = new ProjectModel(await db.getProject(params.id)).toJson();
+    project = (await getProjectByIDUsecase(params.id)).toJSON();
   }
 
   return {
@@ -97,7 +88,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const projects = await getSerializedProjects(db.projects);
+  const projects = await getProjectsUsecase();
 
   const paths = projects.map((project) => ({
     params: { id: project.id },

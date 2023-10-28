@@ -4,17 +4,20 @@ import Application from "@/ui/components/layouts/application";
 import { Container } from "@/ui/components/layouts/layouts";
 import Head from "next/head";
 import { useCallback, useEffect, useRef, useState } from "react";
-import style from "@/styles/modules/home.module.scss";
+import style from "@/ui/styles/modules/home.module.scss";
 import { animate } from "@/utils/animate";
-import { db } from "@/utils/db";
 import { getBrowserWidth, getRandomArbitrary } from "@/utils/functions";
 import { GetStaticProps } from "next";
-import { getSerializedProjects } from "@/models/project";
-import { Position, SerializedProject, Skill } from "@/types";
+import { Position } from "@/types";
 import constants from "@/utils/constants";
-import { default_skills } from "@/utils/data";
-import { getSerializedSkills } from "@/models/skill";
 import { SkillCard } from "@/ui/components/skill-card";
+import {
+  getDefaultSkillsUsecase,
+  getProjectsUsecase,
+  getSkillsUsecase,
+} from "@/data/usecases";
+import { Project } from "@/features/project";
+import { Skill } from "@/features/skill";
 
 const functions: Function[] = [];
 
@@ -34,13 +37,13 @@ function animation(
   });
 }
 
-function Works({ projects }: { projects: SerializedProject[] }) {
+function Works({ projects }: { projects: Project[] }) {
   const carouselRef = useRef<HTMLDivElement | null>(null);
   const flkty = useRef<Flickity | null>(null);
-  const [works, setWorks] = useState<SerializedProject[]>(projects);
+  const [works, setWorks] = useState<Project[]>(projects);
 
   useEffect(() => {
-    getSerializedProjects(db.projects).then((ps) => {
+    getProjectsUsecase().then((ps) => {
       Array.isArray(ps) && setWorks(ps || []);
     });
   }, []);
@@ -103,10 +106,11 @@ function Works({ projects }: { projects: SerializedProject[] }) {
 }
 
 function Skills({ skills: nskills }: { skills: Skill[] }) {
+  const default_skills = getDefaultSkillsUsecase();
   const [skills, setSkills] = useState(nskills || []);
 
   useEffect(() => {
-    getSerializedSkills(db.skills).then((skll) => {
+    getSkillsUsecase().then((skll) => {
       setSkills(skll);
     });
   }, []);
@@ -281,15 +285,15 @@ export default function Home({ projects, skills }: StaticProps) {
 }
 
 type StaticProps = {
-  projects: SerializedProject[];
+  projects: Project[];
   skills: Skill[];
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
   return {
     props: {
-      projects: await getSerializedProjects(db.projects),
-      skills: await getSerializedSkills(db.skills),
+      projects: await getProjectsUsecase(),
+      skills: await getSkillsUsecase(),
     },
   };
 };
