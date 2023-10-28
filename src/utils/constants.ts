@@ -1,4 +1,4 @@
-export default {
+export const site_details = {
   full_name: "Paradoxe Ngwasi",
   full_name_title: "Paradoxe Ng",
   firstname: "Paradoxe",

@@ -1,5 +1,5 @@
 export class Resume {
-  constructor(public readonly fileLink: string) {}
+  constructor(public readonly file: string) {}
 }
 
 export interface ResumeRepository {

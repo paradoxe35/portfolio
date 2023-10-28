@@ -1,7 +1,7 @@
 import style from "@/ui/styles/navigation.module.scss";
 import { Container } from "./layouts";
 import Link from "next/link";
-import constants from "@/utils/constants";
+import { site_details } from "@/utils/constants";
 import { PropsWithChildren } from "react";
 
 const Navigation: React.FC<PropsWithChildren<{}>> = () => {
@@ -10,8 +10,8 @@ const Navigation: React.FC<PropsWithChildren<{}>> = () => {
       <nav className={style.nav}>
         <Container>
           <Link href="/" className={`${style["page-link"]} ${style.logo}`}>
-            <span className={style.firstname}>{constants.firstname}</span>{" "}
-            <span className={style.lastname}>{constants.lastname_abbr}</span>
+            <span className={style.firstname}>{site_details.firstname}</span>{" "}
+            <span className={style.lastname}>{site_details.lastname_abbr}</span>
           </Link>
           <ul className={style.list}>
             <li className={style["page-link"]}>

@@ -4,7 +4,11 @@ import "@fontsource/ibm-plex-mono";
 
 import { FIREBASE_CONFIG } from "@/utils/constants";
 import { useAuthenticator } from "./authenticator";
-import { productsCollection } from "./models";
+import {
+  projectsCollection,
+  skillsCollection,
+  resumeCollection,
+} from "./models";
 import { useDataEnhancementPlugin } from "@firecms/data_enhancement";
 
 export default function AdminApp() {
@@ -17,7 +21,7 @@ export default function AdminApp() {
       name="CMS"
       plugins={[dataEnhancementPlugin]}
       authentication={GoogleAuthenticator}
-      collections={[productsCollection]}
+      collections={[projectsCollection, skillsCollection, resumeCollection]}
       firebaseConfig={FIREBASE_CONFIG}
       signInOptions={["google.com"]}
     />

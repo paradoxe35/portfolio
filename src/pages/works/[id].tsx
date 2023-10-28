@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import { Project } from "@/features/project";
 import { getProjectByIDUsecase, getProjectsUsecase } from "@/data/usecases";
 import Link from "next/link";
+import { entityToJSON } from "@/utils/entity-to-json";
 
 const Content = ({ project }: { project: Project }) => {
   return (
@@ -68,7 +69,7 @@ export default function Work({ project: _project }: { project: Project }) {
       <main>
         <Header
           title={project.title}
-          image={project.imageLink}
+          image={project.image}
           subtitle={project.description}
         />
         <Content project={project} />
@@ -80,11 +81,11 @@ export default function Work({ project: _project }: { project: Project }) {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   let project;
   if (params && typeof params.id === "string") {
-    project = (await getProjectByIDUsecase(params.id)).toJSON();
+    project = await getProjectByIDUsecase(params.id);
   }
 
   return {
-    props: { project },
+    props: { project: project ? entityToJSON(project) : undefined },
   };
 };
 

@@ -24,8 +24,8 @@ export function getDefaultSkillsUsecase(): Skill[] {
       name: "Flutter Mobile development",
       icons: ["/flutter.svg"],
     },
-  ].map((skill) => {
-    const icons = skill.icons.map((icon) => ({ id: icon }));
-    return new Skill(skill.name, icons);
+  ].map((skill, i) => {
+    const icons = skill.icons.map((icon) => ({ image: icon }));
+    return new Skill(String(i), skill.name, icons);
   });
 }

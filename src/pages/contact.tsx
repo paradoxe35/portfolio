@@ -9,7 +9,7 @@ import styleHome from "@/ui/styles/modules/home.module.scss";
 import { throttle } from "@/utils/functions";
 import homeStyle from "@/ui/styles/modules/home.module.scss";
 import emailjs from "@emailjs/browser";
-import constants from "@/utils/constants";
+import { site_details } from "@/utils/constants";
 import { getResumeUsecase } from "@/data/usecases/resume";
 import Link from "next/link";
 
@@ -85,7 +85,7 @@ function Contact() {
           className={style.contact__form}
           autoComplete="off"
         >
-          <input type="hidden" name="to_name" value={constants.full_name} />
+          <input type="hidden" name="to_name" value={site_details.full_name} />
           <div>
             <input
               type="text"
@@ -126,7 +126,7 @@ function About() {
           subtitle="I believe in moving at a sustainable pace and fixing what’s broken."
         />
         <p data-aos="fade-up">
-          {`My name is ${constants.full_name}. I design and manufacture web
+          {`My name is ${site_details.full_name}. I design and manufacture web
           applications that are intuitive, accessible, beautiful and fun. I've
           been doing this passionately since 2017.`}
         </p>
@@ -140,7 +140,7 @@ function Resume() {
   const [link, setLink] = useState<string | undefined>(undefined);
 
   useEffect(() => {
-    getResumeUsecase().then((resume) => setLink(resume.fileLink));
+    getResumeUsecase().then((resume) => setLink(resume.file));
   }, []);
 
   return (

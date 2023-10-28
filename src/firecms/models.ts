@@ -1,178 +1,183 @@
-import { buildCollection, buildProperty, EntityReference } from "firecms";
+import { FirebaseCollections, FirebaseFilePaths } from "@/data/firebase";
+import { Project } from "@/features/project";
+import { Resume } from "@/features/resume";
+import { Skill } from "@/features/skill";
+import { NonFunctionProperties } from "@/types";
+import { buildCollection, buildProperty } from "firecms";
+import { nanoid } from "nanoid";
 
-type Product = {
-  name: string;
-  price: number;
-  status: string;
-  published: boolean;
-  related_products: EntityReference[];
-  main_image: string;
-  tags: string[];
-  description: string;
-  categories: string[];
-  publisher: {
-    name: string;
-    external_id: string;
-  };
-  expires_on: Date;
-};
+type EntityCollection<T> = Omit<NonFunctionProperties<T>, "id">;
 
-const locales = {
-  "en-US": "English (United States)",
-};
+function randomizeFileName(fileName: string): string {
+  const parts = fileName.split(".");
+  const uniqueid = nanoid();
+  if (parts.length < 2) {
+    return `${fileName}_${uniqueid}`;
+  }
 
-const localeCollection = buildCollection({
-  path: "locale",
-  customId: locales,
-  name: "Locales",
-  singularName: "Locales",
-  properties: {
-    name: {
-      name: "Title",
-      validation: { required: true },
-      dataType: "string",
-    },
-    selectable: {
-      name: "Selectable",
-      description: "Is this locale selectable",
-      dataType: "boolean",
-    },
-    video: {
-      name: "Video",
-      dataType: "string",
-      validation: { required: false },
-      storage: {
-        storagePath: "videos",
-        acceptedFiles: ["video/*"],
-      },
-    },
-  },
-});
+  const name = parts.slice(0, -1).join(".");
+  const extension = parts[parts.length - 1];
 
-const productsCollection = buildCollection<Product>({
-  name: "Products",
-  singularName: "Product",
-  path: "products",
+  return `${name}_${uniqueid}.${extension}`;
+}
+
+// Project Collection
+const projectsCollection = buildCollection<EntityCollection<Project>>({
+  name: "Projects",
+  singularName: "Project",
+  path: FirebaseCollections.PROJECTS,
   permissions: ({ authController }) => ({
     edit: true,
     create: true,
-    // we have created the roles object in the navigation builder
-    delete: false,
+    read: true,
+    delete: true,
   }),
-  subcollections: [localeCollection],
   properties: {
-    name: {
-      name: "Name",
-      validation: { required: true },
+    title: {
+      name: "title",
+      validation: { required: true, trim: true, unique: true },
+      description: "Project title",
       dataType: "string",
     },
-    price: {
-      name: "Price",
+
+    image: buildProperty({
+      name: "Image",
+      dataType: "string",
+      validation: { required: true },
+      storage: {
+        storagePath: FirebaseFilePaths.PROJECTS,
+        maxSize: 1024 * 1024 * 5,
+        acceptedFiles: ["image/*"],
+        fileName: (context) => {
+          return randomizeFileName(context.file.name);
+        },
+      },
+    }),
+
+    description: {
+      name: "Description",
+      description: "Project description",
+      dataType: "string",
+      columnWidth: 300,
+    },
+
+    technology: {
+      name: "Technology",
+      description: "Project technologies used",
+      dataType: "string",
+      validation: { required: true },
+      columnWidth: 300,
+    },
+
+    content: {
+      name: "Content",
+      markdown: true,
       validation: {
         required: true,
-        requiredMessage: "You must set a price between 0 and 1000",
-        min: 0,
-        max: 1000,
+        requiredMessage: "Content fields cannot be less than 50 char",
+        min: 50,
       },
-      description: "Price with range validation",
-      dataType: "number",
+      description: "Project content",
+      dataType: "string",
     },
+
     status: {
       name: "Status",
       validation: { required: true },
       dataType: "string",
-      description: "Should this product be visible in the website",
-      longDescription:
-        "Example of a long description hidden under a tooltip. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis bibendum turpis. Sed scelerisque ligula nec nisi pellentesque, eget viverra lorem facilisis. Praesent a lectus ac ipsum tincidunt posuere vitae non risus. In eu feugiat massa. Sed eu est non velit facilisis facilisis vitae eget ante. Nunc ut malesuada erat. Nullam sagittis bibendum porta. Maecenas vitae interdum sapien, ut aliquet risus. Donec aliquet, turpis finibus aliquet bibendum, tellus dui porttitor quam, quis pellentesque tellus libero non urna. Vestibulum maximus pharetra congue. Suspendisse aliquam congue quam, sed bibendum turpis. Aliquam eu enim ligula. Nam vel magna ut urna cursus sagittis. Suspendisse a nisi ac justo ornare tempor vel eu eros.",
+      description: "Project status: draft | published | archived",
+      defaultValue: "draft",
       enumValues: {
-        private: "Private",
-        public: "Public",
+        draft: "Draft",
+        published: "Published",
+        archived: "Archived",
       },
     },
-    published: ({ values }) =>
-      buildProperty({
-        name: "Published",
-        dataType: "boolean",
-        columnWidth: 100,
-        disabled:
-          values.status === "public"
-            ? false
-            : {
-                clearOnDisabled: true,
-                disabledMessage:
-                  "Status must be public in order to enable this the published flag",
-              },
-      }),
-    related_products: {
-      dataType: "array",
-      name: "Related products",
-      description: "Reference to self",
-      of: {
-        dataType: "reference",
-        path: "products",
+
+    link: {
+      name: "Link",
+      url: true,
+      validation: {
+        required: true,
       },
-    },
-    main_image: buildProperty({
-      // The `buildProperty` method is a utility function used for type checking
-      name: "Image",
+      description: "Project external link",
       dataType: "string",
-      storage: {
-        storagePath: "images",
-        acceptedFiles: ["image/*"],
-      },
-    }),
-    tags: {
-      name: "Tags",
-      description: "Example of generic array",
-      validation: { required: true },
-      dataType: "array",
-      of: {
-        dataType: "string",
-      },
-    },
-    description: {
-      name: "Description",
-      description: "Not mandatory but it'd be awesome if you filled this up",
-      longDescription:
-        "Example of a long description hidden under a tooltip. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis bibendum turpis. Sed scelerisque ligula nec nisi pellentesque, eget viverra lorem facilisis. Praesent a lectus ac ipsum tincidunt posuere vitae non risus. In eu feugiat massa. Sed eu est non velit facilisis facilisis vitae eget ante. Nunc ut malesuada erat. Nullam sagittis bibendum porta. Maecenas vitae interdum sapien, ut aliquet risus. Donec aliquet, turpis finibus aliquet bibendum, tellus dui porttitor quam, quis pellentesque tellus libero non urna. Vestibulum maximus pharetra congue. Suspendisse aliquam congue quam, sed bibendum turpis. Aliquam eu enim ligula. Nam vel magna ut urna cursus sagittis. Suspendisse a nisi ac justo ornare tempor vel eu eros.",
-      dataType: "string",
-      columnWidth: 300,
-    },
-    categories: {
-      name: "Categories",
-      validation: { required: true },
-      dataType: "array",
-      of: {
-        dataType: "string",
-        enumValues: {
-          electronics: "Electronics",
-          books: "Books",
-          furniture: "Furniture",
-          clothing: "Clothing",
-          food: "Food",
-        },
-      },
-    },
-    publisher: {
-      name: "Publisher",
-      description: "This is an example of a map property",
-      dataType: "map",
-      properties: {
-        name: {
-          name: "Name",
-          dataType: "string",
-        },
-        external_id: {
-          name: "External id",
-          dataType: "string",
-        },
-      },
-    },
-    expires_on: {
-      name: "Expires on",
-      dataType: "date",
     },
   },
 });
 
-export { productsCollection };
+// Skill collection
+const skillsCollection = buildCollection<EntityCollection<Skill>>({
+  name: "Skills",
+  singularName: "skill",
+  path: FirebaseCollections.SKILLS,
+  permissions: ({ authController }) => ({
+    edit: true,
+    create: true,
+    read: true,
+    delete: true,
+  }),
+
+  properties: {
+    name: {
+      name: "name",
+      validation: { required: true, trim: true, unique: true },
+      description: "Skill name",
+      dataType: "string",
+    },
+
+    icons: buildProperty({
+      name: "Icons",
+      dataType: "array",
+      description: "Skills icons",
+      validation: { required: true },
+      of: {
+        dataType: "string",
+        storage: {
+          storagePath: FirebaseFilePaths.SKILLS,
+          maxSize: 1024 * 1024 * 5,
+          acceptedFiles: ["image/*"],
+          fileName: (context) => {
+            return randomizeFileName(context.file.name);
+          },
+        },
+      },
+    }),
+
+    className: {
+      name: "className",
+      validation: { required: false },
+      description: "UI ClassName",
+      dataType: "string",
+    },
+  },
+});
+
+// Resume Collection
+const resumeCollection = buildCollection<EntityCollection<Resume>>({
+  name: "Resume (CV)",
+  singularName: "Resume",
+  path: FirebaseCollections.RESUME,
+  permissions: ({ authController }) => ({
+    edit: true,
+    create: true,
+    read: true,
+    delete: true,
+  }),
+
+  properties: {
+    file: buildProperty({
+      name: "file",
+      dataType: "string",
+      description: "File PDF",
+      validation: { required: true },
+      storage: {
+        storagePath: FirebaseFilePaths.RESUME,
+        maxSize: 1024 * 1024 * 5,
+        acceptedFiles: ["application/pdf"],
+      },
+    }),
+  },
+});
+
+export { projectsCollection, skillsCollection, resumeCollection };

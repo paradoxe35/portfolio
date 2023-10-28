@@ -6,7 +6,7 @@ export default function AdminPage() {
 
   useEffect(() => {
     router.push("/admin/b");
-  }, []);
+  }, [router]);
 
   return <></>;
 }

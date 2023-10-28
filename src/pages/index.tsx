@@ -9,7 +9,7 @@ import { animate } from "@/utils/animate";
 import { getBrowserWidth, getRandomArbitrary } from "@/utils/functions";
 import { GetStaticProps } from "next";
 import { Position } from "@/types";
-import constants from "@/utils/constants";
+import { site_details } from "@/utils/constants";
 import { SkillCard } from "@/ui/components/skill-card";
 import {
   getDefaultSkillsUsecase,
@@ -124,8 +124,8 @@ function Skills({ skills: nskills }: { skills: Skill[] }) {
       }
       if (index === array.length - 1) {
         const ls = acc[acc.length - 1];
-        new Array(4 - ls.length).fill(null).forEach(() => {
-          acc[acc.length - 1].push({ icons: [], name: "" });
+        new Array(4 - ls.length).fill(null).forEach((_, i) => {
+          acc[acc.length - 1].push({ icons: [], name: "", id: String(i) });
         });
       }
       return acc;
@@ -219,7 +219,7 @@ function Hero() {
               data-aos-delay="300"
               className={style.hero__title}
             >
-              {constants.full_name}
+              {site_details.full_name}
             </div>
             <div
               data-aos="fade-up"
@@ -273,7 +273,7 @@ export default function Home({ projects, skills }: StaticProps) {
       <Head>
         <link rel="preload" href="/paradoxe-ngwasi.png" as="image" />
 
-        <title>{`${constants.full_name_title} | Portfolio`}</title>
+        <title>{`${site_details.full_name_title} | Portfolio`}</title>
       </Head>
       <main>
         <Hero />
