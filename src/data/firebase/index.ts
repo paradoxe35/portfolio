@@ -1,11 +1,11 @@
-import { FIREBASE_CONFIG } from "./constants";
+import { FIREBASE_CONFIG } from "@/utils/constants";
 
-import firebase from "firebase/app";
+import firebase from "firebase/compat/app";
 
 import "firebase/firestore";
 import "firebase/storage";
 
-const FirebaseApp: firebase.app.App = !firebase.apps.length
+const FirebaseApp = !firebase.apps.length
   ? firebase.initializeApp(FIREBASE_CONFIG)
   : firebase.app();
 

@@ -8,3 +8,5 @@ export default {
 export const FIREBASE_CONFIG = JSON.parse(
   process.env.NEXT_PUBLIC_FIREBASE_CONFIG || "{}"
 );
+
+export const FIRECMS_ADMIN_EMAI = process.env.NEXT_PUBLIC_FIRECMS_ADMIN_EMAIL;

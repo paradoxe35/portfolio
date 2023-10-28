@@ -3,7 +3,7 @@ import Titles from "@/components/titles";
 import Application from "@/components/layouts/application";
 import { Container } from "@/components/layouts/layouts";
 import Head from "next/head";
-import React, { useEffect, useRef, useState } from "react";
+import React, { PropsWithChildren, useEffect, useRef, useState } from "react";
 import style from "@/styles/modules/contact.module.scss";
 import styleHome from "@/styles/modules/home.module.scss";
 import { db, flamelinkApp } from "@/utils/db";
@@ -12,7 +12,7 @@ import homeStyle from "@/styles/modules/home.module.scss";
 import emailjs from "@emailjs/browser";
 import constants from "@/utils/constants";
 
-const Alert: React.FC<{ success?: boolean }> = function ({
+const Alert: React.FC<PropsWithChildren<{ success?: boolean }>> = function ({
   children,
   success,
 }) {
@@ -69,9 +69,9 @@ function Contact() {
           Contact me
         </h1>
         <p data-aos="fade-up" data-aos-delay="200">
-          If it's about a project, please give as much detail as possible about
+          {`If it's about a project, please give as much detail as possible about
           the project so that i can properly assess the workload your project
-          represents.
+          represents.`}
         </p>
         {(success || error) && (
           <Alert success={!!success}>{success || error}</Alert>
@@ -124,9 +124,9 @@ function About() {
           subtitle="I believe in moving at a sustainable pace and fixing what’s broken."
         />
         <p data-aos="fade-up">
-          My name is {constants.full_name}. I design and manufacture web
+          {`My name is ${constants.full_name}. I design and manufacture web
           applications that are intuitive, accessible, beautiful and fun. I've
-          been doing this passionately since 2017.
+          been doing this passionately since 2017.`}
         </p>
         <Resume />
       </Container>

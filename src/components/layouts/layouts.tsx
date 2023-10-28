@@ -1,4 +1,4 @@
-import { forwardRef, ReactNode } from "react";
+import { forwardRef, PropsWithChildren, ReactNode } from "react";
 import style from "@/styles/layout.module.scss";
 
 type GridProps = {
@@ -8,11 +8,11 @@ type GridProps = {
   children?: ReactNode;
 };
 
-export const Container: React.FC = ({ children }) => {
+export const Container: React.FC<PropsWithChildren<{}>> = ({ children }) => {
   return <div className={style.container}>{children}</div>;
 };
 
-export const Main: React.FC = ({ children }) => {
+export const Main: React.FC<PropsWithChildren<{}>> = ({ children }) => {
   return (
     <main className={style.main}>
       <Container>{children}</Container>
@@ -20,11 +20,11 @@ export const Main: React.FC = ({ children }) => {
   );
 };
 
-export const Footer: React.FC = ({ children }) => {
+export const Footer: React.FC<PropsWithChildren<{}>> = ({ children }) => {
   return <div className={style.footer}>{children}</div>;
 };
 
-export const Description: React.FC = ({ children }) => {
+export const Description: React.FC<PropsWithChildren<{}>> = ({ children }) => {
   return <div className={style.description}>{children}</div>;
 };
 
@@ -41,12 +41,11 @@ export const Grid = forwardRef<HTMLDivElement, GridProps>(
   }
 );
 
-export const Card: React.FC<{ hidden?: boolean; className?: string }> = ({
-  children,
-  hidden,
-  className,
-  ...props
-}) => {
+Grid.displayName = "Grid";
+
+export const Card: React.FC<
+  PropsWithChildren<{ hidden?: boolean; className?: string }>
+> = ({ children, hidden, className, ...props }) => {
   return (
     <div
       className={`${style.card} ${hidden ? style.hidden : ""} ${
@@ -59,7 +58,10 @@ export const Card: React.FC<{ hidden?: boolean; className?: string }> = ({
   );
 };
 
-export const CardItem: React.FC = ({ children, ...props }) => {
+export const CardItem: React.FC<PropsWithChildren<{}>> = ({
+  children,
+  ...props
+}) => {
   return (
     <div className={style.card__item} {...props}>
       {children}

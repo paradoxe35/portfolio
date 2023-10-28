@@ -1,17 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { PropsWithChildren, useEffect, useState } from "react";
 
-const ClientOnly: React.FC = function ({ children, ...delegated }) {
-    const [hasMounted, setHasMounted] = useState(false);
+const ClientOnly = function ({
+  children,
+  ...delegated
+}: PropsWithChildren<{}>) {
+  const [hasMounted, setHasMounted] = useState(false);
 
-    useEffect(() => {
-        setHasMounted(true);
-    }, []);
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
 
-    if (!hasMounted) {
-        return null;
-    }
+  if (!hasMounted) {
+    return null;
+  }
 
-    return <div {...delegated}>{children}</div>;
-}
+  return <div {...delegated}>{children}</div>;
+};
 
-export default ClientOnly
+export default ClientOnly;

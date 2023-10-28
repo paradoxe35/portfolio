@@ -2,8 +2,9 @@ import style from "@/styles/navigation.module.scss";
 import { Container } from "./layouts";
 import Link from "next/link";
 import constants from "@/utils/constants";
+import { PropsWithChildren } from "react";
 
-const Navigation: React.FC = () => {
+const Navigation: React.FC<PropsWithChildren<{}>> = () => {
   return (
     <header className={style.header}>
       <nav className={style.nav}>

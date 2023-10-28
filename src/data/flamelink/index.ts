@@ -56,13 +56,3 @@ export async function normalizeCollectionImage<T>(
   }
   return datas;
 }
-
-const db = {
-  projects: dataPoint({ schemaKey: "projects" }) as Promise<Project[]>,
-  getProject: (entryId: string) =>
-    dataPoint({ schemaKey: "projects", entryId }) as Promise<Project>,
-  resume: dataPoint({ schemaKey: "resume" }, true) as Promise<Resume>,
-  skills: dataPoint({ schemaKey: "skills" }) as Promise<Skill[]>,
-};
-
-export { db };

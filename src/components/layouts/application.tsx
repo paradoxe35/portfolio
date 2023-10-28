@@ -1,9 +1,9 @@
 import Socials from "@/components/socials";
-import React, { useEffect } from "react";
+import React, { PropsWithChildren, useEffect } from "react";
 import Footer from "./footer";
 import Navigation from "./navigation";
 
-const Application: React.FC = ({ children }) => {
+const Application: React.FC<PropsWithChildren<{}>> = ({ children }) => {
   useEffect(() => {
     window.dispatchEvent(new Event("resize"));
   });
