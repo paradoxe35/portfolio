@@ -15,7 +15,7 @@ export const useFlamelinkStorage = (
     flamelinkApp.storage
       .getURL({ fileId: imageId })
       .then((src: string) => cacheImage(src));
-  }, [imageId]);
+  }, [imageId, cacheImage]);
 
   return image;
 };

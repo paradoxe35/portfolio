@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Container } from "./layouts";
 import style from "@/ui/styles/footer.module.scss";
 
@@ -6,12 +7,9 @@ export default function Footer() {
     <footer className={style.footer}>
       <Container>
         Designed by{" "}
-        <a
-          href="https://bitbucket.org/pngwasi/portfolio/@/main/"
-          target="_blank"
-        >
+        <Link href="https://github.com/paradoxe35/portfolio" target="_blank">
           @PNG_
-        </a>
+        </Link>
       </Container>
     </footer>
   );

@@ -9,22 +9,16 @@ const Navigation: React.FC<PropsWithChildren<{}>> = () => {
     <header className={style.header}>
       <nav className={style.nav}>
         <Container>
-          <Link href="/">
-            <a className={`${style["page-link"]} ${style.logo}`}>
-              <span className={style.firstname}>{constants.firstname}</span>{" "}
-              <span className={style.lastname}>{constants.lastname_abbr}</span>
-            </a>
+          <Link href="/" className={`${style["page-link"]} ${style.logo}`}>
+            <span className={style.firstname}>{constants.firstname}</span>{" "}
+            <span className={style.lastname}>{constants.lastname_abbr}</span>
           </Link>
           <ul className={style.list}>
             <li className={style["page-link"]}>
-              <Link href="/works">
-                <a>Works</a>
-              </Link>
+              <Link href="/works">Works</Link>
             </li>
             <li className={style["page-link"]}>
-              <Link href="/contact">
-                <a>Contact</a>
-              </Link>
+              <Link href="/contact">Contact</Link>
             </li>
           </ul>
         </Container>

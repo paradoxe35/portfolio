@@ -9,6 +9,7 @@ import { Container } from "@/ui/components/layouts/layouts";
 import { useEffect, useState } from "react";
 import { Project } from "@/features/project";
 import { getProjectByIDUsecase, getProjectsUsecase } from "@/data/usecases";
+import Link from "next/link";
 
 const Content = ({ project }: { project: Project }) => {
   return (
@@ -23,7 +24,7 @@ const Content = ({ project }: { project: Project }) => {
             </h2>
 
             {project.link && (
-              <a
+              <Link
                 href={project.link}
                 className={`${homeStyle.project__action} ${style.btn}`}
                 target="_blank"
@@ -41,7 +42,7 @@ const Content = ({ project }: { project: Project }) => {
                     fill="currentColor"
                   ></path>
                 </svg>
-              </a>
+              </Link>
             )}
           </div>
 
@@ -57,12 +58,12 @@ export default function Work({ project: _project }: { project: Project }) {
 
   useEffect(() => {
     getProjectByIDUsecase(_project.id).then((data) => setProject(data));
-  }, []);
+  }, [_project.id]);
 
   return (
     <Application>
       <Head>
-        <title>Project: {project.title}</title>
+        <title>{`Project - ${project.title}`}</title>
       </Head>
       <main>
         <Header

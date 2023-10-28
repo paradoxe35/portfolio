@@ -48,7 +48,7 @@ export default function Works({ projects }: StaticProps) {
   return (
     <Application>
       <Head>
-        <title>Works</title>
+        <title>{"My achievements"}</title>
       </Head>
       <main>
         <Header

@@ -11,6 +11,7 @@ import homeStyle from "@/ui/styles/modules/home.module.scss";
 import emailjs from "@emailjs/browser";
 import constants from "@/utils/constants";
 import { getResumeUsecase } from "@/data/usecases/resume";
+import Link from "next/link";
 
 const Alert: React.FC<PropsWithChildren<{ success?: boolean }>> = function ({
   children,
@@ -145,7 +146,7 @@ function Resume() {
   return (
     <>
       {link && (
-        <a
+        <Link
           data-aos="fade-up"
           href={link}
           className={`${homeStyle.project__action}`}
@@ -153,7 +154,7 @@ function Resume() {
           target="_blank"
         >
           Download Resume
-        </a>
+        </Link>
       )}
     </>
   );
@@ -189,7 +190,7 @@ export default function Home() {
   return (
     <Application>
       <Head>
-        <title>About</title>
+        <title>{"About"}</title>
       </Head>
       <main>
         <Header title="" subtitle="" />
