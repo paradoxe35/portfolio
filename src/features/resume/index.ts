@@ -3,7 +3,7 @@ export class Resume {
 }
 
 export interface ResumeRepository {
-  getResume(): Promise<Resume>;
+  getResume(): Promise<Resume | null>;
 }
 
 export function getResume(repo: ResumeRepository) {

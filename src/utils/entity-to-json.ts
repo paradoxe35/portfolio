@@ -7,3 +7,7 @@ export function entityToJSON(obj: Record<any, any>) {
   }
   return jsonObj;
 }
+
+export function entitiesToJSON(objs: Record<any, any>[]) {
+  return objs.map((obj) => entityToJSON(obj));
+}

@@ -54,25 +54,39 @@ const Content = ({ project }: { project: Project }) => {
   );
 };
 
-export default function Work({ project: _project }: { project: Project }) {
-  const [project, setProject] = useState<Project>(_project);
+export default function Work({
+  project: _project,
+}: {
+  project: Project | null;
+}) {
+  const [project, setProject] = useState<Project | null>(_project);
 
   useEffect(() => {
+    if (!_project?.id) {
+      return;
+    }
+
     getProjectByIDUsecase(_project.id).then((data) => setProject(data));
-  }, [_project.id]);
+  }, [_project?.id]);
 
   return (
     <Application>
-      <Head>
-        <title>{`Project - ${project.title}`}</title>
-      </Head>
+      {project && (
+        <Head>
+          <title>{`Project - ${project.title}`}</title>
+        </Head>
+      )}
       <main>
-        <Header
-          title={project.title}
-          image={project.image}
-          subtitle={project.description}
-        />
-        <Content project={project} />
+        {project && (
+          <>
+            <Header
+              title={project.title}
+              image={project.image}
+              subtitle={project.description}
+            />
+            <Content project={project} />
+          </>
+        )}
       </main>
     </Application>
   );
@@ -85,7 +99,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   }
 
   return {
-    props: { project: project ? entityToJSON(project) : undefined },
+    props: {
+      project: project ? entityToJSON(project) : null,
+    },
   };
 };
 
@@ -95,5 +111,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const paths = projects.map((project) => ({
     params: { id: project.id },
   }));
-  return { paths, fallback: false };
+
+  return {
+    paths,
+    fallback: false,
+  };
 };

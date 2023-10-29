@@ -18,6 +18,7 @@ import {
 } from "@/data/usecases";
 import { Project } from "@/features/project";
 import { Skill } from "@/features/skill";
+import { entitiesToJSON } from "@/utils/entity-to-json";
 
 const functions: Function[] = [];
 
@@ -110,8 +111,8 @@ function Skills({ skills: nskills }: { skills: Skill[] }) {
   const [skills, setSkills] = useState(nskills || []);
 
   useEffect(() => {
-    getSkillsUsecase().then((skll) => {
-      setSkills(skll);
+    getSkillsUsecase().then((skills) => {
+      setSkills(skills);
     });
   }, []);
 
@@ -290,10 +291,13 @@ type StaticProps = {
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
+  const projects = entitiesToJSON(await getProjectsUsecase());
+  const skills = entitiesToJSON(await getSkillsUsecase());
+
   return {
     props: {
-      projects: await getProjectsUsecase(),
-      skills: await getSkillsUsecase(),
+      projects,
+      skills,
     },
   };
 };

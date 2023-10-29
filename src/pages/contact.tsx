@@ -12,6 +12,9 @@ import emailjs from "@emailjs/browser";
 import { site_details } from "@/utils/constants";
 import { getResumeUsecase } from "@/data/usecases/resume";
 import Link from "next/link";
+import { GetStaticProps } from "next";
+import { entityToJSON } from "@/utils/entity-to-json";
+import { Resume } from "@/features/resume";
 
 const Alert: React.FC<PropsWithChildren<{ success?: boolean }>> = function ({
   children,
@@ -117,7 +120,7 @@ function Contact() {
   );
 }
 
-function About() {
+function About({ resume }: { resume: Resume | null }) {
   return (
     <section className={styleHome.skills__section}>
       <Container>
@@ -130,17 +133,17 @@ function About() {
           applications that are intuitive, accessible, beautiful and fun. I've
           been doing this passionately since 2017.`}
         </p>
-        <Resume />
+        <ResumeComponent resume={resume} />
       </Container>
     </section>
   );
 }
 
-function Resume() {
-  const [link, setLink] = useState<string | undefined>(undefined);
+function ResumeComponent({ resume }: { resume: Resume | null }) {
+  const [link, setLink] = useState<string | undefined>(resume?.file);
 
   useEffect(() => {
-    getResumeUsecase().then((resume) => setLink(resume.file));
+    getResumeUsecase().then((resume) => resume && setLink(resume.file));
   }, []);
 
   return (
@@ -160,7 +163,7 @@ function Resume() {
   );
 }
 
-export default function Home() {
+export default function ContactPage({ resume }: { resume: Resume | null }) {
   const container = useRef<HTMLDivElement>(null);
   const containerParent = useRef<HTMLDivElement>(null);
   const containerChild = useRef<HTMLDivElement>(null);
@@ -202,10 +205,20 @@ export default function Home() {
           </div>
 
           <div style={{ width: "100%" }} ref={containerChild}>
-            <About />
+            <About resume={resume} />
           </div>
         </div>
       </main>
     </Application>
   );
 }
+
+export const getStaticProps: GetStaticProps = async (context) => {
+  const resume = await getResumeUsecase();
+
+  return {
+    props: {
+      resume: resume ? entityToJSON(resume) : null,
+    },
+  };
+};

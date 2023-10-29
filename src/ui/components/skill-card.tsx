@@ -21,7 +21,7 @@ export function SkillCard({ skills }: { skills: Skill[] }) {
           >
             {skill.icons.length === 1 ? (
               <StorageImg
-                src={skill.icons[0].image}
+                src={skill.icons[0]}
                 alt={skill.name}
                 className={style.service__logo}
               />
@@ -30,8 +30,8 @@ export function SkillCard({ skills }: { skills: Skill[] }) {
                 {skill.icons.map((img, i) => {
                   return (
                     <StorageImg
-                      key={img.image}
-                      src={img.image}
+                      key={img}
+                      src={img}
                       alt={skill.name}
                       className={style.service__logo}
                     />

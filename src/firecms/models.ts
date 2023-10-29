@@ -127,12 +127,13 @@ const skillsCollection = buildCollection<EntityCollection<Skill>>({
     },
 
     icons: buildProperty({
-      name: "Icons",
+      name: "icons",
       dataType: "array",
       description: "Skills icons",
       validation: { required: true },
       of: {
         dataType: "string",
+        name: "image",
         storage: {
           storagePath: FirebaseFilePaths.SKILLS,
           maxSize: 1024 * 1024 * 5,

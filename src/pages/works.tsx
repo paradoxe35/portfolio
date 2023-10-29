@@ -8,6 +8,7 @@ import WorksItem from "@/ui/components/works-item";
 import { GetStaticProps } from "next";
 import { Project } from "@/features/project";
 import { getProjectsUsecase } from "@/data/usecases";
+import { entitiesToJSON } from "@/utils/entity-to-json";
 
 type StaticProps = {
   projects: Project[];
@@ -62,9 +63,11 @@ export default function Works({ projects }: StaticProps) {
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {
+  const projects = entitiesToJSON(await getProjectsUsecase());
+
   return {
     props: {
-      projects: await getProjectsUsecase(),
+      projects,
     },
   };
 };

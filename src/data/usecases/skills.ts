@@ -25,7 +25,6 @@ export function getDefaultSkillsUsecase(): Skill[] {
       icons: ["/flutter.svg"],
     },
   ].map((skill, i) => {
-    const icons = skill.icons.map((icon) => ({ image: icon }));
-    return new Skill(String(i), skill.name, icons);
+    return new Skill(String(i), skill.name, skill.icons);
   });
 }
