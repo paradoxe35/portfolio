@@ -1,4 +1,4 @@
-image: node:16.15.1
+image: node:18
 
 stages: # List of stages for jobs, and their order of execution
   - clone-project
