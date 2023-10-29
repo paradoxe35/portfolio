@@ -50,7 +50,9 @@ const Content = ({ project }: { project: Project }) => {
             )}
           </div>
 
-          <RenderMarkdown>{project.content}</RenderMarkdown>
+          <div className={style.content}>
+            <RenderMarkdown>{project.content}</RenderMarkdown>
+          </div>
         </div>
       </Container>
     </section>

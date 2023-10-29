@@ -1,6 +1,10 @@
 @import "../dist/mixins";
 
 .project {
+  * {
+    color: var(--muted-2);
+  }
+
   h1,
   h2 {
     color: #414040;
@@ -30,9 +34,17 @@
 
   ol,
   ul {
-    list-style: none;
     margin: 0;
     padding: 0;
+    padding-left: 2rem;
+  }
+
+  ul {
+    list-style: disc;
+  }
+
+  ol {
+    list-style: decimal;
   }
 
   li {
@@ -56,6 +68,13 @@
       align-self: flex-start;
       flex: none;
       margin: 0;
+    }
+  }
+
+  .content {
+    h2,
+    h3 {
+      margin: 1rem 0;
     }
   }
 }
