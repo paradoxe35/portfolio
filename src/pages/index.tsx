@@ -50,6 +50,10 @@ function Works({ projects }: { projects: Project[] }) {
   }, []);
 
   useEffect(() => {
+    if (works.length === 0) {
+      return;
+    }
+
     let flickity: typeof import("flickity") = require("flickity");
 
     function mountFlickity() {
@@ -86,7 +90,7 @@ function Works({ projects }: { projects: Project[] }) {
       flkty.current?.destroy();
       window.removeEventListener("resize", responsiveFlickity);
     };
-  }, []);
+  }, [works.length]);
 
   return (
     <section className={`${style.skills__section} ${style.works__section}`}>
