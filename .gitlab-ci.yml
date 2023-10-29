@@ -1,13 +1,7 @@
-image: node:20-alpine
+image: node:20-slim
 
 stages: # List of stages for jobs, and their order of execution
   - clone-project
-
-cache:
-  key: ${CI_COMMIT_REF_SLUG}
-  paths:
-    - node_modules/
-    - .next/cache/
 
 before_script:
   - npm i -g firebase-tools --location=global
@@ -17,9 +11,19 @@ clone-project-job:
   stage: clone-project
   tags:
     - png-projects
-  only:
-    refs:
-      - main
+
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+      - node_modules/
+      - .next/cache/
+
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
+      when: manual
+
+    - if: $CI_PIPELINE_SOURCE == "schedule"
+
   script:
     - git clone https://pngwasi@bitbucket.org/pngwasi/portfolio.git portfolio
     - export NEXT_PUBLIC_FIREBASE_CONFIG=$NEXT_PUBLIC_FIREBASE_CONFIG
@@ -31,4 +35,3 @@ clone-project-job:
     - pnpm run build
     - firebase deploy --token "$FIREBASE_TOKEN"
     - ls
-  when: manual
