@@ -19,10 +19,10 @@ clone-project-job:
       - .next/cache/
 
   rules:
+    - if: $CI_PIPELINE_SOURCE == "schedule"
+
     - if: $CI_COMMIT_BRANCH == "main"
       when: manual
-
-    - if: $CI_PIPELINE_SOURCE == "schedule"
 
   script:
     - git clone https://pngwasi@bitbucket.org/pngwasi/portfolio.git portfolio
