@@ -1,5 +1,6 @@
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import rehypeRaw from "rehype-raw";
 
 import { Highlighter } from "./highlighter";
 
@@ -25,6 +26,7 @@ export function RenderMarkdown({ children }: { children: string }) {
         },
       }}
       remarkPlugins={[remarkGfm]}
+      rehypePlugins={[rehypeRaw]}
     >
       {children}
     </Markdown>
