@@ -85,19 +85,28 @@ function Works({ projects }: { projects: Project[] }) {
     let sm = getBrowserWidth();
 
     function responsiveFlickity() {
-      if (window.innerWidth < 768 && sm !== "xs") {
-        flkty.current?.destroy();
-        sm = getBrowserWidth();
-      } else if (window.innerWidth >= 768 && sm === "xs") {
-        mountFlickity();
-        sm = getBrowserWidth();
+      try {
+        if (window.innerWidth < 768 && sm !== "xs") {
+          flkty.current?.destroy();
+          sm = getBrowserWidth();
+        } else if (window.innerWidth >= 768 && sm === "xs") {
+          mountFlickity();
+          sm = getBrowserWidth();
+        }
+      } catch (error) {
+        console.log(error);
       }
     }
 
     window.addEventListener("resize", responsiveFlickity);
 
     return () => {
-      flkty.current?.destroy();
+      try {
+        flkty.current?.destroy();
+      } catch (error) {
+        console.log(error);
+      }
+
       window.removeEventListener("resize", responsiveFlickity);
     };
   }, [works.length]);
