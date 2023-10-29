@@ -3,6 +3,12 @@ image: node:20
 stages: # List of stages for jobs, and their order of execution
   - clone-project
 
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - node_modules/
+    - .next/cache/
+
 before_script:
   - npm i -g firebase-tools --location=global
   - npm install pnpm --location=global
