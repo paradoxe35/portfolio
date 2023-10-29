@@ -1,4 +1,4 @@
-image: node:20
+image: node:20-alpine
 
 stages: # List of stages for jobs, and their order of execution
   - clone-project
