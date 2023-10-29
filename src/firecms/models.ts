@@ -26,6 +26,7 @@ const projectsCollection = buildCollection<EntityCollection<Project>>({
   name: "Projects",
   singularName: "Project",
   path: FirebaseCollections.PROJECTS,
+  textSearchEnabled: true,
   permissions: ({ authController }) => ({
     edit: true,
     create: true,
@@ -112,6 +113,7 @@ const skillsCollection = buildCollection<EntityCollection<Skill>>({
   name: "Skills",
   singularName: "skill",
   path: FirebaseCollections.SKILLS,
+  textSearchEnabled: true,
   permissions: ({ authController }) => ({
     edit: true,
     create: true,
