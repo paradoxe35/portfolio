@@ -13,6 +13,7 @@
 
   h2.big {
     font-size: 31px;
+    width: 90%;
   }
 
   img {
@@ -43,6 +44,7 @@
 
     @include media-min(768px) {
       display: flex;
+      align-items: center;
 
       & > * {
         flex-basis: 100%;
@@ -53,6 +55,7 @@
     .btn {
       align-self: flex-start;
       flex: none;
+      margin: 0;
     }
   }
 }

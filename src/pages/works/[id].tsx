@@ -11,6 +11,7 @@ import { Project } from "@/features/project";
 import { getProjectByIDUsecase, getProjectsUsecase } from "@/data/usecases";
 import Link from "next/link";
 import { entityToJSON } from "@/utils/entity-to-json";
+import { RenderMarkdown } from "@/ui/components/react-markdown/markdown";
 
 const Content = ({ project }: { project: Project }) => {
   return (
@@ -20,9 +21,11 @@ const Content = ({ project }: { project: Project }) => {
       <Container>
         <div className={style.project}>
           <div className={`${style.columns}`}>
-            <h2 className={style.big} style={{ marginBottom: 0 }}>
-              {project.technology}
-            </h2>
+            <div className="w-full">
+              <h2 className={style.big} style={{ marginBottom: 10 }}>
+                {project.technology}
+              </h2>
+            </div>
 
             {project.link && (
               <Link
@@ -47,7 +50,7 @@ const Content = ({ project }: { project: Project }) => {
             )}
           </div>
 
-          <div dangerouslySetInnerHTML={{ __html: project.content }} />
+          <RenderMarkdown>{project.content}</RenderMarkdown>
         </div>
       </Container>
     </section>
