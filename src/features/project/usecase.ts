@@ -1,7 +1,8 @@
 import { ProjectRepository } from "./repository";
 
-export function getProjects(repo: ProjectRepository) {
-  return repo.getProjects();
+export async function getProjects(repo: ProjectRepository) {
+  const projects = await repo.getProjects();
+  return projects.filter((project) => project.status === "publish");
 }
 
 export function getProjectByID(repo: ProjectRepository, id: string) {
