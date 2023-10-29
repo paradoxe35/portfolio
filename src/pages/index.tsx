@@ -39,8 +39,12 @@ function animation(
 }
 
 function Works({ projects }: { projects: Project[] }) {
+  // Ref
   const carouselRef = useRef<HTMLDivElement | null>(null);
   const flkty = useRef<Flickity | null>(null);
+  const flickity = useRef<typeof import("flickity") | null>(null);
+
+  // State
   const [works, setWorks] = useState<Project[]>(projects);
 
   useEffect(() => {
@@ -54,17 +58,23 @@ function Works({ projects }: { projects: Project[] }) {
       return;
     }
 
-    let flickity: typeof import("flickity") = require("flickity");
+    if (!flickity.current) {
+      flickity.current = require("flickity");
+    }
 
     function mountFlickity() {
-      if (carouselRef.current) {
-        flkty.current = new flickity(carouselRef.current, {
-          freeScroll: false,
-          prevNextButtons: false,
-          contain: true,
-          draggable: true,
-          groupCells: true,
-        });
+      try {
+        if (carouselRef.current && flickity.current) {
+          flkty.current = new flickity.current(carouselRef.current, {
+            freeScroll: false,
+            prevNextButtons: false,
+            contain: true,
+            draggable: true,
+            groupCells: true,
+          });
+        }
+      } catch (error) {
+        console.log(error);
       }
     }
 
