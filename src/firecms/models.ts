@@ -78,7 +78,7 @@ const projectsCollection = buildCollection<EntityCollection<Project>>({
         requiredMessage: "Content fields cannot be less than 50 char",
         min: 50,
       },
-      description: "Project content",
+      description: "Project Markdown content",
       dataType: "string",
     },
 
