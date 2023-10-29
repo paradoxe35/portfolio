@@ -59,6 +59,7 @@ const projectsCollection = buildCollection<EntityCollection<Project>>({
       description: "Project description",
       dataType: "string",
       columnWidth: 300,
+      validation: { required: true },
     },
 
     technology: {
@@ -98,7 +99,7 @@ const projectsCollection = buildCollection<EntityCollection<Project>>({
       name: "Link",
       url: true,
       validation: {
-        required: true,
+        required: false,
       },
       description: "Project external link",
       dataType: "string",
