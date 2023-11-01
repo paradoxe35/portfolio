@@ -19,7 +19,9 @@ clone-project-job:
       - .next/cache/
 
   rules:
-    - if: ($CI_PIPELINE_SOURCE == "schedule") || ($CI_PIPELINE_SOURCE == "trigger")
+    - if: $CI_PIPELINE_SOURCE == "schedule"
+
+    - if: $CI_PIPELINE_SOURCE == "trigger"
 
     - if: $CI_COMMIT_BRANCH == "main"
       when: manual
