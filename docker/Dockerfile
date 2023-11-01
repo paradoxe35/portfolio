@@ -36,7 +36,7 @@ ENV NODE_ENV=production
 RUN pnpm build
 
 # Remove development dependencies
-RUN pnpm prune --prod --ignore-scripts
+RUN pnpm prune --prod
 
 
 # Final stage for app image
