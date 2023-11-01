@@ -4,7 +4,10 @@
         "builder": "DOCKERFILE",
         "dockerfilePath": "docker/Dockerfile.ci",
         "watchPatterns": [
-            "ci/**"
+            "ci/**/*.ts",
+            "ci/package.json",
+            "ci/package.json",
+            "docker/Dockerfile.ci"
         ]
     },
     "deploy": {
