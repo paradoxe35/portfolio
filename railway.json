@@ -13,6 +13,7 @@
     "deploy": {
         "restartPolicyType": "ON_FAILURE",
         "numReplicas": 1,
-        "restartPolicyMaxRetries": null
+        "restartPolicyMaxRetries": null,
+        "sleepApplication": false
     }
 }
