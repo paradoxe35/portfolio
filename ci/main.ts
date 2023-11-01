@@ -33,7 +33,7 @@ function main() {
       const log = JSON.stringify(
         {
           Type: change.type,
-          Path: change.doc.ref,
+          Path: change.doc.ref.path,
         },
         undefined,
         2
