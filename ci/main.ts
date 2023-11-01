@@ -14,7 +14,7 @@ for (const key in consts) {
 }
 
 // Init values or Constants
-const TRIGGER_PLATFORMS_DEBOUNCE = 5 * 1000 * 50;
+const TRIGGER_PLATFORMS_DEBOUNCE = 3 * 1000 * 60;
 
 const firebase = initFirebaseInstance();
 const platforms: (() => void)[] = [gitlab];
