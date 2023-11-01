@@ -1,0 +1,5 @@
+# syntax = docker/dockerfile:1
+
+# Adjust NODE_VERSION as desired
+FROM node:lts-alpine AS builder
+
