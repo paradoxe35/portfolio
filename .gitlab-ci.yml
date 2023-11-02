@@ -8,11 +8,17 @@ clone-project-job:
   tags:
     - png-projects
 
+  before_script:
+    - npm i -g firebase-tools --location=global
+    - npm install pnpm --location=global
+    - npm ci --cache .npm --prefer-offline
+
   cache:
     key: ${CI_COMMIT_REF_SLUG}
     paths:
       - node_modules/
       - .next/cache/
+      - .npm/
 
   rules:
     - if: $CI_PIPELINE_SOURCE == "trigger"
@@ -22,15 +28,10 @@ clone-project-job:
     - if: $CI_COMMIT_BRANCH == "main"
       when: manual
 
-  before_script:
-    - npm i -g firebase-tools --location=global
-    - npm install pnpm --location=global
-    - pnpm install
-
   script:
     - export NEXT_PUBLIC_FIREBASE_CONFIG=$NEXT_PUBLIC_FIREBASE_CONFIG
     - export NEXT_PUBLIC_EMAILJS_USER_ID=$NEXT_PUBLIC_EMAILJS_USER_ID
     - export NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=$NEXT_PUBLIC_EMAILJS_TEMPLATE_ID
     - export NEXT_PUBLIC_EMAILJS_SERVICE_ID=$NEXT_PUBLIC_EMAILJS_SERVICE_ID
-    - pnpm run build
+    - pnpm install && pnpm run build
     - firebase deploy --token "$FIREBASE_TOKEN"
