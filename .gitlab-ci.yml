@@ -25,13 +25,12 @@ clone-project-job:
   before_script:
     - npm i -g firebase-tools --location=global
     - npm install pnpm --location=global
+    - pnpm install
 
   script:
     - export NEXT_PUBLIC_FIREBASE_CONFIG=$NEXT_PUBLIC_FIREBASE_CONFIG
     - export NEXT_PUBLIC_EMAILJS_USER_ID=$NEXT_PUBLIC_EMAILJS_USER_ID
     - export NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=$NEXT_PUBLIC_EMAILJS_TEMPLATE_ID
     - export NEXT_PUBLIC_EMAILJS_SERVICE_ID=$NEXT_PUBLIC_EMAILJS_SERVICE_ID
-    - pnpm install
     - pnpm run build
     - firebase deploy --token "$FIREBASE_TOKEN"
-    - ls
