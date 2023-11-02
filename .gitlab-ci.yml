@@ -17,7 +17,6 @@ clone-project-job:
     paths:
       - node_modules/
       - .next/cache/
-      - .npm/
 
   rules:
     - if: $CI_PIPELINE_SOURCE == "trigger"
