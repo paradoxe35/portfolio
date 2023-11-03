@@ -297,7 +297,7 @@ export default function Home({ projects, skills }: StaticProps) {
       <Head>
         <link rel="preload" href="/paradoxe-ngwasi.png" as="image" />
 
-        <title>{`${site_details.full_name_title} | Portfolio`}</title>
+        <title>{`${site_details.full_name_title} - Portfolio`}</title>
       </Head>
       <main>
         <Hero />

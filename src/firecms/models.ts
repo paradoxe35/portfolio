@@ -150,6 +150,19 @@ const skillsCollection = buildCollection<EntityCollection<Skill>>({
       },
     }),
 
+    status: {
+      name: "Status",
+      validation: { required: true },
+      dataType: "string",
+      description: "Project status: draft | published | archived",
+      defaultValue: "draft",
+      enumValues: {
+        draft: "Draft",
+        published: "Published",
+        archived: "Archived",
+      },
+    },
+
     className: {
       name: "className",
       validation: { required: false },

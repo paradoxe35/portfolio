@@ -1,5 +1,7 @@
 import { SkillRepository } from "./repository";
 
-export function getSkills(repo: SkillRepository) {
-  return repo.getSkills();
+export async function getSkills(repo: SkillRepository) {
+  const skills = await repo.getSkills();
+
+  return skills.filter((skill) => skill.status === "published");
 }

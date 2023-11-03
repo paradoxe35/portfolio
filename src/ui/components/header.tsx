@@ -22,6 +22,12 @@ export default function Header({
               }`,
       }}
     >
+      {image && (
+        <>
+          <div className={style.page__blur_left} />
+          <div className={style.page__blur_right} />
+        </>
+      )}
       <Container>
         <h1
           data-aos="fade-up"
