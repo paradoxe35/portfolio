@@ -30,6 +30,12 @@ export class SkillFirebaseRepository implements SkillRepository {
 
     const resolvedIcons = await Promise.all(icons);
 
-    return new Skill(id, object.name, resolvedIcons, object.className);
+    return new Skill(
+      id,
+      object.name,
+      resolvedIcons,
+      object.status,
+      object.className
+    );
   }
 }
