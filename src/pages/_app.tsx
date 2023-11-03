@@ -27,7 +27,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
 
   return getLayout(
     <>
-      <Script type="text/javascript">
+      <Script id="sitespeak-script" type="text/javascript">
         {`(function(){d=document;s=d.createElement("script");s.src="https://sitespeak.ai/chatbots/6e3433de-45e5-41e0-b6bb-a9cbfd2055e3.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();`}
       </Script>
       <Component {...pageProps} />
