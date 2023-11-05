@@ -6,6 +6,7 @@ import "aos/dist/aos.css";
 import aos from "aos";
 
 import { NextPage } from "next";
+import { useRouter } from "next/router";
 
 const Noop: FC<{ children?: ReactNode }> = ({ children }) => <>{children}</>;
 
@@ -27,13 +28,25 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
 
   return getLayout(
     <>
-      <Script
-        id="sitespeak-script"
-        src="https://chatwith.tools/chatbot/0834a97b-d36c-45f4-8009-2395c93c67a4.js"
-        async={true}
-        type="text/javascript"
-      />
+      <Init />
       <Component {...pageProps} />
+    </>
+  );
+}
+
+function Init() {
+  const route = useRouter();
+
+  return (
+    <>
+      {!route.asPath.includes("/admin") && (
+        <Script
+          id="chatwith-script"
+          src="https://chatwith.tools/chatbot/0834a97b-d36c-45f4-8009-2395c93c67a4.js"
+          async={true}
+          type="text/javascript"
+        />
+      )}
     </>
   );
 }
