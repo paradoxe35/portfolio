@@ -193,7 +193,7 @@ export default function ContactPage({ resume }: { resume: Resume | null }) {
   return (
     <Application>
       <Head>
-        <title>{"About"}</title>
+        <title>{"Contact"}</title>
       </Head>
       <main>
         <Header title="" subtitle="" />
