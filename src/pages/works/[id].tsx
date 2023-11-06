@@ -78,7 +78,7 @@ export default function Work({
     <Application>
       {project && (
         <Head>
-          <title>{`Project - ${project.title}`}</title>
+          <title>{`${project.title} - Project`}</title>
         </Head>
       )}
       <main>
