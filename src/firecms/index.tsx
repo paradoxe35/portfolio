@@ -8,6 +8,7 @@ import {
   projectsCollection,
   skillsCollection,
   resumeCollection,
+  mediaCollection,
 } from "./models";
 import { useDataEnhancementPlugin } from "@firecms/data_enhancement";
 
@@ -21,7 +22,12 @@ export default function AdminApp() {
       name="CMS"
       plugins={[dataEnhancementPlugin]}
       authentication={GoogleAuthenticator}
-      collections={[projectsCollection, skillsCollection, resumeCollection]}
+      collections={[
+        projectsCollection,
+        skillsCollection,
+        resumeCollection,
+        mediaCollection,
+      ]}
       firebaseConfig={FIREBASE_CONFIG}
       signInOptions={["google.com"]}
     />

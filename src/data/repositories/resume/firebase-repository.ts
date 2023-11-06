@@ -6,7 +6,7 @@ import {
 import { Resume, ResumeRepository } from "@/features/resume";
 
 // Firebase
-import { collection, getDocs, getDoc, doc } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 import { ref, getDownloadURL } from "firebase/storage";
 
 export class ResumeFirebaseRepository implements ResumeRepository {

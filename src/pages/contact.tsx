@@ -10,7 +10,7 @@ import { throttle } from "@/utils/functions";
 import homeStyle from "@/ui/styles/modules/home.module.scss";
 import emailjs from "@emailjs/browser";
 import { site_details } from "@/utils/constants";
-import { getResumeUsecase } from "@/data/usecases/resume";
+import { getResumeUsecase } from "@/data/usecases";
 import Link from "next/link";
 import { GetStaticProps } from "next";
 import { entityToJSON } from "@/utils/entity-to-json";

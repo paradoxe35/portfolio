@@ -1,4 +1,5 @@
 import { FirebaseCollections, FirebaseFilePaths } from "@/data/firebase";
+import { Media } from "@/features/media";
 import { Project } from "@/features/project";
 import { Resume } from "@/features/resume";
 import { Skill } from "@/features/skill";
@@ -199,4 +200,36 @@ const resumeCollection = buildCollection<EntityCollection<Resume>>({
   },
 });
 
-export { projectsCollection, skillsCollection, resumeCollection };
+// Resume Collection
+const mediaCollection = buildCollection<EntityCollection<Media>>({
+  name: "Media files",
+  singularName: "Media",
+  path: FirebaseCollections.MEDIAS,
+  permissions: ({ authController }) => ({
+    edit: true,
+    create: true,
+    read: true,
+    delete: true,
+  }),
+
+  properties: {
+    file: buildProperty({
+      name: "file",
+      dataType: "string",
+      description: "File: Video, Image, PDF, Document etc.",
+      validation: { required: true },
+      storage: {
+        storagePath: FirebaseFilePaths.MEDIAS,
+        maxSize: 1024 * 1024 * 50, // 50MG
+        acceptedFiles: ["application/pdf", "image/*", "video/*"],
+      },
+    }),
+  },
+});
+
+export {
+  projectsCollection,
+  skillsCollection,
+  resumeCollection,
+  mediaCollection,
+};
