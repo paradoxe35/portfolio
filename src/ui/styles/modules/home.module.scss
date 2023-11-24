@@ -7,6 +7,7 @@
   overflow: hidden;
   .hero__hello {
     margin-top: 1rem;
+    margin-left: 7px;
     color: var(--primary);
     font-size: 1em;
     font-weight: 500;
@@ -28,6 +29,7 @@
   .hero__job {
     font-size: 0.85em;
     font-weight: 500;
+    margin-left: 7px;
     color: var(--muted-2);
   }
 }
