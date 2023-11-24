@@ -21,6 +21,7 @@ import { Skill } from "@/features/skill";
 import { entitiesToJSON } from "@/utils/entity-to-json";
 
 const functions: Function[] = [];
+const PROJECTS_QUERY_LIMIT: number | undefined = 6;
 
 function animation(
   imgs: NodeListOf<HTMLImageElement>,
@@ -48,7 +49,7 @@ function Works({ projects }: { projects: Project[] }) {
   const [works, setWorks] = useState<Project[]>(projects);
 
   useEffect(() => {
-    getProjectsUsecase().then((ps) => {
+    getProjectsUsecase(PROJECTS_QUERY_LIMIT).then((ps) => {
       Array.isArray(ps) && setWorks(ps || []);
     });
   }, []);
@@ -314,7 +315,9 @@ type StaticProps = {
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const projects = entitiesToJSON(await getProjectsUsecase());
+  const projects = entitiesToJSON(
+    await getProjectsUsecase(PROJECTS_QUERY_LIMIT)
+  );
   const skills = entitiesToJSON(await getSkillsUsecase());
 
   return {

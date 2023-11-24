@@ -3,8 +3,8 @@ import { ProjectFirebaseRepository } from "@/data/repositories/project";
 
 const firebaseRepository = new ProjectFirebaseRepository();
 
-export function getProjectsUsecase() {
-  return getProjects(firebaseRepository);
+export function getProjectsUsecase(limit?: number) {
+  return getProjects(firebaseRepository, limit);
 }
 
 export function getProjectByIDUsecase(id: string) {
