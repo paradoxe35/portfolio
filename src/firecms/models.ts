@@ -50,7 +50,7 @@ const projectsCollection = buildCollection<EntityCollection<Project>>({
       storage: {
         storagePath: FirebaseFilePaths.PROJECTS,
         maxSize: 1024 * 1024 * 5,
-        acceptedFiles: ["image/jpeg", "image/png", "image/webp"],
+        acceptedFiles: ["image/*"],
         imageCompression: {
           maxWidth: 1080,
           quality: 50,
