@@ -148,6 +148,10 @@ const skillsCollection = buildCollection<EntityCollection<Skill>>({
           storagePath: FirebaseFilePaths.SKILLS,
           maxSize: 1024 * 1024 * 5,
           acceptedFiles: ["image/*"],
+          imageCompression: {
+            maxWidth: 360,
+            quality: 50,
+          },
           fileName: (context) => {
             return randomizeFileName(context.file.name);
           },
@@ -226,6 +230,10 @@ const mediaCollection = buildCollection<EntityCollection<Media>>({
         storagePath: FirebaseFilePaths.MEDIAS,
         maxSize: 1024 * 1024 * 50, // 50MG
         acceptedFiles: ["application/pdf", "image/*", "video/*"],
+        imageCompression: {
+          maxWidth: 1080,
+          quality: 50,
+        },
       },
     }),
   },
