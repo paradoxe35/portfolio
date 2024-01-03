@@ -50,7 +50,11 @@ const projectsCollection = buildCollection<EntityCollection<Project>>({
       storage: {
         storagePath: FirebaseFilePaths.PROJECTS,
         maxSize: 1024 * 1024 * 5,
-        acceptedFiles: ["image/*"],
+        acceptedFiles: ["image/jpeg", "image/png", "image/webp"],
+        imageCompression: {
+          maxWidth: 1080,
+          quality: 50,
+        },
         fileName: (context) => {
           return randomizeFileName(context.file.name);
         },
