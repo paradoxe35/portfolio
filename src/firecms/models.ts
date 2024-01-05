@@ -53,7 +53,7 @@ const projectsCollection = buildCollection<EntityCollection<Project>>({
         acceptedFiles: ["image/*"],
         imageCompression: {
           maxWidth: 1080,
-          quality: 50,
+          quality: 75,
         },
         fileName: (context) => {
           return randomizeFileName(context.file.name);
@@ -150,7 +150,7 @@ const skillsCollection = buildCollection<EntityCollection<Skill>>({
           acceptedFiles: ["image/*"],
           imageCompression: {
             maxWidth: 360,
-            quality: 50,
+            quality: 75,
           },
           fileName: (context) => {
             return randomizeFileName(context.file.name);
@@ -232,7 +232,7 @@ const mediaCollection = buildCollection<EntityCollection<Media>>({
         acceptedFiles: ["application/pdf", "image/*", "video/*"],
         imageCompression: {
           maxWidth: 1080,
-          quality: 50,
+          quality: 75,
         },
       },
     }),
