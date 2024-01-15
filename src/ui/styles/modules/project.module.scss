@@ -5,6 +5,11 @@
     color: var(--muted-2);
   }
 
+  a {
+    color: var(--primary);
+    text-decoration: underline;
+  }
+
   h1,
   h2 {
     color: #414040;
