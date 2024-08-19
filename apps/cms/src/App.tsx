@@ -221,6 +221,14 @@ export function App() {
                     firebaseApp={firebaseApp}
                     authController={authController}
                     notAllowedError={notAllowedError}
+                    additionalComponent={
+                      <a
+                        href="https://pngwasi.me"
+                        className="text-primary hover:underline"
+                      >
+                        Or go to pngwasi.me
+                      </a>
+                    }
                   />
                 );
               } else {
