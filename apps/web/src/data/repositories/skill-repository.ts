@@ -3,12 +3,18 @@ import {
   firebase_storage,
   firestore,
 } from "@/data/firebase";
-import { Skill, SkillRepository } from "@/features/skill";
 
 // Firebase
 import { collection, getDocs } from "firebase/firestore";
 import { ref, getDownloadURL } from "firebase/storage";
+import { Skill } from "../actions/skill";
 
+// Types
+export interface SkillRepository {
+  getSkills(): Promise<Skill[]>;
+}
+
+// Implementations
 export class SkillFirebaseRepository implements SkillRepository {
   async getSkills(): Promise<Skill[]> {
     const querySnapshot = await getDocs(

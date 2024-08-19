@@ -1,4 +1,4 @@
-@import "../dist/mixins";
+@import "../mixins";
 
 .hero__body {
   position: relative;
@@ -266,7 +266,10 @@
     width: 12px;
     height: 12px;
     opacity: 0;
-    transition: opacity 0.5s, margin 0.5s, transform 0.5s;
+    transition:
+      opacity 0.5s,
+      margin 0.5s,
+      transform 0.5s;
     margin-left: -5px;
     display: inline-block;
   }

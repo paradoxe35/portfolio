@@ -3,11 +3,19 @@ import {
   firebase_storage,
   firestore,
 } from "@/data/firebase";
-import { Project, ProjectRepository } from "@/features/project";
 
 // Firebase
 import { collection, getDocs, getDoc, doc } from "firebase/firestore";
 import { ref, getDownloadURL } from "firebase/storage";
+import { Project } from "../actions/project";
+
+// Types
+export interface ProjectRepository {
+  getProjects(limit?: number): Promise<Project[]>;
+  getProjectByID(id: string): Promise<Project | null>;
+}
+
+// Implementations
 
 export class ProjectFirebaseRepository implements ProjectRepository {
   async getProjectByID(id: string) {

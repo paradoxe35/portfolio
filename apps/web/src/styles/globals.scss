@@ -1,7 +1,7 @@
 @import "aos/dist/aos.css";
-@import "./dist/variables";
-@import "./dist/mixins";
-@import "./dist/typography";
+@import "variables";
+@import "mixins";
+@import "typography";
 @import "./plugins/flickity";
 
 html {

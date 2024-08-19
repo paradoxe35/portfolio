@@ -3,11 +3,15 @@ import {
   firebase_storage,
   firestore,
 } from "@/data/firebase";
-import { Resume, ResumeRepository } from "@/features/resume";
 
 // Firebase
 import { collection, getDocs } from "firebase/firestore";
 import { ref, getDownloadURL } from "firebase/storage";
+import { Resume } from "../actions/resume";
+
+export interface ResumeRepository {
+  getResume(): Promise<Resume | null>;
+}
 
 export class ResumeFirebaseRepository implements ResumeRepository {
   async getResume() {

@@ -4,17 +4,16 @@ import Application from "@/components/layouts/application";
 import { Container } from "@/components/layouts/layouts";
 import Head from "next/head";
 import React, { PropsWithChildren, useEffect, useRef, useState } from "react";
-import style from "@/ui/styles/modules/contact.module.scss";
-import styleHome from "@/ui/styles/modules/home.module.scss";
+import style from "@/styles/modules/contact.module.scss";
+import styleHome from "@/styles/modules/home.module.scss";
 import { throttle } from "@/utils/functions";
-import homeStyle from "@/ui/styles/modules/home.module.scss";
+import homeStyle from "@/styles/modules/home.module.scss";
 import emailjs from "@emailjs/browser";
 import { site_details } from "@/utils/constants";
-import { getResumeUsecase } from "@/data/usecases";
 import Link from "next/link";
 import { GetStaticProps } from "next";
 import { entityToJSON } from "@/utils/entity-to-json";
-import { Resume } from "@/features/resume";
+import { getResume, Resume } from "@/data/actions/resume";
 
 const Alert: React.FC<PropsWithChildren<{ success?: boolean }>> = function ({
   children,
@@ -143,7 +142,7 @@ function ResumeComponent({ resume }: { resume: Resume | null }) {
   const [link, setLink] = useState<string | undefined>(resume?.file);
 
   useEffect(() => {
-    getResumeUsecase().then((resume) => resume && setLink(resume.file));
+    getResume().then((resume) => resume && setLink(resume.file));
   }, []);
 
   return (
@@ -214,11 +213,12 @@ export default function ContactPage({ resume }: { resume: Resume | null }) {
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const resume = await getResumeUsecase();
+  const resume = await getResume();
 
   return {
     props: {
       resume: resume ? entityToJSON(resume) : null,
     },
+    revalidate: 5,
   };
 };

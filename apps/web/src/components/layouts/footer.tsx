@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Container } from "./layouts";
-import style from "@/ui/styles/footer.module.scss";
+import style from "@/styles/footer.module.scss";
 
 export default function Footer() {
   return (

@@ -1,4 +1,4 @@
-import "@/ui/styles/globals.scss";
+import "@/styles/globals.scss";
 import Script from "next/script";
 import type { AppProps /*, AppContext */ } from "next/app";
 import { FC, ReactElement, ReactNode, useEffect } from "react";

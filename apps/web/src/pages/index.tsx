@@ -4,21 +4,16 @@ import Application from "@/components/layouts/application";
 import { Container } from "@/components/layouts/layouts";
 import Head from "next/head";
 import { useCallback, useEffect, useRef, useState } from "react";
-import style from "@/ui/styles/modules/home.module.scss";
+import style from "@/styles/modules/home.module.scss";
 import { animate } from "@/utils/animate";
 import { getBrowserWidth, getRandomArbitrary } from "@/utils/functions";
 import { GetStaticProps } from "next";
 import { Position } from "@/types";
 import { site_details } from "@/utils/constants";
 import { SkillCard } from "@/components/skill-card";
-import {
-  getDefaultSkillsUsecase,
-  getProjectsUsecase,
-  getSkillsUsecase,
-} from "@/data/usecases";
-import { Project } from "@/features/project";
-import { Skill } from "@/features/skill";
 import { entitiesToJSON } from "@/utils/entity-to-json";
+import { getProjects, Project } from "@/data/actions/project";
+import { getDefaultSkills, getSkills, Skill } from "@/data/actions/skill";
 
 const functions: Function[] = [];
 const PROJECTS_QUERY_LIMIT: number | undefined = 6;
@@ -49,7 +44,7 @@ function Works({ projects }: { projects: Project[] }) {
   const [works, setWorks] = useState<Project[]>(projects);
 
   useEffect(() => {
-    getProjectsUsecase(PROJECTS_QUERY_LIMIT).then((ps) => {
+    getProjects(PROJECTS_QUERY_LIMIT).then((ps) => {
       Array.isArray(ps) && setWorks(ps || []);
     });
   }, []);
@@ -130,12 +125,12 @@ function Works({ projects }: { projects: Project[] }) {
   );
 }
 
-function Skills({ skills: nskills }: { skills: Skill[] }) {
-  const default_skills = getDefaultSkillsUsecase();
-  const [skills, setSkills] = useState(nskills || []);
+function Skills({ skills: defaultSkills }: { skills: Skill[] }) {
+  const default_skills = getDefaultSkills();
+  const [skills, setSkills] = useState(defaultSkills || []);
 
   useEffect(() => {
-    getSkillsUsecase().then((skills) => {
+    getSkills().then((skills) => {
       setSkills(skills);
     });
   }, []);
@@ -315,15 +310,14 @@ type StaticProps = {
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const projects = entitiesToJSON(
-    await getProjectsUsecase(PROJECTS_QUERY_LIMIT)
-  );
-  const skills = entitiesToJSON(await getSkillsUsecase());
+  const projects = entitiesToJSON(await getProjects(PROJECTS_QUERY_LIMIT));
+  const skills = entitiesToJSON(await getSkills());
 
   return {
     props: {
       projects,
       skills,
     },
+    revalidate: 5,
   };
 };

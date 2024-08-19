@@ -1,8 +1,8 @@
 import { Card, Grid } from "./layouts/layouts";
-import style from "@/ui/styles/modules/home.module.scss";
+import style from "@/styles/modules/home.module.scss";
 import { StorageImg } from "./storage-img";
-import styleLayout from "@/ui/styles/layout.module.scss";
-import { Skill } from "@/features/skill";
+import styleLayout from "@/styles/layout.module.scss";
+import { Skill } from "@/data/actions/skill";
 
 export function SkillCard({ skills }: { skills: Skill[] }) {
   return (

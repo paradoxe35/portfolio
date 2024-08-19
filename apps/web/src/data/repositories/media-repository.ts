@@ -3,12 +3,18 @@ import {
   firebase_storage,
   firestore,
 } from "@/data/firebase";
-import { Media, MediaRepository } from "@/features/media";
 
 // Firebase
 import { collection, getDocs } from "firebase/firestore";
 import { ref, getDownloadURL } from "firebase/storage";
+import { Media } from "../actions/media";
 
+// Types
+export interface MediaRepository {
+  getMedia(): Promise<Media[]>;
+}
+
+// Implementations
 export class MediaFirebaseRepository implements MediaRepository {
   async getMedia() {
     const querySnapshot = await getDocs(

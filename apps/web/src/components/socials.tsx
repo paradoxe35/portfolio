@@ -1,4 +1,4 @@
-import style from "@/ui/styles/modules/home.module.scss";
+import style from "@/styles/modules/home.module.scss";
 import { Card, Container, Grid } from "@/components/layouts/layouts";
 import Titles from "./titles";
 import Link from "next/link";

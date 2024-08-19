@@ -3,15 +3,14 @@ import Application from "@/components/layouts/application";
 import { GetStaticProps, GetStaticPaths } from "next";
 import Head from "next/head";
 
-import style from "@/ui/styles/modules/project.module.scss";
-import homeStyle from "@/ui/styles/modules/home.module.scss";
+import style from "@/styles/modules/project.module.scss";
+import homeStyle from "@/styles/modules/home.module.scss";
 import { Container } from "@/components/layouts/layouts";
 import { useEffect, useState } from "react";
-import { Project } from "@/features/project";
-import { getProjectByIDUsecase, getProjectsUsecase } from "@/data/usecases";
 import Link from "next/link";
 import { entityToJSON } from "@/utils/entity-to-json";
 import { RenderMarkdown } from "@/components/react-markdown/markdown";
+import { getProjectByID, getProjects, Project } from "@/data/actions/project";
 
 const Content = ({ project }: { project: Project }) => {
   return (
@@ -71,7 +70,7 @@ export default function Work({
       return;
     }
 
-    getProjectByIDUsecase(_project.id).then((data) => setProject(data));
+    getProjectByID(_project.id).then((data) => setProject(data));
   }, [_project?.id]);
 
   return (
@@ -100,18 +99,25 @@ export default function Work({
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   let project;
   if (params && typeof params.id === "string") {
-    project = await getProjectByIDUsecase(params.id);
+    project = await getProjectByID(params.id);
+  }
+
+  if (!project) {
+    return {
+      notFound: true,
+    };
   }
 
   return {
     props: {
       project: project ? entityToJSON(project) : null,
     },
+    revalidate: 5,
   };
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const projects = await getProjectsUsecase();
+  const projects = await getProjects();
 
   const paths = projects.map((project) => ({
     params: { id: project.id },

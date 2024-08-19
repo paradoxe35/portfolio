@@ -1,4 +1,4 @@
-import style from "@/ui/styles/modules/home.module.scss";
+import style from "@/styles/modules/home.module.scss";
 import { PropsWithChildren } from "react";
 
 type Title = {

@@ -1,4 +1,4 @@
-import style from "@/ui/styles/navigation.module.scss";
+import style from "@/styles/navigation.module.scss";
 import { Container } from "./layouts";
 import Link from "next/link";
 import { site_details } from "@/utils/constants";
