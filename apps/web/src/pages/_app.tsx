@@ -1,5 +1,5 @@
 import "@/styles/globals.scss";
-import Script from "next/script";
+import { Analytics } from "@vercel/analytics/react";
 import type { AppProps /*, AppContext */ } from "next/app";
 import { FC, ReactElement, ReactNode, useEffect } from "react";
 import "aos/dist/aos.css";
@@ -30,7 +30,8 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
     <>
       <Init />
       <Component {...pageProps} />
-    </>,
+      <Analytics />
+    </>
   );
 }
 
