@@ -1,11 +1,12 @@
 {
-  "name": "my-turborepo",
+  "name": "portfolio",
   "private": true,
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "cms:deploy": "turbo build --filter=@apps/cms && firebase deploy --only hosting"
   },
   "devDependencies": {
     "prettier": "^3.2.5",
