@@ -226,7 +226,7 @@ export function App() {
                         href="https://pngwasi.me"
                         className="text-primary hover:underline"
                       >
-                        Or go to pngwasi.me
+                        {"Or go to pngwasi.me"}
                       </a>
                     }
                   />
