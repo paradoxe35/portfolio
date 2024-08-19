@@ -10,7 +10,8 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { entityToJSON } from "@/utils/entity-to-json";
 import { RenderMarkdown } from "@/components/react-markdown/markdown";
-import { getProjectByID, getProjects, Project } from "@/data/actions/project";
+import { getProjectByID, getProjects } from "@/data/actions/project";
+import { Project } from "@repo/contracts";
 
 const Content = ({ project }: { project: Project }) => {
   return (

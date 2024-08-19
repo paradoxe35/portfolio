@@ -1,7 +1,7 @@
 import Link from "next/link";
 import style from "@/styles/modules/home.module.scss";
 import { StorageImg } from "./storage-img";
-import { Project } from "@/data/actions/project";
+import { Project } from "@repo/contracts";
 
 interface Work {
   aosDuration: number;

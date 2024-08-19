@@ -13,7 +13,8 @@ import { site_details } from "@/utils/constants";
 import Link from "next/link";
 import { GetStaticProps } from "next";
 import { entityToJSON } from "@/utils/entity-to-json";
-import { getResume, Resume } from "@/data/actions/resume";
+import { getResume } from "@/data/actions/resume";
+import { Resume } from "@repo/contracts";
 
 const Alert: React.FC<PropsWithChildren<{ success?: boolean }>> = function ({
   children,
@@ -42,11 +43,11 @@ function Contact() {
         process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID as string,
         process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID as string,
         e.target as HTMLFormElement,
-        process.env.NEXT_PUBLIC_EMAILJS_USER_ID as string,
+        process.env.NEXT_PUBLIC_EMAILJS_USER_ID as string
       )
       .then((_) => {
         setSuccess(
-          "Your message has been sent successfully, thank you again for showing me this interest.",
+          "Your message has been sent successfully, thank you again for showing me this interest."
         );
         const target = e.target as HTMLFormElement;
         Array.from(target.querySelectorAll("[name]")).forEach((element) => {

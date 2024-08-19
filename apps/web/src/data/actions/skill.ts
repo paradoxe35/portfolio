@@ -1,20 +1,11 @@
+import { Skill } from "@repo/contracts";
 import { SkillFirebaseRepository } from "../repositories/skill-repository";
-
-export class Skill {
-  constructor(
-    public readonly id: string,
-    public readonly name: string,
-    public readonly icons: string[],
-    public readonly status?: "published" | "draft" | "archived",
-    public readonly className?: string,
-  ) {}
-}
 
 export async function getSkills() {
   const repo = new SkillFirebaseRepository();
 
   return (await repo.getSkills()).filter(
-    (skill) => skill.status === "published",
+    (skill) => skill.status === "published"
   );
 }
 

@@ -37,7 +37,6 @@ import {
   useUserManagementPlugin,
 } from "@firecms/user_management";
 import { useImportExportPlugin } from "@firecms/data_import_export";
-import { ExampleCMSView } from "./views/ExampleCMSView";
 import { useFirestoreCollectionsConfigController } from "@firecms/collection_editor_firebase";
 import {
   mergeCollections,
@@ -49,7 +48,7 @@ export function App() {
 
   if (!firebaseConfig?.projectId) {
     throw new Error(
-      "Firebase config not found. Please check your `firebase_config.ts` file and make sure it is correctly set up.",
+      "Firebase config not found. Please check your `firebase_config.ts` file and make sure it is correctly set up."
     );
   }
 
@@ -83,23 +82,14 @@ export function App() {
     // You can merge collections defined in the collection editor (UI) with your own collections
     return mergeCollections(
       collections,
-      collectionConfigController.collections ?? [],
+      collectionConfigController.collections ?? []
     );
   }, [collectionConfigController.collections]);
 
   // Here you define your custom top-level views
-  const views: CMSView[] = useMemo(
-    () => [
-      {
-        path: "example",
-        name: "Example CMS view",
-        view: <ExampleCMSView />,
-      },
-    ],
-    [],
-  );
+  const views: CMSView[] = useMemo(() => [], []);
 
-  const signInOptions: FirebaseSignInProvider[] = ["google.com", "password"];
+  const signInOptions: FirebaseSignInProvider[] = ["google.com"];
 
   /**
    * Controller used to manage the dark or light color mode

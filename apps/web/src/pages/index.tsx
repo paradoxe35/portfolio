@@ -12,8 +12,9 @@ import { Position } from "@/types";
 import { site_details } from "@/utils/constants";
 import { SkillCard } from "@/components/skill-card";
 import { entitiesToJSON } from "@/utils/entity-to-json";
-import { getProjects, Project } from "@/data/actions/project";
-import { getDefaultSkills, getSkills, Skill } from "@/data/actions/skill";
+import { getProjects } from "@/data/actions/project";
+import { getDefaultSkills, getSkills } from "@/data/actions/skill";
+import { Project, Skill } from "@repo/contracts";
 
 const functions: Function[] = [];
 const PROJECTS_QUERY_LIMIT: number | undefined = 6;
@@ -21,7 +22,7 @@ const PROJECTS_QUERY_LIMIT: number | undefined = 6;
 function animation(
   images: NodeListOf<HTMLImageElement>,
   positions: Position[],
-  anime: boolean = true,
+  anime: boolean = true
 ) {
   images.forEach((el, i) => {
     el.style.top = `${positions[i].top || getRandomArbitrary(10, 80) + i}%`;
@@ -150,7 +151,7 @@ function Skills({ skills: defaultSkills }: { skills: Skill[] }) {
       }
       return acc;
     },
-    [],
+    []
   );
 
   return (

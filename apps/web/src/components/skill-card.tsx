@@ -2,7 +2,7 @@ import { Card, Grid } from "./layouts/layouts";
 import style from "@/styles/modules/home.module.scss";
 import { StorageImg } from "./storage-img";
 import styleLayout from "@/styles/layout.module.scss";
-import { Skill } from "@/data/actions/skill";
+import { Skill } from "@repo/contracts";
 
 export function SkillCard({ skills }: { skills: Skill[] }) {
   return (

@@ -1,6 +1,6 @@
 {
-  "name": "my-app",
-  "version": "0.1.0",
+  "name": "@apps/web",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@repo/firebase-config": "workspace:*",
+    "@repo/contracts": "workspace:*",
     "@emailjs/browser": "^3.12.1",
     "aos": "^2.3.4",
     "firebase": "^10.12.2",

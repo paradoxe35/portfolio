@@ -7,7 +7,8 @@ import homeStyle from "@/styles/modules/home.module.scss";
 import WorksItem from "@/components/works-item";
 import { GetStaticProps } from "next";
 import { entitiesToJSON } from "@/utils/entity-to-json";
-import { getProjects, Project } from "@/data/actions/project";
+import { getProjects } from "@/data/actions/project";
+import { Project } from "@repo/contracts";
 
 type StaticProps = {
   projects: Project[];

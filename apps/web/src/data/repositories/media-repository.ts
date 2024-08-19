@@ -3,11 +3,11 @@ import {
   firebase_storage,
   firestore,
 } from "@/data/firebase";
+import { Media } from "@repo/contracts";
 
 // Firebase
 import { collection, getDocs } from "firebase/firestore";
 import { ref, getDownloadURL } from "firebase/storage";
-import { Media } from "../actions/media";
 
 // Types
 export interface MediaRepository {
@@ -18,7 +18,7 @@ export interface MediaRepository {
 export class MediaFirebaseRepository implements MediaRepository {
   async getMedia() {
     const querySnapshot = await getDocs(
-      collection(firestore, FirebaseCollections.MEDIAS),
+      collection(firestore, FirebaseCollections.MEDIAS)
     );
 
     const medias = querySnapshot.docs.map(async (doc) => {

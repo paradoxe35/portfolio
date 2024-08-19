@@ -3,11 +3,11 @@ import {
   firebase_storage,
   firestore,
 } from "@/data/firebase";
+import { Resume } from "@repo/contracts";
 
 // Firebase
 import { collection, getDocs } from "firebase/firestore";
 import { ref, getDownloadURL } from "firebase/storage";
-import { Resume } from "../actions/resume";
 
 export interface ResumeRepository {
   getResume(): Promise<Resume | null>;
@@ -16,7 +16,7 @@ export interface ResumeRepository {
 export class ResumeFirebaseRepository implements ResumeRepository {
   async getResume() {
     const querySnapshot = await getDocs(
-      collection(firestore, FirebaseCollections.RESUME),
+      collection(firestore, FirebaseCollections.RESUME)
     );
 
     const resume = querySnapshot.docs[0];
