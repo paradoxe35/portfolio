@@ -1,10 +1,14 @@
-import { FirebaseCollections, FirebaseFilePaths } from "@/data/firebase";
-import { Media } from "@/features/media";
-import { Project } from "@/features/project";
-import { Resume } from "@/features/resume";
-import { Skill } from "@/features/skill";
-import { NonFunctionProperties } from "@/types";
-import { buildCollection, buildProperty } from "firecms";
+import { buildCollection, buildProperty } from "@firecms/core";
+import {
+  FirebaseCollections,
+  FirebaseFilePaths,
+  Media,
+  NonFunctionProperties,
+  Project,
+  Resume,
+  Skill,
+} from "@repo/contracts";
+
 import { nanoid } from "nanoid";
 
 type EntityCollection<T> = Omit<NonFunctionProperties<T>, "id">;
@@ -26,9 +30,11 @@ function randomizeFileName(fileName: string): string {
 const projectsCollection = buildCollection<EntityCollection<Project>>({
   name: "Projects",
   singularName: "Project",
+  id: FirebaseCollections.PROJECTS,
   path: FirebaseCollections.PROJECTS,
   textSearchEnabled: true,
   inlineEditing: false,
+  icon: "backup_table",
   permissions: ({ authController }) => ({
     edit: true,
     create: true,
@@ -119,8 +125,10 @@ const skillsCollection = buildCollection<EntityCollection<Skill>>({
   name: "Skills",
   singularName: "skill",
   path: FirebaseCollections.SKILLS,
+  id: FirebaseCollections.SKILLS,
   textSearchEnabled: true,
   inlineEditing: false,
+  icon: "school",
   permissions: ({ authController }) => ({
     edit: true,
     create: true,
@@ -186,6 +194,8 @@ const resumeCollection = buildCollection<EntityCollection<Resume>>({
   name: "Resume (CV)",
   singularName: "Resume",
   path: FirebaseCollections.RESUME,
+  id: FirebaseCollections.RESUME,
+  icon: "description",
   permissions: ({ authController }) => ({
     edit: true,
     create: true,
@@ -213,6 +223,8 @@ const mediaCollection = buildCollection<EntityCollection<Media>>({
   name: "Media files",
   singularName: "Media",
   path: FirebaseCollections.MEDIAS,
+  id: FirebaseCollections.MEDIAS,
+  icon: "perm_media",
   permissions: ({ authController }) => ({
     edit: true,
     create: true,

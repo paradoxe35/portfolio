@@ -15,5 +15,3 @@ const firestore = getFirestore(FirebaseApp);
 const firebase_storage = getStorage(FirebaseApp);
 
 export { FirebaseApp, firestore, firebase_storage };
-
-export * from "./collections";

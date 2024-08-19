@@ -1,9 +1,5 @@
-import {
-  FirebaseCollections,
-  firebase_storage,
-  firestore,
-} from "@/data/firebase";
-import { Resume } from "@repo/contracts";
+import { firebase_storage, firestore } from "@/data/firebase";
+import { FirebaseCollections, Resume } from "@repo/contracts";
 
 // Firebase
 import { collection, getDocs } from "firebase/firestore";

@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from "react";
+import { useCallback, useMemo } from "react";
 
 import "typeface-rubik";
 import "@fontsource/jetbrains-mono";
@@ -29,7 +29,6 @@ import {
 } from "@firecms/firebase";
 
 import firebaseConfig from "@repo/firebase-config/config.json";
-import { productsCollection } from "./collections/products";
 import { useDataEnhancementPlugin } from "@firecms/data_enhancement";
 import {
   useFirestoreUserManagement,
@@ -42,6 +41,12 @@ import {
   mergeCollections,
   useCollectionEditorPlugin,
 } from "@firecms/collection_editor";
+import {
+  mediaCollection,
+  projectsCollection,
+  resumeCollection,
+  skillsCollection,
+} from "./collections/collections";
 
 export function App() {
   const title = "Pngwasi CMS";
@@ -76,8 +81,10 @@ export function App() {
   const collectionsBuilder = useCallback(() => {
     // Here we define a sample collection in code.
     const collections = [
-      productsCollection,
-      // Your collections here
+      projectsCollection,
+      skillsCollection,
+      resumeCollection,
+      mediaCollection,
     ];
     // You can merge collections defined in the collection editor (UI) with your own collections
     return mergeCollections(
