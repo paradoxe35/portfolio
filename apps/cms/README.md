@@ -20,6 +20,7 @@ yarn
 ```
 
 And run the project locally:
+
 ```bash
 yarn dev
 ```
@@ -32,4 +33,3 @@ project name. Then run:
 ```bash
 yarn build
 ```
-

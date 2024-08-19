@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "dependencies": {
+    "@repo/firebase-config": "workspace:*",
     "@firecms/collection_editor": "^3.0.0-beta",
     "@firecms/collection_editor_firebase": "^3.0.0-beta",
     "@firecms/core": "^3.0.0-beta",
@@ -25,7 +26,6 @@
     "preview": "vite build && vite preview",
     "deploy": "vite build && firebase deploy --only hosting --project png-me"
   },
-
   "browserslist": {
     "production": [
       ">0.2%",

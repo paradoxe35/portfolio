@@ -21,7 +21,7 @@ const PROJECTS_QUERY_LIMIT: number | undefined = 6;
 function animation(
   images: NodeListOf<HTMLImageElement>,
   positions: Position[],
-  anime: boolean = true
+  anime: boolean = true,
 ) {
   images.forEach((el, i) => {
     el.style.top = `${positions[i].top || getRandomArbitrary(10, 80) + i}%`;
@@ -150,7 +150,7 @@ function Skills({ skills: defaultSkills }: { skills: Skill[] }) {
       }
       return acc;
     },
-    []
+    [],
   );
 
   return (

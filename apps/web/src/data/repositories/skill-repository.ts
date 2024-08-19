@@ -18,7 +18,7 @@ export interface SkillRepository {
 export class SkillFirebaseRepository implements SkillRepository {
   async getSkills(): Promise<Skill[]> {
     const querySnapshot = await getDocs(
-      collection(firestore, FirebaseCollections.SKILLS)
+      collection(firestore, FirebaseCollections.SKILLS),
     );
 
     const skills = querySnapshot.docs.map(async (doc) => {
@@ -41,7 +41,7 @@ export class SkillFirebaseRepository implements SkillRepository {
       object.name,
       resolvedIcons,
       object.status,
-      object.className
+      object.className,
     );
   }
 }

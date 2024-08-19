@@ -16,7 +16,7 @@ export interface ResumeRepository {
 export class ResumeFirebaseRepository implements ResumeRepository {
   async getResume() {
     const querySnapshot = await getDocs(
-      collection(firestore, FirebaseCollections.RESUME)
+      collection(firestore, FirebaseCollections.RESUME),
     );
 
     const resume = querySnapshot.docs[0];

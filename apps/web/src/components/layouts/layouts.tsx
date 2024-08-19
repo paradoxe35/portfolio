@@ -38,7 +38,7 @@ export const Grid = forwardRef<HTMLDivElement, GridProps>(
         {children}
       </div>
     );
-  }
+  },
 );
 
 Grid.displayName = "Grid";

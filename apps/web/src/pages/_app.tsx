@@ -30,7 +30,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
     <>
       <Init />
       <Component {...pageProps} />
-    </>
+    </>,
   );
 }
 

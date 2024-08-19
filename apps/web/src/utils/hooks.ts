@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 
 export const useImageCacheLocalStorage = (
   id: string | undefined,
-  defaultValue: string | undefined = undefined
+  defaultValue: string | undefined = undefined,
 ) => {
   const [image, setImage] = useState<string | undefined>(defaultValue);
 
@@ -12,7 +12,7 @@ export const useImageCacheLocalStorage = (
       localStorage.setItem(id, link);
       setImage(link);
     },
-    [id]
+    [id],
   );
 
   useEffect(() => {

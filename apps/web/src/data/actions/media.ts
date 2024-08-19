@@ -3,7 +3,7 @@ import { MediaFirebaseRepository } from "../repositories/media-repository";
 export class Media {
   constructor(
     public readonly id: string,
-    public readonly file: string
+    public readonly file: string,
   ) {}
 }
 

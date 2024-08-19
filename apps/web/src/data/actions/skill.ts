@@ -6,7 +6,7 @@ export class Skill {
     public readonly name: string,
     public readonly icons: string[],
     public readonly status?: "published" | "draft" | "archived",
-    public readonly className?: string
+    public readonly className?: string,
   ) {}
 }
 
@@ -14,7 +14,7 @@ export async function getSkills() {
   const repo = new SkillFirebaseRepository();
 
   return (await repo.getSkills()).filter(
-    (skill) => skill.status === "published"
+    (skill) => skill.status === "published",
   );
 }
 

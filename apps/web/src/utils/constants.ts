@@ -5,8 +5,6 @@ export const site_details = {
   lastname_abbr: "Ng",
 };
 
-export const FIREBASE_CONFIG = JSON.parse(
-  process.env.NEXT_PUBLIC_FIREBASE_CONFIG || "{}"
-);
+export const FIREBASE_CONFIG = require("@repo/firebase-config/config.json");
 
 export const FIRECMS_ADMIN_EMAI = process.env.NEXT_PUBLIC_FIRECMS_ADMIN_EMAIL;

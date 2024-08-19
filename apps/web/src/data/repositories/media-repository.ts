@@ -18,7 +18,7 @@ export interface MediaRepository {
 export class MediaFirebaseRepository implements MediaRepository {
   async getMedia() {
     const querySnapshot = await getDocs(
-      collection(firestore, FirebaseCollections.MEDIAS)
+      collection(firestore, FirebaseCollections.MEDIAS),
     );
 
     const medias = querySnapshot.docs.map(async (doc) => {
