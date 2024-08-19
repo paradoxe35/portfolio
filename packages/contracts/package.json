@@ -2,10 +2,16 @@
   "name": "@repo/contracts",
   "version": "0.0.0",
   "private": true,
-  "files": [
-    "index.ts"
-  ],
-  "dependencies": {
-    "typescript": "^5.5.4"
+  "main": "./dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc -w",
+    "lint": "TIMING=1 eslint \"src/**/*.ts*\"",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.4",
+    "tsconfig": "^7.0.0"
   }
 }
