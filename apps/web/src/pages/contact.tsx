@@ -55,7 +55,7 @@ function Contact() {
             }
           </Alert>
         )}
-        {state.error.status && !state.succeeded && (
+        {!state.error.status && (
           <Alert success={false}>{state.error.message}</Alert>
         )}
         <form

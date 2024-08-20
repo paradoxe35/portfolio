@@ -17,8 +17,8 @@ export const useImageCacheLocalStorage = (
 
   useEffect(() => {
     if (!id) return;
-    const simage = localStorage.getItem(id);
-    if (simage) setImage(simage);
+    const cachedImage = localStorage.getItem(id);
+    if (cachedImage) setImage(cachedImage);
   }, [id]);
 
   return {
