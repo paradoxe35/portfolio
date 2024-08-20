@@ -138,7 +138,7 @@ function Skills({ skills: defaultSkills }: { skills: Skill[] }) {
 
   const splitter = useCallback(
     (acc: Skill[][], skill: Skill, index: number, array: Skill[]) => {
-      const limit = 4;
+      const limit = 3;
 
       if (index % limit === 0) {
         acc.push([skill]);
