@@ -8,13 +8,13 @@ import style from "@/styles/modules/contact.module.scss";
 import styleHome from "@/styles/modules/home.module.scss";
 import { throttle } from "@/utils/functions";
 import homeStyle from "@/styles/modules/home.module.scss";
-import emailjs from "@emailjs/browser";
 import { site_details } from "@/utils/constants";
 import Link from "next/link";
 import { GetStaticProps } from "next";
 import { entityToJSON } from "@/utils/entity-to-json";
 import { getResume } from "@/data/actions/resume";
 import { Resume } from "@repo/contracts";
+import { useFormBold } from "@/utils/hooks";
 
 const Alert: React.FC<PropsWithChildren<{ success?: boolean }>> = function ({
   children,
@@ -27,41 +27,10 @@ const Alert: React.FC<PropsWithChildren<{ success?: boolean }>> = function ({
   );
 };
 
+const FORMBOLD_FORM_ID = "3G55p";
+
 function Contact() {
-  const [submitted, setSubmitted] = useState<boolean>(false);
-
-  const [success, setSuccess] = useState<string>();
-  const [error, setError] = useState<string>();
-
-  function sendEmail(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-
-    setSubmitted(true);
-
-    emailjs
-      .sendForm(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID as string,
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID as string,
-        e.target as HTMLFormElement,
-        process.env.NEXT_PUBLIC_EMAILJS_USER_ID as string
-      )
-      .then((_) => {
-        setSuccess(
-          "Your message has been sent successfully, thank you again for showing me this interest."
-        );
-        const target = e.target as HTMLFormElement;
-        Array.from(target.querySelectorAll("[name]")).forEach((element) => {
-          if (
-            element instanceof HTMLInputElement ||
-            element instanceof HTMLTextAreaElement
-          ) {
-            element.value = "";
-          }
-        });
-      })
-      .catch((error) => setError(error.text))
-      .finally(() => setSubmitted(false));
-  }
+  const [state, handleSubmit] = useFormBold(FORMBOLD_FORM_ID);
 
   return (
     <div className={style.contact__page}>
@@ -78,40 +47,47 @@ function Contact() {
           the project so that i can properly assess the workload your project
           represents.`}
         </p>
-        {(success || error) && (
-          <Alert success={!!success}>{success || error}</Alert>
+
+        {state.succeeded && (
+          <Alert success={state.succeeded}>
+            {
+              "Your message has been sent successfully, thank you again for showing me this interest."
+            }
+          </Alert>
+        )}
+        {state.error.status && !state.succeeded && (
+          <Alert success={false}>{state.error.message}</Alert>
         )}
         <form
           data-aos="fade-up"
           data-aos-delay="300"
-          onSubmit={sendEmail}
+          onSubmit={handleSubmit}
           className={style.contact__form}
           autoComplete="off"
         >
-          <input type="hidden" name="to_name" value={site_details.full_name} />
           <div>
             <input
               type="text"
-              name="from_name"
+              name="name"
               placeholder="Name"
               required
               minLength={3}
             />
-            <input type="email" name="reply_to" placeholder="Email" required />
+            <input type="email" name="email" placeholder="Email" required />
           </div>
           <textarea
             name="message"
-            placeholder="Description"
+            placeholder="Your message..."
             required
-            minLength={20}
+            minLength={15}
           />
           <div>
             <button
-              disabled={submitted}
+              disabled={state.loading}
               className={`${styleHome.project__action} font-sans`}
               type="submit"
             >
-              {submitted ? "..." : "Get in touch"}
+              {state.loading ? "..." : "Get in touch"}
             </button>
           </div>
         </form>

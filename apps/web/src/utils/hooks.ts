@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 
 export const useImageCacheLocalStorage = (
   id: string | undefined,
-  defaultValue: string | undefined = undefined,
+  defaultValue: string | undefined = undefined
 ) => {
   const [image, setImage] = useState<string | undefined>(defaultValue);
 
@@ -12,7 +12,7 @@ export const useImageCacheLocalStorage = (
       localStorage.setItem(id, link);
       setImage(link);
     },
-    [id],
+    [id]
   );
 
   useEffect(() => {
@@ -27,9 +27,68 @@ export const useImageCacheLocalStorage = (
   };
 };
 
-// const { image, cacheImage } = useImageCacheLocalStorage(
-//   imageId,
-//   typeof storageSrc === "string"
-//     ? storageSrc
-//     : "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAwIiBoZWlnaHQ9IjEwMDAiPjwvc3ZnPg=="
-// );
+type ErrorState = {
+  message: string;
+  status: boolean;
+};
+
+export const useFormBold = (formId: string) => {
+  const [error, setError] = useState<ErrorState>({
+    message: "",
+    status: false,
+  });
+  const [succeeded, setSucceeded] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = (
+    e: React.FormEvent<HTMLFormElement>,
+    recaptchaRef?: { current: { getValue: () => any } }
+  ) => {
+    e.preventDefault();
+
+    // Getting the Form data
+    const data = new FormData(e.currentTarget);
+    //@ts-ignore
+    const value = Object.fromEntries(data.entries());
+    const finalData = { ...value };
+
+    // Conditionally add "g-recaptcha-response" if recaptchaRef is provided
+    if (recaptchaRef) {
+      finalData["g-recaptcha-response"] = recaptchaRef.current.getValue();
+    }
+
+    //check if the values is empty
+    //@ts-ignore
+    const isEmpty = !Object.values(value).some((x) => x !== null && x !== "");
+    if (isEmpty) {
+      return setError({
+        message: "Please fill the form!",
+        status: true,
+      });
+    }
+
+    setLoading(true);
+
+    // submit the form
+    fetch(`https://formbold.com/s/${formId}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(finalData),
+    })
+      .then((res) => {
+        setSucceeded(true);
+      })
+      .catch((error) => {
+        setError({
+          message: error.message,
+          status: true,
+        });
+        setSucceeded(false);
+      })
+      .finally(() => setLoading(false));
+  };
+
+  return [{ error, succeeded, loading }, handleSubmit] as const;
+};

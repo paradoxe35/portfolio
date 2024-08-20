@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@emailjs/browser": "^3.12.1",
     "@repo/contracts": "workspace:*",
     "@repo/firebase-config": "workspace:*",
     "@vercel/analytics": "^1.3.1",
