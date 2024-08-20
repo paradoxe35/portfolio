@@ -78,6 +78,10 @@ export const useFormBold = (formId: string) => {
       body: JSON.stringify(finalData),
     })
       .then((res) => {
+        setError({
+          message: "",
+          status: false,
+        });
         setSucceeded(true);
       })
       .catch((error) => {
