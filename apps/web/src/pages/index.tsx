@@ -138,14 +138,16 @@ function Skills({ skills: defaultSkills }: { skills: Skill[] }) {
 
   const splitter = useCallback(
     (acc: Skill[][], skill: Skill, index: number, array: Skill[]) => {
-      if (index % 4 === 0) {
+      const limit = 4;
+
+      if (index % limit === 0) {
         acc.push([skill]);
       } else {
         acc[acc.length - 1].push(skill);
       }
       if (index === array.length - 1) {
         const ls = acc[acc.length - 1];
-        new Array(4 - ls.length).fill(null).forEach((_, i) => {
+        new Array(limit - ls.length).fill(null).forEach((_, i) => {
           acc[acc.length - 1].push({ icons: [], name: "", id: String(i) });
         });
       }

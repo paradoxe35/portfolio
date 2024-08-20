@@ -16,17 +16,13 @@ export function getDefaultSkills(): Skill[] {
       icons: ["/laravel-symfony.svg"],
     },
     {
-      name: "Frontend VueJS, React, Svelte",
-      icons: ["/vue.svg", "/react.svg", "/svelte.svg"],
+      name: "Frontend React, VueJS",
+      icons: ["/react.svg", "/vue.svg"],
     },
     {
-      name: "NodeJs, Python",
-      icons: ["/node.svg", "/python.svg"],
+      name: "NodeJs, Golang",
+      icons: ["/node.svg", "/golang.svg"],
       className: "skills-icons-left",
-    },
-    {
-      name: "Flutter Mobile development",
-      icons: ["/flutter.svg"],
     },
   ].map((skill, i) => {
     return new Skill(String(i), skill.name, skill.icons);
