@@ -53,7 +53,7 @@ export const Card: React.FC<
       }`}
       {...props}
     >
-      {children}
+      <div className={style.card_content}>{children}</div>
     </div>
   );
 };
