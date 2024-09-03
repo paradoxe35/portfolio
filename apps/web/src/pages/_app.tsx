@@ -1,14 +1,12 @@
 import "@/styles/globals.scss";
 import { Analytics } from "@vercel/analytics/react";
 import type { AppProps /*, AppContext */ } from "next/app";
-import { FC, ReactElement, ReactNode, useEffect } from "react";
+import { ReactElement, ReactNode, useEffect } from "react";
 import "aos/dist/aos.css";
 import aos from "aos";
 
 import { NextPage } from "next";
-import { useRouter } from "next/router";
-
-const Noop: FC<{ children?: ReactNode }> = ({ children }) => <>{children}</>;
+import { ChatwootWidget } from "@/components/chatwoot";
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -28,17 +26,11 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
 
   return getLayout(
     <>
-      <Init />
       <Component {...pageProps} />
       <Analytics />
+      <ChatwootWidget />
     </>
   );
-}
-
-function Init() {
-  const route = useRouter();
-
-  return <>{!route.asPath.includes("/admin") && <></>}</>;
 }
 
 export default MyApp;
