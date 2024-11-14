@@ -1,4 +1,4 @@
-import { buildCollection, buildProperty } from "@firecms/core";
+import { buildCollection, buildProperty } from "firecms";
 import {
   FirebaseCollections,
   FirebaseFilePaths,
@@ -30,7 +30,6 @@ function randomizeFileName(fileName: string): string {
 const projectsCollection = buildCollection<EntityCollection<Project>>({
   name: "Projects",
   singularName: "Project",
-  id: FirebaseCollections.PROJECTS,
   path: FirebaseCollections.PROJECTS,
   textSearchEnabled: true,
   inlineEditing: false,
@@ -125,7 +124,6 @@ const skillsCollection = buildCollection<EntityCollection<Skill>>({
   name: "Skills",
   singularName: "skill",
   path: FirebaseCollections.SKILLS,
-  id: FirebaseCollections.SKILLS,
   textSearchEnabled: true,
   inlineEditing: false,
   icon: "school",
@@ -194,7 +192,6 @@ const resumeCollection = buildCollection<EntityCollection<Resume>>({
   name: "Resume (CV)",
   singularName: "Resume",
   path: FirebaseCollections.RESUME,
-  id: FirebaseCollections.RESUME,
   icon: "description",
   permissions: ({ authController }) => ({
     edit: true,
@@ -223,7 +220,6 @@ const mediaCollection = buildCollection<EntityCollection<Media>>({
   name: "Media files",
   singularName: "Media",
   path: FirebaseCollections.MEDIAS,
-  id: FirebaseCollections.MEDIAS,
   icon: "perm_media",
   permissions: ({ authController }) => ({
     edit: true,
