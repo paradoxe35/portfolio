@@ -5,7 +5,7 @@ export default defineConfig({
   build: {
     outDir: "./build",
     target: "ESNEXT",
-    sourcemap: true,
+    sourcemap: false,
   },
   optimizeDeps: {
     include: ["react/jsx-runtime"],
