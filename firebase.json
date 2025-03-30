@@ -9,8 +9,8 @@
     "cleanUrls": true,
     "rewrites": [
       {
-        "source": "/admin/**",
-        "destination": "/admin/[...index].html"
+        "source": "/**",
+        "destination": "/index.html"
       }
     ],
     "ignore": [
