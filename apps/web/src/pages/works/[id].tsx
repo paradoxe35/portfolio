@@ -12,7 +12,7 @@ import { Project } from "@repo/contracts";
 
 const Content = ({ project }: { project: Project }) => {
   return (
-    <section className="py-24 min-h-screen bg-gradient-to-br from-white via-neutral-1 to-neutral-2 dark:from-dark-bg dark:via-dark-bg-secondary dark:to-black">
+    <section className="pb-24 pt-16 min-h-screen bg-gradient-to-br from-white via-neutral-1 to-neutral-2 dark:from-dark-bg dark:via-dark-bg-secondary dark:to-black">
       <Container>
         {/* Project Header */}
         <div className="bg-white/10 dark:bg-white/5 backdrop-blur-md border border-white/20 dark:border-white/10 rounded-2xl p-8 mb-12">
@@ -54,7 +54,8 @@ const Content = ({ project }: { project: Project }) => {
 
         {/* Project Content */}
         <div className="bg-white/10 dark:bg-white/5 backdrop-blur-md border border-white/20 dark:border-white/10 rounded-2xl p-8">
-          <div className="prose prose-lg max-w-none dark:prose-invert 
+          <div
+            className="prose prose-lg max-w-none dark:prose-invert 
             prose-headings:text-neutral-9 dark:prose-headings:text-neutral-1 
             prose-p:text-neutral-7 dark:prose-p:text-neutral-3
             prose-a:text-primary dark:prose-a:text-primary-light prose-a:no-underline hover:prose-a:underline
@@ -63,7 +64,8 @@ const Content = ({ project }: { project: Project }) => {
             prose-pre:bg-neutral-9 dark:prose-pre:bg-neutral-8 prose-pre:border prose-pre:border-white/20 dark:prose-pre:border-white/10 prose-pre:rounded-xl
             prose-blockquote:border-l-primary dark:prose-blockquote:border-l-primary-light
             prose-img:rounded-xl prose-img:shadow-lg
-            prose-hr:border-white/20 dark:prose-hr:border-white/10">
+            prose-hr:border-white/20 dark:prose-hr:border-white/10"
+          >
             <RenderMarkdown>{project.content}</RenderMarkdown>
           </div>
         </div>

@@ -122,16 +122,18 @@ export function ProjectCarousel({ projects }: ProjectCarouselProps) {
         className={cn(
           "flex gap-8 overflow-x-auto scrollbar-hide scroll-smooth pb-4",
           "-mx-4 px-4 lg:mx-0 lg:px-0",
-          "animate-fadeUp"
+          "animate-fadeUp",
+          "items-stretch"
         )}
       >
         {projects.map((project, i) => (
           <div
             key={project.id}
             className={cn(
-              "flex-shrink-0 h-full",
+              "flex-shrink-0",
               "min-w-[320px] max-w-[320px]",
-              "md:min-w-[380px] md:max-w-[380px]"
+              "md:min-w-[380px] md:max-w-[380px]",
+              "min-h-[600px]"
             )}
           >
             <WorksItem project={project} aosDuration={(i + 1) * 100} />

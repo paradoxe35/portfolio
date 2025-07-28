@@ -11,17 +11,21 @@ import { entityToJSON } from "@/utils/entity-to-json";
 import { getResume } from "@/data/actions/resume";
 import { Resume } from "@repo/contracts";
 import { useFormBold } from "@/utils/hooks";
+import { cn } from "@/utils/cn";
 
 const Alert: React.FC<PropsWithChildren<{ success?: boolean }>> = function ({
   children,
   success,
 }) {
   return (
-    <div className={`p-4 rounded-lg mb-4 text-sm font-medium animate-fadeInUp ${
-      success 
-        ? "bg-green-100 dark:bg-green-900/20 text-green-800 dark:text-green-300 border border-green-200 dark:border-green-800" 
-        : "bg-red-100 dark:bg-red-900/20 text-red-800 dark:text-red-300 border border-red-200 dark:border-red-800"
-    }`}>
+    <div
+      className={cn(
+        "p-4 rounded-lg mb-4 text-sm font-medium animate-fadeInUp",
+        success
+          ? "bg-green-100 dark:bg-green-900/20 text-green-800 dark:text-green-300 border border-green-200 dark:border-green-800"
+          : "bg-red-100 dark:bg-red-900/20 text-red-800 dark:text-red-300 border border-red-200 dark:border-red-800"
+      )}
+    >
       {children}
     </div>
   );
@@ -39,7 +43,8 @@ function Contact() {
           Let's Build Something Amazing
         </h1>
         <p className="text-neutral-7 dark:text-neutral-4 mb-8 text-lg">
-          Have a project in mind? I'd love to hear about it. Send me the details and let's create something exceptional together.
+          Have a project in mind? I'd love to hear about it. Send me the details
+          and let's create something exceptional together.
         </p>
 
         {state.succeeded && (
@@ -50,11 +55,7 @@ function Contact() {
         {state.error.status && (
           <Alert success={false}>{state.error.message}</Alert>
         )}
-        <form
-          onSubmit={handleSubmit}
-          className="space-y-6"
-          autoComplete="off"
-        >
+        <form onSubmit={handleSubmit} className="space-y-6" autoComplete="off">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <input
               type="text"
@@ -64,11 +65,11 @@ function Contact() {
               minLength={3}
               className="w-full px-4 py-3 rounded-lg border border-white/20 dark:border-white/10 bg-white/50 dark:bg-white/5 backdrop-blur-sm text-neutral-9 dark:text-neutral-1 placeholder-neutral-5 dark:placeholder-neutral-5 focus:outline-none focus:border-primary dark:focus:border-primary-light focus:bg-white/70 dark:focus:bg-white/10 transition-all duration-300"
             />
-            <input 
-              type="email" 
-              name="email" 
-              placeholder="Email" 
-              required 
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              required
               className="w-full px-4 py-3 rounded-lg border border-white/20 dark:border-white/10 bg-white/50 dark:bg-white/5 backdrop-blur-sm text-neutral-9 dark:text-neutral-1 placeholder-neutral-5 dark:placeholder-neutral-5 focus:outline-none focus:border-primary dark:focus:border-primary-light focus:bg-white/70 dark:focus:bg-white/10 transition-all duration-300"
             />
           </div>
@@ -103,24 +104,18 @@ function About({ resume }: { resume: Resume | null }) {
       <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-purple-500/5 dark:bg-purple-400/10 rounded-full blur-3xl" />
       <Container>
         <div className="relative z-10">
-        <Titles
-          title="About"
-          subtitle="A bit about me"
-        />
-        <div className="prose prose-lg dark:prose-invert max-w-3xl mb-12">
-          <p className="text-neutral-7 dark:text-neutral-3 leading-relaxed">
-            I'm {site_details.full_name}, a passionate Software Engineer with {new Date().getFullYear() - 2017} years of experience 
-            crafting digital solutions. My expertise spans across full-stack development, 
-            with a particular focus on building scalable web applications using modern technologies.
-          </p>
-          <p className="text-neutral-7 dark:text-neutral-3 leading-relaxed mt-4">
-            From React and Next.js on the frontend to Node.js and Go on the backend, 
-            I bring ideas to life with clean, efficient code. I'm also deeply interested in 
-            DevOps practices and cloud infrastructure, ensuring applications are not just 
-            functional but also performant and reliable.
-          </p>
-        </div>
-        <ResumeComponent resume={resume} />
+          <Titles title="About" subtitle="A bit about me" />
+          <div className="prose prose-lg dark:prose-invert max-w-3xl mb-12">
+            <p className="text-neutral-7 dark:text-neutral-3 leading-relaxed">
+              I'm {site_details.full_name}, a Software Engineer with{" "}
+              {new Date().getFullYear() - 2017} years of hands-on experience
+              building web applications. My journey began in 2017 as a
+              self-taught developer, and since then, I've honed my skills across
+              the full stack, working with technologies like PHP, Laravel,
+              React.js, Next.js, Node.js, and Go.
+            </p>
+          </div>
+          <ResumeComponent resume={resume} />
         </div>
       </Container>
     </section>
@@ -169,13 +164,19 @@ export default function ContactPage({ resume }: { resume: Resume | null }) {
         <title>{"Contact - Portfolio"}</title>
       </Head>
       <main>
-        <Header title="Contact" subtitle="Let's discuss your next project or collaboration opportunity" />
+        <Header
+          title="Contact"
+          subtitle="Let's discuss your next project or collaboration opportunity"
+        />
         <section className="py-24 min-h-[60vh] bg-gradient-to-b from-neutral-1 via-white to-neutral-1 dark:from-dark-bg dark:via-dark-bg-secondary dark:to-dark-bg relative">
           {/* Background pattern */}
           <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.05]">
-            <div className="absolute inset-0" style={{
-              backgroundImage: `repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(0,0,0,.05) 35px, rgba(0,0,0,.05) 70px)`,
-            }} />
+            <div
+              className="absolute inset-0"
+              style={{
+                backgroundImage: `repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(0,0,0,.05) 35px, rgba(0,0,0,.05) 70px)`,
+              }}
+            />
           </div>
           <Container>
             <div className="relative z-10">

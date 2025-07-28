@@ -17,7 +17,7 @@ export default function WorksItem({ aosDuration = 0, project }: Work) {
         "border border-white/20 dark:border-white/10",
         "hover:border-primary/50 dark:hover:border-primary-light/50",
         "shadow-lg hover:shadow-2xl",
-        "hover:-translate-y-2 hover:bg-white/20 dark:hover:bg-white/10",
+        "hover:bg-white/20 dark:hover:bg-white/10",
         "transition-all duration-300"
       )}
     >
@@ -71,6 +71,7 @@ export default function WorksItem({ aosDuration = 0, project }: Work) {
           href={`/works/${project.id}`}
           className={cn(
             "text-2xl my-3 font-semibold",
+            "text-neutral-9 dark:text-neutral-1",
             "transition-colors",
             "hover:text-primary dark:hover:text-primary-light"
           )}
@@ -80,7 +81,8 @@ export default function WorksItem({ aosDuration = 0, project }: Work) {
         <p
           className={cn(
             "mb-12",
-            "text-neutral-7 dark:text-neutral-4"
+            "text-neutral-7 dark:text-neutral-4",
+            "line-clamp-3"
           )}
         >
           {project.description}
@@ -89,22 +91,23 @@ export default function WorksItem({ aosDuration = 0, project }: Work) {
         <Link
           href={`/works/${project.id}`}
           className={cn(
-            "mt-auto inline-flex items-center group",
+            "mt-auto inline-flex items-center group/btn",
             "text-xs leading-8 font-semibold uppercase",
-            "px-8 py-2 rounded-sm",
+            "px-8 py-2 rounded-lg",
             "text-primary dark:text-primary-light",
             "border border-primary/75 dark:border-primary-light/75",
-            "hover:text-neutral-9 dark:hover:text-neutral-1",
+            "hover:text-white dark:hover:text-neutral-9",
             "hover:bg-primary dark:hover:bg-primary-light",
-            "transition-all"
+            "hover:border-primary dark:hover:border-primary-light",
+            "transition-all duration-300"
           )}
         >
           Find out more
           <svg
             className={cn(
               "w-3 h-3 inline-block -ml-1",
-              "opacity-0 group-hover:opacity-100",
-              "group-hover:ml-1 group-hover:translate-x-1",
+              "opacity-0 group-hover/btn:opacity-100",
+              "group-hover/btn:ml-1 group-hover/btn:translate-x-1",
               "transition-all duration-500"
             )}
             xmlns="http://www.w3.org/2000/svg"
