@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { site_details } from "@/utils/constants";
 
 interface ProfileAvatarProps {
@@ -29,14 +30,18 @@ export function ProfileAvatar({
     <div
       data-aos="zoom-in"
       data-aos-delay={delay}
-      className={`${sizeClasses[size]} rounded-2xl bg-white/10 dark:bg-white/5 backdrop-blur-md border border-white/20 dark:border-white/10 p-4 flex items-center justify-center ${className}`}
+      className={`${sizeClasses[size]} rounded-full bg-white/10 dark:bg-white/5 backdrop-blur-md border border-white/20 dark:border-white/10 p-4 flex items-center justify-center ${className}`}
     >
-      <div className="w-full h-full rounded-xl bg-white/10 dark:bg-white/5 backdrop-blur-md border border-white/20 dark:border-white/10 flex items-center justify-center overflow-hidden">
+      <div className="w-full h-full rounded-full bg-white/10 dark:bg-white/5 backdrop-blur-md border border-white/20 dark:border-white/10 flex items-center justify-center overflow-hidden">
         {/* Try to load image first, fallback to initials */}
-        <img
-          src="/paradoxe-ngwasi.png"
+        <Image
+          src="/paradoxe-ngwasi-2.jpg"
           alt={site_details.full_name}
-          className="w-full h-full object-cover object-top scale-125 hover:scale-150 transition-transform duration-500"
+          width={300}
+          height={300}
+          priority
+          quality={85}
+          className="w-full h-full object-cover object-top scale-130 hover:scale-135 transition-transform duration-500"
           onError={(e) => {
             // Fallback to initials if image fails to load
             const target = e.target as HTMLImageElement;
