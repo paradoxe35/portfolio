@@ -17,8 +17,8 @@ export function ProfileAvatar({
 }: ProfileAvatarProps) {
   const sizeClasses = {
     sm: "w-16 h-16",
-    md: "w-24 h-24", 
-    lg: "w-32 h-32"
+    md: "w-20 h-20 md:w-24 md:h-24", 
+    lg: "w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32"
   };
 
   const innerSizeClasses = {
@@ -33,7 +33,7 @@ export function ProfileAvatar({
         sizeClasses[size],
         "rounded-full bg-white/10 dark:bg-white/5 backdrop-blur-md",
         "border border-white/20 dark:border-white/10",
-        "p-4 flex items-center justify-center",
+        "p-3 md:p-4 flex items-center justify-center",
         "animate-zoomIn",
         {
           "animation-delay-300": delay === 300,

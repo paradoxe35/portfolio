@@ -117,16 +117,16 @@ function Hero() {
               </div>
 
               {/* Action Buttons */}
-              <div className="flex items-center gap-4 animate-fadeUp animation-delay-200">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 animate-fadeUp animation-delay-200">
                 <a
                   href="/contact"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-white/20 dark:bg-white/10 backdrop-blur-md border border-white/30 dark:border-white/20 text-neutral-9 dark:text-neutral-1 font-medium rounded-xl hover:bg-white/30 dark:hover:bg-white/20 transition-all duration-300 hover:scale-105"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white/20 dark:bg-white/10 backdrop-blur-md border border-white/30 dark:border-white/20 text-neutral-9 dark:text-neutral-1 font-medium rounded-xl hover:bg-white/30 dark:hover:bg-white/20 transition-all duration-300 hover:scale-105 w-full sm:w-auto"
                 >
                   Contact Me
                 </a>
                 <a
                   href="/works"
-                  className="inline-flex items-center gap-2 px-6 py-3 text-neutral-7 dark:text-neutral-3 font-medium hover:text-primary dark:hover:text-primary-light transition-colors"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 text-neutral-7 dark:text-neutral-3 font-medium hover:text-primary dark:hover:text-primary-light transition-colors w-full sm:w-auto"
                 >
                   View Projects
                   <svg
@@ -148,7 +148,7 @@ function Hero() {
 
             {/* Right Content - Tech Stack Icons with Centered Avatar */}
             <div className="relative">
-              <div className="relative h-[500px] lg:h-[600px] flex items-center justify-center">
+              <div className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center">
                 {/* Centered Profile Avatar */}
                 <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
                   <ProfileAvatar size="lg" delay={300} />
@@ -189,24 +189,31 @@ function Hero() {
                 ].map((tech, i) => (
                   <div
                     key={tech.alt}
-                    className={cn(
-                      "group absolute p-4 rounded-2xl bg-white/10 dark:bg-white/5",
-                      "backdrop-blur-md border border-white/20 dark:border-white/10",
-                      "transition-all duration-300 hover:scale-110 animate-float cursor-pointer",
-                      "animate-zoomIn",
-                      tech.delay === 50 ? "animation-delay-100" :
-                      tech.delay === 100 ? "animation-delay-100" :
-                      tech.delay === 150 ? "animation-delay-200" :
-                      tech.delay === 200 ? "animation-delay-200" :
-                      ""
-                    )}
-                    style={tech.position}
+                    className="absolute animate-float"
+                    style={{
+                      ...tech.position,
+                      animationDelay: `${i * 0.8}s`
+                    }}
                   >
-                    <img
-                      src={tech.src}
-                      alt={tech.alt}
-                      className="w-12 h-12 opacity-80 hover:opacity-100 transition-opacity"
-                    />
+                    <div
+                      className={cn(
+                        "group p-3 md:p-4 rounded-2xl bg-white/10 dark:bg-white/5",
+                        "backdrop-blur-md border border-white/20 dark:border-white/10",
+                        "transition-all duration-300 hover:scale-110 cursor-pointer",
+                        "animate-zoomIn",
+                        tech.delay === 50 ? "animation-delay-100" :
+                        tech.delay === 100 ? "animation-delay-100" :
+                        tech.delay === 150 ? "animation-delay-200" :
+                        tech.delay === 200 ? "animation-delay-200" :
+                        ""
+                      )}
+                    >
+                      <img
+                        src={tech.src}
+                        alt={tech.alt}
+                        className="w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 opacity-80 hover:opacity-100 transition-opacity"
+                      />
+                    </div>
                   </div>
                 ))}
               </div>

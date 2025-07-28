@@ -1,14 +1,13 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
-
 /* Custom theme configuration for Tailwind CSS v4 */
 @theme {
   /* Colors - Existing + Modern additions */
   --color-primary: #8a693b;
   --color-primary-dark: #6b5530;
   --color-primary-light: #a67f4a;
-  
+
   /* Neutral colors */
   --color-neutral-0: #ffffff;
   --color-neutral-1: #f5f5f5;
@@ -21,7 +20,7 @@
   --color-neutral-8: #444444;
   --color-neutral-9: #222222;
   --color-neutral-10: #000000;
-  
+
   /* Modern accent colors inspired by reference */
   --color-purple-400: #a855f7;
   --color-purple-500: #9333ea;
@@ -29,13 +28,13 @@
   --color-pink-400: #f472b6;
   --color-pink-500: #ec4899;
   --color-pink-600: #db2777;
-  
+
   /* Dark theme colors */
   --color-dark-bg: #0a0a0a;
   --color-dark-bg-secondary: #1a0f1f;
   --color-dark-surface: rgba(255, 255, 255, 0.05);
   --color-dark-border: rgba(255, 255, 255, 0.1);
-  
+
   /* Semantic colors */
   --color-text: var(--color-neutral-9);
   --color-text-light: var(--color-neutral-7);
@@ -44,11 +43,15 @@
   --color-bg-alt: var(--color-neutral-1);
   --color-border: var(--color-neutral-3);
   --color-border-hover: var(--color-primary);
-  
+
   /* Typography */
-  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
-  
+  --font-sans:
+    system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  --font-mono:
+    ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo,
+    monospace;
+
   /* Font sizes */
   --font-size-xs: 0.75rem;
   --font-size-sm: 0.875rem;
@@ -62,7 +65,7 @@
   --font-size-6xl: 3.75rem;
   --font-size-7xl: 4.5rem;
   --font-size-8xl: 6rem;
-  
+
   /* Spacing */
   --spacing-0: 0;
   --spacing-1: 0.25rem;
@@ -79,7 +82,7 @@
   --spacing-24: 6rem;
   --spacing-32: 8rem;
   --spacing-section: 7.5rem;
-  
+
   /* Breakpoints */
   --breakpoint-sm: 640px;
   --breakpoint-md: 768px;
@@ -87,7 +90,7 @@
   --breakpoint-xl: 1280px;
   --breakpoint-2xl: 1536px;
   --breakpoint-3xl: 1920px;
-  
+
   /* Border radius */
   --radius-sm: 0.125rem;
   --radius-base: 0.25rem;
@@ -96,23 +99,27 @@
   --radius-xl: 0.75rem;
   --radius-2xl: 1rem;
   --radius-full: 9999px;
-  
+
   /* Shadows */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-base: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  --shadow-base:
+    0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+  --shadow-md:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --shadow-lg:
+    0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  --shadow-xl:
+    0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
   --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.05);
-  
+
   /* Animations */
   --ease-linear: linear;
   --ease-in: cubic-bezier(0.4, 0, 1, 1);
   --ease-out: cubic-bezier(0, 0, 0.2, 1);
   --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
   --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
-  
+
   /* Z-index */
   --z-0: 0;
   --z-10: 10;
@@ -126,7 +133,7 @@
 @utility container-custom {
   max-width: 1200px;
   margin-inline: auto;
-  padding-inline: 1rem;
+  padding-inline: 1.5rem;
 }
 
 @utility glass {
@@ -136,18 +143,30 @@
 }
 
 @utility gradient-text {
-  background: linear-gradient(135deg, var(--color-purple-500) 0%, var(--color-pink-500) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--color-purple-500) 0%,
+    var(--color-pink-500) 100%
+  );
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 @utility gradient-primary {
-  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--color-primary) 0%,
+    var(--color-primary-dark) 100%
+  );
 }
 
 @utility gradient-purple-pink {
-  background: linear-gradient(135deg, var(--color-purple-500) 0%, var(--color-pink-500) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--color-purple-500) 0%,
+    var(--color-pink-500) 100%
+  );
 }
 
 /* Base styles */
@@ -216,7 +235,8 @@
 
 /* Animations */
 @keyframes float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0) translateZ(0);
   }
   50% {
@@ -371,22 +391,59 @@
 }
 
 /* Animation delays */
-.animation-delay-100 { animation-delay: 100ms; animation-fill-mode: both; }
-.animation-delay-200 { animation-delay: 200ms; animation-fill-mode: both; }
-.animation-delay-300 { animation-delay: 300ms; animation-fill-mode: both; }
-.animation-delay-400 { animation-delay: 400ms; animation-fill-mode: both; }
-.animation-delay-500 { animation-delay: 500ms; animation-fill-mode: both; }
-.animation-delay-600 { animation-delay: 600ms; animation-fill-mode: both; }
-.animation-delay-700 { animation-delay: 700ms; animation-fill-mode: both; }
-.animation-delay-800 { animation-delay: 800ms; animation-fill-mode: both; }
-.animation-delay-900 { animation-delay: 900ms; animation-fill-mode: both; }
+.animation-delay-100 {
+  animation-delay: 100ms;
+  animation-fill-mode: both;
+}
+.animation-delay-200 {
+  animation-delay: 200ms;
+  animation-fill-mode: both;
+}
+.animation-delay-300 {
+  animation-delay: 300ms;
+  animation-fill-mode: both;
+}
+.animation-delay-400 {
+  animation-delay: 400ms;
+  animation-fill-mode: both;
+}
+.animation-delay-500 {
+  animation-delay: 500ms;
+  animation-fill-mode: both;
+}
+.animation-delay-600 {
+  animation-delay: 600ms;
+  animation-fill-mode: both;
+}
+.animation-delay-700 {
+  animation-delay: 700ms;
+  animation-fill-mode: both;
+}
+.animation-delay-800 {
+  animation-delay: 800ms;
+  animation-fill-mode: both;
+}
+.animation-delay-900 {
+  animation-delay: 900ms;
+  animation-fill-mode: both;
+}
 
 /* Stagger float animations for tech icons */
-.animate-float:nth-child(1) { animation-delay: 0s; }
-.animate-float:nth-child(2) { animation-delay: 0.2s; }
-.animate-float:nth-child(3) { animation-delay: 0.4s; }
-.animate-float:nth-child(4) { animation-delay: 0.6s; }
-.animate-float:nth-child(5) { animation-delay: 0.8s; }
+.animate-float:nth-child(1) {
+  animation-delay: 0s;
+}
+.animate-float:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.animate-float:nth-child(3) {
+  animation-delay: 0.4s;
+}
+.animate-float:nth-child(4) {
+  animation-delay: 0.6s;
+}
+.animate-float:nth-child(5) {
+  animation-delay: 0.8s;
+}
 
 /* Respect reduced motion preferences */
 @media (prefers-reduced-motion: reduce) {
@@ -407,12 +464,12 @@
 
 /* Utility classes */
 .scrollbar-hide {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 .scrollbar-hide::-webkit-scrollbar {
-  display: none;  /* Chrome, Safari and Opera */
+  display: none; /* Chrome, Safari and Opera */
 }
 
 /* Remove these when all SCSS files are migrated */
