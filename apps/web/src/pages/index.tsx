@@ -27,7 +27,7 @@ function Works({ projects }: { projects: Project[] }) {
   }, []);
 
   return (
-    <section className="py-[120px] pb-[90px] bg-gradient-to-br from-white to-neutral-1 dark:from-dark-bg-secondary dark:to-dark-bg">
+    <section className="py-16 sm:py-20 md:py-[120px] pb-12 sm:pb-16 md:pb-[90px] bg-gradient-to-br from-white to-neutral-1 dark:from-dark-bg-secondary dark:to-dark-bg">
       <Container>
         <Titles title="Portfolio" subtitle="Selected Works" />
         <div className="mt-8">
@@ -54,7 +54,7 @@ function Skills({ skills: defaultSkills }: { skills: Skill[] }) {
   return (
     <section
       id="skills"
-      className="py-[120px] pb-[90px] scroll-mt-20 bg-gradient-to-br from-neutral-1 to-white dark:from-dark-bg dark:to-dark-bg-secondary"
+      className="py-16 sm:py-20 md:py-[120px] pb-12 sm:pb-16 md:pb-[90px] scroll-mt-20 bg-gradient-to-br from-neutral-1 to-white dark:from-dark-bg dark:to-dark-bg-secondary"
     >
       <Container>
         <Titles title="What I can do" subtitle="Building Digital Experiences" />

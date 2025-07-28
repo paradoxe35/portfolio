@@ -7,7 +7,7 @@ export default function Socials() {
   return (
     <section
       className={cn(
-        "py-[120px] pb-[90px]",
+        "py-16 sm:py-20 md:py-[120px] pb-12 sm:pb-16 md:pb-[90px]",
         "bg-gradient-to-br from-white to-neutral-1",
         "dark:from-dark-bg-secondary dark:to-dark-bg"
       )}
@@ -18,7 +18,7 @@ export default function Socials() {
           <Link
             href="https://github.com/paradoxe35"
             className={cn(
-              "group block p-8 rounded-2xl relative overflow-hidden",
+              "group block p-6 sm:p-8 rounded-2xl relative overflow-hidden",
               "bg-white/10 dark:bg-white/5 backdrop-blur-md",
               "border border-white/20 dark:border-white/10",
               "hover:border-white/40 dark:hover:border-white/20",
@@ -69,7 +69,7 @@ export default function Socials() {
           <Link
             href="https://www.linkedin.com/in/paradoxe-ngwasi-476727130"
             className={cn(
-              "group block p-8 rounded-2xl relative overflow-hidden",
+              "group block p-6 sm:p-8 rounded-2xl relative overflow-hidden",
               "bg-white/10 dark:bg-white/5 backdrop-blur-md",
               "border border-white/20 dark:border-white/10",
               "hover:border-white/40 dark:hover:border-white/20",
@@ -120,7 +120,7 @@ export default function Socials() {
           <Link
             href="https://twitter.com/paradoxe_ng"
             className={cn(
-              "group block p-8 rounded-2xl relative overflow-hidden",
+              "group block p-6 sm:p-8 rounded-2xl relative overflow-hidden",
               "bg-white/10 dark:bg-white/5 backdrop-blur-md",
               "border border-white/20 dark:border-white/10",
               "hover:border-white/40 dark:hover:border-white/20",
