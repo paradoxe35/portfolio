@@ -43,7 +43,13 @@ export function SkillCard({ skills }: { skills: Skill[] }) {
               <StorageImg
                 src={skill.icons[0]}
                 alt={skill.name}
-                className="block mb-4 w-auto h-[36px] sm:h-[40px] md:h-[48px] max-w-full filter brightness-0 dark:brightness-100 dark:invert opacity-70 group-hover:opacity-100 transition-opacity"
+                className={cn(
+                  "block mb-4 w-auto max-w-full",
+                  "h-[36px] sm:h-[40px] md:h-[48px]",
+                  "filter brightness-0 dark:brightness-100 dark:invert",
+                  "opacity-70 group-hover:opacity-100",
+                  "transition-opacity"
+                )}
               />
             ) : (
               <div className="flex gap-2 mb-4">
@@ -53,13 +59,24 @@ export function SkillCard({ skills }: { skills: Skill[] }) {
                       key={img}
                       src={img}
                       alt={skill.name}
-                      className="block w-auto h-[36px] sm:h-[40px] md:h-[48px] max-w-full filter brightness-0 dark:brightness-100 dark:invert opacity-70 group-hover:opacity-100 transition-opacity"
+                      className={cn(
+                        "block w-auto max-w-full",
+                        "h-[36px] sm:h-[40px] md:h-[48px]",
+                        "filter brightness-0 dark:brightness-100 dark:invert",
+                        "opacity-70 group-hover:opacity-100",
+                        "transition-opacity"
+                      )}
                     />
                   );
                 })}
               </div>
             )}
-            <h3 className="text-sm sm:text-base font-medium text-neutral-8 dark:text-neutral-2 mb-0 group-hover:text-primary dark:group-hover:text-primary-light transition-colors">
+            <h3 className={cn(
+              "text-sm sm:text-base font-medium mb-0",
+              "text-neutral-8 dark:text-neutral-2",
+              "group-hover:text-primary dark:group-hover:text-primary-light",
+              "transition-colors"
+            )}>
               {skill.name}
             </h3>
           </div>

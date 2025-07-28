@@ -159,31 +159,31 @@ function Hero() {
                   {
                     src: "/laravel.svg",
                     alt: "Laravel",
-                    delay: 100,
+                    delay: 0,
                     position: { top: "20%", left: "10%" },
                   },
                   {
                     src: "/vue.svg",
                     alt: "VueJs",
-                    delay: 200,
+                    delay: 50,
                     position: { top: "15%", right: "15%" },
                   },
                   {
                     src: "/react.svg",
                     alt: "React",
-                    delay: 300,
+                    delay: 100,
                     position: { top: "60%", left: "5%" },
                   },
                   {
                     src: "/node.svg",
                     alt: "NodeJs",
-                    delay: 400,
+                    delay: 150,
                     position: { bottom: "20%", right: "20%" },
                   },
                   {
                     src: "/flutter.svg",
                     alt: "Flutter",
-                    delay: 500,
+                    delay: 200,
                     position: { top: "40%", right: "10%" },
                   },
                 ].map((tech, i) => (
@@ -194,13 +194,11 @@ function Hero() {
                       "backdrop-blur-md border border-white/20 dark:border-white/10",
                       "transition-all duration-300 hover:scale-110 animate-float cursor-pointer",
                       "animate-zoomIn",
-                      {
-                        "animation-delay-100": tech.delay === 100,
-                        "animation-delay-200": tech.delay === 200,
-                        "animation-delay-300": tech.delay === 300,
-                        "animation-delay-400": tech.delay === 400,
-                        "animation-delay-500": tech.delay === 500,
-                      }
+                      tech.delay === 50 ? "animation-delay-100" :
+                      tech.delay === 100 ? "animation-delay-100" :
+                      tech.delay === 150 ? "animation-delay-200" :
+                      tech.delay === 200 ? "animation-delay-200" :
+                      ""
                     )}
                     style={tech.position}
                   >

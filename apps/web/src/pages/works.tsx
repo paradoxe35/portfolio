@@ -59,7 +59,7 @@ export default function Works({ projects }: StaticProps) {
       <main>
         <Header
           title="Works"
-          subtitle="A collection of projects showcasing my expertise in web development, from modern web applications to scalable backend solutions"
+          subtitle="Projects that showcase what I can build"
         />
         <WorksItems projects={projects} />
       </main>

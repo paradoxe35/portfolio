@@ -138,7 +138,7 @@ Define custom utilities for complex patterns:
 
 ```css
 @utility container-custom {
-  max-width: 1100px;
+  max-width: 1200px;
   margin-inline: auto;
   padding-inline: 1rem;
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { cn } from "@/utils/cn";
 
 export function ThemeToggle() {
   const [theme, setTheme] = useState<"light" | "dark" | null>(null);
@@ -30,7 +31,13 @@ export function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="fixed bottom-6 right-6 sm:bottom-8 sm:right-8 p-3 rounded-full bg-white dark:bg-neutral-8 shadow-lg border border-neutral-3/20 dark:border-neutral-7/20 transition-all duration-300 hover:scale-110 z-50"
+      className={cn(
+        "fixed bottom-6 right-6 sm:bottom-8 sm:right-8",
+        "p-3 rounded-full z-50",
+        "bg-white dark:bg-neutral-8",
+        "shadow-lg border border-neutral-3/20 dark:border-neutral-7/20",
+        "transition-all duration-300 hover:scale-110"
+      )}
       aria-label="Toggle theme"
     >
       {theme === "light" ? (
