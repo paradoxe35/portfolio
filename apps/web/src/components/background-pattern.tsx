@@ -5,27 +5,12 @@ interface BackgroundPatternProps {
   className?: string;
 }
 
-export function BackgroundPattern({ 
-  variant = "diagonal", 
-  className 
+export function BackgroundPattern({
+  variant = "diagonal",
+  className,
 }: BackgroundPatternProps) {
   const patterns = {
-    diagonal: `
-      repeating-linear-gradient(
-        45deg,
-        transparent,
-        transparent 40px,
-        rgba(138, 105, 59, 0.02) 40px,
-        rgba(138, 105, 59, 0.02) 80px
-      ),
-      repeating-linear-gradient(
-        -45deg,
-        transparent,
-        transparent 40px,
-        rgba(139, 92, 246, 0.015) 40px,
-        rgba(139, 92, 246, 0.015) 80px
-      )
-    `,
+    diagonal: `repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(0,0,0,.05) 35px, rgba(0,0,0,.05) 70px)`,
     grid: `
       repeating-linear-gradient(
         0deg,
@@ -60,7 +45,7 @@ export function BackgroundPattern({
       radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.02) 0%, transparent 50%),
       radial-gradient(circle at 40% 40%, rgba(236, 72, 153, 0.01) 0%, transparent 50%),
       radial-gradient(circle at 60% 60%, rgba(138, 105, 59, 0.01) 0%, transparent 50%)
-    `
+    `,
   };
 
   return (
@@ -76,10 +61,15 @@ export function BackgroundPattern({
         className="absolute inset-0"
         style={{
           backgroundImage: patterns[variant],
-          backgroundSize: variant === "dots" ? "40px 40px, 40px 40px" : variant === "mesh" ? "200px 200px" : undefined,
+          backgroundSize:
+            variant === "dots"
+              ? "40px 40px, 40px 40px"
+              : variant === "mesh"
+                ? "200px 200px"
+                : undefined,
         }}
       />
-      
+
       {/* Additional gradient overlay for depth */}
       <div
         className={cn(
