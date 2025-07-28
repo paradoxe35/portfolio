@@ -9,14 +9,14 @@ export default function Footer() {
         "py-12",
         "bg-gradient-to-t from-neutral-2 to-neutral-1",
         "dark:from-dark-bg-secondary dark:to-dark-bg",
-        "border-t border-neutral-3/30 dark:border-white/5",
+        "border-t border-white/10 dark:border-white/5"
       )}
     >
       <Container>
         <div
           className={cn(
             "text-center text-sm font-medium",
-            "text-neutral-6 dark:text-neutral-4",
+            "text-neutral-6 dark:text-neutral-4"
           )}
         >
           Designed by{" "}
@@ -25,7 +25,7 @@ export default function Footer() {
             target="_blank"
             className={cn(
               "text-primary dark:text-primary-light",
-              "hover:underline transition-colors",
+              "hover:underline transition-colors"
             )}
           >
             @PNG_

@@ -101,7 +101,7 @@ function Hero() {
               <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 animate-fadeUp animation-delay-200">
                 <a
                   href="/contact"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white/80 dark:bg-white/10 backdrop-blur-md border-2 border-white/60 dark:border-white/20 text-neutral-9 dark:text-neutral-1 font-medium rounded-xl hover:bg-white/90 dark:hover:bg-white/20 hover:border-white/80 dark:hover:border-primary-light/50 transition-all duration-300 hover:scale-105 w-full sm:w-auto shadow-lg shadow-neutral-9/10 dark:shadow-none"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white/20 dark:bg-white/10 backdrop-blur-md border border-white/30 dark:border-white/20 text-neutral-9 dark:text-neutral-1 font-medium rounded-xl hover:bg-white/30 dark:hover:bg-white/20 transition-all duration-300 hover:scale-105 w-full sm:w-auto"
                 >
                   Contact Me
                 </a>
@@ -178,14 +178,9 @@ function Hero() {
                   >
                     <div
                       className={cn(
-                        "group p-3 md:p-4 rounded-2xl",
-                        "bg-white/70 dark:bg-white/5 backdrop-blur-md",
-                        "border-2 border-white/50 dark:border-white/10",
-                        "shadow-lg shadow-neutral-9/10 dark:shadow-none",
+                        "group p-3 md:p-4 rounded-2xl bg-white/10 dark:bg-white/5",
+                        "backdrop-blur-md border border-white/20 dark:border-white/10",
                         "transition-all duration-300 hover:scale-110 cursor-pointer",
-                        "hover:bg-white/80 dark:hover:bg-white/10",
-                        "hover:border-white/70 dark:hover:border-primary-light/40",
-                        "hover:shadow-xl hover:shadow-neutral-9/15 dark:hover:shadow-none",
                         "animate-zoomIn",
                         tech.delay === 50 && "animation-delay-100",
                         tech.delay === 100 && "animation-delay-100",
