@@ -72,13 +72,13 @@ function Hero() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_25%,_theme(colors.primary.DEFAULT)_0%,_transparent_50%),_radial-gradient(circle_at_75%_75%,_theme(colors.purple.500)_0%,_transparent_50%)]" />
       </div>
 
-      <div className="relative z-10 min-h-screen flex items-center pt-32 pb-16">
+      <div className="relative z-10 min-h-screen flex items-center pt-32 pb-10 sm:pb-16">
         <Container>
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12 items-center">
             {/* Left Content */}
-            <div className="space-y-8">
+            <div className="space-y-6 sm:space-y-8">
               {/* Introduction */}
-              <div className="space-y-4">
+              <div className="space-y-3 sm:space-y-4">
                 <div className="text-lg text-neutral-7 dark:text-neutral-3 animate-fadeUp">
                   {"Hey, I'm "}
                   <span className="text-primary dark:text-primary-light font-semibold">

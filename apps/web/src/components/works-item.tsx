@@ -53,7 +53,12 @@ export default function WorksItem({ aosDuration = 0, project }: Work) {
         </div>
       </Link>
 
-      <div className={cn("p-10 h-full", "flex flex-1 flex-col items-start")}>
+      <div
+        className={cn(
+          "p-5 sm:p-8 md:p-10 h-full",
+          "flex flex-1 flex-col items-start"
+        )}
+      >
         <div
           className={cn(
             "font-semibold uppercase text-xs",
@@ -88,7 +93,7 @@ export default function WorksItem({ aosDuration = 0, project }: Work) {
           className={cn(
             "mt-auto inline-flex items-center group/btn",
             "text-xs leading-8 font-semibold uppercase",
-            "px-8 py-2 rounded-lg",
+            "px-6 sm:px-8 py-2 rounded-lg",
             "text-primary dark:text-primary-light",
             "border border-primary/75 dark:border-primary-light/75",
             "hover:text-white dark:hover:text-neutral-9",
