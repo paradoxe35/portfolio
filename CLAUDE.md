@@ -1,11 +1,13 @@
 # Portfolio Refactoring Plan: SCSS to Tailwind CSS v4
 
 ## Overview
+
 This document outlines the comprehensive plan to modernize the portfolio website by migrating from SCSS to Tailwind CSS v4, incorporating modern UI enhancements inspired by the reference design while maintaining the core visual identity.
 
 ## Current State Analysis
 
 ### Project Structure
+
 - **Monorepo**: Using Turborepo for managing multiple apps
 - **Package Manager**: PNPM (v8.15.6)
 - **Node Version**: >=20
@@ -15,6 +17,7 @@ This document outlines the comprehensive plan to modernize the portfolio website
 - **Packages**: Shared packages directory
 
 ### Technology Stack
+
 - **Framework**: Next.js with TypeScript
 - **Build Tool**: Turborepo
 - **Package Manager**: PNPM
@@ -24,6 +27,7 @@ This document outlines the comprehensive plan to modernize the portfolio website
 - **Responsive**: Custom media query mixins
 
 ### Design System
+
 - **Primary Color**: `#8a693b` (brown/gold)
 - **Font**: Sans-serif system font
 - **Background**: Light gray (`#f5f5f5`) with white cards
@@ -32,6 +36,7 @@ This document outlines the comprehensive plan to modernize the portfolio website
 - **Typography**: Large hero text (90px), responsive scaling
 
 ### Key UI Components
+
 1. **Navigation**: Minimal header with logo and menu
 2. **Hero Section**: Full-height with background image, animated tech stack icons
 3. **Skills Section**: Grid-based cards with service logos
@@ -41,6 +46,7 @@ This document outlines the comprehensive plan to modernize the portfolio website
 ## Migration Goals
 
 ### Primary Objectives
+
 1. **Modernize Build Pipeline**: Replace SCSS with Tailwind CSS v4
 2. **Improve Performance**: Leverage Tailwind's JIT compilation
 3. **Enhance Developer Experience**: Use utility-first approach
@@ -49,7 +55,9 @@ This document outlines the comprehensive plan to modernize the portfolio website
 6. **Implement Dark/Light Mode**: Support both themes with smooth transitions
 
 ### Reference Design Inspirations
+
 Based on the reference design (@original-52eda44639d95850c6c0d2805e335c57.png), we'll incorporate:
+
 - **Dark theme base**: Deep black/purple background (#0a0a0a to #1a0f1f)
 - **Purple/pink gradient accents**: For highlighting important text and CTAs
 - **Glass morphism effects**: Semi-transparent cards with backdrop blur
@@ -65,6 +73,7 @@ Based on the reference design (@original-52eda44639d95850c6c0d2805e335c57.png), 
 ### Phase 1: Setup and Configuration
 
 #### 1.1 Install Tailwind CSS v4
+
 ```bash
 # Run from the web app directory
 cd apps/web
@@ -72,7 +81,9 @@ pnpm add -D tailwindcss@next @tailwindcss/postcss@next
 ```
 
 #### 1.2 Configure PostCSS
+
 Update `postcss.config.mjs`:
+
 ```js
 export default {
   plugins: {
@@ -82,7 +93,9 @@ export default {
 ```
 
 #### 1.3 Create Main CSS File
+
 Replace `globals.scss` with `globals.css`:
+
 ```css
 @import "tailwindcss";
 
@@ -94,7 +107,9 @@ Replace `globals.scss` with `globals.css`:
 ### Phase 2: Theme Configuration
 
 #### 2.1 Design Tokens Migration
+
 Convert SCSS variables to Tailwind CSS v4 theme:
+
 ```css
 @theme {
   /* Colors */
@@ -102,23 +117,25 @@ Convert SCSS variables to Tailwind CSS v4 theme:
   --color-neutral-0: #ffffff;
   --color-neutral-1: #f5f5f5;
   --color-neutral-9: #222222;
-  
+
   /* Typography */
   --font-display: system-ui, -apple-system, sans-serif;
-  
+
   /* Spacing */
   --spacing-section: 7.5rem;
-  
+
   /* Breakpoints */
   --breakpoint-3xl: 1920px;
-  
+
   /* Animations */
   --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
 }
 ```
 
 #### 2.2 Utility Extensions
+
 Define custom utilities for complex patterns:
+
 ```css
 @utility container-custom {
   max-width: 1100px;
@@ -127,28 +144,36 @@ Define custom utilities for complex patterns:
 }
 
 @utility hero-gradient {
-  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-neutral-9) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--color-primary) 0%,
+    var(--color-neutral-9) 100%
+  );
 }
 ```
 
 ### Phase 3: Component Migration Strategy
 
 #### 3.1 Layout Components
+
 - **Container**: `max-w-[1100px] mx-auto px-4`
 - **Grid**: `grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8`
 - **Card**: `bg-white/90 backdrop-blur border border-neutral-200 rounded p-8 transition-all hover:border-primary/50`
 
 #### 3.2 Navigation
+
 - Convert fixed positioning and z-index
 - Use Tailwind's built-in responsive utilities
 - Implement hover states with `hover:` variants
 
 #### 3.3 Hero Section
+
 - Background image with overlay using `before:` pseudo-element
 - Animated icons using CSS transforms and custom JavaScript
 - Responsive typography with `text-[90px] md:text-[60px]`
 
 #### 3.4 Skills & Works Sections
+
 - Grid layout with responsive columns
 - Card hover effects with `group` utilities
 - Maintain Flickity for carousel (evaluate alternatives later)
@@ -156,17 +181,21 @@ Define custom utilities for complex patterns:
 ### Phase 4: Modern UI Enhancements
 
 #### 4.1 Visual Improvements
+
 1. **Glass Morphism Cards**:
+
    ```css
    bg-white/10 backdrop-blur-lg border border-white/20
    ```
 
 2. **Gradient Accents**:
+
    ```css
    bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent
    ```
 
 3. **Smooth Shadows**:
+
    ```css
    shadow-xl shadow-neutral-900/10
    ```
@@ -177,12 +206,14 @@ Define custom utilities for complex patterns:
    ```
 
 #### 4.2 Animation Enhancements
+
 - Replace AOS with Tailwind CSS animations
 - Add micro-interactions on hover
 - Implement smooth page transitions
 - CSS-only parallax effects
 
 #### 4.3 Dark Mode
+
 - Implement using CSS variables and Tailwind's dark mode
 - Smooth transitions between themes
 - Respect system preferences
@@ -207,6 +238,7 @@ Define custom utilities for complex patterns:
 ## Implementation Timeline
 
 ### Week 1: Foundation
+
 - [x] Analyze current structure
 - [x] Setup Tailwind CSS v4 - ✅ Installed `tailwindcss@4.0.0` and `@tailwindcss/postcss@4.0.0`
 - [x] Configure PostCSS - ✅ Updated `postcss.config.mjs` to use `@tailwindcss/postcss`
@@ -216,9 +248,11 @@ Define custom utilities for complex patterns:
 ## Progress Log
 
 ### Phase 1: Setup and Configuration
+
 **Status: Completed ✅**
 
 #### Completed:
+
 - ✅ Installed Tailwind CSS v4 and PostCSS plugin using PNPM
 - ✅ Updated PostCSS configuration to use `@tailwindcss/postcss`
 - ✅ Created new `globals.css` with Tailwind imports and theme configuration
@@ -228,13 +262,16 @@ Define custom utilities for complex patterns:
 - ✅ Tested build process - dev server runs successfully
 
 ### Phase 2: Component Migration
+
 **Status: In Progress**
 
 #### Completed:
+
 - ✅ Converted layout components (Container, Main, Footer, Grid, Card) to Tailwind utilities
 - Removed dependency on `layout.module.scss`
 
 #### Completed Components:
+
 - ✅ Converted navigation component to Tailwind
 - ✅ Converted header component with background images
 - ✅ Converted titles component
@@ -247,6 +284,7 @@ Define custom utilities for complex patterns:
 - ✅ Added theme toggle button with smooth transitions
 
 #### Package Updates:
+
 - ✅ Updated Next.js: 14.2.5 → 15.4.4
 - ✅ Updated React: 18.3.1 → 19.1.1
 - ✅ Updated TypeScript: 5.6.3 → 5.8.3
@@ -254,9 +292,11 @@ Define custom utilities for complex patterns:
 - ✅ Updated Firebase: 10.14.1 → 12.0.0
 
 ### Phase 3: UI Enhancements & Cleanup
+
 **Status: Completed ✅**
 
 #### Completed:
+
 - ✅ Added modern UI enhancements:
   - Glass morphism effects on cards and navigation
   - Gradient overlays on hero section
@@ -274,17 +314,44 @@ Define custom utilities for complex patterns:
 ### Migration Complete! 🎉
 
 The portfolio has been successfully migrated from SCSS to Tailwind CSS v4 with:
+
 - Modern, responsive design supporting light/dark modes
 - Glass morphism and gradient effects
 - Smooth animations and transitions
 - Updated to latest packages (Next.js 15, React 19, TypeScript 5.8)
 - Clean, maintainable Tailwind utility classes
 
-### Known Issues to Fix:
-- Project carousel functionality needs adjustment for mobile/desktop views
-- Tech icons positioning in hero section may need fine-tuning
+### Phase 4: Bug Fixes & Polish
+
+**Status: Completed ✅**
+
+#### Fixed Issues:
+
+- ✅ Project carousel - Replaced Flickity with custom React carousel component
+- ✅ Tech icons positioning - Fixed with absolute positioning and floating animations
+- ✅ Removed Flickity dependency
+
+#### Completed Enhancements:
+
+- ✅ Created modern carousel with navigation buttons and smooth scrolling
+- ✅ Fine-tuned responsive layouts:
+  - Added mobile menu with hamburger toggle
+  - Improved hero text scaling for all screen sizes
+  - Fixed navigation padding and spacing
+  - Optimized theme toggle button for mobile
+- ✅ Added animations and micro-interactions:
+  - Floating animation for tech icons
+  - Enhanced hover effects on project cards
+  - Smooth scroll behavior
+  - Multiple animation utilities (fadeInUp, scaleIn, slideInRight)
+  - Gradient overlay on project images on hover
+
+#### Remaining:
+
+- [ ] Test thoroughly in different browsers and devices
 
 ### Recommendations:
+
 1. Test the carousel functionality and adjust Flickity settings
 2. Consider replacing Flickity with a modern React carousel solution
 3. Add more gradient accents throughout the UI
@@ -292,18 +359,21 @@ The portfolio has been successfully migrated from SCSS to Tailwind CSS v4 with:
 5. Add loading states for dynamic content
 
 ### Week 2: Core Components
+
 - [ ] Migrate layout components
 - [ ] Convert navigation
 - [ ] Refactor hero section
 - [ ] Update typography system
 
 ### Week 3: Feature Sections
+
 - [ ] Skills section migration
 - [ ] Works/Projects section
 - [ ] Contact section
 - [ ] Footer component
 
 ### Week 4: Enhancements
+
 - [ ] Add modern UI touches
 - [ ] Implement dark mode
 - [ ] Performance optimization

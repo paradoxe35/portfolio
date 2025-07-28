@@ -9,17 +9,18 @@ interface Work {
 
 export default function WorksItem({ aosDuration = 0, project }: Work) {
   return (
-    <div className="relative flex flex-col rounded border border-neutral-3 dark:border-dark-border bg-neutral-1/85 dark:bg-dark-surface backdrop-blur transition-all duration-300 hover:border-primary/50 dark:hover:border-primary-light/50">
-      <Link 
-        href={`/works/${project.id}`} 
-        className="rounded overflow-hidden w-full h-[336px] flex-none group"
+    <div className="group relative flex flex-col rounded-lg border border-neutral-3/50 dark:border-dark-border bg-white/80 dark:bg-dark-surface backdrop-blur-sm shadow-md hover:shadow-xl transition-all duration-300 hover:border-primary/50 dark:hover:border-primary-light/50 hover:-translate-y-2">
+      <Link
+        href={`/works/${project.id}`}
+        className="rounded-t-lg overflow-hidden w-full h-[336px] flex-none relative"
       >
-        <div className="relative h-full w-full overflow-hidden">
-          <StorageImg 
-            src={project.image} 
+        <div className="relative h-full w-full overflow-hidden bg-neutral-2 dark:bg-neutral-8">
+          <StorageImg
+            src={project.image}
             alt={project.title}
-            className="block opacity-100 h-full w-full object-cover transition-all duration-500 group-hover:scale-110 group-hover:opacity-50"
+            className="block opacity-100 h-full w-full object-cover transition-all duration-700 group-hover:scale-110"
           />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
         </div>
       </Link>
 
@@ -27,8 +28,8 @@ export default function WorksItem({ aosDuration = 0, project }: Work) {
         <div className="font-semibold text-primary dark:text-primary-light uppercase text-xs">
           {project.technology}
         </div>
-        <Link 
-          href={`/works/${project.id}`} 
+        <Link
+          href={`/works/${project.id}`}
           className="text-2xl my-3 font-semibold transition-colors hover:text-primary dark:hover:text-primary-light"
         >
           {project.title}
@@ -37,8 +38,8 @@ export default function WorksItem({ aosDuration = 0, project }: Work) {
           {project.description}
         </p>
 
-        <Link 
-          href={`/works/${project.id}`} 
+        <Link
+          href={`/works/${project.id}`}
           className="mt-auto inline-flex items-center text-primary dark:text-primary-light text-xs leading-8 font-semibold uppercase px-8 py-2 border border-primary/75 dark:border-primary-light/75 rounded-sm transition-all hover:text-neutral-9 dark:hover:text-neutral-1 hover:bg-primary dark:hover:bg-primary-light group"
         >
           Find out more

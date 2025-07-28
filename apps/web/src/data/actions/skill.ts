@@ -5,7 +5,7 @@ export async function getSkills() {
   const repo = new SkillFirebaseRepository();
 
   return (await repo.getSkills()).filter(
-    (skill) => skill.status === "published"
+    (skill) => skill.status === "published",
   );
 }
 

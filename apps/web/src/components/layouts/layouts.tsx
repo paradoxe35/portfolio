@@ -8,15 +8,11 @@ type GridProps = {
   className?: string;
 };
 
-export const Container: React.FC<PropsWithChildren<{ className?: string }>> = ({ 
-  children, 
-  className = "" 
+export const Container: React.FC<PropsWithChildren<{ className?: string }>> = ({
+  children,
+  className = "",
 }) => {
-  return (
-    <div className={`container-custom ${className}`}>
-      {children}
-    </div>
-  );
+  return <div className={`container-custom ${className}`}>{children}</div>;
 };
 
 export const Main: React.FC<PropsWithChildren<{}>> = ({ children }) => {
@@ -36,18 +32,19 @@ export const Footer: React.FC<PropsWithChildren<{}>> = ({ children }) => {
 };
 
 export const Description: React.FC<PropsWithChildren<{}>> = ({ children }) => {
-  return (
-    <div className="text-2xl leading-relaxed">
-      {children}
-    </div>
-  );
+  return <div className="text-2xl leading-relaxed">{children}</div>;
 };
 
 export const Grid = forwardRef<HTMLDivElement, GridProps>(
   ({ children, col, hidden, className = "" }, ref) => {
-    const gridCols = col === 4 ? "lg:grid-cols-4 md:grid-cols-2" : col === 3 ? "lg:grid-cols-3" : "";
+    const gridCols =
+      col === 4
+        ? "lg:grid-cols-4 md:grid-cols-2"
+        : col === 3
+          ? "lg:grid-cols-3"
+          : "";
     const gridClass = col ? `grid gap-4 ${gridCols}` : "flex flex-wrap";
-    
+
     return (
       <div
         ref={ref}
@@ -56,7 +53,7 @@ export const Grid = forwardRef<HTMLDivElement, GridProps>(
         {children}
       </div>
     );
-  }
+  },
 );
 
 Grid.displayName = "Grid";
@@ -65,10 +62,7 @@ export const Card: React.FC<
   PropsWithChildren<{ hidden?: boolean; className?: string }>
 > = ({ children, hidden, className = "", ...props }) => {
   return (
-    <div
-      className={`${hidden ? "invisible" : ""} ${className}`}
-      {...props}
-    >
+    <div className={`${hidden ? "invisible" : ""} ${className}`} {...props}>
       <div className="mr-4 mb-4 text-left p-6 bg-white/80 dark:bg-dark-surface backdrop-blur-sm border border-neutral-3/50 dark:border-dark-border rounded-lg shadow-md hover:shadow-xl transition-all duration-300 hover:border-primary/50 dark:hover:border-primary-light/50 hover:-translate-y-1 group">
         {children}
       </div>
@@ -81,7 +75,7 @@ export const CardItem: React.FC<PropsWithChildren<{}>> = ({
   ...props
 }) => {
   return (
-    <div 
+    <div
       className="basis-full mr-4 mb-4 p-8 border border-neutral-3 rounded-lg transition-all duration-300"
       {...props}
     >

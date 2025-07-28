@@ -37,7 +37,9 @@ export function SkillCard({ skills }: { skills: Skill[] }) {
                 })}
               </div>
             )}
-            <h3 className="text-base text-neutral-7 dark:text-neutral-3 mb-0 group-hover:text-primary dark:group-hover:text-primary-light transition-colors">{skill.name}</h3>
+            <h3 className="text-base text-neutral-7 dark:text-neutral-3 mb-0 group-hover:text-primary dark:group-hover:text-primary-light transition-colors">
+              {skill.name}
+            </h3>
           </Card>
         );
       })}

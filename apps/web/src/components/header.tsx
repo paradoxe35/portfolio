@@ -34,14 +34,14 @@ export default function Header({
           <h1
             data-aos="fade-up"
             data-aos-delay="100"
-            className={`text-[40px] font-bold ${image ? 'text-neutral-8' : 'text-neutral-7'}`}
+            className={`text-[40px] font-bold ${image ? "text-neutral-8" : "text-neutral-7"}`}
           >
             {title}
           </h1>
           <p
             data-aos="fade-up"
             data-aos-delay="200"
-            className={`text-xl leading-[30px] font-normal mt-8 ${image ? 'text-neutral-8' : 'text-neutral-7'}`}
+            className={`text-xl leading-[30px] font-normal mt-8 ${image ? "text-neutral-8" : "text-neutral-7"}`}
           >
             {subtitle}
           </p>
