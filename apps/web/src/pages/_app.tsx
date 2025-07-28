@@ -2,8 +2,8 @@ import "@/styles/globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import type { AppProps /*, AppContext */ } from "next/app";
 import { ReactElement, ReactNode, useEffect } from "react";
-import "aos/dist/aos.css";
-import aos from "aos";
+// import "aos/dist/aos.css";
+// import aos from "aos";
 
 import { NextPage } from "next";
 import { ChatwootWidget } from "@/components/chatwoot";
@@ -18,7 +18,14 @@ type AppPropsWithLayout = AppProps & {
 
 function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   useEffect(() => {
-    aos.init({ once: true });
+    // aos.init({
+    //   disableMutationObserver: true,
+    //   once: true,
+    //   disable: function () {
+    //     var maxWidth = 800;
+    //     return window.innerWidth < maxWidth;
+    //   },
+    // });
   }, []);
 
   // Use the layout defined at the page level, if available
@@ -29,7 +36,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
       <Component {...pageProps} />
       <Analytics />
       <ChatwootWidget />
-    </>,
+    </>
   );
 }
 

@@ -5,13 +5,13 @@ export function SkillCard({ skills }: { skills: Skill[] }) {
   // Filter out empty skills
   const validSkills = skills.filter(skill => skill.name.length > 0);
   
-  // Determine grid columns based on number of skills
+  // Determine grid columns based on number of skills with responsive breakpoints
   const getGridClass = () => {
     const count = validSkills.length;
     if (count === 1) return "grid-cols-1";
-    if (count === 2) return "grid-cols-2";
-    if (count === 3) return "grid-cols-3";
-    return "grid-cols-4"; // 4 or more items
+    if (count === 2) return "grid-cols-1 sm:grid-cols-2";
+    if (count === 3) return "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3";
+    return "grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"; // 4 or more items
   };
 
   return (
@@ -20,7 +20,7 @@ export function SkillCard({ skills }: { skills: Skill[] }) {
         
         return (
           <div
-            className="group p-6 md:p-8 rounded-2xl bg-white/10 dark:bg-white/5 backdrop-blur-md border border-white/20 dark:border-white/10 hover:border-primary/50 dark:hover:border-primary-light/50 transition-all duration-300 hover:scale-105 hover:bg-white/20 dark:hover:bg-white/10"
+            className="group p-4 sm:p-6 md:p-8 rounded-2xl bg-white/10 dark:bg-white/5 backdrop-blur-md border border-white/20 dark:border-white/10 hover:border-primary/50 dark:hover:border-primary-light/50 transition-all duration-300 hover:scale-105 hover:bg-white/20 dark:hover:bg-white/10"
             data-aos="fade-up"
             data-aos-delay={(i + 1) * 100}
             key={skill.id || i}
@@ -29,7 +29,7 @@ export function SkillCard({ skills }: { skills: Skill[] }) {
               <StorageImg
                 src={skill.icons[0]}
                 alt={skill.name}
-                className="block mb-4 w-auto h-[48px] max-w-full filter brightness-0 dark:brightness-100 dark:invert opacity-70 group-hover:opacity-100 transition-opacity"
+                className="block mb-4 w-auto h-[36px] sm:h-[40px] md:h-[48px] max-w-full filter brightness-0 dark:brightness-100 dark:invert opacity-70 group-hover:opacity-100 transition-opacity"
               />
             ) : (
               <div className="flex gap-2 mb-4">
@@ -39,13 +39,13 @@ export function SkillCard({ skills }: { skills: Skill[] }) {
                       key={img}
                       src={img}
                       alt={skill.name}
-                      className="block w-auto h-[48px] max-w-full filter brightness-0 dark:brightness-100 dark:invert opacity-70 group-hover:opacity-100 transition-opacity"
+                      className="block w-auto h-[36px] sm:h-[40px] md:h-[48px] max-w-full filter brightness-0 dark:brightness-100 dark:invert opacity-70 group-hover:opacity-100 transition-opacity"
                     />
                   );
                 })}
               </div>
             )}
-            <h3 className="text-base font-medium text-neutral-8 dark:text-neutral-2 mb-0 group-hover:text-primary dark:group-hover:text-primary-light transition-colors">
+            <h3 className="text-sm sm:text-base font-medium text-neutral-8 dark:text-neutral-2 mb-0 group-hover:text-primary dark:group-hover:text-primary-light transition-colors">
               {skill.name}
             </h3>
           </div>

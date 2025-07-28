@@ -34,12 +34,12 @@ function Contact() {
 
   return (
     <div className="w-full max-w-2xl mx-auto">
-      <div className="bg-white dark:bg-dark-surface/50 backdrop-blur-sm rounded-2xl p-8 md:p-10 shadow-xl border border-neutral-3/20 dark:border-dark-border/20">
-        <h1 className="text-4xl font-bold mb-4 text-neutral-9 dark:text-neutral-1">
-          Let's talk
+      <div className="bg-white/10 dark:bg-white/5 backdrop-blur-lg rounded-2xl p-8 md:p-10 shadow-2xl border border-white/20 dark:border-white/10 hover:border-primary/20 dark:hover:border-primary-light/20 transition-all duration-300">
+        <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-neutral-9 to-neutral-8 dark:from-neutral-1 dark:to-neutral-2 bg-clip-text text-transparent">
+          Let's Build Something Amazing
         </h1>
-        <p className="text-neutral-7 dark:text-neutral-4 mb-8">
-          Have a project in mind? Send me the details.
+        <p className="text-neutral-7 dark:text-neutral-4 mb-8 text-lg">
+          Have a project in mind? I'd love to hear about it. Send me the details and let's create something exceptional together.
         </p>
 
         {state.succeeded && (
@@ -62,14 +62,14 @@ function Contact() {
               placeholder="Name"
               required
               minLength={3}
-              className="w-full px-4 py-3 rounded-lg border border-neutral-3 dark:border-neutral-7 bg-white dark:bg-neutral-9/50 text-neutral-9 dark:text-neutral-1 placeholder-neutral-5 dark:placeholder-neutral-5 focus:outline-none focus:border-primary dark:focus:border-primary-light transition-colors"
+              className="w-full px-4 py-3 rounded-lg border border-white/20 dark:border-white/10 bg-white/50 dark:bg-white/5 backdrop-blur-sm text-neutral-9 dark:text-neutral-1 placeholder-neutral-5 dark:placeholder-neutral-5 focus:outline-none focus:border-primary dark:focus:border-primary-light focus:bg-white/70 dark:focus:bg-white/10 transition-all duration-300"
             />
             <input 
               type="email" 
               name="email" 
               placeholder="Email" 
               required 
-              className="w-full px-4 py-3 rounded-lg border border-neutral-3 dark:border-neutral-7 bg-white dark:bg-neutral-9/50 text-neutral-9 dark:text-neutral-1 placeholder-neutral-5 dark:placeholder-neutral-5 focus:outline-none focus:border-primary dark:focus:border-primary-light transition-colors"
+              className="w-full px-4 py-3 rounded-lg border border-white/20 dark:border-white/10 bg-white/50 dark:bg-white/5 backdrop-blur-sm text-neutral-9 dark:text-neutral-1 placeholder-neutral-5 dark:placeholder-neutral-5 focus:outline-none focus:border-primary dark:focus:border-primary-light focus:bg-white/70 dark:focus:bg-white/10 transition-all duration-300"
             />
           </div>
           <textarea
@@ -83,7 +83,7 @@ function Contact() {
           <div>
             <button
               disabled={state.loading}
-              className="px-8 py-3 bg-primary dark:bg-primary-light text-white font-medium rounded-lg hover:bg-primary-dark dark:hover:bg-primary transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="px-8 py-3 bg-gradient-to-r from-primary to-primary-dark dark:from-primary-light dark:to-primary text-white font-medium rounded-lg hover:shadow-xl hover:shadow-primary/20 hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
               type="submit"
             >
               {state.loading ? "Sending..." : "Send message"}
@@ -97,17 +97,31 @@ function Contact() {
 
 function About({ resume }: { resume: Resume | null }) {
   return (
-    <section className="py-24 bg-white dark:bg-dark-bg">
+    <section className="py-24 bg-gradient-to-br from-white to-neutral-1 dark:from-dark-bg-secondary dark:to-dark-bg relative overflow-hidden">
+      {/* Decorative elements */}
+      <div className="absolute -top-24 -right-24 w-96 h-96 bg-primary/5 dark:bg-primary-light/10 rounded-full blur-3xl" />
+      <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-purple-500/5 dark:bg-purple-400/10 rounded-full blur-3xl" />
       <Container>
+        <div className="relative z-10">
         <Titles
           title="About"
           subtitle="A bit about me"
         />
-        <p className="text-neutral-7 dark:text-neutral-3 max-w-3xl mb-8">
-          I'm {site_details.full_name}, a web developer focused on building clean, 
-          functional applications. I've been working in web development since 2017.
-        </p>
+        <div className="prose prose-lg dark:prose-invert max-w-3xl mb-12">
+          <p className="text-neutral-7 dark:text-neutral-3 leading-relaxed">
+            I'm {site_details.full_name}, a passionate Software Engineer with {new Date().getFullYear() - 2017} years of experience 
+            crafting digital solutions. My expertise spans across full-stack development, 
+            with a particular focus on building scalable web applications using modern technologies.
+          </p>
+          <p className="text-neutral-7 dark:text-neutral-3 leading-relaxed mt-4">
+            From React and Next.js on the frontend to Node.js and Go on the backend, 
+            I bring ideas to life with clean, efficient code. I'm also deeply interested in 
+            DevOps practices and cloud infrastructure, ensuring applications are not just 
+            functional but also performant and reliable.
+          </p>
+        </div>
         <ResumeComponent resume={resume} />
+        </div>
       </Container>
     </section>
   );
@@ -125,12 +139,12 @@ function ResumeComponent({ resume }: { resume: Resume | null }) {
       {link && (
         <Link
           href={link}
-          className="inline-flex items-center gap-2 px-6 py-3 border border-primary dark:border-primary-light text-primary dark:text-primary-light font-medium rounded-lg hover:bg-primary hover:text-white dark:hover:bg-primary-light dark:hover:text-white transition-all"
+          className="inline-flex items-center gap-3 px-8 py-4 bg-white/20 dark:bg-white/10 backdrop-blur-md border border-white/30 dark:border-white/20 text-neutral-9 dark:text-neutral-1 font-medium rounded-xl hover:bg-white/30 dark:hover:bg-white/20 hover:scale-105 hover:shadow-xl transition-all duration-300 group"
           target="_blank"
         >
           Download Resume
           <svg
-            className="w-4 h-4"
+            className="w-5 h-5 transition-transform duration-300 group-hover:translate-y-1"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -155,10 +169,18 @@ export default function ContactPage({ resume }: { resume: Resume | null }) {
         <title>{"Contact - Portfolio"}</title>
       </Head>
       <main>
-        <Header title="Contact" subtitle="Get in touch" />
-        <section className="py-24 min-h-[60vh] bg-gradient-to-br from-neutral-1 to-neutral-2 dark:from-dark-bg-secondary dark:to-dark-bg">
+        <Header title="Contact" subtitle="Let's discuss your next project or collaboration opportunity" />
+        <section className="py-24 min-h-[60vh] bg-gradient-to-b from-neutral-1 via-white to-neutral-1 dark:from-dark-bg dark:via-dark-bg-secondary dark:to-dark-bg relative">
+          {/* Background pattern */}
+          <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.05]">
+            <div className="absolute inset-0" style={{
+              backgroundImage: `repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(0,0,0,.05) 35px, rgba(0,0,0,.05) 70px)`,
+            }} />
+          </div>
           <Container>
-            <Contact />
+            <div className="relative z-10">
+              <Contact />
+            </div>
           </Container>
         </section>
         <About resume={resume} />
