@@ -99,32 +99,44 @@ function Hero() {
               {/* Introduction */}
               <div className="space-y-4">
                 <div
-                  data-aos="fade-right"
-                  data-aos-delay="100"
+                  data-aos="fade-up"
+                  data-aos-delay="0"
+                  data-aos-duration="200"
+                  data-aos-offset="0"
+                  data-aos-once="true"
                   className="text-lg text-neutral-7 dark:text-neutral-3"
                 >
                   Hey, I'm <span className="text-primary dark:text-primary-light font-semibold">{site_details.firstname}</span>
                 </div>
                 <h1
-                  data-aos="fade-right"
-                  data-aos-delay="200"
+                  data-aos="fade-up"
+                  data-aos-delay="50"
+                  data-aos-duration="200"
+                  data-aos-offset="0"
+                  data-aos-once="true"
                   className="text-4xl md:text-5xl lg:text-6xl font-bold text-neutral-9 dark:text-neutral-1 leading-tight"
                 >
                   A <span className="bg-gradient-to-r from-primary to-primary-dark dark:from-primary-light dark:to-primary bg-clip-text text-transparent">Software Developer</span>
                 </h1>
                 <p
-                  data-aos="fade-right"
-                  data-aos-delay="300"
+                  data-aos="fade-up"
+                  data-aos-delay="100"
+                  data-aos-duration="200"
+                  data-aos-offset="0"
+                  data-aos-once="true"
                   className="text-lg text-neutral-6 dark:text-neutral-4 max-w-lg leading-relaxed"
                 >
-                  A fullstack developer with solid foundations in design, passionate about crafting seamless user experiences I thrive at the intersection of creativity and code
+                  Building scalable web applications with modern technologies. Passionate about clean code, DevOps, and exceptional user experiences
                 </p>
               </div>
 
               {/* Action Buttons */}
               <div
-                data-aos="fade-right"
-                data-aos-delay="400"
+                data-aos="fade-up"
+                data-aos-delay="150"
+                data-aos-duration="200"
+                data-aos-offset="0"
+                data-aos-once="true"
                 className="flex items-center gap-4"
               >
                 <a
@@ -165,7 +177,8 @@ function Hero() {
                     key={tech.alt}
                     data-aos="zoom-in"
                     data-aos-delay={tech.delay}
-                    className="absolute p-4 rounded-2xl bg-white/10 dark:bg-white/5 backdrop-blur-md border border-white/20 dark:border-white/10 hover:scale-110 transition-transform duration-300 ease-out animate-float"
+                    data-aos-once="true"
+                    className="group absolute p-4 rounded-2xl bg-white/10 dark:bg-white/5 backdrop-blur-md border border-white/20 dark:border-white/10 transition-all duration-300 hover:scale-110 animate-float cursor-pointer"
                     style={tech.position}
                   >
                     <img
