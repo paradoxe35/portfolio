@@ -14,6 +14,7 @@ import { getProjects } from "@/data/actions/project";
 import { getDefaultSkills, getSkills } from "@/data/actions/skill";
 import { Project, Skill } from "@repo/contracts";
 import { ProjectCarousel } from "@/components/project-carousel";
+import { ProfileAvatar } from "@/components/profile-avatar";
 
 const functions: Function[] = [];
 const PROJECTS_QUERY_LIMIT: number | undefined = 6;
@@ -42,9 +43,9 @@ function Works({ projects }: { projects: Project[] }) {
   }, []);
 
   return (
-    <section className="py-[120px] pb-[90px] bg-gradient-to-br from-neutral-2 to-neutral-1 dark:from-dark-bg-secondary dark:to-dark-bg">
+    <section className="py-[120px] pb-[90px] bg-gradient-to-br from-white to-neutral-1 dark:from-dark-bg-secondary dark:to-dark-bg">
       <Container>
-        <Titles title="Works" subtitle="Projects" />
+        <Titles title="Portfolio" subtitle="Selected Works" />
         <div className="mt-8">
           <ProjectCarousel projects={works} />
         </div>
@@ -84,13 +85,15 @@ function Skills({ skills: defaultSkills }: { skills: Skill[] }) {
   );
 
   return (
-    <section id="skills" className="py-[120px] pb-[90px] scroll-mt-20">
+    <section id="skills" className="py-[120px] pb-[90px] scroll-mt-20 bg-gradient-to-br from-neutral-1 to-white dark:from-dark-bg dark:to-dark-bg-secondary">
       <Container>
-        <Titles title="Skills" subtitle="Services" />
-        <SkillCard skills={default_skills} />
-        {skills.reduce(splitter, [] as Skill[][]).map((sklls, i) => {
-          return <SkillCard skills={sklls} key={i} />;
-        })}
+        <Titles title="What I can do" subtitle="Building Digital Experiences" />
+        <div className="space-y-8">
+          <SkillCard skills={default_skills} />
+          {skills.reduce(splitter, [] as Skill[][]).map((sklls, i) => {
+            return <SkillCard skills={sklls} key={i} />;
+          })}
+        </div>
       </Container>
     </section>
   );
@@ -163,87 +166,103 @@ function Hero() {
   }, []);
 
   return (
-    <section>
-      <div
-        className="min-h-screen pt-32 pb-8 relative z-[1] flex flex-col justify-center items-center overflow-hidden bg-cover bg-center md:bg-right bg-no-repeat"
-        style={{ backgroundImage: `url(/paradoxe-ngwasi.png)`, backgroundSize: 'cover' }}
-      >
-        {/* Gradient Overlay */}
-        <div className="absolute inset-0 z-[3] bg-gradient-to-br from-neutral-1/95 via-neutral-1/85 to-neutral-1/70 dark:from-dark-bg/95 dark:via-dark-bg-secondary/90 dark:to-dark-bg/80" />
+    <section className="min-h-screen bg-gradient-to-br from-white via-neutral-1 to-neutral-2 dark:from-dark-bg dark:via-dark-bg-secondary dark:to-black relative overflow-hidden">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-5 dark:opacity-10">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_25%,_theme(colors.primary.DEFAULT)_0%,_transparent_50%),_radial-gradient(circle_at_75%_75%,_theme(colors.purple.500)_0%,_transparent_50%)]" />
+      </div>
 
-        <div className="relative z-[4] p-2 overflow-hidden">
-          <Container>
-            <div
-              data-aos="fade-up"
-              data-aos-delay="100"
-              className="mt-4 ml-1 text-primary dark:text-primary-light text-base font-medium tracking-wide"
-            >
-              Hello, I am
-            </div>
-            <div
-              data-aos="fade-up"
-              data-aos-delay="300"
-              className="text-[45px] sm:text-[60px] lg:text-[80px] xl:text-[90px] leading-none font-bold my-4 max-w-full lg:max-w-[640px] bg-gradient-to-r from-neutral-8 to-neutral-6 dark:from-neutral-1 dark:to-neutral-3 bg-clip-text text-transparent"
-            >
-              {site_details.full_name}
-            </div>
-            <div
-              data-aos="fade-up"
-              data-aos-delay="500"
-              className="text-lg font-medium ml-1 text-neutral-7 dark:text-neutral-3"
-            >
-              FullStack Web Developer
-            </div>
-            <div data-aos="fade-up" data-aos-delay="700" className="mt-8 ml-1">
-              <a
-                href="#skills"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary to-primary-dark hover:from-primary-dark hover:to-primary text-white font-medium rounded-lg shadow-lg hover:shadow-xl transform transition-all duration-300 hover:scale-105"
-              >
-                Explore My Work
-                <svg
-                  className="w-4 h-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
+      <div className="relative z-10 min-h-screen flex items-center pt-32 pb-16">
+        <Container>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left Content */}
+            <div className="space-y-8">
+              {/* Introduction */}
+              <div className="space-y-4">
+                <div
+                  data-aos="fade-right"
+                  data-aos-delay="100"
+                  className="text-lg text-neutral-7 dark:text-neutral-3"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 14l-7 7m0 0l-7-7m7 7V3"
-                  />
-                </svg>
-              </a>
-            </div>
-          </Container>
-        </div>
+                  Hey, I'm <span className="text-primary dark:text-primary-light font-semibold">{site_details.firstname}</span>
+                </div>
+                <h1
+                  data-aos="fade-right"
+                  data-aos-delay="200"
+                  className="text-4xl md:text-5xl lg:text-6xl font-bold text-neutral-9 dark:text-neutral-1 leading-tight"
+                >
+                  A <span className="bg-gradient-to-r from-primary to-primary-dark dark:from-primary-light dark:to-primary bg-clip-text text-transparent">Software Developer</span>
+                </h1>
+                <p
+                  data-aos="fade-right"
+                  data-aos-delay="300"
+                  className="text-lg text-neutral-6 dark:text-neutral-4 max-w-lg leading-relaxed"
+                >
+                  A fullstack developer with solid foundations in design, passionate about crafting seamless user experiences I thrive at the intersection of creativity and code
+                </p>
+              </div>
 
-        {/* Animated tech icons */}
-        <div
-          ref={objectsRef}
-          className="hidden lg:block absolute inset-0 pointer-events-none"
-        >
-          {[
-            { src: "/laravel.svg", alt: "Laravel", delay: 500 },
-            { src: "/vue.svg", alt: "VueJs", delay: 600 },
-            { src: "/react.svg", alt: "React", delay: 700 },
-            { src: "/node.svg", alt: "NodeJs", delay: 800 },
-            { src: "/flutter.svg", alt: "Flutter", delay: 900 },
-          ].map((tech, i) => (
-            <img
-              key={tech.alt}
-              data-aos="fade-in"
-              data-aos-delay={tech.delay}
-              src={tech.src}
-              alt={tech.alt}
-              className="absolute w-20 h-20 opacity-80 transition-all duration-[2000ms] hover:scale-125 hover:opacity-100 pointer-events-auto animate-float"
-              style={{
-                transform: "translateZ(0)",
-                filter: "drop-shadow(0 10px 20px rgba(0,0,0,0.15))",
-              }}
-            />
-          ))}
-        </div>
+              {/* Action Buttons */}
+              <div
+                data-aos="fade-right"
+                data-aos-delay="400"
+                className="flex items-center gap-4"
+              >
+                <a
+                  href="/contact"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-white/20 dark:bg-white/10 backdrop-blur-md border border-white/30 dark:border-white/20 text-neutral-9 dark:text-neutral-1 font-medium rounded-xl hover:bg-white/30 dark:hover:bg-white/20 transition-all duration-300 hover:scale-105"
+                >
+                  Contact Me
+                </a>
+                <a
+                  href="/works"
+                  className="inline-flex items-center gap-2 px-6 py-3 text-neutral-7 dark:text-neutral-3 font-medium hover:text-primary dark:hover:text-primary-light transition-colors"
+                >
+                  View Projects
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            {/* Right Content - Tech Stack Icons with Centered Avatar */}
+            <div className="relative">
+              <div
+                ref={objectsRef}
+                className="relative h-[500px] lg:h-[600px] flex items-center justify-center"
+              >
+                {/* Centered Profile Avatar */}
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
+                  <ProfileAvatar size="lg" delay={300} />
+                </div>
+
+                {/* Tech Stack Icons around the avatar */}
+                {[
+                  { src: "/laravel.svg", alt: "Laravel", delay: 500, position: { top: "20%", left: "10%" } },
+                  { src: "/vue.svg", alt: "VueJs", delay: 600, position: { top: "15%", right: "15%" } },
+                  { src: "/react.svg", alt: "React", delay: 700, position: { top: "60%", left: "5%" } },
+                  { src: "/node.svg", alt: "NodeJs", delay: 800, position: { bottom: "20%", right: "20%" } },
+                  { src: "/flutter.svg", alt: "Flutter", delay: 900, position: { top: "40%", right: "10%" } },
+                ].map((tech, i) => (
+                  <div
+                    key={tech.alt}
+                    data-aos="zoom-in"
+                    data-aos-delay={tech.delay}
+                    className="absolute p-4 rounded-2xl bg-white/10 dark:bg-white/5 backdrop-blur-md border border-white/20 dark:border-white/10 hover:scale-110 transition-all duration-300 animate-float"
+                    style={tech.position}
+                  >
+                    <img
+                      src={tech.src}
+                      alt={tech.alt}
+                      className="w-12 h-12 opacity-80 hover:opacity-100 transition-opacity"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </Container>
       </div>
     </section>
   );

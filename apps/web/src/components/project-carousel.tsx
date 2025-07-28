@@ -56,7 +56,7 @@ export function ProjectCarousel({ projects }: ProjectCarouselProps) {
       {canScrollLeft && (
         <button
           onClick={() => scroll("left")}
-          className="hidden lg:flex absolute left-0 top-1/2 -translate-y-1/2 z-10 -ml-5 w-12 h-12 bg-white dark:bg-dark-surface shadow-lg rounded-full items-center justify-center hover:shadow-xl transition-all hover:scale-110"
+          className="hidden lg:flex absolute left-0 top-1/2 -translate-y-1/2 z-10 -ml-5 w-12 h-12 bg-white/20 dark:bg-white/10 backdrop-blur-md border border-white/30 dark:border-white/20 shadow-lg rounded-full items-center justify-center hover:shadow-xl transition-all hover:scale-110 hover:bg-white/30 dark:hover:bg-white/20"
           aria-label="Previous projects"
         >
           <svg
@@ -78,7 +78,7 @@ export function ProjectCarousel({ projects }: ProjectCarouselProps) {
       {canScrollRight && (
         <button
           onClick={() => scroll("right")}
-          className="hidden lg:flex absolute right-0 top-1/2 -translate-y-1/2 z-10 -mr-5 w-12 h-12 bg-white dark:bg-dark-surface shadow-lg rounded-full items-center justify-center hover:shadow-xl transition-all hover:scale-110"
+          className="hidden lg:flex absolute right-0 top-1/2 -translate-y-1/2 z-10 -mr-5 w-12 h-12 bg-white/20 dark:bg-white/10 backdrop-blur-md border border-white/30 dark:border-white/20 shadow-lg rounded-full items-center justify-center hover:shadow-xl transition-all hover:scale-110 hover:bg-white/30 dark:hover:bg-white/20"
           aria-label="Next projects"
         >
           <svg
@@ -106,7 +106,7 @@ export function ProjectCarousel({ projects }: ProjectCarouselProps) {
         {projects.map((project, i) => (
           <div
             key={project.id}
-            className="min-w-[320px] max-w-[320px] md:min-w-[380px] md:max-w-[380px] flex-shrink-0"
+            className="min-w-[320px] max-w-[320px] md:min-w-[380px] md:max-w-[380px] flex-shrink-0 h-full"
           >
             <WorksItem project={project} aosDuration={(i + 1) * 100} />
           </div>

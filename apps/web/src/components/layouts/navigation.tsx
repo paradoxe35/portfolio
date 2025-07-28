@@ -8,7 +8,7 @@ const Navigation: React.FC<PropsWithChildren<{}>> = () => {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 pointer-events-none">
-      <nav className="backdrop-blur-md bg-white/70 dark:bg-dark-bg/70 border-b border-neutral-3/20 dark:border-dark-border/20">
+      <nav className="backdrop-blur-xl bg-white/10 dark:bg-white/5 border-b border-white/20 dark:border-white/10">
         <Container className="flex justify-between items-center py-4 sm:py-6">
           <Link
             href="/"

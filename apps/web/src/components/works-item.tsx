@@ -9,7 +9,7 @@ interface Work {
 
 export default function WorksItem({ aosDuration = 0, project }: Work) {
   return (
-    <div className="group relative flex flex-col rounded-lg border border-neutral-3/50 dark:border-dark-border bg-white/80 dark:bg-dark-surface backdrop-blur-sm shadow-md hover:shadow-xl transition-all duration-300 hover:border-primary/50 dark:hover:border-primary-light/50 hover:-translate-y-2">
+    <div className="group relative flex flex-col h-full rounded-2xl bg-white/10 dark:bg-white/5 backdrop-blur-md border border-white/20 dark:border-white/10 hover:border-primary/50 dark:hover:border-primary-light/50 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:bg-white/20 dark:hover:bg-white/10 overflow-hidden">
       <Link
         href={`/works/${project.id}`}
         className="rounded-t-lg overflow-hidden w-full h-[336px] flex-none relative"
