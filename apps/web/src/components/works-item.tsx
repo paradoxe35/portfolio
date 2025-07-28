@@ -13,11 +13,11 @@ export default function WorksItem({ aosDuration = 0, project }: Work) {
     <div
       className={cn(
         "group relative flex flex-col h-full rounded-2xl overflow-hidden",
-        "bg-white/10 dark:bg-white/5 backdrop-blur-md",
-        "border border-white/20 dark:border-white/10",
+        "bg-white/80 dark:bg-white/5 backdrop-blur-md",
+        "border border-black/10 dark:border-white/10",
         "hover:border-primary/50 dark:hover:border-primary-light/50",
         "shadow-lg hover:shadow-2xl",
-        "hover:bg-white/20 dark:hover:bg-white/10",
+        "hover:bg-white/90 dark:hover:bg-white/10",
         "transition-all duration-300"
       )}
     >

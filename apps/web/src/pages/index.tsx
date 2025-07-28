@@ -27,7 +27,7 @@ function Works({ projects }: { projects: Project[] }) {
   }, []);
 
   return (
-    <section className="py-16 sm:py-20 md:py-[120px] pb-12 sm:pb-16 md:pb-[90px] bg-gradient-to-br from-white to-neutral-1 dark:from-dark-bg-secondary dark:to-dark-bg">
+    <section className="py-16 sm:py-20 md:py-[120px] pb-12 sm:pb-16 md:pb-[90px] bg-gradient-to-br from-neutral-1 to-white dark:from-dark-bg-secondary dark:to-dark-bg">
       <Container>
         <Titles title="Portfolio" subtitle="Selected Works" />
         <div className="mt-8">
@@ -54,7 +54,7 @@ function Skills({ skills: defaultSkills }: { skills: Skill[] }) {
   return (
     <section
       id="skills"
-      className="py-16 sm:py-20 md:py-[120px] pb-12 sm:pb-16 md:pb-[90px] scroll-mt-20 bg-gradient-to-br from-neutral-1 to-white dark:from-dark-bg dark:to-dark-bg-secondary"
+      className="py-16 sm:py-20 md:py-[120px] pb-12 sm:pb-16 md:pb-[90px] scroll-mt-20 bg-gradient-to-br from-white to-neutral-1 dark:from-dark-bg dark:to-dark-bg-secondary"
     >
       <Container>
         <Titles title="What I can do" subtitle="Building Digital Experiences" />
@@ -69,7 +69,7 @@ function Hero() {
     <section className="min-h-screen bg-gradient-to-br from-white via-neutral-1 to-neutral-2 dark:from-dark-bg dark:via-dark-bg-secondary dark:to-black relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5 dark:opacity-10">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_25%,_theme(colors.primary.DEFAULT)_0%,_transparent_50%),_radial-gradient(circle_at_75%_75%,_theme(colors.purple.500)_0%,_transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_25%,_theme(colors.primary.DEFAULT)_0%,_transparent_50%),_radial-gradient(circle_at_75%_75%,_theme(colors.primary.DEFAULT)_0%,_transparent_50%)]" />
       </div>
 
       <div className="relative z-10 min-h-screen flex items-center pt-32 pb-10 sm:pb-16">
@@ -102,7 +102,7 @@ function Hero() {
               <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 animate-fadeUp animation-delay-200">
                 <Link
                   href="/contact"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white/20 dark:bg-white/10 backdrop-blur-md border border-white/30 dark:border-white/20 text-neutral-9 dark:text-neutral-1 font-medium rounded-xl hover:bg-white/30 dark:hover:bg-white/20 transition-all duration-300 hover:scale-105 w-full sm:w-auto"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white/80 dark:bg-white/10 backdrop-blur-md border border-black/10 dark:border-white/20 text-neutral-9 dark:text-neutral-1 font-medium rounded-xl hover:bg-white/90 dark:hover:bg-white/20 transition-all duration-300 hover:scale-105 shadow-lg w-full sm:w-auto"
                 >
                   Contact Me
                 </Link>
@@ -179,9 +179,9 @@ function Hero() {
                   >
                     <div
                       className={cn(
-                        "group p-3 md:p-4 rounded-2xl bg-white/10 dark:bg-white/5",
-                        "backdrop-blur-md border border-white/20 dark:border-white/10",
-                        "transition-all duration-300 hover:scale-110 cursor-pointer",
+                        "group p-3 md:p-4 rounded-2xl bg-white/80 dark:bg-white/5",
+                        "backdrop-blur-md border border-black/10 dark:border-white/10",
+                        "transition-all duration-300 hover:scale-110 cursor-pointer shadow-lg dark:shadow-none",
                         "animate-zoomIn",
                         tech.delay === 50 && "animation-delay-100",
                         tech.delay === 100 && "animation-delay-100",

@@ -14,7 +14,7 @@ const Application = ({ children }: PropsWithChildren<{}>) => {
       {children}
       <Socials />
       <Footer />
-      {/* <ThemeToggle /> */}
+      <ThemeToggle />
     </React.Fragment>
   );
 };

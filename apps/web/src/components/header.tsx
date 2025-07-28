@@ -32,7 +32,7 @@ export default function Header({
           <div
             className={cn(
               "absolute inset-0 z-[5]",
-              "bg-gradient-to-t from-neutral-1 via-neutral-1/95 to-neutral-1/90",
+              "bg-gradient-to-t from-white via-white/95 to-white/90",
               "dark:from-dark-bg dark:via-dark-bg/95 dark:to-dark-bg/90"
             )}
           />
@@ -40,7 +40,7 @@ export default function Header({
           <div
             className={cn(
               "absolute top-0 left-0 bottom-0 w-full md:w-3/4 z-[4] opacity-95",
-              "bg-gradient-to-r from-neutral-1 via-neutral-1/95 to-transparent",
+              "bg-gradient-to-r from-white via-white/95 to-transparent",
               "dark:from-dark-bg dark:via-dark-bg/95 dark:to-transparent"
             )}
           />
@@ -122,7 +122,7 @@ export default function Header({
             className={cn(
               "text-4xl md:text-5xl lg:text-6xl font-bold",
               "text-neutral-9 dark:text-neutral-1",
-              "bg-gradient-to-r from-neutral-9 to-neutral-8",
+              "bg-gradient-to-r from-primary to-primary-dark",
               "dark:from-neutral-1 dark:to-neutral-2",
               "bg-clip-text text-transparent animate-fadeUp"
             )}

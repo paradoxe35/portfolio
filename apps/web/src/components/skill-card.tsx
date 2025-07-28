@@ -26,11 +26,13 @@ export function SkillCard({ skills, rows }: SkillCardProps) {
           <div
             className={cn(
               "group p-4 sm:p-6 md:p-8 rounded-2xl",
-              "bg-white/10 dark:bg-white/5 backdrop-blur-md",
-              "border border-white/20 dark:border-white/10",
+              "bg-white/80 dark:bg-white/5 backdrop-blur-md",
+              "border border-black/10 dark:border-white/10",
+              "shadow-sm dark:shadow-none",
               "hover:border-primary/50 dark:hover:border-primary-light/50",
               "transition-all duration-300 hover:scale-105",
-              "hover:bg-white/20 dark:hover:bg-white/10",
+              "hover:bg-white/90 dark:hover:bg-white/10",
+              "hover:shadow-lg dark:hover:shadow-none",
               "animate-fadeUp",
               {
                 "animation-delay-100": i === 0,

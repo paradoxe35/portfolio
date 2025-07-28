@@ -39,8 +39,8 @@ function Contact() {
 
   return (
     <div className="w-full max-w-2xl mx-auto">
-      <div className="bg-white/10 dark:bg-white/5 backdrop-blur-lg rounded-2xl p-8 md:p-10 shadow-2xl border border-white/20 dark:border-white/10 hover:border-primary/20 dark:hover:border-primary-light/20 transition-all duration-300">
-        <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-neutral-9 to-neutral-8 dark:from-neutral-1 dark:to-neutral-2 bg-clip-text text-transparent">
+      <div className="bg-white/80 dark:bg-white/5 backdrop-blur-lg rounded-2xl p-8 md:p-10 shadow-2xl border border-black/10 dark:border-white/10 hover:border-primary/30 dark:hover:border-primary-light/20 transition-all duration-300">
+        <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-primary to-primary-dark dark:from-neutral-1 dark:to-neutral-2 bg-clip-text text-transparent">
           {"Let's Build Something Amazing"}
         </h1>
         <p className="text-neutral-7 dark:text-neutral-4 mb-8 text-lg">
@@ -63,14 +63,14 @@ function Contact() {
               placeholder="Name"
               required
               minLength={3}
-              className="w-full px-4 py-3 rounded-lg border border-white/20 dark:border-white/10 bg-white/50 dark:bg-white/5 backdrop-blur-sm text-neutral-9 dark:text-neutral-1 placeholder-neutral-5 dark:placeholder-neutral-5 focus:outline-none focus:border-primary dark:focus:border-primary-light focus:bg-white/70 dark:focus:bg-white/10 transition-all duration-300"
+              className="w-full px-4 py-3 rounded-lg border border-black/10 dark:border-white/10 bg-white/80 dark:bg-white/5 backdrop-blur-sm text-neutral-9 dark:text-neutral-1 placeholder-neutral-5 dark:placeholder-neutral-5 focus:outline-none focus:border-primary dark:focus:border-primary-light focus:bg-white/90 dark:focus:bg-white/10 transition-all duration-300 shadow-sm focus:shadow-md"
             />
             <input
               type="email"
               name="email"
               placeholder="Email"
               required
-              className="w-full px-4 py-3 rounded-lg border border-white/20 dark:border-white/10 bg-white/50 dark:bg-white/5 backdrop-blur-sm text-neutral-9 dark:text-neutral-1 placeholder-neutral-5 dark:placeholder-neutral-5 focus:outline-none focus:border-primary dark:focus:border-primary-light focus:bg-white/70 dark:focus:bg-white/10 transition-all duration-300"
+              className="w-full px-4 py-3 rounded-lg border border-black/10 dark:border-white/10 bg-white/80 dark:bg-white/5 backdrop-blur-sm text-neutral-9 dark:text-neutral-1 placeholder-neutral-5 dark:placeholder-neutral-5 focus:outline-none focus:border-primary dark:focus:border-primary-light focus:bg-white/90 dark:focus:bg-white/10 transition-all duration-300 shadow-sm focus:shadow-md"
             />
           </div>
           <textarea
@@ -79,7 +79,7 @@ function Contact() {
             required
             minLength={15}
             rows={6}
-            className="w-full px-4 py-3 rounded-lg border border-neutral-3 dark:border-neutral-7 bg-white dark:bg-neutral-9/50 text-neutral-9 dark:text-neutral-1 placeholder-neutral-5 dark:placeholder-neutral-5 focus:outline-none focus:border-primary dark:focus:border-primary-light transition-colors resize-none"
+            className="w-full px-4 py-3 rounded-lg border border-black/10 dark:border-neutral-7 bg-white/80 dark:bg-neutral-9/50 text-neutral-9 dark:text-neutral-1 placeholder-neutral-5 dark:placeholder-neutral-5 focus:outline-none focus:border-primary dark:focus:border-primary-light transition-all duration-300 shadow-sm focus:shadow-md resize-none backdrop-blur-sm"
           />
           <div>
             <button
@@ -98,7 +98,7 @@ function Contact() {
 
 function About({ resume }: { resume: Resume | null }) {
   return (
-    <section className="py-24 bg-gradient-to-br from-white to-neutral-1 dark:from-dark-bg-secondary dark:to-dark-bg relative overflow-hidden">
+    <section className="py-24 bg-gradient-to-br from-neutral-1 to-white dark:from-dark-bg-secondary dark:to-dark-bg relative overflow-hidden">
       {/* Decorative elements */}
       <div className="absolute -top-24 -right-24 w-96 h-96 bg-primary/5 dark:bg-primary-light/10 rounded-full blur-3xl" />
       <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-purple-500/5 dark:bg-purple-400/10 rounded-full blur-3xl" />
@@ -134,7 +134,7 @@ function ResumeComponent({ resume }: { resume: Resume | null }) {
       {link && (
         <Link
           href={link}
-          className="inline-flex items-center gap-3 px-8 py-4 bg-white/20 dark:bg-white/10 backdrop-blur-md border border-white/30 dark:border-white/20 text-neutral-9 dark:text-neutral-1 font-medium rounded-xl hover:bg-white/30 dark:hover:bg-white/20 hover:scale-105 hover:shadow-xl transition-all duration-300 group"
+          className="inline-flex items-center gap-3 px-8 py-4 bg-white/80 dark:bg-white/10 backdrop-blur-md border border-black/10 dark:border-white/20 text-neutral-9 dark:text-neutral-1 font-medium rounded-xl hover:bg-white/90 dark:hover:bg-white/20 hover:scale-105 hover:shadow-xl transition-all duration-300 group shadow-lg"
           target="_blank"
         >
           Download Resume
