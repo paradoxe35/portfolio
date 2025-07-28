@@ -2,11 +2,21 @@ import { StorageImg } from "./storage-img";
 import { Skill } from "@repo/contracts";
 
 export function SkillCard({ skills }: { skills: Skill[] }) {
+  // Filter out empty skills
+  const validSkills = skills.filter(skill => skill.name.length > 0);
+  
+  // Determine grid columns based on number of skills
+  const getGridClass = () => {
+    const count = validSkills.length;
+    if (count === 1) return "grid-cols-1";
+    if (count === 2) return "grid-cols-2";
+    if (count === 3) return "grid-cols-3";
+    return "grid-cols-4"; // 4 or more items
+  };
+
   return (
-    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-      {skills.map((skill, i) => {
-        const hidden = !skill.name.length;
-        if (hidden) return null;
+    <div className={`grid ${getGridClass()} gap-4 md:gap-6`}>
+      {validSkills.map((skill, i) => {
         
         return (
           <div

@@ -23,9 +23,15 @@ function WorksItems({ projects }: StaticProps) {
   }, []);
 
   return (
-    <section className="py-24 min-h-screen bg-gradient-to-br from-neutral-1 to-neutral-2 dark:from-dark-bg dark:to-dark-bg-secondary">
+    <section className="py-24 min-h-screen bg-gradient-to-b from-neutral-1 via-white to-neutral-1 dark:from-dark-bg dark:via-dark-bg-secondary dark:to-dark-bg relative">
+      {/* Subtle background pattern */}
+      <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.05]">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(0,0,0,.05) 35px, rgba(0,0,0,.05) 70px)`,
+        }} />
+      </div>
       <Container>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {works.map((work, i) => (
             <div
               key={work.id}
@@ -53,7 +59,7 @@ export default function Works({ projects }: StaticProps) {
       <main>
         <Header
           title="Works"
-          subtitle="Projects I've worked on"
+          subtitle="A collection of projects showcasing my expertise in web development, from modern web applications to scalable backend solutions"
         />
         <WorksItems projects={projects} />
       </main>

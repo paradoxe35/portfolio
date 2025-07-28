@@ -11,7 +11,7 @@ export default function Header({
 }) {
   return (
     <div
-      className="pt-[150px] pb-[120px] relative bg-gradient-to-br from-neutral-1 to-neutral-2 dark:from-dark-bg dark:to-dark-bg-secondary"
+      className="pt-[150px] pb-[120px] relative bg-gradient-to-br from-white via-neutral-1 to-neutral-2 dark:from-dark-bg dark:via-dark-bg-secondary dark:to-black overflow-hidden"
       style={{
         background:
           image === undefined
@@ -29,27 +29,35 @@ export default function Header({
           <div className="absolute top-0 left-0 bottom-0 w-full md:w-3/4 z-[4] opacity-95 bg-gradient-to-r from-neutral-1 via-neutral-1/95 to-transparent dark:from-dark-bg dark:via-dark-bg/95 dark:to-transparent" />
         </>
       )}
+      
+      {/* Background Pattern - Only when no image */}
+      {!image && (
+        <>
+          <div className="absolute inset-0 opacity-5 dark:opacity-10">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_25%,_theme(colors.primary.DEFAULT)_0%,_transparent_50%),_radial-gradient(circle_at_75%_75%,_theme(colors.purple.500)_0%,_transparent_50%)]" />
+          </div>
+          <div className="absolute -top-24 -right-24 w-96 h-96 bg-primary/5 dark:bg-primary-light/10 rounded-full blur-3xl" />
+          <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-purple-500/5 dark:bg-purple-400/10 rounded-full blur-3xl" />
+        </>
+      )}
+      
       <Container>
         <div className="relative z-[6]">
           <h1
             data-aos="fade-up"
-            data-aos-delay="100"
-            className={`text-4xl md:text-5xl lg:text-6xl font-bold ${
-              image 
-                ? "text-neutral-9 dark:text-neutral-1" 
-                : "text-neutral-9 dark:text-neutral-1"
-            }`}
+            data-aos-delay="0"
+            data-aos-duration="600"
+            data-aos-once="true"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold text-neutral-9 dark:text-neutral-1 bg-gradient-to-r from-neutral-9 to-neutral-8 dark:from-neutral-1 dark:to-neutral-2 bg-clip-text text-transparent"
           >
             {title}
           </h1>
           <p
             data-aos="fade-up"
-            data-aos-delay="200"
-            className={`text-lg md:text-xl leading-relaxed font-normal mt-6 max-w-3xl ${
-              image 
-                ? "text-neutral-8 dark:text-neutral-2" 
-                : "text-neutral-7 dark:text-neutral-3"
-            }`}
+            data-aos-delay="150"
+            data-aos-duration="600"
+            data-aos-once="true"
+            className="text-lg md:text-xl leading-relaxed font-normal mt-6 max-w-3xl text-neutral-7 dark:text-neutral-3"
           >
             {subtitle}
           </p>

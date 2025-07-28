@@ -46,35 +46,32 @@ function Skills({ skills: defaultSkills }: { skills: Skill[] }) {
     });
   }, []);
 
-  const splitter = useCallback(
-    (acc: Skill[][], skill: Skill, index: number, array: Skill[]) => {
-      const limit = 3;
+  // Group skills into rows with max 4 items per row
+  const groupSkillsIntoRows = (skillsList: Skill[]) => {
+    const rows: Skill[][] = [];
+    const validSkills = skillsList.filter(skill => skill.name.length > 0);
+    
+    for (let i = 0; i < validSkills.length; i += 4) {
+      rows.push(validSkills.slice(i, i + 4));
+    }
+    
+    return rows;
+  };
 
-      if (index % limit === 0) {
-        acc.push([skill]);
-      } else {
-        acc[acc.length - 1].push(skill);
-      }
-      if (index === array.length - 1) {
-        const ls = acc[acc.length - 1];
-        new Array(limit - ls.length).fill(null).forEach((_, i) => {
-          acc[acc.length - 1].push({ icons: [], name: "", id: String(i) });
-        });
-      }
-      return acc;
-    },
-    [],
-  );
+  const defaultSkillRows = groupSkillsIntoRows(default_skills);
+  const additionalSkillRows = groupSkillsIntoRows(skills);
 
   return (
     <section id="skills" className="py-[120px] pb-[90px] scroll-mt-20 bg-gradient-to-br from-neutral-1 to-white dark:from-dark-bg dark:to-dark-bg-secondary">
       <Container>
         <Titles title="What I can do" subtitle="Building Digital Experiences" />
         <div className="space-y-8">
-          <SkillCard skills={default_skills} />
-          {skills.reduce(splitter, [] as Skill[][]).map((sklls, i) => {
-            return <SkillCard skills={sklls} key={i} />;
-          })}
+          {defaultSkillRows.map((skillRow, rowIndex) => (
+            <SkillCard key={`default-${rowIndex}`} skills={skillRow} />
+          ))}
+          {additionalSkillRows.map((skillRow, rowIndex) => (
+            <SkillCard key={`additional-${rowIndex}`} skills={skillRow} />
+          ))}
         </div>
       </Container>
     </section>
