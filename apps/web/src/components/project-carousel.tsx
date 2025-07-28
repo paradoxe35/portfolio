@@ -65,7 +65,7 @@ export function ProjectCarousel({ projects }: ProjectCarouselProps) {
             "shadow-lg hover:shadow-xl",
             "items-center justify-center",
             "hover:scale-110 hover:bg-white/30 dark:hover:bg-white/20",
-            "transition-all"
+            "transition-all",
           )}
           aria-label="Previous projects"
         >
@@ -96,7 +96,7 @@ export function ProjectCarousel({ projects }: ProjectCarouselProps) {
             "shadow-lg hover:shadow-xl",
             "items-center justify-center",
             "hover:scale-110 hover:bg-white/30 dark:hover:bg-white/20",
-            "transition-all"
+            "transition-all",
           )}
           aria-label="Next projects"
         >
@@ -123,7 +123,7 @@ export function ProjectCarousel({ projects }: ProjectCarouselProps) {
           "flex gap-8 overflow-x-auto scrollbar-hide scroll-smooth pb-4",
           "-mx-4 px-4 lg:mx-0 lg:px-0",
           "animate-fadeUp",
-          "items-stretch"
+          "items-stretch",
         )}
       >
         {projects.map((project, i) => (
@@ -133,7 +133,7 @@ export function ProjectCarousel({ projects }: ProjectCarouselProps) {
               "flex-shrink-0",
               "min-w-[320px] max-w-[320px]",
               "md:min-w-[380px] md:max-w-[380px]",
-              "min-h-[600px]"
+              "min-h-[600px]",
             )}
           >
             <WorksItem project={project} aosDuration={(i + 1) * 100} />
@@ -149,7 +149,7 @@ export function ProjectCarousel({ projects }: ProjectCarouselProps) {
             className={cn(
               "w-2 h-2 rounded-full",
               "bg-neutral-3 dark:bg-neutral-7",
-              "transition-all"
+              "transition-all",
             )}
           />
         ))}

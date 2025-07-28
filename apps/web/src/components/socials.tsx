@@ -9,7 +9,7 @@ export default function Socials() {
       className={cn(
         "py-[120px] pb-[90px]",
         "bg-gradient-to-br from-white to-neutral-1",
-        "dark:from-dark-bg-secondary dark:to-dark-bg"
+        "dark:from-dark-bg-secondary dark:to-dark-bg",
       )}
     >
       <Container>
@@ -24,7 +24,7 @@ export default function Socials() {
               "hover:border-white/40 dark:hover:border-white/20",
               "hover:bg-white/20 dark:hover:bg-white/10",
               "transition-all duration-500",
-              "animate-fadeUp animation-delay-100"
+              "animate-fadeUp animation-delay-100",
             )}
           >
             <div className="relative z-10">
@@ -34,7 +34,7 @@ export default function Socials() {
                   "flex items-center justify-center",
                   "bg-white/20 dark:bg-white/10",
                   "group-hover:bg-white/30 dark:group-hover:bg-white/20",
-                  "transition-all duration-300"
+                  "transition-all duration-300",
                 )}
               >
                 <svg
@@ -51,7 +51,7 @@ export default function Socials() {
                 className={cn(
                   "block text-xl font-bold mb-1",
                   "text-neutral-8 dark:text-neutral-2",
-                  "transition-colors"
+                  "transition-colors",
                 )}
               >
                 Github
@@ -59,7 +59,7 @@ export default function Socials() {
               <span
                 className={cn(
                   "text-sm font-normal",
-                  "text-neutral-6 dark:text-neutral-4"
+                  "text-neutral-6 dark:text-neutral-4",
                 )}
               >
                 @paradoxe35
@@ -75,7 +75,7 @@ export default function Socials() {
               "hover:border-white/40 dark:hover:border-white/20",
               "hover:bg-white/20 dark:hover:bg-white/10",
               "transition-all duration-500",
-              "animate-fadeUp animation-delay-200"
+              "animate-fadeUp animation-delay-200",
             )}
           >
             <div className="relative z-10">
@@ -85,7 +85,7 @@ export default function Socials() {
                   "flex items-center justify-center",
                   "bg-white/20 dark:bg-white/10",
                   "group-hover:bg-white/30 dark:group-hover:bg-white/20",
-                  "transition-all duration-300"
+                  "transition-all duration-300",
                 )}
               >
                 <svg
@@ -102,7 +102,7 @@ export default function Socials() {
                 className={cn(
                   "block text-xl font-bold mb-1",
                   "text-neutral-8 dark:text-neutral-2",
-                  "transition-colors"
+                  "transition-colors",
                 )}
               >
                 LinkedIn
@@ -110,7 +110,7 @@ export default function Socials() {
               <span
                 className={cn(
                   "text-sm font-normal",
-                  "text-neutral-6 dark:text-neutral-4"
+                  "text-neutral-6 dark:text-neutral-4",
                 )}
               >
                 /in/paradoxe-ngwasi
@@ -126,7 +126,7 @@ export default function Socials() {
               "hover:border-white/40 dark:hover:border-white/20",
               "hover:bg-white/20 dark:hover:bg-white/10",
               "transition-all duration-500",
-              "animate-fadeUp animation-delay-300"
+              "animate-fadeUp animation-delay-300",
             )}
           >
             <div className="relative z-10">
@@ -136,7 +136,7 @@ export default function Socials() {
                   "flex items-center justify-center",
                   "bg-white/20 dark:bg-white/10",
                   "group-hover:bg-white/30 dark:group-hover:bg-white/20",
-                  "transition-all duration-300"
+                  "transition-all duration-300",
                 )}
               >
                 <svg
@@ -153,7 +153,7 @@ export default function Socials() {
                 className={cn(
                   "block text-xl font-bold mb-1",
                   "text-neutral-8 dark:text-neutral-2",
-                  "transition-colors"
+                  "transition-colors",
                 )}
               >
                 Twitter
@@ -161,7 +161,7 @@ export default function Socials() {
               <span
                 className={cn(
                   "text-sm font-normal",
-                  "text-neutral-6 dark:text-neutral-4"
+                  "text-neutral-6 dark:text-neutral-4",
                 )}
               >
                 @paradoxe_ng

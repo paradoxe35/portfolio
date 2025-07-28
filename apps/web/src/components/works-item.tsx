@@ -18,20 +18,20 @@ export default function WorksItem({ aosDuration = 0, project }: Work) {
         "hover:border-primary/50 dark:hover:border-primary-light/50",
         "shadow-lg hover:shadow-2xl",
         "hover:bg-white/20 dark:hover:bg-white/10",
-        "transition-all duration-300"
+        "transition-all duration-300",
       )}
     >
       <Link
         href={`/works/${project.id}`}
         className={cn(
           "rounded-t-lg overflow-hidden relative",
-          "w-full h-[336px] flex-none"
+          "w-full h-[336px] flex-none",
         )}
       >
         <div
           className={cn(
             "relative h-full w-full overflow-hidden",
-            "bg-neutral-2 dark:bg-neutral-8"
+            "bg-neutral-2 dark:bg-neutral-8",
           )}
         >
           <StorageImg
@@ -39,7 +39,7 @@ export default function WorksItem({ aosDuration = 0, project }: Work) {
             alt={project.title}
             className={cn(
               "block opacity-100 h-full w-full object-cover",
-              "transition-all duration-700 group-hover:scale-110"
+              "transition-all duration-700 group-hover:scale-110",
             )}
           />
           <div
@@ -47,22 +47,17 @@ export default function WorksItem({ aosDuration = 0, project }: Work) {
               "absolute inset-0",
               "bg-gradient-to-t from-black/50 via-transparent to-transparent",
               "opacity-0 group-hover:opacity-100",
-              "transition-opacity duration-500"
+              "transition-opacity duration-500",
             )}
           />
         </div>
       </Link>
 
-      <div
-        className={cn(
-          "p-10 h-full",
-          "flex flex-1 flex-col items-start"
-        )}
-      >
+      <div className={cn("p-10 h-full", "flex flex-1 flex-col items-start")}>
         <div
           className={cn(
             "font-semibold uppercase text-xs",
-            "text-primary dark:text-primary-light"
+            "text-primary dark:text-primary-light",
           )}
         >
           {project.technology}
@@ -73,7 +68,7 @@ export default function WorksItem({ aosDuration = 0, project }: Work) {
             "text-2xl my-3 font-semibold",
             "text-neutral-9 dark:text-neutral-1",
             "transition-colors",
-            "hover:text-primary dark:hover:text-primary-light"
+            "hover:text-primary dark:hover:text-primary-light",
           )}
         >
           {project.title}
@@ -82,7 +77,7 @@ export default function WorksItem({ aosDuration = 0, project }: Work) {
           className={cn(
             "mb-12",
             "text-neutral-7 dark:text-neutral-4",
-            "line-clamp-3"
+            "line-clamp-3",
           )}
         >
           {project.description}
@@ -99,7 +94,7 @@ export default function WorksItem({ aosDuration = 0, project }: Work) {
             "hover:text-white dark:hover:text-neutral-9",
             "hover:bg-primary dark:hover:bg-primary-light",
             "hover:border-primary dark:hover:border-primary-light",
-            "transition-all duration-300"
+            "transition-all duration-300",
           )}
         >
           Find out more
@@ -108,7 +103,7 @@ export default function WorksItem({ aosDuration = 0, project }: Work) {
               "w-3 h-3 inline-block -ml-1",
               "opacity-0 group-hover/btn:opacity-100",
               "group-hover/btn:ml-1 group-hover/btn:translate-x-1",
-              "transition-all duration-500"
+              "transition-all duration-500",
             )}
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

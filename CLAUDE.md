@@ -398,6 +398,7 @@ The portfolio has been successfully migrated from SCSS to Tailwind CSS v4 with:
 ### Final Status: Migration Complete! 🎉
 
 The portfolio has been successfully enhanced with:
+
 - Full glass morphism UI matching the reference design
 - All components updated with modern styling
 - Dark/light mode working perfectly across all pages

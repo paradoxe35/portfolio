@@ -54,7 +54,7 @@ export function BackgroundPattern({
         "absolute inset-0 pointer-events-none",
         "opacity-[0.02] dark:opacity-[0.04]",
         "transition-opacity duration-500",
-        className
+        className,
       )}
     >
       <div
@@ -74,7 +74,7 @@ export function BackgroundPattern({
       <div
         className={cn(
           "absolute inset-0",
-          "bg-gradient-to-br from-transparent via-transparent to-primary/5 dark:to-primary-light/10"
+          "bg-gradient-to-br from-transparent via-transparent to-primary/5 dark:to-primary-light/10",
         )}
       />
     </div>

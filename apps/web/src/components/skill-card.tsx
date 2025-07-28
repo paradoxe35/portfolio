@@ -4,21 +4,18 @@ import { cn } from "@/utils/cn";
 
 export function SkillCard({ skills }: { skills: Skill[] }) {
   // Filter out empty skills
-  const validSkills = skills.filter(skill => skill.name.length > 0);
-  
+  const validSkills = skills.filter((skill) => skill.name.length > 0);
+
   // Determine grid columns based on number of skills with responsive breakpoints
   const getGridClass = () => {
     const count = validSkills.length;
-    if (count === 1) return "grid-cols-1";
-    if (count === 2) return "grid-cols-1 sm:grid-cols-2";
-    if (count === 3) return "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3";
+    if (count <= 3) return "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3";
     return "grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"; // 4 or more items
   };
 
   return (
     <div className={cn("grid gap-4 md:gap-6", getGridClass())}>
       {validSkills.map((skill, i) => {
-        
         return (
           <div
             className={cn(
@@ -35,7 +32,7 @@ export function SkillCard({ skills }: { skills: Skill[] }) {
                 "animation-delay-300": i === 2,
                 "animation-delay-400": i === 3,
                 "animation-delay-500": i >= 4,
-              }
+              },
             )}
             key={skill.id || i}
           >
@@ -48,7 +45,7 @@ export function SkillCard({ skills }: { skills: Skill[] }) {
                   "h-[36px] sm:h-[40px] md:h-[48px]",
                   "filter brightness-0 dark:brightness-100 dark:invert",
                   "opacity-70 group-hover:opacity-100",
-                  "transition-opacity"
+                  "transition-opacity",
                 )}
               />
             ) : (
@@ -64,19 +61,21 @@ export function SkillCard({ skills }: { skills: Skill[] }) {
                         "h-[36px] sm:h-[40px] md:h-[48px]",
                         "filter brightness-0 dark:brightness-100 dark:invert",
                         "opacity-70 group-hover:opacity-100",
-                        "transition-opacity"
+                        "transition-opacity",
                       )}
                     />
                   );
                 })}
               </div>
             )}
-            <h3 className={cn(
-              "text-sm sm:text-base font-medium mb-0",
-              "text-neutral-8 dark:text-neutral-2",
-              "group-hover:text-primary dark:group-hover:text-primary-light",
-              "transition-colors"
-            )}>
+            <h3
+              className={cn(
+                "text-sm sm:text-base font-medium mb-0",
+                "text-neutral-8 dark:text-neutral-2",
+                "group-hover:text-primary dark:group-hover:text-primary-light",
+                "transition-colors",
+              )}
+            >
               {skill.name}
             </h3>
           </div>

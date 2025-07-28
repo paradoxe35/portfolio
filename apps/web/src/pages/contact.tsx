@@ -24,7 +24,7 @@ const Alert: React.FC<PropsWithChildren<{ success?: boolean }>> = function ({
         "p-4 rounded-lg mb-4 text-sm font-medium animate-fadeInUp",
         success
           ? "bg-green-100 dark:bg-green-900/20 text-green-800 dark:text-green-300 border border-green-200 dark:border-green-800"
-          : "bg-red-100 dark:bg-red-900/20 text-red-800 dark:text-red-300 border border-red-200 dark:border-red-800"
+          : "bg-red-100 dark:bg-red-900/20 text-red-800 dark:text-red-300 border border-red-200 dark:border-red-800",
       )}
     >
       {children}

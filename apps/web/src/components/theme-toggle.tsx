@@ -36,7 +36,7 @@ export function ThemeToggle() {
         "p-3 rounded-full z-50",
         "bg-white dark:bg-neutral-8",
         "shadow-lg border border-neutral-3/20 dark:border-neutral-7/20",
-        "transition-all duration-300 hover:scale-110"
+        "transition-all duration-300 hover:scale-110",
       )}
       aria-label="Toggle theme"
     >

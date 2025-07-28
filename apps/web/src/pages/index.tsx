@@ -6,6 +6,7 @@ import { useCallback, useEffect, useState } from "react";
 import { GetStaticProps } from "next";
 import { site_details } from "@/utils/constants";
 import { SkillCard } from "@/components/skill-card";
+import { SkillsGrid } from "@/components/skills-grid";
 import { entitiesToJSON } from "@/utils/entity-to-json";
 import { getProjects } from "@/data/actions/project";
 import { getDefaultSkills, getSkills } from "@/data/actions/skill";
@@ -47,20 +48,8 @@ function Skills({ skills: defaultSkills }: { skills: Skill[] }) {
     });
   }, []);
 
-  // Group skills into rows with max 4 items per row
-  const groupSkillsIntoRows = (skillsList: Skill[]) => {
-    const rows: Skill[][] = [];
-    const validSkills = skillsList.filter((skill) => skill.name.length > 0);
-
-    for (let i = 0; i < validSkills.length; i += 4) {
-      rows.push(validSkills.slice(i, i + 4));
-    }
-
-    return rows;
-  };
-
-  const defaultSkillRows = groupSkillsIntoRows(default_skills);
-  const additionalSkillRows = groupSkillsIntoRows(skills);
+  // Combine all skills for intelligent grouping
+  const allSkills = [...default_skills, ...skills];
 
   return (
     <section
@@ -69,14 +58,7 @@ function Skills({ skills: defaultSkills }: { skills: Skill[] }) {
     >
       <Container>
         <Titles title="What I can do" subtitle="Building Digital Experiences" />
-        <div className="space-y-8">
-          {defaultSkillRows.map((skillRow, rowIndex) => (
-            <SkillCard key={`default-${rowIndex}`} skills={skillRow} />
-          ))}
-          {additionalSkillRows.map((skillRow, rowIndex) => (
-            <SkillCard key={`additional-${rowIndex}`} skills={skillRow} />
-          ))}
-        </div>
+        <SkillsGrid skills={allSkills} />
       </Container>
     </section>
   );
@@ -192,7 +174,7 @@ function Hero() {
                     className="absolute animate-float"
                     style={{
                       ...tech.position,
-                      animationDelay: `${i * 0.8}s`
+                      animationDelay: `${i * 0.8}s`,
                     }}
                   >
                     <div
@@ -201,11 +183,10 @@ function Hero() {
                         "backdrop-blur-md border border-white/20 dark:border-white/10",
                         "transition-all duration-300 hover:scale-110 cursor-pointer",
                         "animate-zoomIn",
-                        tech.delay === 50 ? "animation-delay-100" :
-                        tech.delay === 100 ? "animation-delay-100" :
-                        tech.delay === 150 ? "animation-delay-200" :
-                        tech.delay === 200 ? "animation-delay-200" :
-                        ""
+                        tech.delay === 50 && "animation-delay-100",
+                        tech.delay === 100 && "animation-delay-100",
+                        tech.delay === 150 && "animation-delay-200",
+                        tech.delay === 200 && "animation-delay-200",
                       )}
                     >
                       <img
