@@ -22,7 +22,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
     <>
       <Component {...pageProps} />
       <Analytics />
-      <ChatwootWidget />
+      {/* <ChatwootWidget /> */}
     </>,
   );
 }
