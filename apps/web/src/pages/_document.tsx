@@ -6,6 +6,7 @@ export default function Document() {
     <Html lang="en" className="dark">
       <Head>
         <Script
+          id="theme-switcher"
           dangerouslySetInnerHTML={{
             __html: `
               // Set dark mode by default, can be overridden by theme toggle

@@ -13,6 +13,7 @@ import { Project, Skill } from "@repo/contracts";
 import { ProjectCarousel } from "@/components/project-carousel";
 import { ProfileAvatar } from "@/components/profile-avatar";
 import { cn } from "@/utils/cn";
+import Link from "next/link";
 
 const PROJECTS_QUERY_LIMIT: number | undefined = 6;
 
@@ -79,7 +80,7 @@ function Hero() {
               {/* Introduction */}
               <div className="space-y-4">
                 <div className="text-lg text-neutral-7 dark:text-neutral-3 animate-fadeUp">
-                  Hey, I'm{" "}
+                  {"Hey, I'm "}
                   <span className="text-primary dark:text-primary-light font-semibold">
                     {site_details.firstname}
                   </span>
@@ -99,13 +100,13 @@ function Hero() {
 
               {/* Action Buttons */}
               <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 animate-fadeUp animation-delay-200">
-                <a
+                <Link
                   href="/contact"
                   className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white/20 dark:bg-white/10 backdrop-blur-md border border-white/30 dark:border-white/20 text-neutral-9 dark:text-neutral-1 font-medium rounded-xl hover:bg-white/30 dark:hover:bg-white/20 transition-all duration-300 hover:scale-105 w-full sm:w-auto"
                 >
                   Contact Me
-                </a>
-                <a
+                </Link>
+                <Link
                   href="/works"
                   className="inline-flex items-center justify-center gap-2 px-6 py-3 text-neutral-7 dark:text-neutral-3 font-medium hover:text-primary dark:hover:text-primary-light transition-colors w-full sm:w-auto"
                 >
@@ -123,7 +124,7 @@ function Hero() {
                       d="M17 8l4 4m0 0l-4 4m4-4H3"
                     />
                   </svg>
-                </a>
+                </Link>
               </div>
             </div>
 

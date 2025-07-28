@@ -24,7 +24,7 @@ const Alert: React.FC<PropsWithChildren<{ success?: boolean }>> = function ({
         "p-4 rounded-lg mb-4 text-sm font-medium animate-fadeInUp",
         success
           ? "bg-green-100 dark:bg-green-900/20 text-green-800 dark:text-green-300 border border-green-200 dark:border-green-800"
-          : "bg-red-100 dark:bg-red-900/20 text-red-800 dark:text-red-300 border border-red-200 dark:border-red-800",
+          : "bg-red-100 dark:bg-red-900/20 text-red-800 dark:text-red-300 border border-red-200 dark:border-red-800"
       )}
     >
       {children}
@@ -41,16 +41,15 @@ function Contact() {
     <div className="w-full max-w-2xl mx-auto">
       <div className="bg-white/10 dark:bg-white/5 backdrop-blur-lg rounded-2xl p-8 md:p-10 shadow-2xl border border-white/20 dark:border-white/10 hover:border-primary/20 dark:hover:border-primary-light/20 transition-all duration-300">
         <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-neutral-9 to-neutral-8 dark:from-neutral-1 dark:to-neutral-2 bg-clip-text text-transparent">
-          Let's Build Something Amazing
+          {"Let's Build Something Amazing"}
         </h1>
         <p className="text-neutral-7 dark:text-neutral-4 mb-8 text-lg">
-          Have a project in mind? I'd love to hear about it. Send me the details
-          and let's create something exceptional together.
+          {`Have a project in mind? I'd love to hear about it. Send me the details and let's create something exceptional together.`}
         </p>
 
         {state.succeeded && (
           <Alert success={state.succeeded}>
-            Message sent successfully. I'll get back to you soon.
+            {"Message sent successfully. I'll get back to you soon."}
           </Alert>
         )}
         {state.error.status && (
@@ -108,12 +107,12 @@ function About({ resume }: { resume: Resume | null }) {
           <Titles title="About" subtitle="A bit about me" />
           <div className="prose prose-lg dark:prose-invert max-w-3xl mb-12">
             <p className="text-neutral-7 dark:text-neutral-3 leading-relaxed">
-              I'm {site_details.full_name}, a Software Engineer with{" "}
-              {new Date().getFullYear() - 2017} years of hands-on experience
+              {`I'm ${site_details.full_name}, a Software Engineer with 
+              ${new Date().getFullYear() - 2017} years of hands-on experience
               building web applications. My journey began in 2017 as a
               self-taught developer, and since then, I've honed my skills across
               the full stack, working with technologies like PHP, Laravel,
-              React.js, Next.js, Node.js, and Go.
+              React.js, Next.js, Node.js, and Go.`.replace(/\s+/g, " ")}
             </p>
           </div>
           <ResumeComponent resume={resume} />
