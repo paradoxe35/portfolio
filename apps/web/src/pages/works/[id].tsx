@@ -2,9 +2,6 @@ import Header from "@/components/header";
 import Application from "@/components/layouts/application";
 import { GetStaticProps, GetStaticPaths } from "next";
 import Head from "next/head";
-
-import style from "@/styles/modules/project.module.scss";
-import homeStyle from "@/styles/modules/home.module.scss";
 import { Container } from "@/components/layouts/layouts";
 import { useEffect, useState } from "react";
 import Link from "next/link";
@@ -15,14 +12,12 @@ import { Project } from "@repo/contracts";
 
 const Content = ({ project }: { project: Project }) => {
   return (
-    <section
-      className={`${homeStyle.skills__section} ${homeStyle.works__section}`}
-    >
+    <section className="py-24 min-h-screen bg-gradient-to-br from-neutral-1 to-white dark:from-dark-bg dark:to-dark-bg-secondary">
       <Container>
-        <div className={style.project}>
-          <div className={`${style.columns}`}>
-            <div className="w-full">
-              <h2 className={style.big} style={{ marginBottom: 10 }}>
+        <div className="max-w-4xl mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-12">
+            <div>
+              <h2 className="text-primary dark:text-primary-light text-sm font-semibold uppercase tracking-wider mb-2">
                 {project.technology}
               </h2>
             </div>
@@ -30,15 +25,14 @@ const Content = ({ project }: { project: Project }) => {
             {project.link && (
               <Link
                 href={project.link}
-                className={`${homeStyle.project__action} ${style.btn}`}
+                className="inline-flex items-center gap-2 px-6 py-3 bg-primary dark:bg-primary-light text-white font-medium rounded-lg hover:bg-primary-dark dark:hover:bg-primary transition-colors"
                 target="_blank"
               >
-                Check it out
+                View project
                 <svg
-                  className={homeStyle.icon__action}
+                  className="w-4 h-4"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
-                  id="arrow"
                   viewBox="0 0 14 14"
                 >
                   <path
@@ -50,7 +44,13 @@ const Content = ({ project }: { project: Project }) => {
             )}
           </div>
 
-          <div className={style.content}>
+          <div className="prose prose-lg max-w-none dark:prose-invert 
+            prose-headings:text-neutral-9 dark:prose-headings:text-neutral-1 
+            prose-p:text-neutral-7 dark:prose-p:text-neutral-3
+            prose-a:text-primary dark:prose-a:text-primary-light prose-a:no-underline hover:prose-a:underline
+            prose-strong:text-neutral-8 dark:prose-strong:text-neutral-2
+            prose-code:text-primary dark:prose-code:text-primary-light prose-code:bg-neutral-2 dark:prose-code:bg-neutral-8 prose-code:px-1 prose-code:py-0.5 prose-code:rounded
+            prose-pre:bg-neutral-9 dark:prose-pre:bg-neutral-8 prose-pre:border prose-pre:border-neutral-3 dark:prose-pre:border-neutral-7">
             <RenderMarkdown>{project.content}</RenderMarkdown>
           </div>
         </div>

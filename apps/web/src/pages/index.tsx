@@ -165,11 +165,11 @@ function Hero() {
   return (
     <section>
       <div
-        className="min-h-screen pt-32 pb-8 relative z-[1] flex flex-col justify-center items-center overflow-hidden bg-cover bg-[50%] sm:bg-left-center lg:bg-[-30%] xl:bg-[-50%] 2xl:bg-[-70%] bg-no-repeat"
-        style={{ backgroundImage: `url(/paradoxe-ngwasi.png)` }}
+        className="min-h-screen pt-32 pb-8 relative z-[1] flex flex-col justify-center items-center overflow-hidden bg-cover bg-center md:bg-right bg-no-repeat"
+        style={{ backgroundImage: `url(/paradoxe-ngwasi.png)`, backgroundSize: 'cover' }}
       >
         {/* Gradient Overlay */}
-        <div className="absolute inset-0 z-[3] bg-gradient-to-br from-bg-alt/90 via-bg-alt/70 to-primary/20 dark:from-dark-bg/95 dark:via-dark-bg-secondary/80 dark:to-purple-600/20" />
+        <div className="absolute inset-0 z-[3] bg-gradient-to-br from-neutral-1/95 via-neutral-1/85 to-neutral-1/70 dark:from-dark-bg/95 dark:via-dark-bg-secondary/90 dark:to-dark-bg/80" />
 
         <div className="relative z-[4] p-2 overflow-hidden">
           <Container>

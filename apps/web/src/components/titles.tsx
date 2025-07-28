@@ -13,13 +13,13 @@ const Titles: React.FC<PropsWithChildren<Title>> = function ({
     <>
       <div
         data-aos="fade-up"
-        className="text-sm font-semibold uppercase text-primary"
+        className="text-sm font-semibold uppercase text-primary dark:text-primary-light tracking-wider"
       >
         {title}
       </div>
       <div
         data-aos="fade-up"
-        className="text-3xl font-bold mb-5 text-neutral-8 lg:w-1/2"
+        className="text-3xl md:text-4xl font-bold mb-8 text-neutral-9 dark:text-neutral-1 lg:w-3/4"
       >
         {subtitle}
       </div>

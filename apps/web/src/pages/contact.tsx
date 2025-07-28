@@ -3,11 +3,7 @@ import Titles from "@/components/titles";
 import Application from "@/components/layouts/application";
 import { Container } from "@/components/layouts/layouts";
 import Head from "next/head";
-import React, { PropsWithChildren, useEffect, useRef, useState } from "react";
-import style from "@/styles/modules/contact.module.scss";
-import styleHome from "@/styles/modules/home.module.scss";
-import { throttle } from "@/utils/functions";
-import homeStyle from "@/styles/modules/home.module.scss";
+import React, { PropsWithChildren, useEffect, useState } from "react";
 import { site_details } from "@/utils/constants";
 import Link from "next/link";
 import { GetStaticProps } from "next";
@@ -21,7 +17,11 @@ const Alert: React.FC<PropsWithChildren<{ success?: boolean }>> = function ({
   success,
 }) {
   return (
-    <div className={`${style.alert} ${success ? style.alert__success : ""}`}>
+    <div className={`p-4 rounded-lg mb-4 text-sm font-medium animate-fadeInUp ${
+      success 
+        ? "bg-green-100 dark:bg-green-900/20 text-green-800 dark:text-green-300 border border-green-200 dark:border-green-800" 
+        : "bg-red-100 dark:bg-red-900/20 text-red-800 dark:text-red-300 border border-red-200 dark:border-red-800"
+    }`}>
       {children}
     </div>
   );
@@ -33,61 +33,60 @@ function Contact() {
   const [state, handleSubmit] = useFormBold(FORMBOLD_FORM_ID);
 
   return (
-    <div className={style.contact__page}>
-      <div className={style.contact__card}>
-        <h1
-          className={style.section__title}
-          data-aos="fade-up"
-          data-aos-delay="100"
-        >
-          Contact me
+    <div className="w-full max-w-2xl mx-auto">
+      <div className="bg-white dark:bg-dark-surface/50 backdrop-blur-sm rounded-2xl p-8 md:p-10 shadow-xl border border-neutral-3/20 dark:border-dark-border/20">
+        <h1 className="text-4xl font-bold mb-4 text-neutral-9 dark:text-neutral-1">
+          Let's talk
         </h1>
-        <p data-aos="fade-up" data-aos-delay="200">
-          {`If it's about a project, please give as much detail as possible about
-          the project so that i can properly assess the workload your project
-          represents.`}
+        <p className="text-neutral-7 dark:text-neutral-4 mb-8">
+          Have a project in mind? Send me the details.
         </p>
 
         {state.succeeded && (
           <Alert success={state.succeeded}>
-            {
-              "Your message has been sent successfully, thank you again for showing me this interest."
-            }
+            Message sent successfully. I'll get back to you soon.
           </Alert>
         )}
         {state.error.status && (
           <Alert success={false}>{state.error.message}</Alert>
         )}
         <form
-          data-aos="fade-up"
-          data-aos-delay="300"
           onSubmit={handleSubmit}
-          className={style.contact__form}
+          className="space-y-6"
           autoComplete="off"
         >
-          <div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <input
               type="text"
               name="name"
               placeholder="Name"
               required
               minLength={3}
+              className="w-full px-4 py-3 rounded-lg border border-neutral-3 dark:border-neutral-7 bg-white dark:bg-neutral-9/50 text-neutral-9 dark:text-neutral-1 placeholder-neutral-5 dark:placeholder-neutral-5 focus:outline-none focus:border-primary dark:focus:border-primary-light transition-colors"
             />
-            <input type="email" name="email" placeholder="Email" required />
+            <input 
+              type="email" 
+              name="email" 
+              placeholder="Email" 
+              required 
+              className="w-full px-4 py-3 rounded-lg border border-neutral-3 dark:border-neutral-7 bg-white dark:bg-neutral-9/50 text-neutral-9 dark:text-neutral-1 placeholder-neutral-5 dark:placeholder-neutral-5 focus:outline-none focus:border-primary dark:focus:border-primary-light transition-colors"
+            />
           </div>
           <textarea
             name="message"
             placeholder="Your message..."
             required
             minLength={15}
+            rows={6}
+            className="w-full px-4 py-3 rounded-lg border border-neutral-3 dark:border-neutral-7 bg-white dark:bg-neutral-9/50 text-neutral-9 dark:text-neutral-1 placeholder-neutral-5 dark:placeholder-neutral-5 focus:outline-none focus:border-primary dark:focus:border-primary-light transition-colors resize-none"
           />
           <div>
             <button
               disabled={state.loading}
-              className={`${styleHome.project__action} font-sans`}
+              className="px-8 py-3 bg-primary dark:bg-primary-light text-white font-medium rounded-lg hover:bg-primary-dark dark:hover:bg-primary transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               type="submit"
             >
-              {state.loading ? "..." : "Get in touch"}
+              {state.loading ? "Sending..." : "Send message"}
             </button>
           </div>
         </form>
@@ -98,16 +97,15 @@ function Contact() {
 
 function About({ resume }: { resume: Resume | null }) {
   return (
-    <section className={styleHome.skills__section}>
+    <section className="py-24 bg-white dark:bg-dark-bg">
       <Container>
         <Titles
           title="About"
-          subtitle="I believe in moving at a sustainable pace and fixing what’s broken."
+          subtitle="A bit about me"
         />
-        <p data-aos="fade-up">
-          {`My name is ${site_details.full_name}. I design and manufacture web
-          applications that are intuitive, accessible, beautiful and fun. I've
-          been doing this passionately since 2017.`}
+        <p className="text-neutral-7 dark:text-neutral-3 max-w-3xl mb-8">
+          I'm {site_details.full_name}, a web developer focused on building clean, 
+          functional applications. I've been working in web development since 2017.
         </p>
         <ResumeComponent resume={resume} />
       </Container>
@@ -126,13 +124,24 @@ function ResumeComponent({ resume }: { resume: Resume | null }) {
     <>
       {link && (
         <Link
-          data-aos="fade-up"
           href={link}
-          className={`${homeStyle.project__action}`}
-          style={{ borderRadius: "5px" }}
+          className="inline-flex items-center gap-2 px-6 py-3 border border-primary dark:border-primary-light text-primary dark:text-primary-light font-medium rounded-lg hover:bg-primary hover:text-white dark:hover:bg-primary-light dark:hover:text-white transition-all"
           target="_blank"
         >
           Download Resume
+          <svg
+            className="w-4 h-4"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+            />
+          </svg>
         </Link>
       )}
     </>
@@ -140,50 +149,19 @@ function ResumeComponent({ resume }: { resume: Resume | null }) {
 }
 
 export default function ContactPage({ resume }: { resume: Resume | null }) {
-  const container = useRef<HTMLDivElement>(null);
-  const containerParent = useRef<HTMLDivElement>(null);
-  const containerChild = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    function resize() {
-      if (
-        container.current &&
-        containerParent.current &&
-        containerChild.current
-      ) {
-        const { height } = container.current.getBoundingClientRect();
-        containerParent.current.style.minHeight = `${height}px`;
-        containerChild.current.style.paddingTop = `${height}px`;
-      }
-    }
-
-    resize();
-
-    window.addEventListener("resize", throttle(resize, 50));
-
-    return () => {
-      window.removeEventListener("resize", resize);
-    };
-  }, []);
-
   return (
     <Application>
       <Head>
-        <title>{"Contact"}</title>
+        <title>{"Contact - Portfolio"}</title>
       </Head>
       <main>
-        <Header title="" subtitle="" />
-        <div className={style.gry__section} ref={containerParent}>
-          <div className={style.contact__container} ref={container}>
-            <Container>
-              <Contact />
-            </Container>
-          </div>
-
-          <div style={{ width: "100%" }} ref={containerChild}>
-            <About resume={resume} />
-          </div>
-        </div>
+        <Header title="Contact" subtitle="Get in touch" />
+        <section className="py-24 min-h-[60vh] bg-gradient-to-br from-neutral-1 to-neutral-2 dark:from-dark-bg-secondary dark:to-dark-bg">
+          <Container>
+            <Contact />
+          </Container>
+        </section>
+        <About resume={resume} />
       </main>
     </Application>
   );
