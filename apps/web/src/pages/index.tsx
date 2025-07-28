@@ -1,12 +1,9 @@
 import Titles from "@/components/titles";
-import WorksItem from "@/components/works-item";
 import Application from "@/components/layouts/application";
 import { Container } from "@/components/layouts/layouts";
 import Head from "next/head";
-import { useCallback, useEffect, useRef, useState } from "react";
-import { getBrowserWidth, getRandomArbitrary } from "@/utils/functions";
+import { useCallback, useEffect, useState } from "react";
 import { GetStaticProps } from "next";
-import { Position } from "@/types";
 import { site_details } from "@/utils/constants";
 import { SkillCard } from "@/components/skill-card";
 import { entitiesToJSON } from "@/utils/entity-to-json";
@@ -16,22 +13,7 @@ import { Project, Skill } from "@repo/contracts";
 import { ProjectCarousel } from "@/components/project-carousel";
 import { ProfileAvatar } from "@/components/profile-avatar";
 
-const functions: Function[] = [];
 const PROJECTS_QUERY_LIMIT: number | undefined = 6;
-
-function animation(
-  images: NodeListOf<HTMLImageElement>,
-  positions: Position[],
-  anime: boolean = true,
-) {
-  images.forEach((el, i) => {
-    el.style.top = `${positions[i].top || getRandomArbitrary(10, 80) + i}%`;
-    el.style.left = `${positions[i].left || getRandomArbitrary(50, 90) + i}%`;
-
-    // Simplified animation logic - we'll handle this with CSS
-    el.style.transform = anime ? `translateZ(0)` : `translateZ(0) scale(1)`;
-  });
-}
 
 function Works({ projects }: { projects: Project[] }) {
   const [works, setWorks] = useState<Project[]>(projects);
@@ -99,71 +81,8 @@ function Skills({ skills: defaultSkills }: { skills: Skill[] }) {
   );
 }
 
-function dataPositions(sm: boolean = false): Position[] {
-  // Better positioned icons around the hero content
-  if (sm) {
-    // Mobile positions - hidden
-    return [
-      { left: 0, top: 0 },
-      { left: 0, top: 0 },
-      { left: 0, top: 0 },
-      { left: 0, top: 0 },
-      { left: 0, top: 0 },
-    ];
-  }
-
-  // Desktop positions - distributed around the hero
-  return [
-    { left: 10, top: 20 }, // Top left
-    { left: 85, top: 15 }, // Top right
-    { left: 5, top: 70 }, // Bottom left
-    { left: 90, top: 65 }, // Bottom right
-    { left: 50, top: 85 }, // Bottom center
-  ];
-}
 
 function Hero() {
-  const objectsRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    let positions: Position[] = dataPositions(true);
-
-    if (getBrowserWidth() !== "xs") {
-      positions = dataPositions(false);
-    }
-
-    let sm = getBrowserWidth();
-
-    function responsive() {
-      if (window.innerWidth < 768 && sm !== "xs" && objectsRef.current) {
-        const images =
-          objectsRef.current.querySelectorAll<HTMLImageElement>("img");
-        animation(images, dataPositions(true), false);
-        sm = getBrowserWidth();
-      } else if (
-        window.innerWidth >= 768 &&
-        sm === "xs" &&
-        objectsRef.current
-      ) {
-        const images =
-          objectsRef.current.querySelectorAll<HTMLImageElement>("img");
-        animation(images, dataPositions(false), true);
-        sm = getBrowserWidth();
-      }
-    }
-
-    if (objectsRef.current) {
-      const images =
-        objectsRef.current.querySelectorAll<HTMLImageElement>("img");
-      animation(images, positions, sm !== "xs");
-    }
-
-    window.addEventListener("resize", responsive);
-
-    return () => {
-      window.removeEventListener("resize", responsive);
-    };
-  }, []);
 
   return (
     <section className="min-h-screen bg-gradient-to-br from-white via-neutral-1 to-neutral-2 dark:from-dark-bg dark:via-dark-bg-secondary dark:to-black relative overflow-hidden">
@@ -228,10 +147,7 @@ function Hero() {
 
             {/* Right Content - Tech Stack Icons with Centered Avatar */}
             <div className="relative">
-              <div
-                ref={objectsRef}
-                className="relative h-[500px] lg:h-[600px] flex items-center justify-center"
-              >
+              <div className="relative h-[500px] lg:h-[600px] flex items-center justify-center">
                 {/* Centered Profile Avatar */}
                 <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
                   <ProfileAvatar size="lg" delay={300} />
@@ -249,7 +165,7 @@ function Hero() {
                     key={tech.alt}
                     data-aos="zoom-in"
                     data-aos-delay={tech.delay}
-                    className="absolute p-4 rounded-2xl bg-white/10 dark:bg-white/5 backdrop-blur-md border border-white/20 dark:border-white/10 hover:scale-110 transition-all duration-300 animate-float"
+                    className="absolute p-4 rounded-2xl bg-white/10 dark:bg-white/5 backdrop-blur-md border border-white/20 dark:border-white/10 hover:scale-110 transition-transform duration-300 ease-out animate-float"
                     style={tech.position}
                   >
                     <img

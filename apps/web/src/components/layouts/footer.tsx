@@ -3,7 +3,7 @@ import { Container } from "./layouts";
 
 export default function Footer() {
   return (
-    <footer className="py-12 bg-neutral-1/50 dark:bg-dark-bg/80 backdrop-blur-md border-t border-neutral-3/20 dark:border-white/10">
+    <footer className="py-12 bg-gradient-to-t from-neutral-2 to-neutral-1 dark:from-dark-bg-secondary dark:to-dark-bg border-t border-white/10 dark:border-white/5">
       <Container>
         <div className="text-center text-sm font-medium text-neutral-6 dark:text-neutral-4">
           Designed by{" "}
