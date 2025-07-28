@@ -1,4 +1,3 @@
-import style from "@/styles/modules/home.module.scss";
 import { PropsWithChildren } from "react";
 
 type Title = {
@@ -12,10 +11,10 @@ const Titles: React.FC<PropsWithChildren<Title>> = function ({
 }) {
   return (
     <>
-      <div data-aos="fade-up" className={style["section__top-title"]}>
+      <div data-aos="fade-up" className="text-sm font-semibold uppercase text-primary">
         {title}
       </div>
-      <div data-aos="fade-up" className={style["section__title"]}>
+      <div data-aos="fade-up" className="text-3xl font-bold mb-5 text-neutral-8 lg:w-1/2">
         {subtitle}
       </div>
     </>

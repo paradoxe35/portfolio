@@ -1,39 +1,57 @@
 import { forwardRef, PropsWithChildren, ReactNode } from "react";
-import style from "@/styles/layout.module.scss";
 
 type GridProps = {
   col?: number;
   ref?: React.MutableRefObject<HTMLDivElement | null>;
   hidden?: boolean;
   children?: ReactNode;
+  className?: string;
 };
 
-export const Container: React.FC<PropsWithChildren<{}>> = ({ children }) => {
-  return <div className={style.container}>{children}</div>;
+export const Container: React.FC<PropsWithChildren<{ className?: string }>> = ({ 
+  children, 
+  className = "" 
+}) => {
+  return (
+    <div className={`container-custom ${className}`}>
+      {children}
+    </div>
+  );
 };
 
 export const Main: React.FC<PropsWithChildren<{}>> = ({ children }) => {
   return (
-    <main className={style.main}>
+    <main className="flex-1 flex flex-col justify-center items-center py-20">
       <Container>{children}</Container>
     </main>
   );
 };
 
 export const Footer: React.FC<PropsWithChildren<{}>> = ({ children }) => {
-  return <div className={style.footer}>{children}</div>;
+  return (
+    <div className="w-full h-[100px] border-t border-neutral-3 flex justify-center items-center">
+      {children}
+    </div>
+  );
 };
 
 export const Description: React.FC<PropsWithChildren<{}>> = ({ children }) => {
-  return <div className={style.description}>{children}</div>;
+  return (
+    <div className="text-2xl leading-relaxed">
+      {children}
+    </div>
+  );
 };
 
 export const Grid = forwardRef<HTMLDivElement, GridProps>(
-  ({ children, col, hidden }, ref) => {
+  ({ children, col, hidden, className = "" }, ref) => {
+    const gridCols = col === 4 ? "lg:grid-cols-4 md:grid-cols-2" : col === 3 ? "lg:grid-cols-3" : "";
+    const gridClass = col ? `grid gap-4 ${gridCols}` : "flex flex-wrap";
+    
     return (
       <div
         ref={ref}
-        className={`${style.grid} ${col ? style["grid__" + col] : ""}`}
+        className={`w-full ${gridClass} ${hidden ? "invisible" : ""} ${className}`}
       >
         {children}
       </div>
@@ -45,15 +63,15 @@ Grid.displayName = "Grid";
 
 export const Card: React.FC<
   PropsWithChildren<{ hidden?: boolean; className?: string }>
-> = ({ children, hidden, className, ...props }) => {
+> = ({ children, hidden, className = "", ...props }) => {
   return (
     <div
-      className={`${style.card} ${hidden ? style.hidden : ""} ${
-        className || ""
-      }`}
+      className={`${hidden ? "invisible" : ""} ${className}`}
       {...props}
     >
-      <div className={style.card_content}>{children}</div>
+      <div className="mr-4 mb-4 text-left p-6 border border-neutral-3 rounded-md transition-all duration-300 hover:border-primary/50 group">
+        {children}
+      </div>
     </div>
   );
 };
@@ -63,7 +81,10 @@ export const CardItem: React.FC<PropsWithChildren<{}>> = ({
   ...props
 }) => {
   return (
-    <div className={style.card__item} {...props}>
+    <div 
+      className="basis-full mr-4 mb-4 p-8 border border-neutral-3 rounded-lg transition-all duration-300"
+      {...props}
+    >
       {children}
     </div>
   );

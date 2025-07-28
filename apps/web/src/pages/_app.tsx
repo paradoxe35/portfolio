@@ -1,4 +1,4 @@
-import "@/styles/globals.scss";
+import "@/styles/globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import type { AppProps /*, AppContext */ } from "next/app";
 import { ReactElement, ReactNode, useEffect } from "react";
