@@ -28,9 +28,12 @@ export function ProfileAvatar({
 
   return (
     <div
-      data-aos="zoom-in"
-      data-aos-delay={delay}
-      className={`${sizeClasses[size]} rounded-full bg-white/10 dark:bg-white/5 backdrop-blur-md border border-white/20 dark:border-white/10 p-4 flex items-center justify-center ${className}`}
+      className={`${sizeClasses[size]} rounded-full bg-white/10 dark:bg-white/5 backdrop-blur-md border border-white/20 dark:border-white/10 p-4 flex items-center justify-center ${className} animate-zoomIn ${
+        delay === 300 ? 'animation-delay-300' :
+        delay === 400 ? 'animation-delay-400' :
+        delay === 500 ? 'animation-delay-500' :
+        ''
+      }`}
     >
       <div className="w-full h-full rounded-full bg-white/10 dark:bg-white/5 backdrop-blur-md border border-white/20 dark:border-white/10 flex items-center justify-center overflow-hidden">
         {/* Try to load image first, fallback to initials */}

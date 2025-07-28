@@ -20,9 +20,13 @@ export function SkillCard({ skills }: { skills: Skill[] }) {
         
         return (
           <div
-            className="group p-4 sm:p-6 md:p-8 rounded-2xl bg-white/10 dark:bg-white/5 backdrop-blur-md border border-white/20 dark:border-white/10 hover:border-primary/50 dark:hover:border-primary-light/50 transition-all duration-300 hover:scale-105 hover:bg-white/20 dark:hover:bg-white/10"
-            data-aos="fade-up"
-            data-aos-delay={(i + 1) * 100}
+            className={`group p-4 sm:p-6 md:p-8 rounded-2xl bg-white/10 dark:bg-white/5 backdrop-blur-md border border-white/20 dark:border-white/10 hover:border-primary/50 dark:hover:border-primary-light/50 transition-all duration-300 hover:scale-105 hover:bg-white/20 dark:hover:bg-white/10 animate-fadeUp ${
+              i === 0 ? 'animation-delay-100' :
+              i === 1 ? 'animation-delay-200' :
+              i === 2 ? 'animation-delay-300' :
+              i === 3 ? 'animation-delay-400' :
+              'animation-delay-500'
+            }`}
             key={skill.id || i}
           >
             {skill.icons.length === 1 ? (

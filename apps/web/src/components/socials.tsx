@@ -10,9 +10,7 @@ export default function Socials() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <Link
             href="https://github.com/paradoxe35"
-            className="group block p-8 rounded-2xl bg-white/10 dark:bg-white/5 backdrop-blur-md border border-white/20 dark:border-white/10 hover:border-white/40 dark:hover:border-white/20 transition-all duration-500 hover:bg-white/20 dark:hover:bg-white/10 relative overflow-hidden"
-            data-aos="fade-up"
-            data-aos-delay="100"
+            className="group block p-8 rounded-2xl bg-white/10 dark:bg-white/5 backdrop-blur-md border border-white/20 dark:border-white/10 hover:border-white/40 dark:hover:border-white/20 transition-all duration-500 hover:bg-white/20 dark:hover:bg-white/10 relative overflow-hidden animate-fadeUp animation-delay-100"
           >
             <div className="relative z-10">
               <div className="w-12 h-12 mb-4 rounded-xl bg-white/20 dark:bg-white/10 flex items-center justify-center group-hover:bg-white/30 dark:group-hover:bg-white/20 transition-all duration-300">
@@ -36,9 +34,7 @@ export default function Socials() {
           </Link>
           <Link
             href="https://www.linkedin.com/in/paradoxe-ngwasi-476727130"
-            className="group block p-8 rounded-2xl bg-white/10 dark:bg-white/5 backdrop-blur-md border border-white/20 dark:border-white/10 hover:border-white/40 dark:hover:border-white/20 transition-all duration-500 hover:bg-white/20 dark:hover:bg-white/10 relative overflow-hidden"
-            data-aos="fade-up"
-            data-aos-delay="200"
+            className="group block p-8 rounded-2xl bg-white/10 dark:bg-white/5 backdrop-blur-md border border-white/20 dark:border-white/10 hover:border-white/40 dark:hover:border-white/20 transition-all duration-500 hover:bg-white/20 dark:hover:bg-white/10 relative overflow-hidden animate-fadeUp animation-delay-200"
           >
             <div className="relative z-10">
               <div className="w-12 h-12 mb-4 rounded-xl bg-white/20 dark:bg-white/10 flex items-center justify-center group-hover:bg-white/30 dark:group-hover:bg-white/20 transition-all duration-300">
@@ -62,9 +58,7 @@ export default function Socials() {
           </Link>
           <Link
             href="https://twitter.com/paradoxe_ng"
-            className="group block p-8 rounded-2xl bg-white/10 dark:bg-white/5 backdrop-blur-md border border-white/20 dark:border-white/10 hover:border-white/40 dark:hover:border-white/20 transition-all duration-500 hover:bg-white/20 dark:hover:bg-white/10 relative overflow-hidden"
-            data-aos="fade-up"
-            data-aos-delay="300"
+            className="group block p-8 rounded-2xl bg-white/10 dark:bg-white/5 backdrop-blur-md border border-white/20 dark:border-white/10 hover:border-white/40 dark:hover:border-white/20 transition-all duration-500 hover:bg-white/20 dark:hover:bg-white/10 relative overflow-hidden animate-fadeUp animation-delay-300"
           >
             <div className="relative z-10">
               <div className="w-12 h-12 mb-4 rounded-xl bg-white/20 dark:bg-white/10 flex items-center justify-center group-hover:bg-white/30 dark:group-hover:bg-white/20 transition-all duration-300">

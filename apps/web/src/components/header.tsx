@@ -44,20 +44,12 @@ export default function Header({
       <Container>
         <div className="relative z-[6]">
           <h1
-            data-aos="fade-up"
-            data-aos-delay="0"
-            data-aos-duration="600"
-            data-aos-once="true"
-            className="text-4xl md:text-5xl lg:text-6xl font-bold text-neutral-9 dark:text-neutral-1 bg-gradient-to-r from-neutral-9 to-neutral-8 dark:from-neutral-1 dark:to-neutral-2 bg-clip-text text-transparent"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold text-neutral-9 dark:text-neutral-1 bg-gradient-to-r from-neutral-9 to-neutral-8 dark:from-neutral-1 dark:to-neutral-2 bg-clip-text text-transparent animate-fadeUp"
           >
             {title}
           </h1>
           <p
-            data-aos="fade-up"
-            data-aos-delay="150"
-            data-aos-duration="600"
-            data-aos-once="true"
-            className="text-lg md:text-xl leading-relaxed font-normal mt-6 max-w-3xl text-neutral-7 dark:text-neutral-3"
+            className="text-lg md:text-xl leading-relaxed font-normal mt-6 max-w-3xl text-neutral-7 dark:text-neutral-3 animate-fadeUp animation-delay-200"
           >
             {subtitle}
           </p>

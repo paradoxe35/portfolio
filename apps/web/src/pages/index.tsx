@@ -49,12 +49,12 @@ function Skills({ skills: defaultSkills }: { skills: Skill[] }) {
   // Group skills into rows with max 4 items per row
   const groupSkillsIntoRows = (skillsList: Skill[]) => {
     const rows: Skill[][] = [];
-    const validSkills = skillsList.filter(skill => skill.name.length > 0);
-    
+    const validSkills = skillsList.filter((skill) => skill.name.length > 0);
+
     for (let i = 0; i < validSkills.length; i += 4) {
       rows.push(validSkills.slice(i, i + 4));
     }
-    
+
     return rows;
   };
 
@@ -62,7 +62,10 @@ function Skills({ skills: defaultSkills }: { skills: Skill[] }) {
   const additionalSkillRows = groupSkillsIntoRows(skills);
 
   return (
-    <section id="skills" className="py-[120px] pb-[90px] scroll-mt-20 bg-gradient-to-br from-neutral-1 to-white dark:from-dark-bg dark:to-dark-bg-secondary">
+    <section
+      id="skills"
+      className="py-[120px] pb-[90px] scroll-mt-20 bg-gradient-to-br from-neutral-1 to-white dark:from-dark-bg dark:to-dark-bg-secondary"
+    >
       <Container>
         <Titles title="What I can do" subtitle="Building Digital Experiences" />
         <div className="space-y-8">
@@ -78,9 +81,7 @@ function Skills({ skills: defaultSkills }: { skills: Skill[] }) {
   );
 }
 
-
 function Hero() {
-
   return (
     <section className="min-h-screen bg-gradient-to-br from-white via-neutral-1 to-neutral-2 dark:from-dark-bg dark:via-dark-bg-secondary dark:to-black relative overflow-hidden">
       {/* Background Pattern */}
@@ -95,47 +96,27 @@ function Hero() {
             <div className="space-y-8">
               {/* Introduction */}
               <div className="space-y-4">
-                <div
-                  data-aos="fade-up"
-                  data-aos-delay="0"
-                  data-aos-duration="200"
-                  data-aos-offset="0"
-                  data-aos-once="true"
-                  className="text-lg text-neutral-7 dark:text-neutral-3"
-                >
-                  Hey, I'm <span className="text-primary dark:text-primary-light font-semibold">{site_details.firstname}</span>
+                <div className="text-lg text-neutral-7 dark:text-neutral-3 animate-fadeUp">
+                  Hey, I'm{" "}
+                  <span className="text-primary dark:text-primary-light font-semibold">
+                    {site_details.firstname}
+                  </span>
                 </div>
-                <h1
-                  data-aos="fade-up"
-                  data-aos-delay="50"
-                  data-aos-duration="200"
-                  data-aos-offset="0"
-                  data-aos-once="true"
-                  className="text-4xl md:text-5xl lg:text-6xl font-bold text-neutral-9 dark:text-neutral-1 leading-tight"
-                >
-                  A <span className="bg-gradient-to-r from-primary to-primary-dark dark:from-primary-light dark:to-primary bg-clip-text text-transparent">Software Developer</span>
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-neutral-9 dark:text-neutral-1 leading-tight animate-fadeUp animation-delay-100">
+                  A{" "}
+                  <span className="bg-gradient-to-r from-primary to-primary-dark dark:from-primary-light dark:to-primary bg-clip-text text-transparent">
+                    Software Developer
+                  </span>
                 </h1>
-                <p
-                  data-aos="fade-up"
-                  data-aos-delay="100"
-                  data-aos-duration="200"
-                  data-aos-offset="0"
-                  data-aos-once="true"
-                  className="text-lg text-neutral-6 dark:text-neutral-4 max-w-lg leading-relaxed"
-                >
-                  Building scalable web applications with modern technologies. Passionate about clean code, DevOps, and exceptional user experiences
+                <p className="text-lg text-neutral-6 dark:text-neutral-4 max-w-lg leading-relaxed animate-fadeUp animation-delay-100">
+                  Building scalable web applications with modern technologies.
+                  Passionate about clean code, DevOps, and exceptional user
+                  experiences
                 </p>
               </div>
 
               {/* Action Buttons */}
-              <div
-                data-aos="fade-up"
-                data-aos-delay="150"
-                data-aos-duration="200"
-                data-aos-offset="0"
-                data-aos-once="true"
-                className="flex items-center gap-4"
-              >
+              <div className="flex items-center gap-4 animate-fadeUp animation-delay-200">
                 <a
                   href="/contact"
                   className="inline-flex items-center gap-2 px-6 py-3 bg-white/20 dark:bg-white/10 backdrop-blur-md border border-white/30 dark:border-white/20 text-neutral-9 dark:text-neutral-1 font-medium rounded-xl hover:bg-white/30 dark:hover:bg-white/20 transition-all duration-300 hover:scale-105"
@@ -147,8 +128,18 @@ function Hero() {
                   className="inline-flex items-center gap-2 px-6 py-3 text-neutral-7 dark:text-neutral-3 font-medium hover:text-primary dark:hover:text-primary-light transition-colors"
                 >
                   View Projects
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  <svg
+                    className="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M17 8l4 4m0 0l-4 4m4-4H3"
+                    />
                   </svg>
                 </a>
               </div>
@@ -164,18 +155,52 @@ function Hero() {
 
                 {/* Tech Stack Icons around the avatar */}
                 {[
-                  { src: "/laravel.svg", alt: "Laravel", delay: 500, position: { top: "20%", left: "10%" } },
-                  { src: "/vue.svg", alt: "VueJs", delay: 600, position: { top: "15%", right: "15%" } },
-                  { src: "/react.svg", alt: "React", delay: 700, position: { top: "60%", left: "5%" } },
-                  { src: "/node.svg", alt: "NodeJs", delay: 800, position: { bottom: "20%", right: "20%" } },
-                  { src: "/flutter.svg", alt: "Flutter", delay: 900, position: { top: "40%", right: "10%" } },
+                  {
+                    src: "/laravel.svg",
+                    alt: "Laravel",
+                    delay: 500,
+                    position: { top: "20%", left: "10%" },
+                  },
+                  {
+                    src: "/vue.svg",
+                    alt: "VueJs",
+                    delay: 600,
+                    position: { top: "15%", right: "15%" },
+                  },
+                  {
+                    src: "/react.svg",
+                    alt: "React",
+                    delay: 700,
+                    position: { top: "60%", left: "5%" },
+                  },
+                  {
+                    src: "/node.svg",
+                    alt: "NodeJs",
+                    delay: 800,
+                    position: { bottom: "20%", right: "20%" },
+                  },
+                  {
+                    src: "/flutter.svg",
+                    alt: "Flutter",
+                    delay: 900,
+                    position: { top: "40%", right: "10%" },
+                  },
                 ].map((tech, i) => (
                   <div
                     key={tech.alt}
-                    data-aos="zoom-in"
-                    data-aos-delay={tech.delay}
-                    data-aos-once="true"
-                    className="group absolute p-4 rounded-2xl bg-white/10 dark:bg-white/5 backdrop-blur-md border border-white/20 dark:border-white/10 transition-all duration-300 hover:scale-110 animate-float cursor-pointer"
+                    className={`group absolute p-4 rounded-2xl bg-white/10 dark:bg-white/5 backdrop-blur-md border border-white/20 dark:border-white/10 transition-all duration-300 hover:scale-110 animate-float cursor-pointer animate-zoomIn ${
+                      tech.delay === 500
+                        ? "animation-delay-500"
+                        : tech.delay === 600
+                          ? "animation-delay-600"
+                          : tech.delay === 700
+                            ? "animation-delay-700"
+                            : tech.delay === 800
+                              ? "animation-delay-800"
+                              : tech.delay === 900
+                                ? "animation-delay-900"
+                                : ""
+                    }`}
                     style={tech.position}
                   >
                     <img

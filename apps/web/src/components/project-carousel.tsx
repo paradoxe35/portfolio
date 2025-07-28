@@ -100,8 +100,7 @@ export function ProjectCarousel({ projects }: ProjectCarouselProps) {
       {/* Carousel Container */}
       <div
         ref={scrollRef}
-        className="flex gap-8 overflow-x-auto scrollbar-hide scroll-smooth pb-4 -mx-4 px-4 lg:mx-0 lg:px-0"
-        data-aos="fade-up"
+        className="flex gap-8 overflow-x-auto scrollbar-hide scroll-smooth pb-4 -mx-4 px-4 lg:mx-0 lg:px-0 animate-fadeUp"
       >
         {projects.map((project, i) => (
           <div
