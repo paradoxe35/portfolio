@@ -21,7 +21,7 @@ export default function Footer() {
         >
           Designed by{" "}
           <Link
-            href="https://github.com/paradoxe35/portfolio"
+            href="https://github.com/paradoxe35"
             target="_blank"
             className={cn(
               "text-primary dark:text-primary-light",
