@@ -12,6 +12,7 @@ import { getResume } from "@/data/actions/resume";
 import { Resume } from "@repo/contracts";
 import { useFormBold } from "@/utils/hooks";
 import { cn } from "@/utils/cn";
+import { BackgroundPattern } from "@/components/background-pattern";
 
 const Alert: React.FC<PropsWithChildren<{ success?: boolean }>> = function ({
   children,
@@ -169,15 +170,8 @@ export default function ContactPage({ resume }: { resume: Resume | null }) {
           subtitle="Let's discuss your next project or collaboration opportunity"
         />
         <section className="py-24 min-h-[60vh] bg-gradient-to-b from-neutral-1 via-white to-neutral-1 dark:from-dark-bg dark:via-dark-bg-secondary dark:to-dark-bg relative">
-          {/* Background pattern */}
-          <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.05]">
-            <div
-              className="absolute inset-0"
-              style={{
-                backgroundImage: `repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(0,0,0,.05) 35px, rgba(0,0,0,.05) 70px)`,
-              }}
-            />
-          </div>
+          <BackgroundPattern variant="diagonal" />
+
           <Container>
             <div className="relative z-10">
               <Contact />
