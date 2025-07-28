@@ -1,6 +1,9 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+/* Configure class-based dark mode */
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* Custom theme configuration for Tailwind CSS v4 */
 @theme {
   /* Colors - Existing + Modern additions */
@@ -207,31 +210,7 @@
   }
 }
 
-/* Dark mode support */
-:root[data-theme="dark"] {
-  --color-bg: var(--color-dark-bg);
-  --color-bg-alt: var(--color-dark-bg-secondary);
-  --color-text: var(--color-neutral-1);
-  --color-text-light: var(--color-neutral-3);
-  --color-text-muted: var(--color-neutral-4);
-  --color-border: var(--color-dark-border);
-  --color-primary: #a67f4a;
-  --color-primary-light: #c09660;
-}
-
-/* System preference fallback */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --color-bg: var(--color-dark-bg);
-    --color-bg-alt: var(--color-dark-bg-secondary);
-    --color-text: var(--color-neutral-1);
-    --color-text-light: var(--color-neutral-3);
-    --color-text-muted: var(--color-neutral-4);
-    --color-border: var(--color-dark-border);
-    --color-primary: #a67f4a;
-    --color-primary-light: #c09660;
-  }
-}
+/* Tailwind uses class-based dark mode, no additional CSS needed */
 
 /* Animations */
 @keyframes float {

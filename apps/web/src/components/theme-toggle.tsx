@@ -7,23 +7,36 @@ export function ThemeToggle() {
   const [theme, setTheme] = useState<"light" | "dark" | null>(null);
 
   useEffect(() => {
-    // Check for saved theme preference or default to system preference
+    // Check for saved theme preference or default to dark mode
     const savedTheme = localStorage.getItem("theme") as "light" | "dark" | null;
-    const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
-      .matches
-      ? "dark"
-      : "light";
-    const initialTheme = savedTheme || systemTheme;
+    const initialTheme = savedTheme || "dark"; // Default to dark mode
 
     setTheme(initialTheme);
-    document.documentElement.setAttribute("data-theme", initialTheme);
+
+    // Always start with dark mode by default
+    // Remove any existing class first, then add dark if needed
+    document.documentElement.classList.remove("dark");
+    if (initialTheme === "dark") {
+      document.documentElement.classList.add("dark");
+    }
+    
+    // If no saved preference, save dark as default
+    if (!savedTheme) {
+      localStorage.setItem("theme", "dark");
+    }
   }, []);
 
   const toggleTheme = () => {
     const newTheme = theme === "light" ? "dark" : "light";
     setTheme(newTheme);
     localStorage.setItem("theme", newTheme);
-    document.documentElement.setAttribute("data-theme", newTheme);
+
+    // Toggle the dark class on the html element
+    if (newTheme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
   };
 
   if (!theme) return null; // Avoid hydration mismatch
@@ -32,17 +45,19 @@ export function ThemeToggle() {
     <button
       onClick={toggleTheme}
       className={cn(
-        "fixed bottom-6 right-6 sm:bottom-8 sm:right-8",
-        "p-3 rounded-full z-50",
-        "bg-white dark:bg-neutral-8",
-        "shadow-lg border border-neutral-3/20 dark:border-neutral-7/20",
+        "fixed bottom-6 left-6 sm:bottom-8 sm:left-8",
+        "p-3 rounded-full z-[100]",
+        "bg-white/90 dark:bg-neutral-8/90 backdrop-blur-md",
+        "shadow-xl border border-white/30 dark:border-white/20",
+        "hover:bg-white dark:hover:bg-neutral-7",
         "transition-all duration-300 hover:scale-110",
+        "group"
       )}
       aria-label="Toggle theme"
     >
       {theme === "light" ? (
         <svg
-          className="w-6 h-6 text-neutral-8"
+          className="w-6 h-6 text-neutral-8 group-hover:text-neutral-9 transition-colors"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -56,7 +71,7 @@ export function ThemeToggle() {
         </svg>
       ) : (
         <svg
-          className="w-6 h-6 text-neutral-1"
+          className="w-6 h-6 text-neutral-1 group-hover:text-white transition-colors"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
