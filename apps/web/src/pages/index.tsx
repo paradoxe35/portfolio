@@ -2,10 +2,9 @@ import Titles from "@/components/titles";
 import Application from "@/components/layouts/application";
 import { Container } from "@/components/layouts/layouts";
 import Head from "next/head";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { GetStaticProps } from "next";
 import { site_details } from "@/utils/constants";
-import { SkillCard } from "@/components/skill-card";
 import { SkillsGrid } from "@/components/skills-grid";
 import { entitiesToJSON } from "@/utils/entity-to-json";
 import { getProjects } from "@/data/actions/project";
@@ -186,7 +185,7 @@ function Hero() {
                         tech.delay === 50 && "animation-delay-100",
                         tech.delay === 100 && "animation-delay-100",
                         tech.delay === 150 && "animation-delay-200",
-                        tech.delay === 200 && "animation-delay-200",
+                        tech.delay === 200 && "animation-delay-200"
                       )}
                     >
                       <img

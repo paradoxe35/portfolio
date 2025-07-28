@@ -10,8 +10,8 @@ interface SkillsGridProps {
  * - 5 items: 3 + 2
  * - 6 items: 3 + 3
  * - 7 items: 4 + 3
- * - 9 items: 5 + 4 or 3 + 3 + 3
- * - 10 items: 4 + 3 + 3
+ * - 10 items: 4 + 4 + 2
+ * - 11 items: 4 + 4 + 3
  * etc.
  */
 export function SkillsGrid({ skills }: SkillsGridProps) {
@@ -20,52 +20,28 @@ export function SkillsGrid({ skills }: SkillsGridProps) {
 
   const getOptimalDistribution = (count: number): number[] => {
     if (count <= 4) return [count];
+    if (count === 5) return [3, 2];
+    if (count === 6) return [3, 3];
 
-    switch (count) {
-      case 5:
-        return [3, 2];
-      case 6:
-        return [3, 3];
-      case 7:
-        return [4, 3];
-      case 8:
-        return [4, 4];
-      case 9:
-        return [3, 3, 3];
-      case 10:
-        return [4, 3, 3];
-      case 11:
-        return [4, 4, 3];
-      case 12:
-        return [4, 4, 4];
-      case 13:
-        return [4, 3, 3, 3];
-      case 14:
-        return [4, 4, 3, 3];
-      case 15:
-        return [4, 4, 4, 3];
-      case 16:
-        return [4, 4, 4, 4];
-      default:
-        // For larger numbers, try to distribute evenly with max 4 per row
-        const rows = Math.ceil(count / 4);
-        const distribution: number[] = [];
-        let remaining = count;
+    // For everything else: Fill rows with 4 items, then add remainder
+    const fullRows = Math.floor(count / 4);
+    const remainder = count % 4;
 
-        for (let i = 0; i < rows; i++) {
-          const itemsInRow = Math.ceil(remaining / (rows - i));
-          distribution.push(Math.min(itemsInRow, 4));
-          remaining -= distribution[i];
-        }
+    // Start with full rows of 4
+    const distribution = Array(fullRows).fill(4);
 
-        return distribution;
+    // Add remainder if any (including lonely items)
+    if (remainder > 0) {
+      distribution.push(remainder);
     }
+
+    return distribution;
   };
 
-  const distribution = getOptimalDistribution(totalCount);
   const skillRows: Skill[][] = [];
-  let startIndex = 0;
+  const distribution = getOptimalDistribution(totalCount);
 
+  let startIndex = 0;
   distribution.forEach((rowCount) => {
     skillRows.push(validSkills.slice(startIndex, startIndex + rowCount));
     startIndex += rowCount;
@@ -74,7 +50,11 @@ export function SkillsGrid({ skills }: SkillsGridProps) {
   return (
     <div className="space-y-8">
       {skillRows.map((skillRow, rowIndex) => (
-        <SkillCard key={`row-${rowIndex}`} skills={skillRow} />
+        <SkillCard
+          key={`row-${rowIndex}`}
+          skills={skillRow}
+          rows={Math.max(...distribution)}
+        />
       ))}
     </div>
   );
