@@ -4,8 +4,6 @@ import Application from "@/components/layouts/application";
 import { Container } from "@/components/layouts/layouts";
 import Head from "next/head";
 import { useCallback, useEffect, useRef, useState } from "react";
-import style from "@/styles/modules/home.module.scss";
-import { animate } from "@/utils/animate";
 import { getBrowserWidth, getRandomArbitrary } from "@/utils/functions";
 import { GetStaticProps } from "next";
 import { Position } from "@/types";
@@ -28,20 +26,16 @@ function animation(
     el.style.top = `${positions[i].top || getRandomArbitrary(10, 80) + i}%`;
     el.style.left = `${positions[i].left || getRandomArbitrary(50, 90) + i}%`;
 
-    const animeFn = anime ? animate(el, 30) : animate(el, 0, 0, 0);
-    functions.push(animeFn);
-
-    !anime && functions.forEach((fn) => fn());
+    // Simplified animation logic - we'll handle this with CSS
+    el.style.transform = anime ? `translateZ(0)` : `translateZ(0) scale(1)`;
   });
 }
 
 function Works({ projects }: { projects: Project[] }) {
-  // Ref
   const carouselRef = useRef<HTMLDivElement | null>(null);
   const flkty = useRef<Flickity | null>(null);
   const flickity = useRef<typeof import("flickity") | null>(null);
 
-  // State
   const [works, setWorks] = useState<Project[]>(projects);
 
   useEffect(() => {
@@ -109,16 +103,21 @@ function Works({ projects }: { projects: Project[] }) {
   }, [works.length]);
 
   return (
-    <section className={`${style.skills__section} ${style.works__section}`}>
+    <section className="py-[120px] pb-[90px] bg-gradient-to-br from-neutral-2 to-neutral-1 dark:from-dark-bg-secondary dark:to-dark-bg">
       <Container>
         <Titles title="Works" subtitle="Projects" />
-        <div className={style.projects} data-aos="fade-up" ref={carouselRef}>
+        <div 
+          className="mt-8 flex gap-8 overflow-x-auto lg:overflow-visible scrollbar-hide" 
+          data-aos="fade-up" 
+          ref={carouselRef}
+        >
           {works.map((work, i) => (
-            <WorksItem
-              key={work.id}
-              project={work}
-              aosDuration={(i + 1) * 100}
-            />
+            <div key={work.id} className="min-w-[350px] max-w-[410px] flex-shrink-0">
+              <WorksItem
+                project={work}
+                aosDuration={(i + 1) * 100}
+              />
+            </div>
           ))}
         </div>
       </Container>
@@ -157,7 +156,7 @@ function Skills({ skills: defaultSkills }: { skills: Skill[] }) {
   );
 
   return (
-    <section className={style.skills__section}>
+    <section id="skills" className="py-[120px] pb-[90px] scroll-mt-20">
       <Container>
         <Titles title="Skills" subtitle="Services" />
         <SkillCard skills={default_skills} />
@@ -225,65 +224,75 @@ function Hero() {
   return (
     <section>
       <div
-        className={style.home__hero}
+        className="min-h-screen pt-20 pb-8 relative z-[1] flex flex-col justify-center items-center overflow-hidden bg-cover bg-left-center lg:bg-[-30%] xl:bg-[-50%] 2xl:bg-[-70%] bg-no-repeat"
         style={{ backgroundImage: `url(/paradoxe-ngwasi.png)` }}
       >
-        <div className={style.hero__body}>
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 z-[3] bg-gradient-to-br from-bg-alt/90 via-bg-alt/70 to-primary/20 dark:from-dark-bg/95 dark:via-dark-bg-secondary/80 dark:to-purple-600/20" />
+        
+        <div className="relative z-[4] p-2 overflow-hidden">
           <Container>
             <div
               data-aos="fade-up"
               data-aos-delay="100"
-              className={style.hero__hello}
+              className="mt-4 ml-1 text-primary dark:text-primary-light text-base font-medium tracking-wide"
             >
               Hello, I am
             </div>
             <div
               data-aos="fade-up"
               data-aos-delay="300"
-              className={style.hero__title}
+              className="text-[90px] leading-none font-bold my-4 max-w-[640px] bg-gradient-to-r from-neutral-8 to-neutral-6 dark:from-neutral-1 dark:to-neutral-3 bg-clip-text text-transparent max-lg:text-[60px] max-lg:max-w-none"
             >
               {site_details.full_name}
             </div>
             <div
               data-aos="fade-up"
               data-aos-delay="500"
-              className={style.hero__job}
+              className="text-lg font-medium ml-1 text-neutral-7 dark:text-neutral-3"
             >
               FullStack Web Developer
             </div>
+            <div
+              data-aos="fade-up"
+              data-aos-delay="700"
+              className="mt-8 ml-1"
+            >
+              <a
+                href="#skills"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary to-primary-dark hover:from-primary-dark hover:to-primary text-white font-medium rounded-lg shadow-lg hover:shadow-xl transform transition-all duration-300 hover:scale-105"
+              >
+                Explore My Work
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                </svg>
+              </a>
+            </div>
           </Container>
         </div>
-        <div ref={objectsRef} className={style.hero__icons}>
-          <img
-            data-aos="fade-up"
-            data-aos-delay="500"
-            src="/laravel.svg"
-            alt="Laravel"
-          />
-          <img
-            data-aos="fade-up"
-            data-aos-delay="600"
-            src="/vue.svg"
-            alt="VueJs"
-          />
-          <img
-            data-aos="fade-up"
-            data-aos-delay="700"
-            src="/react.svg"
-            alt="React"
-          />
-          <img
-            data-aos="fade-up"
-            data-aos-delay="800"
-            src="/node.svg"
-            alt="NodeJs"
-          />
-          <img
-            data-aos="fade-up"
-            data-aos-delay="900"
-            src="/flutter.svg"
-            alt="Flutter"
-          />
+
+        {/* Animated tech icons */}
+        <div ref={objectsRef} className="hidden lg:block">
+          {[
+            { src: "/laravel.svg", alt: "Laravel", delay: 500 },
+            { src: "/vue.svg", alt: "VueJs", delay: 600 },
+            { src: "/react.svg", alt: "React", delay: 700 },
+            { src: "/node.svg", alt: "NodeJs", delay: 800 },
+            { src: "/flutter.svg", alt: "Flutter", delay: 900 },
+          ].map((tech, i) => (
+            <img
+              key={tech.alt}
+              data-aos="fade-up"
+              data-aos-delay={tech.delay}
+              src={tech.src}
+              alt={tech.alt}
+              className="absolute w-16 transition-transform duration-1000 hover:scale-110"
+              style={{
+                // Initial styles will be set by animation function
+                transform: "translateZ(0)",
+              }}
+            />
+          ))}
         </div>
       </div>
     </section>
@@ -295,7 +304,6 @@ export default function Home({ projects, skills }: StaticProps) {
     <Application>
       <Head>
         <link rel="preload" href="/paradoxe-ngwasi.png" as="image" />
-
         <title>{`${site_details.full_name_title} - Portfolio`}</title>
       </Head>
       <main>

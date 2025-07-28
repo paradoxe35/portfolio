@@ -1,7 +1,5 @@
 import { Card, Grid } from "./layouts/layouts";
-import style from "@/styles/modules/home.module.scss";
 import { StorageImg } from "./storage-img";
-import styleLayout from "@/styles/layout.module.scss";
 import { Skill } from "@repo/contracts";
 
 export function SkillCard({ skills }: { skills: Skill[] }) {
@@ -12,8 +10,8 @@ export function SkillCard({ skills }: { skills: Skill[] }) {
         return (
           <Card
             hidden={hidden}
-            className={`${hidden && i > 1 ? styleLayout["hidden:992"] : ""} ${
-              hidden && i === 1 ? styleLayout["hidden:600"] : ""
+            className={`${hidden && i > 1 ? "hidden lg:block" : ""} ${
+              hidden && i === 1 ? "hidden md:block" : ""
             }`}
             data-aos="fade-up"
             data-aos-delay={(i + 1) * 100}
@@ -23,23 +21,23 @@ export function SkillCard({ skills }: { skills: Skill[] }) {
               <StorageImg
                 src={skill.icons[0]}
                 alt={skill.name}
-                className={style.service__logo}
+                className="block mb-8 w-auto h-[42px] max-w-full"
               />
             ) : (
-              <div style={{ display: "flex", gap: 4 }}>
+              <div className="flex gap-1 mb-8">
                 {skill.icons.map((img, i) => {
                   return (
                     <StorageImg
                       key={img}
                       src={img}
                       alt={skill.name}
-                      className={style.service__logo}
+                      className="block w-auto h-[42px] max-w-full"
                     />
                   );
                 })}
               </div>
             )}
-            <h3>{skill.name}</h3>
+            <h3 className="text-base text-neutral-7 dark:text-neutral-3 mb-0 group-hover:text-primary dark:group-hover:text-primary-light transition-colors">{skill.name}</h3>
           </Card>
         );
       })}

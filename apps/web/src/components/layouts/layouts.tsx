@@ -69,7 +69,7 @@ export const Card: React.FC<
       className={`${hidden ? "invisible" : ""} ${className}`}
       {...props}
     >
-      <div className="mr-4 mb-4 text-left p-6 border border-neutral-3 rounded-md transition-all duration-300 hover:border-primary/50 group">
+      <div className="mr-4 mb-4 text-left p-6 bg-white/80 dark:bg-dark-surface backdrop-blur-sm border border-neutral-3/50 dark:border-dark-border rounded-lg shadow-md hover:shadow-xl transition-all duration-300 hover:border-primary/50 dark:hover:border-primary-light/50 hover:-translate-y-1 group">
         {children}
       </div>
     </div>

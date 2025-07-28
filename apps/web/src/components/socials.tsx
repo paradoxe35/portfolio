@@ -1,23 +1,26 @@
-import style from "@/styles/modules/home.module.scss";
 import { Card, Container, Grid } from "@/components/layouts/layouts";
 import Titles from "./titles";
 import Link from "next/link";
 
 export default function Socials() {
   return (
-    <section className={style.skills__section}>
+    <section className="py-[120px] pb-[90px]">
       <Container>
         <Titles title="Socials" subtitle="Find me" />
         <Grid col={3}>
           <Card data-aos="fade-up" data-aos-delay="100">
             <Link
               href="https://github.com/paradoxe35"
-              className={style.social__links}
+              className="relative block group"
             >
-              <strong>Github</strong>
-              <span>github.com/paradoxe35</span>
+              <strong className="block text-2xl leading-7 font-bold text-neutral-7 dark:text-neutral-2 mb-1 transition-colors group-hover:text-primary dark:group-hover:text-primary-light">
+                Github
+              </strong>
+              <span className="text-sm font-normal text-primary dark:text-primary-light transition-colors">
+                github.com/paradoxe35
+              </span>
               <svg
-                className={style.icon}
+                className="w-12 h-12 absolute right-12 top-1/2 -translate-y-1/2 fill-neutral-9/35 dark:fill-neutral-3/35 transition-colors"
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
                 height="24"
@@ -30,12 +33,16 @@ export default function Socials() {
           <Card data-aos="fade-up" data-aos-delay="200">
             <Link
               href="https://www.linkedin.com/in/paradoxe-ngwasi-476727130"
-              className={style.social__links}
+              className="relative block group"
             >
-              <strong>LinkedIn</strong>
-              <span>linkedin.com/in/paradoxe...</span>
+              <strong className="block text-2xl leading-7 font-bold text-neutral-7 dark:text-neutral-2 mb-1 transition-colors group-hover:text-primary dark:group-hover:text-primary-light">
+                LinkedIn
+              </strong>
+              <span className="text-sm font-normal text-primary dark:text-primary-light transition-colors">
+                linkedin.com/in/paradoxe...
+              </span>
               <svg
-                className={style.icon}
+                className="w-12 h-12 absolute right-12 top-1/2 -translate-y-1/2 transition-colors"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 48 48"
                 width="48px"
@@ -55,13 +62,17 @@ export default function Socials() {
           <Card data-aos="fade-up" data-aos-delay="300">
             <Link
               href="https://twitter.com/paradoxe_ng"
-              className={style.social__links}
+              className="relative block group"
             >
-              <strong>Twitter</strong>
-              <span>twitter.com/paradoxe_ng</span>
+              <strong className="block text-2xl leading-7 font-bold text-neutral-7 dark:text-neutral-2 mb-1 transition-colors group-hover:text-primary dark:group-hover:text-primary-light">
+                Twitter
+              </strong>
+              <span className="text-sm font-normal text-primary dark:text-primary-light transition-colors">
+                twitter.com/paradoxe_ng
+              </span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className={style.icon}
+                className="w-12 h-12 absolute right-12 top-1/2 -translate-y-1/2 fill-neutral-9/35 dark:fill-neutral-3/35 transition-colors"
                 width="24"
                 height="24"
                 viewBox="0 0 24 24"

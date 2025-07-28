@@ -187,15 +187,39 @@
 }
 
 /* Dark mode support */
+:root[data-theme="dark"] {
+  --color-bg: var(--color-dark-bg);
+  --color-bg-alt: var(--color-dark-bg-secondary);
+  --color-text: var(--color-neutral-1);
+  --color-text-light: var(--color-neutral-3);
+  --color-text-muted: var(--color-neutral-4);
+  --color-border: var(--color-dark-border);
+  --color-primary: #a67f4a;
+  --color-primary-light: #c09660;
+}
+
+/* System preference fallback */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --color-bg: var(--color-dark-bg);
     --color-bg-alt: var(--color-dark-bg-secondary);
     --color-text: var(--color-neutral-1);
     --color-text-light: var(--color-neutral-3);
     --color-text-muted: var(--color-neutral-4);
     --color-border: var(--color-dark-border);
+    --color-primary: #a67f4a;
+    --color-primary-light: #c09660;
   }
+}
+
+/* Utility classes */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari and Opera */
 }
 
 /* Remove these when all SCSS files are migrated */

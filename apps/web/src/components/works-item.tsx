@@ -1,5 +1,4 @@
 import Link from "next/link";
-import style from "@/styles/modules/home.module.scss";
 import { StorageImg } from "./storage-img";
 import { Project } from "@repo/contracts";
 
@@ -10,22 +9,41 @@ interface Work {
 
 export default function WorksItem({ aosDuration = 0, project }: Work) {
   return (
-    <div className={style.project}>
-      <Link href={`/works/${project.id}`} className={style.project__image}>
-        <StorageImg src={project.image} alt={project.title} />
+    <div className="relative flex flex-col rounded border border-neutral-3 dark:border-dark-border bg-neutral-1/85 dark:bg-dark-surface backdrop-blur transition-all duration-300 hover:border-primary/50 dark:hover:border-primary-light/50">
+      <Link 
+        href={`/works/${project.id}`} 
+        className="rounded overflow-hidden w-full h-[336px] flex-none group"
+      >
+        <div className="relative h-full w-full overflow-hidden">
+          <StorageImg 
+            src={project.image} 
+            alt={project.title}
+            className="block opacity-100 h-full w-full object-cover transition-all duration-500 group-hover:scale-110 group-hover:opacity-50"
+          />
+        </div>
       </Link>
 
-      <div className={style.project__body}>
-        <div className={style.project__tags}>{project.technology}</div>
-        <Link href={`/works/${project.id}`} className={style.project__name}>
+      <div className="p-10 h-full flex flex-1 flex-col items-start">
+        <div className="font-semibold text-primary dark:text-primary-light uppercase text-xs">
+          {project.technology}
+        </div>
+        <Link 
+          href={`/works/${project.id}`} 
+          className="text-2xl my-3 font-semibold transition-colors hover:text-primary dark:hover:text-primary-light"
+        >
           {project.title}
         </Link>
-        <p className={style.project__desc}>{project.description}</p>
+        <p className="mb-12 text-neutral-7 dark:text-neutral-4">
+          {project.description}
+        </p>
 
-        <Link href={`/works/${project.id}`} className={style.project__action}>
+        <Link 
+          href={`/works/${project.id}`} 
+          className="mt-auto inline-flex items-center text-primary dark:text-primary-light text-xs leading-8 font-semibold uppercase px-8 py-2 border border-primary/75 dark:border-primary-light/75 rounded-sm transition-all hover:text-neutral-9 dark:hover:text-neutral-1 hover:bg-primary dark:hover:bg-primary-light group"
+        >
           Find out more
           <svg
-            className={style.icon__action}
+            className="w-3 h-3 opacity-0 transition-all duration-500 -ml-1 inline-block group-hover:ml-1 group-hover:opacity-100 group-hover:translate-x-1"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             id="arrow"
