@@ -9,7 +9,7 @@ export default function Footer() {
         "py-12",
         "bg-gradient-to-t from-neutral-2 to-neutral-1",
         "dark:from-dark-bg-secondary dark:to-dark-bg",
-        "border-t border-white/10 dark:border-white/5",
+        "border-t border-neutral-3/30 dark:border-white/5",
       )}
     >
       <Container>

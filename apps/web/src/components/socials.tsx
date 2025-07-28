@@ -19,10 +19,12 @@ export default function Socials() {
             href="https://github.com/paradoxe35"
             className={cn(
               "group block p-8 rounded-2xl relative overflow-hidden",
-              "bg-white/10 dark:bg-white/5 backdrop-blur-md",
-              "border border-white/20 dark:border-white/10",
-              "hover:border-white/40 dark:hover:border-white/20",
-              "hover:bg-white/20 dark:hover:bg-white/10",
+              "bg-white/80 dark:bg-white/5 backdrop-blur-md",
+              "border border-neutral-3/40 dark:border-white/10",
+              "shadow-lg shadow-neutral-9/10 dark:shadow-none",
+              "hover:border-primary/40 dark:hover:border-white/20",
+              "hover:bg-white/90 dark:hover:bg-white/10",
+              "hover:shadow-xl hover:shadow-neutral-9/15 dark:hover:shadow-none",
               "transition-all duration-500",
               "animate-fadeUp animation-delay-100",
             )}
@@ -32,8 +34,8 @@ export default function Socials() {
                 className={cn(
                   "w-12 h-12 mb-4 rounded-xl",
                   "flex items-center justify-center",
-                  "bg-white/20 dark:bg-white/10",
-                  "group-hover:bg-white/30 dark:group-hover:bg-white/20",
+                  "bg-white/60 dark:bg-white/10",
+                  "group-hover:bg-white/80 dark:group-hover:bg-white/20",
                   "transition-all duration-300",
                 )}
               >
@@ -70,10 +72,12 @@ export default function Socials() {
             href="https://www.linkedin.com/in/paradoxe-ngwasi-476727130"
             className={cn(
               "group block p-8 rounded-2xl relative overflow-hidden",
-              "bg-white/10 dark:bg-white/5 backdrop-blur-md",
-              "border border-white/20 dark:border-white/10",
-              "hover:border-white/40 dark:hover:border-white/20",
-              "hover:bg-white/20 dark:hover:bg-white/10",
+              "bg-white/80 dark:bg-white/5 backdrop-blur-md",
+              "border border-neutral-3/40 dark:border-white/10",
+              "shadow-lg shadow-neutral-9/10 dark:shadow-none",
+              "hover:border-primary/40 dark:hover:border-white/20",
+              "hover:bg-white/90 dark:hover:bg-white/10",
+              "hover:shadow-xl hover:shadow-neutral-9/15 dark:hover:shadow-none",
               "transition-all duration-500",
               "animate-fadeUp animation-delay-200",
             )}
@@ -83,8 +87,8 @@ export default function Socials() {
                 className={cn(
                   "w-12 h-12 mb-4 rounded-xl",
                   "flex items-center justify-center",
-                  "bg-white/20 dark:bg-white/10",
-                  "group-hover:bg-white/30 dark:group-hover:bg-white/20",
+                  "bg-white/60 dark:bg-white/10",
+                  "group-hover:bg-white/80 dark:group-hover:bg-white/20",
                   "transition-all duration-300",
                 )}
               >
@@ -121,10 +125,12 @@ export default function Socials() {
             href="https://twitter.com/paradoxe_ng"
             className={cn(
               "group block p-8 rounded-2xl relative overflow-hidden",
-              "bg-white/10 dark:bg-white/5 backdrop-blur-md",
-              "border border-white/20 dark:border-white/10",
-              "hover:border-white/40 dark:hover:border-white/20",
-              "hover:bg-white/20 dark:hover:bg-white/10",
+              "bg-white/80 dark:bg-white/5 backdrop-blur-md",
+              "border border-neutral-3/40 dark:border-white/10",
+              "shadow-lg shadow-neutral-9/10 dark:shadow-none",
+              "hover:border-primary/40 dark:hover:border-white/20",
+              "hover:bg-white/90 dark:hover:bg-white/10",
+              "hover:shadow-xl hover:shadow-neutral-9/15 dark:hover:shadow-none",
               "transition-all duration-500",
               "animate-fadeUp animation-delay-300",
             )}
@@ -134,8 +140,8 @@ export default function Socials() {
                 className={cn(
                   "w-12 h-12 mb-4 rounded-xl",
                   "flex items-center justify-center",
-                  "bg-white/20 dark:bg-white/10",
-                  "group-hover:bg-white/30 dark:group-hover:bg-white/20",
+                  "bg-white/60 dark:bg-white/10",
+                  "group-hover:bg-white/80 dark:group-hover:bg-white/20",
                   "transition-all duration-300",
                 )}
               >

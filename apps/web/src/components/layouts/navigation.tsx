@@ -12,8 +12,9 @@ const Navigation: React.FC<PropsWithChildren<{}>> = () => {
       <nav
         className={cn(
           "backdrop-blur-xl",
-          "bg-white/10 dark:bg-white/5",
-          "border-b border-white/20 dark:border-white/10",
+          "bg-white/80 dark:bg-white/5",
+          "border-b border-neutral-3/30 dark:border-white/10",
+          "shadow-sm shadow-neutral-9/5 dark:shadow-none",
         )}
       >
         <Container className="flex justify-between items-center py-4 sm:py-6">
@@ -111,7 +112,8 @@ const Navigation: React.FC<PropsWithChildren<{}>> = () => {
             className={cn(
               "sm:hidden backdrop-blur-md",
               "bg-white/95 dark:bg-dark-bg/95",
-              "border-t border-neutral-3/20 dark:border-dark-border/20",
+              "border-t border-neutral-3/30 dark:border-dark-border/20",
+              "shadow-lg shadow-neutral-9/10 dark:shadow-none",
             )}
           >
             <Container className="py-4">
