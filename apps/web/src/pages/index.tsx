@@ -12,6 +12,7 @@ import { getDefaultSkills, getSkills } from "@/data/actions/skill";
 import { Project, Skill } from "@repo/contracts";
 import { ProjectCarousel } from "@/components/project-carousel";
 import { ProfileAvatar } from "@/components/profile-avatar";
+import { cn } from "@/utils/cn";
 
 const PROJECTS_QUERY_LIMIT: number | undefined = 6;
 
@@ -158,49 +159,49 @@ function Hero() {
                   {
                     src: "/laravel.svg",
                     alt: "Laravel",
-                    delay: 500,
+                    delay: 100,
                     position: { top: "20%", left: "10%" },
                   },
                   {
                     src: "/vue.svg",
                     alt: "VueJs",
-                    delay: 600,
+                    delay: 200,
                     position: { top: "15%", right: "15%" },
                   },
                   {
                     src: "/react.svg",
                     alt: "React",
-                    delay: 700,
+                    delay: 300,
                     position: { top: "60%", left: "5%" },
                   },
                   {
                     src: "/node.svg",
                     alt: "NodeJs",
-                    delay: 800,
+                    delay: 400,
                     position: { bottom: "20%", right: "20%" },
                   },
                   {
                     src: "/flutter.svg",
                     alt: "Flutter",
-                    delay: 900,
+                    delay: 500,
                     position: { top: "40%", right: "10%" },
                   },
                 ].map((tech, i) => (
                   <div
                     key={tech.alt}
-                    className={`group absolute p-4 rounded-2xl bg-white/10 dark:bg-white/5 backdrop-blur-md border border-white/20 dark:border-white/10 transition-all duration-300 hover:scale-110 animate-float cursor-pointer animate-zoomIn ${
-                      tech.delay === 500
-                        ? "animation-delay-500"
-                        : tech.delay === 600
-                          ? "animation-delay-600"
-                          : tech.delay === 700
-                            ? "animation-delay-700"
-                            : tech.delay === 800
-                              ? "animation-delay-800"
-                              : tech.delay === 900
-                                ? "animation-delay-900"
-                                : ""
-                    }`}
+                    className={cn(
+                      "group absolute p-4 rounded-2xl bg-white/10 dark:bg-white/5",
+                      "backdrop-blur-md border border-white/20 dark:border-white/10",
+                      "transition-all duration-300 hover:scale-110 animate-float cursor-pointer",
+                      "animate-zoomIn",
+                      {
+                        "animation-delay-100": tech.delay === 100,
+                        "animation-delay-200": tech.delay === 200,
+                        "animation-delay-300": tech.delay === 300,
+                        "animation-delay-400": tech.delay === 400,
+                        "animation-delay-500": tech.delay === 500,
+                      }
+                    )}
                     style={tech.position}
                   >
                     <img

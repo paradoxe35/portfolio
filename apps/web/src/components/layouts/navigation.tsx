@@ -2,17 +2,30 @@ import { Container } from "./layouts";
 import Link from "next/link";
 import { site_details } from "@/utils/constants";
 import { PropsWithChildren, useState } from "react";
+import { cn } from "@/utils/cn";
 
 const Navigation: React.FC<PropsWithChildren<{}>> = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 pointer-events-none">
-      <nav className="backdrop-blur-xl bg-white/10 dark:bg-white/5 border-b border-white/20 dark:border-white/10">
+      <nav
+        className={cn(
+          "backdrop-blur-xl",
+          "bg-white/10 dark:bg-white/5",
+          "border-b border-white/20 dark:border-white/10"
+        )}
+      >
         <Container className="flex justify-between items-center py-4 sm:py-6">
           <Link
             href="/"
-            className="relative px-2 sm:px-3 py-2 leading-4 text-neutral-8 dark:text-neutral-2 pointer-events-auto transition-all duration-200 font-bold text-base sm:text-lg hover:text-primary dark:hover:text-primary-light"
+            className={cn(
+              "relative px-2 sm:px-3 py-2 leading-4 pointer-events-auto",
+              "font-bold text-base sm:text-lg",
+              "text-neutral-8 dark:text-neutral-2",
+              "hover:text-primary dark:hover:text-primary-light",
+              "transition-all duration-200"
+            )}
           >
             <span className="text-primary dark:text-primary-light">
               {site_details.firstname}
@@ -27,7 +40,14 @@ const Navigation: React.FC<PropsWithChildren<{}>> = () => {
             <li>
               <Link
                 href="/works"
-                className="relative px-4 py-2 leading-4 text-neutral-7 dark:text-neutral-3 pointer-events-auto transition-all duration-200 font-medium hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-neutral-2/50 dark:hover:bg-dark-surface"
+                className={cn(
+                  "relative px-4 py-2 leading-4 pointer-events-auto rounded-lg",
+                  "font-medium",
+                  "text-neutral-7 dark:text-neutral-3",
+                  "hover:text-primary dark:hover:text-primary-light",
+                  "hover:bg-neutral-2/50 dark:hover:bg-dark-surface",
+                  "transition-all duration-200"
+                )}
               >
                 Works
               </Link>
@@ -35,7 +55,14 @@ const Navigation: React.FC<PropsWithChildren<{}>> = () => {
             <li>
               <Link
                 href="/contact"
-                className="relative px-4 py-2 leading-4 text-neutral-7 dark:text-neutral-3 pointer-events-auto transition-all duration-200 font-medium hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-neutral-2/50 dark:hover:bg-dark-surface"
+                className={cn(
+                  "relative px-4 py-2 leading-4 pointer-events-auto rounded-lg",
+                  "font-medium",
+                  "text-neutral-7 dark:text-neutral-3",
+                  "hover:text-primary dark:hover:text-primary-light",
+                  "hover:bg-neutral-2/50 dark:hover:bg-dark-surface",
+                  "transition-all duration-200"
+                )}
               >
                 Contact
               </Link>
@@ -45,7 +72,12 @@ const Navigation: React.FC<PropsWithChildren<{}>> = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="sm:hidden p-2 pointer-events-auto text-neutral-7 dark:text-neutral-3 hover:text-primary dark:hover:text-primary-light transition-colors"
+            className={cn(
+              "sm:hidden p-2 pointer-events-auto",
+              "text-neutral-7 dark:text-neutral-3",
+              "hover:text-primary dark:hover:text-primary-light",
+              "transition-colors"
+            )}
             aria-label="Toggle menu"
           >
             <svg
@@ -75,14 +107,27 @@ const Navigation: React.FC<PropsWithChildren<{}>> = () => {
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="sm:hidden bg-white/95 dark:bg-dark-bg/95 backdrop-blur-md border-t border-neutral-3/20 dark:border-dark-border/20">
+          <div
+            className={cn(
+              "sm:hidden backdrop-blur-md",
+              "bg-white/95 dark:bg-dark-bg/95",
+              "border-t border-neutral-3/20 dark:border-dark-border/20"
+            )}
+          >
             <Container className="py-4">
               <ul className="space-y-2">
                 <li>
                   <Link
                     href="/works"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="block px-4 py-3 text-neutral-7 dark:text-neutral-3 pointer-events-auto transition-all duration-200 font-medium hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-neutral-2/50 dark:hover:bg-dark-surface"
+                    className={cn(
+                      "block px-4 py-3 pointer-events-auto rounded-lg",
+                      "font-medium",
+                      "text-neutral-7 dark:text-neutral-3",
+                      "hover:text-primary dark:hover:text-primary-light",
+                      "hover:bg-neutral-2/50 dark:hover:bg-dark-surface",
+                      "transition-all duration-200"
+                    )}
                   >
                     Works
                   </Link>
@@ -91,7 +136,14 @@ const Navigation: React.FC<PropsWithChildren<{}>> = () => {
                   <Link
                     href="/contact"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="block px-4 py-3 text-neutral-7 dark:text-neutral-3 pointer-events-auto transition-all duration-200 font-medium hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-neutral-2/50 dark:hover:bg-dark-surface"
+                    className={cn(
+                      "block px-4 py-3 pointer-events-auto rounded-lg",
+                      "font-medium",
+                      "text-neutral-7 dark:text-neutral-3",
+                      "hover:text-primary dark:hover:text-primary-light",
+                      "hover:bg-neutral-2/50 dark:hover:bg-dark-surface",
+                      "transition-all duration-200"
+                    )}
                   >
                     Contact
                   </Link>

@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { site_details } from "@/utils/constants";
+import { cn } from "@/utils/cn";
 
 interface ProfileAvatarProps {
   size?: "sm" | "md" | "lg";
@@ -28,14 +29,26 @@ export function ProfileAvatar({
 
   return (
     <div
-      className={`${sizeClasses[size]} rounded-full bg-white/10 dark:bg-white/5 backdrop-blur-md border border-white/20 dark:border-white/10 p-4 flex items-center justify-center ${className} animate-zoomIn ${
-        delay === 300 ? 'animation-delay-300' :
-        delay === 400 ? 'animation-delay-400' :
-        delay === 500 ? 'animation-delay-500' :
-        ''
-      }`}
+      className={cn(
+        sizeClasses[size],
+        "rounded-full bg-white/10 dark:bg-white/5 backdrop-blur-md",
+        "border border-white/20 dark:border-white/10",
+        "p-4 flex items-center justify-center",
+        "animate-zoomIn",
+        {
+          "animation-delay-300": delay === 300,
+          "animation-delay-400": delay === 400,
+          "animation-delay-500": delay === 500,
+        },
+        className
+      )}
     >
-      <div className="w-full h-full rounded-full bg-white/10 dark:bg-white/5 backdrop-blur-md border border-white/20 dark:border-white/10 flex items-center justify-center overflow-hidden">
+      <div className={cn(
+        "w-full h-full rounded-full overflow-hidden",
+        "bg-white/10 dark:bg-white/5 backdrop-blur-md",
+        "border border-white/20 dark:border-white/10",
+        "flex items-center justify-center"
+      )}>
         {/* Try to load image first, fallback to initials */}
         <Image
           src="/paradoxe-ngwasi-2.jpg"
@@ -44,7 +57,11 @@ export function ProfileAvatar({
           height={300}
           priority
           quality={85}
-          className="w-full h-full object-cover object-top scale-130 hover:scale-135 transition-transform duration-500"
+          className={cn(
+            "w-full h-full object-cover object-top",
+            "scale-130 hover:scale-135",
+            "transition-transform duration-500"
+          )}
           onError={(e) => {
             // Fallback to initials if image fails to load
             const target = e.target as HTMLImageElement;

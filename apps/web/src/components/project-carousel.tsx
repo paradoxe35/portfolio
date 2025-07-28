@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import WorksItem from "./works-item";
 import { Project } from "@repo/contracts";
+import { cn } from "@/utils/cn";
 
 interface ProjectCarouselProps {
   projects: Project[];
@@ -56,7 +57,16 @@ export function ProjectCarousel({ projects }: ProjectCarouselProps) {
       {canScrollLeft && (
         <button
           onClick={() => scroll("left")}
-          className="hidden lg:flex absolute left-0 top-1/2 -translate-y-1/2 z-10 -ml-5 w-12 h-12 bg-white/20 dark:bg-white/10 backdrop-blur-md border border-white/30 dark:border-white/20 shadow-lg rounded-full items-center justify-center hover:shadow-xl transition-all hover:scale-110 hover:bg-white/30 dark:hover:bg-white/20"
+          className={cn(
+            "hidden lg:flex absolute left-0 top-1/2 -translate-y-1/2 z-10 -ml-5",
+            "w-12 h-12 rounded-full",
+            "bg-white/20 dark:bg-white/10 backdrop-blur-md",
+            "border border-white/30 dark:border-white/20",
+            "shadow-lg hover:shadow-xl",
+            "items-center justify-center",
+            "hover:scale-110 hover:bg-white/30 dark:hover:bg-white/20",
+            "transition-all"
+          )}
           aria-label="Previous projects"
         >
           <svg
@@ -78,7 +88,16 @@ export function ProjectCarousel({ projects }: ProjectCarouselProps) {
       {canScrollRight && (
         <button
           onClick={() => scroll("right")}
-          className="hidden lg:flex absolute right-0 top-1/2 -translate-y-1/2 z-10 -mr-5 w-12 h-12 bg-white/20 dark:bg-white/10 backdrop-blur-md border border-white/30 dark:border-white/20 shadow-lg rounded-full items-center justify-center hover:shadow-xl transition-all hover:scale-110 hover:bg-white/30 dark:hover:bg-white/20"
+          className={cn(
+            "hidden lg:flex absolute right-0 top-1/2 -translate-y-1/2 z-10 -mr-5",
+            "w-12 h-12 rounded-full",
+            "bg-white/20 dark:bg-white/10 backdrop-blur-md",
+            "border border-white/30 dark:border-white/20",
+            "shadow-lg hover:shadow-xl",
+            "items-center justify-center",
+            "hover:scale-110 hover:bg-white/30 dark:hover:bg-white/20",
+            "transition-all"
+          )}
           aria-label="Next projects"
         >
           <svg
@@ -100,12 +119,20 @@ export function ProjectCarousel({ projects }: ProjectCarouselProps) {
       {/* Carousel Container */}
       <div
         ref={scrollRef}
-        className="flex gap-8 overflow-x-auto scrollbar-hide scroll-smooth pb-4 -mx-4 px-4 lg:mx-0 lg:px-0 animate-fadeUp"
+        className={cn(
+          "flex gap-8 overflow-x-auto scrollbar-hide scroll-smooth pb-4",
+          "-mx-4 px-4 lg:mx-0 lg:px-0",
+          "animate-fadeUp"
+        )}
       >
         {projects.map((project, i) => (
           <div
             key={project.id}
-            className="min-w-[320px] max-w-[320px] md:min-w-[380px] md:max-w-[380px] flex-shrink-0 h-full"
+            className={cn(
+              "flex-shrink-0 h-full",
+              "min-w-[320px] max-w-[320px]",
+              "md:min-w-[380px] md:max-w-[380px]"
+            )}
           >
             <WorksItem project={project} aosDuration={(i + 1) * 100} />
           </div>
@@ -117,7 +144,11 @@ export function ProjectCarousel({ projects }: ProjectCarouselProps) {
         {projects.map((_, i) => (
           <div
             key={i}
-            className="w-2 h-2 rounded-full bg-neutral-3 dark:bg-neutral-7 transition-all"
+            className={cn(
+              "w-2 h-2 rounded-full",
+              "bg-neutral-3 dark:bg-neutral-7",
+              "transition-all"
+            )}
           />
         ))}
       </div>

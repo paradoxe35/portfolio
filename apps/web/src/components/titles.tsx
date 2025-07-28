@@ -1,4 +1,5 @@
 import { PropsWithChildren } from "react";
+import { cn } from "@/utils/cn";
 
 type Title = {
   title: string | JSX.Element;
@@ -12,12 +13,21 @@ const Titles: React.FC<PropsWithChildren<Title>> = function ({
   return (
     <>
       <div
-        className="text-sm font-semibold uppercase text-primary dark:text-primary-light tracking-wider animate-fadeUp"
+        className={cn(
+          "text-sm font-semibold uppercase tracking-wider",
+          "text-primary dark:text-primary-light",
+          "animate-fadeUp"
+        )}
       >
         {title}
       </div>
       <div
-        className="text-3xl md:text-4xl font-bold mb-8 text-neutral-9 dark:text-neutral-1 lg:w-3/4 animate-fadeUp animation-delay-100"
+        className={cn(
+          "text-3xl md:text-4xl font-bold mb-8",
+          "text-neutral-9 dark:text-neutral-1",
+          "lg:w-3/4",
+          "animate-fadeUp animation-delay-100"
+        )}
       >
         {subtitle}
       </div>

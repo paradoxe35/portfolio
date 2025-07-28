@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { StorageImg } from "./storage-img";
 import { Project } from "@repo/contracts";
+import { cn } from "@/utils/cn";
 
 interface Work {
   aosDuration: number;
@@ -9,42 +10,103 @@ interface Work {
 
 export default function WorksItem({ aosDuration = 0, project }: Work) {
   return (
-    <div className="group relative flex flex-col h-full rounded-2xl bg-white/10 dark:bg-white/5 backdrop-blur-md border border-white/20 dark:border-white/10 hover:border-primary/50 dark:hover:border-primary-light/50 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:bg-white/20 dark:hover:bg-white/10 overflow-hidden">
+    <div
+      className={cn(
+        "group relative flex flex-col h-full rounded-2xl overflow-hidden",
+        "bg-white/10 dark:bg-white/5 backdrop-blur-md",
+        "border border-white/20 dark:border-white/10",
+        "hover:border-primary/50 dark:hover:border-primary-light/50",
+        "shadow-lg hover:shadow-2xl",
+        "hover:-translate-y-2 hover:bg-white/20 dark:hover:bg-white/10",
+        "transition-all duration-300"
+      )}
+    >
       <Link
         href={`/works/${project.id}`}
-        className="rounded-t-lg overflow-hidden w-full h-[336px] flex-none relative"
+        className={cn(
+          "rounded-t-lg overflow-hidden relative",
+          "w-full h-[336px] flex-none"
+        )}
       >
-        <div className="relative h-full w-full overflow-hidden bg-neutral-2 dark:bg-neutral-8">
+        <div
+          className={cn(
+            "relative h-full w-full overflow-hidden",
+            "bg-neutral-2 dark:bg-neutral-8"
+          )}
+        >
           <StorageImg
             src={project.image}
             alt={project.title}
-            className="block opacity-100 h-full w-full object-cover transition-all duration-700 group-hover:scale-110"
+            className={cn(
+              "block opacity-100 h-full w-full object-cover",
+              "transition-all duration-700 group-hover:scale-110"
+            )}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          <div
+            className={cn(
+              "absolute inset-0",
+              "bg-gradient-to-t from-black/50 via-transparent to-transparent",
+              "opacity-0 group-hover:opacity-100",
+              "transition-opacity duration-500"
+            )}
+          />
         </div>
       </Link>
 
-      <div className="p-10 h-full flex flex-1 flex-col items-start">
-        <div className="font-semibold text-primary dark:text-primary-light uppercase text-xs">
+      <div
+        className={cn(
+          "p-10 h-full",
+          "flex flex-1 flex-col items-start"
+        )}
+      >
+        <div
+          className={cn(
+            "font-semibold uppercase text-xs",
+            "text-primary dark:text-primary-light"
+          )}
+        >
           {project.technology}
         </div>
         <Link
           href={`/works/${project.id}`}
-          className="text-2xl my-3 font-semibold transition-colors hover:text-primary dark:hover:text-primary-light"
+          className={cn(
+            "text-2xl my-3 font-semibold",
+            "transition-colors",
+            "hover:text-primary dark:hover:text-primary-light"
+          )}
         >
           {project.title}
         </Link>
-        <p className="mb-12 text-neutral-7 dark:text-neutral-4">
+        <p
+          className={cn(
+            "mb-12",
+            "text-neutral-7 dark:text-neutral-4"
+          )}
+        >
           {project.description}
         </p>
 
         <Link
           href={`/works/${project.id}`}
-          className="mt-auto inline-flex items-center text-primary dark:text-primary-light text-xs leading-8 font-semibold uppercase px-8 py-2 border border-primary/75 dark:border-primary-light/75 rounded-sm transition-all hover:text-neutral-9 dark:hover:text-neutral-1 hover:bg-primary dark:hover:bg-primary-light group"
+          className={cn(
+            "mt-auto inline-flex items-center group",
+            "text-xs leading-8 font-semibold uppercase",
+            "px-8 py-2 rounded-sm",
+            "text-primary dark:text-primary-light",
+            "border border-primary/75 dark:border-primary-light/75",
+            "hover:text-neutral-9 dark:hover:text-neutral-1",
+            "hover:bg-primary dark:hover:bg-primary-light",
+            "transition-all"
+          )}
         >
           Find out more
           <svg
-            className="w-3 h-3 opacity-0 transition-all duration-500 -ml-1 inline-block group-hover:ml-1 group-hover:opacity-100 group-hover:translate-x-1"
+            className={cn(
+              "w-3 h-3 inline-block -ml-1",
+              "opacity-0 group-hover:opacity-100",
+              "group-hover:ml-1 group-hover:translate-x-1",
+              "transition-all duration-500"
+            )}
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             id="arrow"

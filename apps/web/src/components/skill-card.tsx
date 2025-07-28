@@ -1,5 +1,6 @@
 import { StorageImg } from "./storage-img";
 import { Skill } from "@repo/contracts";
+import { cn } from "@/utils/cn";
 
 export function SkillCard({ skills }: { skills: Skill[] }) {
   // Filter out empty skills
@@ -15,18 +16,27 @@ export function SkillCard({ skills }: { skills: Skill[] }) {
   };
 
   return (
-    <div className={`grid ${getGridClass()} gap-4 md:gap-6`}>
+    <div className={cn("grid gap-4 md:gap-6", getGridClass())}>
       {validSkills.map((skill, i) => {
         
         return (
           <div
-            className={`group p-4 sm:p-6 md:p-8 rounded-2xl bg-white/10 dark:bg-white/5 backdrop-blur-md border border-white/20 dark:border-white/10 hover:border-primary/50 dark:hover:border-primary-light/50 transition-all duration-300 hover:scale-105 hover:bg-white/20 dark:hover:bg-white/10 animate-fadeUp ${
-              i === 0 ? 'animation-delay-100' :
-              i === 1 ? 'animation-delay-200' :
-              i === 2 ? 'animation-delay-300' :
-              i === 3 ? 'animation-delay-400' :
-              'animation-delay-500'
-            }`}
+            className={cn(
+              "group p-4 sm:p-6 md:p-8 rounded-2xl",
+              "bg-white/10 dark:bg-white/5 backdrop-blur-md",
+              "border border-white/20 dark:border-white/10",
+              "hover:border-primary/50 dark:hover:border-primary-light/50",
+              "transition-all duration-300 hover:scale-105",
+              "hover:bg-white/20 dark:hover:bg-white/10",
+              "animate-fadeUp",
+              {
+                "animation-delay-100": i === 0,
+                "animation-delay-200": i === 1,
+                "animation-delay-300": i === 2,
+                "animation-delay-400": i === 3,
+                "animation-delay-500": i >= 4,
+              }
+            )}
             key={skill.id || i}
           >
             {skill.icons.length === 1 ? (
