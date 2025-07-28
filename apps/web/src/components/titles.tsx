@@ -1,9 +1,9 @@
-import style from "@/styles/modules/home.module.scss";
 import { PropsWithChildren } from "react";
+import { cn } from "@/utils/cn";
 
 type Title = {
-  title: string | JSX.Element;
-  subtitle: string | JSX.Element;
+  title: string | React.ReactNode;
+  subtitle: string | React.ReactNode;
 };
 
 const Titles: React.FC<PropsWithChildren<Title>> = function ({
@@ -12,10 +12,23 @@ const Titles: React.FC<PropsWithChildren<Title>> = function ({
 }) {
   return (
     <>
-      <div data-aos="fade-up" className={style["section__top-title"]}>
+      <div
+        className={cn(
+          "text-sm font-semibold uppercase tracking-wider",
+          "text-primary dark:text-primary-light",
+          "animate-fadeUp"
+        )}
+      >
         {title}
       </div>
-      <div data-aos="fade-up" className={style["section__title"]}>
+      <div
+        className={cn(
+          "text-3xl md:text-4xl font-bold mb-8",
+          "text-neutral-9 dark:text-neutral-1",
+          "lg:w-3/4",
+          "animate-fadeUp animation-delay-100"
+        )}
+      >
         {subtitle}
       </div>
     </>

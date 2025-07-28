@@ -3,12 +3,12 @@ import Application from "@/components/layouts/application";
 import { Container } from "@/components/layouts/layouts";
 import Head from "next/head";
 import { useEffect, useState } from "react";
-import homeStyle from "@/styles/modules/home.module.scss";
 import WorksItem from "@/components/works-item";
 import { GetStaticProps } from "next";
 import { entitiesToJSON } from "@/utils/entity-to-json";
 import { getProjects } from "@/data/actions/project";
 import { Project } from "@repo/contracts";
+import { BackgroundPattern } from "@/components/background-pattern";
 
 type StaticProps = {
   projects: Project[];
@@ -24,20 +24,19 @@ function WorksItems({ projects }: StaticProps) {
   }, []);
 
   return (
-    <section
-      className={`${homeStyle.skills__section} ${homeStyle.works__section}`}
-    >
+    <section className="py-24 min-h-screen bg-gradient-to-b from-neutral-1 via-white to-neutral-1 dark:from-dark-bg dark:via-dark-bg-secondary dark:to-dark-bg relative">
+      <BackgroundPattern variant="diagonal" />
+
       <Container>
-        <div
-          className={`${homeStyle.projects} ${homeStyle.projects__grid}`}
-          data-aos="fade-up"
-        >
+        <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {works.map((work, i) => (
-            <WorksItem
+            <div
               key={work.id}
-              project={work}
-              aosDuration={(i + 1) * 100}
-            />
+              className="animate-fadeInUp"
+              style={{ animationDelay: `${i * 100}ms` }}
+            >
+              <WorksItem project={work} aosDuration={(i + 1) * 100} />
+            </div>
           ))}
         </div>
       </Container>
@@ -49,12 +48,12 @@ export default function Works({ projects }: StaticProps) {
   return (
     <Application>
       <Head>
-        <title>{"My achievements"}</title>
+        <title>{"Works - Portfolio"}</title>
       </Head>
       <main>
         <Header
-          title="My achievements"
-          subtitle="Here is a range of projects I have worked on."
+          title="Works"
+          subtitle="Projects that showcase what I can build"
         />
         <WorksItems projects={projects} />
       </main>
