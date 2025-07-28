@@ -1,3 +1,10 @@
 packages:
-  - "apps/*"
-  - "packages/*"
+  - apps/*
+  - packages/*
+
+onlyBuiltDependencies:
+  - '@firebase/util'
+  - '@tailwindcss/oxide'
+  - esbuild
+  - protobufjs
+  - sharp
