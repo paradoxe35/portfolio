@@ -196,6 +196,10 @@
     transition: background-color 0.4s ease;
   }
 
+  .dark body {
+    background-color: var(--color-dark-bg);
+  }
+
   * {
     box-sizing: border-box;
   }
