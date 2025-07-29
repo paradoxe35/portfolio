@@ -17,7 +17,7 @@ import Image from "next/image";
 const PROJECTS_QUERY_LIMIT: number | undefined = 6;
 
 export const metadata: Metadata = {
-  title: "Home",
+  title: site_details.full_name,
   description: SEO.description.home,
   openGraph: {
     title: `${site_details.full_name} - Full-Stack Developer`,
