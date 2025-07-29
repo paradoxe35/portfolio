@@ -120,7 +120,7 @@ export function ProjectCarousel({ projects }: ProjectCarouselProps) {
       <div
         ref={scrollRef}
         className={cn(
-          "flex gap-8 overflow-x-auto scrollbar-hide scroll-smooth pb-4",
+          "flex gap-8 overflow-x-auto scrollbar-hide scroll-smooth pb-6 pt-2",
           "-mx-4 px-4 lg:mx-0 lg:px-0",
           "animate-fadeUp",
           "items-stretch",
@@ -136,7 +136,7 @@ export function ProjectCarousel({ projects }: ProjectCarouselProps) {
               "min-h-[600px]",
             )}
           >
-            <WorksItem project={project} aosDuration={(i + 1) * 100} />
+            <WorksItem project={project} aosDuration={(i + 1) * 100} inCarousel={true} />
           </div>
         ))}
       </div>

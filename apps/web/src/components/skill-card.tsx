@@ -51,8 +51,8 @@ export function SkillCard({ skills, rows }: SkillCardProps) {
                 className={cn(
                   "block mb-4 w-auto max-w-full",
                   "h-[36px] sm:h-[40px] md:h-[48px]",
-                  "filter brightness-0 dark:brightness-100 dark:invert",
-                  "opacity-70 group-hover:opacity-100",
+                  "filter brightness-100 dark:invert",
+                  "opacity-90 dark:opacity-70 group-hover:opacity-100",
                   "transition-opacity"
                 )}
               />
@@ -67,8 +67,8 @@ export function SkillCard({ skills, rows }: SkillCardProps) {
                       className={cn(
                         "block w-auto max-w-full",
                         "h-[36px] sm:h-[40px] md:h-[48px]",
-                        "filter brightness-0 dark:brightness-100 dark:invert",
-                        "opacity-70 group-hover:opacity-100",
+                        "filter brightness-100 dark:invert",
+                        "opacity-90 dark:opacity-70 group-hover:opacity-100",
                         "transition-opacity"
                       )}
                     />
