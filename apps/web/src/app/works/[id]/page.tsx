@@ -1,14 +1,45 @@
 import Header from "@/components/header";
 import Application from "@/components/layouts/application";
-import { GetStaticProps, GetStaticPaths } from "next";
-import Head from "next/head";
 import { Container } from "@/components/layouts/layouts";
-import { useEffect, useState } from "react";
 import Link from "next/link";
 import { entityToJSON } from "@/utils/entity-to-json";
 import { RenderMarkdown } from "@/components/react-markdown/markdown";
 import { getProjectByID, getProjects } from "@/data/actions/project";
 import { Project } from "@repo/contracts";
+import { notFound } from "next/navigation";
+import { Metadata } from "next";
+
+export const revalidate = 5;
+
+interface PageProps {
+  params: Promise<{ id: string }>;
+}
+
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
+  const { id } = await params;
+  const project = await getProjectByID(id);
+
+  if (!project) {
+    return {
+      title: "Project Not Found",
+    };
+  }
+
+  return {
+    title: `${project.title} - Project`,
+    description: project.description,
+  };
+}
+
+export async function generateStaticParams() {
+  const projects = await getProjects();
+
+  return projects.map((project) => ({
+    id: project.id,
+  }));
+}
 
 const Content = ({ project }: { project: Project }) => {
   return (
@@ -74,73 +105,26 @@ const Content = ({ project }: { project: Project }) => {
   );
 };
 
-export default function Work({
-  project: _project,
-}: {
-  project: Project | null;
-}) {
-  const [project, setProject] = useState<Project | null>(_project);
+export default async function Work({ params }: PageProps) {
+  const { id } = await params;
+  const project = await getProjectByID(id);
 
-  useEffect(() => {
-    if (!_project?.id) {
-      return;
-    }
+  if (!project) {
+    notFound();
+  }
 
-    getProjectByID(_project.id).then((data) => setProject(data));
-  }, [_project?.id]);
+  const projectData = entityToJSON(project) as Project;
 
   return (
     <Application>
-      {project && (
-        <Head>
-          <title>{`${project.title} - Project`}</title>
-        </Head>
-      )}
       <main>
-        {project && (
-          <>
-            <Header
-              title={project.title}
-              image={project.image}
-              subtitle={project.description}
-            />
-            <Content project={project} />
-          </>
-        )}
+        <Header
+          title={projectData.title}
+          image={projectData.image}
+          subtitle={projectData.description}
+        />
+        <Content project={projectData} />
       </main>
     </Application>
   );
 }
-
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  let project;
-  if (params && typeof params.id === "string") {
-    project = await getProjectByID(params.id);
-  }
-
-  if (!project) {
-    return {
-      notFound: true,
-    };
-  }
-
-  return {
-    props: {
-      project: project ? entityToJSON(project) : null,
-    },
-    revalidate: 5,
-  };
-};
-
-export const getStaticPaths: GetStaticPaths = async () => {
-  const projects = await getProjects();
-
-  const paths = projects.map((project) => ({
-    params: { id: project.id },
-  }));
-
-  return {
-    paths,
-    fallback: "blocking",
-  };
-};

@@ -1,3 +1,5 @@
+"use client";
+
 import Socials from "@/components/socials";
 import React, { PropsWithChildren, useEffect } from "react";
 import Footer from "./footer";

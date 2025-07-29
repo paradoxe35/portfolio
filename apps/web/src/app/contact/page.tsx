@@ -1,18 +1,17 @@
+"use client";
+
 import Header from "@/components/header";
 import Titles from "@/components/titles";
 import Application from "@/components/layouts/application";
 import { Container } from "@/components/layouts/layouts";
-import Head from "next/head";
 import React, { PropsWithChildren, useEffect, useState } from "react";
 import { site_details } from "@/utils/constants";
 import Link from "next/link";
-import { GetStaticProps } from "next";
-import { entityToJSON } from "@/utils/entity-to-json";
-import { getResume } from "@/data/actions/resume";
 import { Resume } from "@repo/contracts";
 import { useFormBold } from "@/utils/hooks";
 import { cn } from "@/utils/cn";
 import { BackgroundPattern } from "@/components/background-pattern";
+import { getResume } from "@/data/actions/resume";
 
 const Alert: React.FC<PropsWithChildren<{ success?: boolean }>> = function ({
   children,
@@ -96,7 +95,13 @@ function Contact() {
   );
 }
 
-function About({ resume }: { resume: Resume | null }) {
+function About() {
+  const [resume, setResume] = useState<Resume | null>(null);
+
+  useEffect(() => {
+    getResume().then((resume) => resume && setResume(resume));
+  }, []);
+
   return (
     <section className="py-24 bg-gradient-to-br from-neutral-1 to-white dark:from-dark-bg-secondary dark:to-dark-bg relative overflow-hidden">
       {/* Decorative elements */}
@@ -123,17 +128,11 @@ function About({ resume }: { resume: Resume | null }) {
 }
 
 function ResumeComponent({ resume }: { resume: Resume | null }) {
-  const [link, setLink] = useState<string | undefined>(resume?.file);
-
-  useEffect(() => {
-    getResume().then((resume) => resume && setLink(resume.file));
-  }, []);
-
   return (
     <>
-      {link && (
+      {resume?.file && (
         <Link
-          href={link}
+          href={resume.file}
           className="inline-flex items-center gap-3 px-8 py-4 bg-white/80 dark:bg-white/10 backdrop-blur-md border border-black/10 dark:border-white/20 text-neutral-9 dark:text-neutral-1 font-medium rounded-xl hover:bg-white/90 dark:hover:bg-white/20 hover:scale-105 hover:shadow-xl transition-all duration-300 group shadow-lg"
           target="_blank"
         >
@@ -157,12 +156,9 @@ function ResumeComponent({ resume }: { resume: Resume | null }) {
   );
 }
 
-export default function ContactPage({ resume }: { resume: Resume | null }) {
+export default function ContactPage() {
   return (
     <Application>
-      <Head>
-        <title>{"Contact - Portfolio"}</title>
-      </Head>
       <main>
         <Header
           title="Contact"
@@ -177,19 +173,8 @@ export default function ContactPage({ resume }: { resume: Resume | null }) {
             </div>
           </Container>
         </section>
-        <About resume={resume} />
+        <About />
       </main>
     </Application>
   );
 }
-
-export const getStaticProps: GetStaticProps = async (context) => {
-  const resume = await getResume();
-
-  return {
-    props: {
-      resume: resume ? entityToJSON(resume) : null,
-    },
-    revalidate: 5,
-  };
-};

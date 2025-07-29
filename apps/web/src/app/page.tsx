@@ -1,9 +1,6 @@
 import Titles from "@/components/titles";
 import Application from "@/components/layouts/application";
 import { Container } from "@/components/layouts/layouts";
-import Head from "next/head";
-import { useEffect, useState } from "react";
-import { GetStaticProps } from "next";
 import { site_details } from "@/utils/constants";
 import { SkillsGrid } from "@/components/skills-grid";
 import { entitiesToJSON } from "@/utils/entity-to-json";
@@ -14,40 +11,37 @@ import { ProjectCarousel } from "@/components/project-carousel";
 import { ProfileAvatar } from "@/components/profile-avatar";
 import { cn } from "@/utils/cn";
 import Link from "next/link";
+import { Metadata } from "next";
 
 const PROJECTS_QUERY_LIMIT: number | undefined = 6;
 
-function Works({ projects }: { projects: Project[] }) {
-  const [works, setWorks] = useState<Project[]>(projects);
+export const metadata: Metadata = {
+  title: `${site_details.full_name_title} - Portfolio`,
+};
 
-  useEffect(() => {
-    getProjects(PROJECTS_QUERY_LIMIT).then((ps) => {
-      Array.isArray(ps) && setWorks(ps || []);
-    });
-  }, []);
+export const revalidate = 5;
+
+// Server Component for Works
+async function Works() {
+  const projects = entitiesToJSON(await getProjects(PROJECTS_QUERY_LIMIT)) as Project[];
 
   return (
     <section className="py-16 sm:py-20 md:py-[120px] pb-12 sm:pb-16 md:pb-[90px] bg-gradient-to-br from-neutral-1 to-white dark:from-dark-bg-secondary dark:to-dark-bg">
       <Container>
         <Titles title="Portfolio" subtitle="Selected Works" />
         <div className="mt-8">
-          <ProjectCarousel projects={works} />
+          <ProjectCarousel projects={projects} />
         </div>
       </Container>
     </section>
   );
 }
 
-function Skills({ skills: defaultSkills }: { skills: Skill[] }) {
+// Server Component for Skills
+async function Skills() {
   const default_skills = getDefaultSkills();
-  const [skills, setSkills] = useState(defaultSkills || []);
-
-  useEffect(() => {
-    getSkills().then((skills) => {
-      setSkills(skills);
-    });
-  }, []);
-
+  const skills = entitiesToJSON(await getSkills()) as Skill[];
+  
   // Combine all skills for intelligent grouping
   const allSkills = [...default_skills, ...skills];
 
@@ -206,36 +200,14 @@ function Hero() {
   );
 }
 
-export default function Home({ projects, skills }: StaticProps) {
+export default function Home() {
   return (
     <Application>
-      <Head>
-        <link rel="preload" href="/paradoxe-ngwasi.png" as="image" />
-        <title>{`${site_details.full_name_title} - Portfolio`}</title>
-      </Head>
       <main>
         <Hero />
-        <Skills skills={skills} />
-        <Works projects={projects} />
+        <Skills />
+        <Works />
       </main>
     </Application>
   );
 }
-
-type StaticProps = {
-  projects: Project[];
-  skills: Skill[];
-};
-
-export const getStaticProps: GetStaticProps = async (context) => {
-  const projects = entitiesToJSON(await getProjects(PROJECTS_QUERY_LIMIT));
-  const skills = entitiesToJSON(await getSkills());
-
-  return {
-    props: {
-      projects,
-      skills,
-    },
-    revalidate: 5,
-  };
-};
