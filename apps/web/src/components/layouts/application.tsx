@@ -2,7 +2,6 @@ import Socials from "@/components/socials";
 import React, { PropsWithChildren, useEffect } from "react";
 import Footer from "./footer";
 import Navigation from "./navigation";
-import { ThemeToggle } from "@/components/theme-toggle";
 
 const Application = ({ children }: PropsWithChildren<{}>) => {
   useEffect(() => {
@@ -14,7 +13,6 @@ const Application = ({ children }: PropsWithChildren<{}>) => {
       {children}
       <Socials />
       <Footer />
-      <ThemeToggle />
     </React.Fragment>
   );
 };
