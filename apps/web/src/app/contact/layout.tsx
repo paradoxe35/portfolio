@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: SEO.description.contact,
   openGraph: {
     title: "Contact - Let's Work Together",
-    description: SEO.description.contact,
+    description: SEO.description.contactOpenGraph,
     type: "website",
   },
 };

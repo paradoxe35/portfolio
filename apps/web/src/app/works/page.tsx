@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   description: SEO.description.works,
   openGraph: {
     title: "Works - Portfolio Projects",
-    description: SEO.description.works,
+    description: SEO.description.worksOpenGraph,
     type: "website",
   },
 };
