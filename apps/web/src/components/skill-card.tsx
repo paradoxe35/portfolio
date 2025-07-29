@@ -7,6 +7,30 @@ type SkillCardProps = {
   rows?: number;
 };
 
+const slugify = (str: string) => {
+  return str
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+};
+
+const validStyleCSS = (style: Record<string, string> | undefined) => {
+  if (!style || Object.keys(style).length === 0) {
+    return undefined;
+  }
+
+  return Object.entries(style).reduce(
+    (acc, [prop, value]) => {
+      if (typeof value === "string") {
+        acc[prop] = value;
+      }
+
+      return acc;
+    },
+    {} as Record<string, string>
+  );
+};
+
 export function SkillCard({ skills, rows }: SkillCardProps) {
   // Filter out empty skills
   const validSkills = skills.filter((skill) => skill.name.length > 0);
@@ -48,13 +72,14 @@ export function SkillCard({ skills, rows }: SkillCardProps) {
               <StorageImg
                 src={skill.icons[0]}
                 alt={skill.name}
+                id={slugify(skill.name)}
+                style={validStyleCSS(skill.style)}
                 className={cn(
                   "block mb-4 w-auto max-w-full",
                   "h-[36px] sm:h-[40px] md:h-[48px]",
                   "filter brightness-100 dark:invert",
                   "opacity-90 dark:opacity-70 group-hover:opacity-100",
-                  "transition-opacity",
-                  skill.inverted ? "invert" : ""
+                  "transition-opacity"
                 )}
               />
             ) : (
@@ -65,13 +90,14 @@ export function SkillCard({ skills, rows }: SkillCardProps) {
                       key={img}
                       src={img}
                       alt={skill.name}
+                      id={slugify(skill.name) + "-" + i}
+                      style={validStyleCSS(skill.style)}
                       className={cn(
                         "block w-auto max-w-full",
                         "h-[36px] sm:h-[40px] md:h-[48px]",
                         "filter brightness-100 dark:invert",
                         "opacity-90 dark:opacity-70 group-hover:opacity-100",
-                        "transition-opacity",
-                        skill.inverted ? "invert" : ""
+                        "transition-opacity"
                       )}
                     />
                   );

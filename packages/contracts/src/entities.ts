@@ -8,8 +8,7 @@ export class Skill {
     public readonly name: string,
     public readonly icons: string[],
     public readonly status?: "published" | "draft" | "archived",
-    public readonly className?: string,
-    public readonly inverted?: boolean
+    public readonly style?: Record<string, string>
   ) {}
 }
 
