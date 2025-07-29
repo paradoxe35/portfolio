@@ -9,7 +9,11 @@ interface Work {
   inCarousel?: boolean;
 }
 
-export default function WorksItem({ aosDuration = 0, project, inCarousel = false }: Work) {
+export default function WorksItem({
+  aosDuration = 0,
+  project,
+  inCarousel = false,
+}: Work) {
   return (
     <div
       className={cn(
@@ -42,6 +46,8 @@ export default function WorksItem({ aosDuration = 0, project, inCarousel = false
               "block opacity-100 h-full w-full object-cover",
               "transition-all duration-700 group-hover:scale-110"
             )}
+            width={1200}
+            height={630}
           />
           <div
             className={cn(

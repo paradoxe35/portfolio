@@ -1,10 +1,8 @@
+import Image from "next/image";
 import React from "react";
 
-type Props = React.DetailedHTMLProps<
-  React.ImgHTMLAttributes<HTMLImageElement>,
-  HTMLImageElement
->;
+type Props = React.ComponentProps<typeof Image>;
 
 export function StorageImg(props: Props) {
-  return <img {...props} alt={props.alt} />;
+  return <Image {...props} alt={props.alt} />;
 }

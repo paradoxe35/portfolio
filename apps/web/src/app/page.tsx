@@ -12,6 +12,7 @@ import { ProfileAvatar } from "@/components/profile-avatar";
 import { cn } from "@/utils/cn";
 import Link from "next/link";
 import { Metadata } from "next";
+import Image from "next/image";
 
 const PROJECTS_QUERY_LIMIT: number | undefined = 6;
 
@@ -192,9 +193,11 @@ function Hero() {
                         tech.delay === 200 && "animation-delay-200"
                       )}
                     >
-                      <img
+                      <Image
                         src={tech.src}
                         alt={tech.alt}
+                        width={90}
+                        height={90}
                         className="w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 opacity-80 hover:opacity-100 transition-opacity"
                       />
                     </div>

@@ -81,6 +81,8 @@ export function SkillCard({ skills, rows }: SkillCardProps) {
                   "opacity-90 dark:opacity-70 group-hover:opacity-100",
                   "transition-opacity"
                 )}
+                width={70}
+                height={70}
               />
             ) : (
               <div className="flex gap-2 mb-4">
@@ -92,6 +94,8 @@ export function SkillCard({ skills, rows }: SkillCardProps) {
                       alt={skill.name}
                       id={slugify(skill.name) + "-" + i}
                       style={validStyleCSS(skill.style)}
+                      width={70}
+                      height={70}
                       className={cn(
                         "block w-auto max-w-full",
                         "h-[36px] sm:h-[40px] md:h-[48px]",
