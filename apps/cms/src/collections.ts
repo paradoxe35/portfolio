@@ -53,7 +53,8 @@ const projectsCollection = buildCollection<EntityCollection<Project>>({
       validation: { required: false },
       defaultValue: 0,
       dataType: "number",
-      description: "Project order",
+      description:
+        "Sort order. Lower values appear first (1, 2, 3...). A 0 is treated as 'unordered' and appears last. Default: 0.",
     },
 
     image: buildProperty({
