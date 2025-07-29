@@ -13,7 +13,7 @@ export default function Header({
   return (
     <div
       className={cn(
-        "pt-[150px] pb-[120px] relative overflow-hidden",
+        "pt-[120px] sm:pt-[140px] md:pt-[150px] pb-[80px] sm:pb-[100px] md:pb-[120px] relative overflow-hidden",
         "bg-gradient-to-br from-white via-neutral-1 to-neutral-2",
         "dark:from-dark-bg dark:via-dark-bg-secondary dark:to-black"
       )}

@@ -53,7 +53,8 @@ export function SkillCard({ skills, rows }: SkillCardProps) {
                   "h-[36px] sm:h-[40px] md:h-[48px]",
                   "filter brightness-100 dark:invert",
                   "opacity-90 dark:opacity-70 group-hover:opacity-100",
-                  "transition-opacity"
+                  "transition-opacity",
+                  skill.inverted ? "invert" : ""
                 )}
               />
             ) : (
@@ -69,7 +70,8 @@ export function SkillCard({ skills, rows }: SkillCardProps) {
                         "h-[36px] sm:h-[40px] md:h-[48px]",
                         "filter brightness-100 dark:invert",
                         "opacity-90 dark:opacity-70 group-hover:opacity-100",
-                        "transition-opacity"
+                        "transition-opacity",
+                        skill.inverted ? "invert" : ""
                       )}
                     />
                   );

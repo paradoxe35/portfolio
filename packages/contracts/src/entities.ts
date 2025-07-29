@@ -9,13 +9,14 @@ export class Skill {
     public readonly icons: string[],
     public readonly status?: "published" | "draft" | "archived",
     public readonly className?: string,
+    public readonly inverted?: boolean
   ) {}
 }
 
 export class Media {
   constructor(
     public readonly id: string,
-    public readonly file: string,
+    public readonly file: string
   ) {}
 }
 
@@ -28,6 +29,6 @@ export class Project {
     public readonly description: string,
     public readonly image: string,
     public readonly technology: string,
-    public readonly link?: string,
+    public readonly link?: string
   ) {}
 }

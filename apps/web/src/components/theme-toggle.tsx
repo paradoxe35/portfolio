@@ -45,7 +45,7 @@ export function ThemeToggle() {
     <button
       onClick={toggleTheme}
       className={cn(
-        "fixed bottom-6 left-6 sm:bottom-8 sm:left-8",
+        "fixed bottom-6 right-6 sm:bottom-8 sm:right-8",
         "p-3 rounded-full z-[100]",
         "bg-white/90 dark:bg-neutral-8/90 backdrop-blur-md",
         "shadow-xl border border-white/30 dark:border-white/20",

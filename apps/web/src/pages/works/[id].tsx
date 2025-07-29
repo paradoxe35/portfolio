@@ -15,7 +15,7 @@ const Content = ({ project }: { project: Project }) => {
     <section className="pb-24 pt-16 min-h-screen bg-gradient-to-br from-white via-neutral-1 to-neutral-2 dark:from-dark-bg dark:via-dark-bg-secondary dark:to-black">
       <Container>
         {/* Project Header */}
-        <div className="bg-white/80 dark:bg-white/5 backdrop-blur-md border border-black/10 dark:border-white/10 rounded-2xl p-8 mb-12 shadow-lg dark:shadow-none">
+        <div className="bg-white/80 dark:bg-white/5 backdrop-blur-md border border-black/10 dark:border-white/10 rounded-2xl p-4 sm:p-6 md:p-8 mb-12 shadow-lg dark:shadow-none">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
             <div>
               <span className="inline-block px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary dark:text-primary-light bg-primary/10 dark:bg-primary-light/10 rounded-full mb-4">
@@ -53,7 +53,7 @@ const Content = ({ project }: { project: Project }) => {
         </div>
 
         {/* Project Content */}
-        <div className="bg-white/80 dark:bg-white/5 backdrop-blur-md border border-black/10 dark:border-white/10 rounded-2xl p-8 shadow-lg dark:shadow-none">
+        <div className="bg-white/80 dark:bg-white/5 backdrop-blur-md border border-black/10 dark:border-white/10 rounded-2xl p-4 sm:p-6 md:p-8 shadow-lg dark:shadow-none">
           <div
             className="prose prose-lg max-w-none dark:prose-invert 
             prose-headings:text-neutral-9 dark:prose-headings:text-neutral-1 
