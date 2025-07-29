@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   },
 };
 
-export const revalidate = 5;
+export const revalidate = 30;
 
 async function WorksItems() {
   const projects = entitiesToJSON(await getProjects()) as Project[];

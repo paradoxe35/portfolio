@@ -2,7 +2,7 @@ import { MetadataRoute } from "next";
 import { getProjects } from "@/data/actions/project";
 import { site_details } from "@/utils/constants";
 
-export const revalidate = 5;
+export const revalidate = 30;
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || site_details.website;
 

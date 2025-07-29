@@ -10,7 +10,9 @@ import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import { ProjectStructuredData } from "@/components/seo/structured-data";
 
-export const revalidate = 5;
+export const revalidate = 30;
+
+export const dynamicParams = false;
 
 interface PageProps {
   params: Promise<{ id: string }>;

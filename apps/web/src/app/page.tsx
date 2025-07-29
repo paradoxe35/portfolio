@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   },
 };
 
-export const revalidate = 5;
+export const revalidate = 30;
 
 // Server Component for Works
 async function Works() {
