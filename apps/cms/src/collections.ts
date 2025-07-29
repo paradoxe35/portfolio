@@ -48,6 +48,14 @@ const projectsCollection = buildCollection<EntityCollection<Project>>({
       dataType: "string",
     },
 
+    order: {
+      name: "Order",
+      validation: { required: false },
+      defaultValue: 0,
+      dataType: "number",
+      description: "Project order",
+    },
+
     image: buildProperty({
       name: "Image",
       dataType: "string",

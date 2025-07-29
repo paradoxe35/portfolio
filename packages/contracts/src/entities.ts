@@ -28,6 +28,7 @@ export class Project {
     public readonly description: string,
     public readonly image: string,
     public readonly technology: string,
-    public readonly link?: string
+    public readonly link?: string,
+    public readonly order: number = 0
   ) {}
 }
