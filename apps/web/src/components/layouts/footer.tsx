@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Container } from "./layouts";
 import { cn } from "@/utils/cn";
+import { SOCIALS } from "@/utils/constants";
 
 export default function Footer() {
   const [theme, setTheme] = useState<"light" | "dark" | null>(null);
@@ -21,7 +22,7 @@ export default function Footer() {
     if (initialTheme === "dark") {
       document.documentElement.classList.add("dark");
     }
-    
+
     // If no saved preference, save dark as default
     if (!savedTheme) {
       localStorage.setItem("theme", "dark");
@@ -60,7 +61,7 @@ export default function Footer() {
           >
             Designed by{" "}
             <Link
-              href="https://github.com/paradoxe35"
+              href={SOCIALS.github}
               target="_blank"
               className={cn(
                 "text-primary dark:text-primary-light",
@@ -70,7 +71,7 @@ export default function Footer() {
               @PNG_
             </Link>
           </div>
-          
+
           {theme && (
             <button
               onClick={toggleTheme}

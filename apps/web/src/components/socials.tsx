@@ -2,6 +2,7 @@ import { Container } from "@/components/layouts/layouts";
 import Titles from "./titles";
 import Link from "next/link";
 import { cn } from "@/utils/cn";
+import { SOCIALS } from "@/utils/constants";
 
 export default function Socials() {
   return (
@@ -16,7 +17,7 @@ export default function Socials() {
         <Titles title="Connect" subtitle="Let's get in touch" />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <Link
-            href="https://github.com/paradoxe35"
+            href={SOCIALS.github}
             className={cn(
               "group block p-6 sm:p-8 rounded-2xl relative overflow-hidden",
               "bg-white/80 dark:bg-white/5 backdrop-blur-md",
@@ -68,8 +69,9 @@ export default function Socials() {
               </span>
             </div>
           </Link>
+
           <Link
-            href="https://www.linkedin.com/in/paradoxe-ngwasi-476727130"
+            href={SOCIALS.linkedin}
             className={cn(
               "group block p-6 sm:p-8 rounded-2xl relative overflow-hidden",
               "bg-white/80 dark:bg-white/5 backdrop-blur-md",
@@ -121,8 +123,9 @@ export default function Socials() {
               </span>
             </div>
           </Link>
+
           <Link
-            href="https://twitter.com/paradoxe_ng"
+            href={SOCIALS.twitter}
             className={cn(
               "group block p-6 sm:p-8 rounded-2xl relative overflow-hidden",
               "bg-white/80 dark:bg-white/5 backdrop-blur-md",

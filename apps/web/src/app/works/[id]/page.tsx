@@ -8,6 +8,7 @@ import { getProjectByID, getProjects } from "@/data/actions/project";
 import { Project } from "@repo/contracts";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
+import { ProjectStructuredData } from "@/components/seo/structured-data";
 
 export const revalidate = 5;
 
@@ -117,6 +118,13 @@ export default async function Work({ params }: PageProps) {
 
   return (
     <Application>
+      <ProjectStructuredData
+        title={projectData.title}
+        description={projectData.description}
+        image={projectData.image}
+        technology={projectData.technology}
+        link={projectData.link}
+      />
       <main>
         <Header
           title={projectData.title}

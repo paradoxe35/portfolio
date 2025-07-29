@@ -41,7 +41,7 @@ export function ProfileAvatar({
           "animation-delay-400": delay === 400,
           "animation-delay-500": delay === 500,
         },
-        className,
+        className
       )}
     >
       <div
@@ -49,12 +49,12 @@ export function ProfileAvatar({
           "w-full h-full rounded-full overflow-hidden",
           "bg-white/80 dark:bg-white/5 backdrop-blur-md",
           "border border-black/10 dark:border-white/10",
-          "flex items-center justify-center",
+          "flex items-center justify-center"
         )}
       >
         {/* Try to load image first, fallback to initials */}
         <Image
-          src="/paradoxe-ngwasi-2.jpg"
+          src="/paradoxe-ngwasi.jpg"
           alt={site_details.full_name}
           width={300}
           height={300}
@@ -63,7 +63,7 @@ export function ProfileAvatar({
           className={cn(
             "w-full h-full object-cover object-top",
             "scale-130 hover:scale-135",
-            "transition-transform duration-500",
+            "transition-transform duration-500"
           )}
           onError={(e) => {
             // Fallback to initials if image fails to load

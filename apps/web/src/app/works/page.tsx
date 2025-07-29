@@ -7,9 +7,16 @@ import { getProjects } from "@/data/actions/project";
 import { Project } from "@repo/contracts";
 import { BackgroundPattern } from "@/components/background-pattern";
 import { Metadata } from "next";
+import { SEO } from "@/utils/constants";
 
 export const metadata: Metadata = {
   title: "Works",
+  description: SEO.description.works,
+  openGraph: {
+    title: "Works - Portfolio Projects",
+    description: SEO.description.works,
+    type: "website",
+  },
 };
 
 export const revalidate = 5;

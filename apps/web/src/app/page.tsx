@@ -1,7 +1,7 @@
 import Titles from "@/components/titles";
 import Application from "@/components/layouts/application";
 import { Container } from "@/components/layouts/layouts";
-import { site_details } from "@/utils/constants";
+import { site_details, SEO } from "@/utils/constants";
 import { SkillsGrid } from "@/components/skills-grid";
 import { entitiesToJSON } from "@/utils/entity-to-json";
 import { getProjects } from "@/data/actions/project";
@@ -16,14 +16,23 @@ import { Metadata } from "next";
 const PROJECTS_QUERY_LIMIT: number | undefined = 6;
 
 export const metadata: Metadata = {
-  title: `${site_details.full_name_title} - Portfolio`,
+  title: "Home",
+  description: SEO.description.home,
+  openGraph: {
+    title: `${site_details.full_name} - Full-Stack Developer`,
+    description: SEO.description.homeShort,
+    type: "profile",
+    images: SEO.openGraph.images,
+  },
 };
 
 export const revalidate = 5;
 
 // Server Component for Works
 async function Works() {
-  const projects = entitiesToJSON(await getProjects(PROJECTS_QUERY_LIMIT)) as Project[];
+  const projects = entitiesToJSON(
+    await getProjects(PROJECTS_QUERY_LIMIT)
+  ) as Project[];
 
   return (
     <section className="py-16 sm:py-20 md:py-[120px] pb-12 sm:pb-16 md:pb-[90px] bg-gradient-to-br from-neutral-1 to-white dark:from-dark-bg-secondary dark:to-dark-bg">
@@ -41,7 +50,7 @@ async function Works() {
 async function Skills() {
   const default_skills = getDefaultSkills();
   const skills = entitiesToJSON(await getSkills()) as Skill[];
-  
+
   // Combine all skills for intelligent grouping
   const allSkills = [...default_skills, ...skills];
 

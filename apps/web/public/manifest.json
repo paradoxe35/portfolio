@@ -1,0 +1,25 @@
+{
+  "name": "Paradoxe Ngwasi - Full-Stack Developer Portfolio",
+  "short_name": "PNG Portfolio",
+  "description": "Full-Stack Developer portfolio showcasing web development projects and skills",
+  "theme_color": "#8a693b",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "orientation": "portrait",
+  "scope": "/",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "/paradoxe-ngwasi.jpg",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/paradoxe-ngwasi.jpg",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["portfolio", "developer", "productivity"]
+}
