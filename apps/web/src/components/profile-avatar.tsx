@@ -31,8 +31,9 @@ export function ProfileAvatar({
     <div
       className={cn(
         sizeClasses[size],
-        "rounded-full bg-white/10 dark:bg-white/5 backdrop-blur-md",
-        "border border-white/20 dark:border-white/10",
+        "rounded-full bg-white/80 dark:bg-white/5 backdrop-blur-md",
+        "border border-black/10 dark:border-white/10",
+        "shadow-lg dark:shadow-none",
         "p-3 md:p-4 flex items-center justify-center",
         "animate-zoomIn",
         {
@@ -46,8 +47,8 @@ export function ProfileAvatar({
       <div
         className={cn(
           "w-full h-full rounded-full overflow-hidden",
-          "bg-white/10 dark:bg-white/5 backdrop-blur-md",
-          "border border-white/20 dark:border-white/10",
+          "bg-white/80 dark:bg-white/5 backdrop-blur-md",
+          "border border-black/10 dark:border-white/10",
           "flex items-center justify-center",
         )}
       >

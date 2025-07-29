@@ -60,11 +60,11 @@ export function ProjectCarousel({ projects }: ProjectCarouselProps) {
           className={cn(
             "hidden lg:flex absolute left-0 top-1/2 -translate-y-1/2 z-10 -ml-5",
             "w-12 h-12 rounded-full",
-            "bg-white/20 dark:bg-white/10 backdrop-blur-md",
-            "border border-white/30 dark:border-white/20",
+            "bg-white/80 dark:bg-white/10 backdrop-blur-md",
+            "border border-black/10 dark:border-white/20",
             "shadow-lg hover:shadow-xl",
             "items-center justify-center",
-            "hover:scale-110 hover:bg-white/30 dark:hover:bg-white/20",
+            "hover:scale-110 hover:bg-white/90 dark:hover:bg-white/20",
             "transition-all",
           )}
           aria-label="Previous projects"
@@ -91,11 +91,11 @@ export function ProjectCarousel({ projects }: ProjectCarouselProps) {
           className={cn(
             "hidden lg:flex absolute right-0 top-1/2 -translate-y-1/2 z-10 -mr-5",
             "w-12 h-12 rounded-full",
-            "bg-white/20 dark:bg-white/10 backdrop-blur-md",
-            "border border-white/30 dark:border-white/20",
+            "bg-white/80 dark:bg-white/10 backdrop-blur-md",
+            "border border-black/10 dark:border-white/20",
             "shadow-lg hover:shadow-xl",
             "items-center justify-center",
-            "hover:scale-110 hover:bg-white/30 dark:hover:bg-white/20",
+            "hover:scale-110 hover:bg-white/90 dark:hover:bg-white/20",
             "transition-all",
           )}
           aria-label="Next projects"
@@ -120,7 +120,7 @@ export function ProjectCarousel({ projects }: ProjectCarouselProps) {
       <div
         ref={scrollRef}
         className={cn(
-          "flex gap-8 overflow-x-auto scrollbar-hide scroll-smooth pb-4",
+          "flex gap-8 overflow-x-auto scrollbar-hide scroll-smooth pb-6 pt-2",
           "-mx-4 px-4 lg:mx-0 lg:px-0",
           "animate-fadeUp",
           "items-stretch",
@@ -136,7 +136,7 @@ export function ProjectCarousel({ projects }: ProjectCarouselProps) {
               "min-h-[600px]",
             )}
           >
-            <WorksItem project={project} aosDuration={(i + 1) * 100} />
+            <WorksItem project={project} aosDuration={(i + 1) * 100} inCarousel={true} />
           </div>
         ))}
       </div>

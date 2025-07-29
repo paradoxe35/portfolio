@@ -7,6 +7,30 @@ type SkillCardProps = {
   rows?: number;
 };
 
+const slugify = (str: string) => {
+  return str
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+};
+
+const validStyleCSS = (style: Record<string, string> | undefined) => {
+  if (!style || Object.keys(style).length === 0) {
+    return undefined;
+  }
+
+  return Object.entries(style).reduce(
+    (acc, [prop, value]) => {
+      if (typeof value === "string") {
+        acc[prop] = value;
+      }
+
+      return acc;
+    },
+    {} as Record<string, string>
+  );
+};
+
 export function SkillCard({ skills, rows }: SkillCardProps) {
   // Filter out empty skills
   const validSkills = skills.filter((skill) => skill.name.length > 0);
@@ -26,11 +50,13 @@ export function SkillCard({ skills, rows }: SkillCardProps) {
           <div
             className={cn(
               "group p-4 sm:p-6 md:p-8 rounded-2xl",
-              "bg-white/10 dark:bg-white/5 backdrop-blur-md",
-              "border border-white/20 dark:border-white/10",
+              "bg-white/80 dark:bg-white/5 backdrop-blur-md",
+              "border border-black/10 dark:border-white/10",
+              "shadow-sm dark:shadow-none",
               "hover:border-primary/50 dark:hover:border-primary-light/50",
               "transition-all duration-300 hover:scale-105",
-              "hover:bg-white/20 dark:hover:bg-white/10",
+              "hover:bg-white/90 dark:hover:bg-white/10",
+              "hover:shadow-lg dark:hover:shadow-none",
               "animate-fadeUp",
               {
                 "animation-delay-100": i === 0,
@@ -46,11 +72,13 @@ export function SkillCard({ skills, rows }: SkillCardProps) {
               <StorageImg
                 src={skill.icons[0]}
                 alt={skill.name}
+                id={slugify(skill.name)}
+                style={validStyleCSS(skill.style)}
                 className={cn(
                   "block mb-4 w-auto max-w-full",
                   "h-[36px] sm:h-[40px] md:h-[48px]",
-                  "filter brightness-0 dark:brightness-100 dark:invert",
-                  "opacity-70 group-hover:opacity-100",
+                  "filter brightness-100 dark:invert",
+                  "opacity-90 dark:opacity-70 group-hover:opacity-100",
                   "transition-opacity"
                 )}
               />
@@ -62,11 +90,13 @@ export function SkillCard({ skills, rows }: SkillCardProps) {
                       key={img}
                       src={img}
                       alt={skill.name}
+                      id={slugify(skill.name) + "-" + i}
+                      style={validStyleCSS(skill.style)}
                       className={cn(
                         "block w-auto max-w-full",
                         "h-[36px] sm:h-[40px] md:h-[48px]",
-                        "filter brightness-0 dark:brightness-100 dark:invert",
-                        "opacity-70 group-hover:opacity-100",
+                        "filter brightness-100 dark:invert",
+                        "opacity-90 dark:opacity-70 group-hover:opacity-100",
                         "transition-opacity"
                       )}
                     />

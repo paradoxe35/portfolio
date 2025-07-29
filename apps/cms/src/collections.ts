@@ -178,11 +178,12 @@ const skillsCollection = buildCollection<EntityCollection<Skill>>({
       },
     },
 
-    className: {
-      name: "className",
+    style: {
+      name: "Style",
       validation: { required: false },
-      description: "UI ClassName",
-      dataType: "string",
+      description: "Skill style CSS",
+      dataType: "map",
+      keyValue: true,
     },
   },
 });
