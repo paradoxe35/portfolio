@@ -1,112 +1,27 @@
-"use client";
-
 import Header from "@/components/header";
 import Titles from "@/components/titles";
 import Application from "@/components/layouts/application";
 import { Container } from "@/components/layouts/layouts";
-import React, { PropsWithChildren, useEffect, useState } from "react";
 import { site_details } from "@/utils/constants";
-import Link from "next/link";
-import { Resume } from "@repo/contracts";
-import { useFormBold } from "@/utils/hooks";
-import { cn } from "@/utils/cn";
-import { BackgroundPattern } from "@/components/background-pattern";
 import { getResume } from "@/data/actions/resume";
+import { BackgroundPattern } from "@/components/background-pattern";
+import { ContactForm } from "@/components/contact-form";
+import { ResumeDownload } from "@/components/resume-download";
+import { entityToJSON } from "@/utils/entity-to-json";
+import { Resume } from "@repo/contracts";
 
-const Alert: React.FC<PropsWithChildren<{ success?: boolean }>> = function ({
-  children,
-  success,
-}) {
-  return (
-    <div
-      className={cn(
-        "p-4 rounded-lg mb-4 text-sm font-medium animate-fadeInUp",
-        success
-          ? "bg-green-100 dark:bg-green-900/20 text-green-800 dark:text-green-300 border border-green-200 dark:border-green-800"
-          : "bg-red-100 dark:bg-red-900/20 text-red-800 dark:text-red-300 border border-red-200 dark:border-red-800"
-      )}
-    >
-      {children}
-    </div>
-  );
-};
+export const revalidate = 30;
 
-const FORMBOLD_FORM_ID = "3G55p";
-
-function Contact() {
-  const [state, handleSubmit] = useFormBold(FORMBOLD_FORM_ID);
-
-  return (
-    <div className="w-full max-w-2xl mx-auto">
-      <div className="bg-white/80 dark:bg-white/5 backdrop-blur-lg rounded-2xl p-8 md:p-10 shadow-2xl border border-black/10 dark:border-white/10 hover:border-primary/30 dark:hover:border-primary-light/20 transition-all duration-300">
-        <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-primary to-primary-dark dark:from-neutral-1 dark:to-neutral-2 bg-clip-text text-transparent">
-          {"Let's Build Something Amazing"}
-        </h1>
-        <p className="text-neutral-7 dark:text-neutral-4 mb-8 text-lg">
-          {`Have a project in mind? I'd love to hear about it. Send me the details and let's create something exceptional together.`}
-        </p>
-
-        {state.succeeded && (
-          <Alert success={state.succeeded}>
-            {"Message sent successfully. I'll get back to you soon."}
-          </Alert>
-        )}
-        {state.error.status && (
-          <Alert success={false}>{state.error.message}</Alert>
-        )}
-        <form onSubmit={handleSubmit} className="space-y-6" autoComplete="off">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <input
-              type="text"
-              name="name"
-              placeholder="Name"
-              required
-              minLength={3}
-              className="w-full px-4 py-3 rounded-lg border border-black/10 dark:border-white/10 bg-white/80 dark:bg-white/5 backdrop-blur-sm text-neutral-9 dark:text-neutral-1 placeholder-neutral-5 dark:placeholder-neutral-5 focus:outline-none focus:border-primary dark:focus:border-primary-light focus:bg-white/90 dark:focus:bg-white/10 transition-all duration-300 shadow-sm focus:shadow-md"
-            />
-            <input
-              type="email"
-              name="email"
-              placeholder="Email"
-              required
-              className="w-full px-4 py-3 rounded-lg border border-black/10 dark:border-white/10 bg-white/80 dark:bg-white/5 backdrop-blur-sm text-neutral-9 dark:text-neutral-1 placeholder-neutral-5 dark:placeholder-neutral-5 focus:outline-none focus:border-primary dark:focus:border-primary-light focus:bg-white/90 dark:focus:bg-white/10 transition-all duration-300 shadow-sm focus:shadow-md"
-            />
-          </div>
-          <textarea
-            name="message"
-            placeholder="Your message..."
-            required
-            minLength={15}
-            rows={6}
-            className="w-full px-4 py-3 rounded-lg border border-black/10 dark:border-neutral-7 bg-white/80 dark:bg-neutral-9/50 text-neutral-9 dark:text-neutral-1 placeholder-neutral-5 dark:placeholder-neutral-5 focus:outline-none focus:border-primary dark:focus:border-primary-light transition-all duration-300 shadow-sm focus:shadow-md resize-none backdrop-blur-sm"
-          />
-          <div>
-            <button
-              disabled={state.loading}
-              className="px-8 py-3 bg-gradient-to-r from-primary to-primary-dark dark:from-primary-light dark:to-primary text-white font-medium rounded-lg hover:shadow-xl hover:shadow-primary/20 hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
-              type="submit"
-            >
-              {state.loading ? "Sending..." : "Send message"}
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
-  );
-}
-
-function About() {
-  const [resume, setResume] = useState<Resume | null>(null);
-
-  useEffect(() => {
-    getResume().then((resume) => resume && setResume(resume));
-  }, []);
+async function About() {
+  const resumeData = await getResume();
+  const resume = resumeData ? (entityToJSON(resumeData) as Resume) : null;
 
   return (
     <section className="py-24 bg-gradient-to-br from-neutral-1 to-white dark:from-dark-bg-secondary dark:to-dark-bg relative overflow-hidden">
       {/* Decorative elements */}
       <div className="absolute -top-24 -right-24 w-96 h-96 bg-primary/5 dark:bg-primary-light/10 rounded-full blur-3xl" />
       <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-purple-500/5 dark:bg-purple-400/10 rounded-full blur-3xl" />
+
       <Container>
         <div className="relative z-10">
           <Titles title="About" subtitle="A bit about me" />
@@ -120,39 +35,11 @@ function About() {
               React.js, Next.js, Node.js, and Go.`.replace(/\s+/g, " ")}
             </p>
           </div>
-          <ResumeComponent resume={resume} />
+
+          <ResumeDownload resume={resume} />
         </div>
       </Container>
     </section>
-  );
-}
-
-function ResumeComponent({ resume }: { resume: Resume | null }) {
-  return (
-    <>
-      {resume?.file && (
-        <Link
-          href={resume.file}
-          className="inline-flex items-center gap-3 px-8 py-4 bg-white/80 dark:bg-white/10 backdrop-blur-md border border-black/10 dark:border-white/20 text-neutral-9 dark:text-neutral-1 font-medium rounded-xl hover:bg-white/90 dark:hover:bg-white/20 hover:scale-105 hover:shadow-xl transition-all duration-300 group shadow-lg"
-          target="_blank"
-        >
-          Download Resume
-          <svg
-            className="w-5 h-5 transition-transform duration-300 group-hover:translate-y-1"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-            />
-          </svg>
-        </Link>
-      )}
-    </>
   );
 }
 
@@ -169,7 +56,7 @@ export default function ContactPage() {
 
           <Container>
             <div className="relative z-10">
-              <Contact />
+              <ContactForm />
             </div>
           </Container>
         </section>
