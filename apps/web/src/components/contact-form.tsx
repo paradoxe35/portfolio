@@ -33,8 +33,17 @@ export function ContactForm({ className }: { className?: string }) {
         <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-primary to-primary-dark dark:from-neutral-1 dark:to-neutral-2 bg-clip-text text-transparent">
           {"Let's Build Something Amazing"}
         </h1>
-        <p className="text-neutral-7 dark:text-neutral-4 mb-8 text-lg">
+        <p className="text-neutral-7 dark:text-neutral-4 mb-2 text-lg">
           {`Have a project in mind? I'd love to hear about it. Send me the details and let's create something exceptional together.`}
+        </p>
+        <p className="text-neutral-6 dark:text-neutral-5 mb-8">
+          Or reach me directly at{" "}
+          <a
+            href="mailto:contact@pngwasi.me"
+            className="text-primary dark:text-primary-light hover:underline transition-colors font-medium"
+          >
+            contact@pngwasi.me
+          </a>
         </p>
 
         {state.succeeded && (
