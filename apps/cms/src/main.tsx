@@ -16,6 +16,7 @@ import {
   resumeCollection,
   skillsCollection,
 } from "./collections";
+import { textSearchController } from "./search";
 
 function AdminApp() {
   const dataEnhancementPlugin = useDataEnhancementPlugin();
@@ -32,6 +33,7 @@ function AdminApp() {
         resumeCollection,
         mediaCollection,
       ]}
+      textSearchController={textSearchController}
       firebaseConfig={firebaseConfig}
       signInOptions={["google.com"]}
       primaryColor="#a37c44"
@@ -59,5 +61,5 @@ function AdminApp() {
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <AdminApp />
-  </React.StrictMode>,
+  </React.StrictMode>
 );

@@ -10,6 +10,7 @@ import {
 } from "@repo/contracts";
 
 import { nanoid } from "nanoid";
+import { LOCAL_DATA } from "./search";
 
 type EntityCollection<T> = Omit<NonFunctionProperties<T>, "id">;
 
@@ -40,6 +41,17 @@ const projectsCollection = buildCollection<EntityCollection<Project>>({
     read: true,
     delete: true,
   }),
+  callbacks: {
+    async onFetch(entityFetchProps) {
+      LOCAL_DATA.setData(
+        FirebaseCollections.PROJECTS,
+        entityFetchProps.entity.id,
+        entityFetchProps.entity.values as Project
+      );
+
+      return entityFetchProps.entity;
+    },
+  },
   properties: {
     title: {
       name: "title",
@@ -142,6 +154,18 @@ const skillsCollection = buildCollection<EntityCollection<Skill>>({
     read: true,
     delete: true,
   }),
+
+  callbacks: {
+    async onFetch(entityFetchProps) {
+      LOCAL_DATA.setData(
+        FirebaseCollections.SKILLS,
+        entityFetchProps.entity.id,
+        entityFetchProps.entity.values as Skill
+      );
+
+      return entityFetchProps.entity;
+    },
+  },
 
   properties: {
     name: {
