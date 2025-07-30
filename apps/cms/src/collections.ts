@@ -246,6 +246,14 @@ const resumeCollection = buildCollection<EntityCollection<Resume>>({
         acceptedFiles: ["application/pdf"],
       },
     }),
+
+    active: {
+      name: "Active",
+      validation: { required: true },
+      dataType: "boolean",
+      description: "Active resume",
+      defaultValue: false,
+    },
   },
 });
 

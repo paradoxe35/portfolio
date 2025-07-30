@@ -12,10 +12,12 @@ export interface ResumeRepository {
 export class ResumeFirebaseRepository implements ResumeRepository {
   async getResume() {
     const querySnapshot = await getDocs(
-      collection(firestore, FirebaseCollections.RESUME),
+      collection(firestore, FirebaseCollections.RESUME)
     );
 
-    const resume = querySnapshot.docs[0];
+    const resume =
+      querySnapshot.docs.find((doc) => <Resume>doc.data().active) ||
+      querySnapshot.docs[0];
 
     if (!resume) {
       return null;
@@ -24,6 +26,6 @@ export class ResumeFirebaseRepository implements ResumeRepository {
     const resumeData = <Resume>resume.data();
     const file = await getDownloadURL(ref(firebase_storage, resumeData.file));
 
-    return new Resume(file);
+    return new Resume(resumeData.id, file, resumeData.active);
   }
 }

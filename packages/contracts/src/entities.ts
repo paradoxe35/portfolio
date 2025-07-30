@@ -1,5 +1,9 @@
 export class Resume {
-  constructor(public readonly file: string) {}
+  constructor(
+    public readonly id: string,
+    public readonly file: string,
+    public readonly active: boolean
+  ) {}
 }
 
 export class Skill {
