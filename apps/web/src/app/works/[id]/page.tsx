@@ -121,7 +121,7 @@ const Content = ({ project }: { project: Project }) => {
               "prose-code:text-primary dark:prose-code:text-primary-light prose-code:bg-white/20 dark:prose-code:bg-white/10 prose-code:px-2 prose-code:py-1 prose-code:rounded-md prose-code:text-sm",
               "prose-pre:bg-neutral-9 dark:prose-pre:bg-neutral-8 prose-pre:border prose-pre:border-white/20 dark:prose-pre:border-white/10 prose-pre:rounded-xl",
               "prose-blockquote:border-l-primary dark:prose-blockquote:border-l-primary-light",
-              "prose-img:rounded-xl prose-img:shadow-lg",
+              "prose-img:rounded-xl prose-img:mx-auto",
               "prose-hr:border-white/20 dark:prose-hr:border-white/10",
               "animate-fadeUp animation-delay-300"
             )}
