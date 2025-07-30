@@ -11,7 +11,7 @@ const Alert: React.FC<PropsWithChildren<{ success?: boolean }>> = function ({
   return (
     <div
       className={cn(
-        "p-4 rounded-lg mb-4 text-sm font-medium animate-fadeInUp",
+        "p-4 rounded-lg mb-4 text-sm font-medium animate-fadeUp",
         success
           ? "bg-green-100 dark:bg-green-900/20 text-green-800 dark:text-green-300 border border-green-200 dark:border-green-800"
           : "bg-red-100 dark:bg-red-900/20 text-red-800 dark:text-red-300 border border-red-200 dark:border-red-800"
@@ -24,11 +24,11 @@ const Alert: React.FC<PropsWithChildren<{ success?: boolean }>> = function ({
 
 const FORMBOLD_FORM_ID = "3G55p";
 
-export function ContactForm() {
+export function ContactForm({ className }: { className?: string }) {
   const [state, handleSubmit] = useFormBold(FORMBOLD_FORM_ID);
 
   return (
-    <div className="w-full max-w-2xl mx-auto">
+    <div className={cn("w-full max-w-2xl mx-auto", className)}>
       <div className="bg-white/80 dark:bg-white/5 backdrop-blur-lg rounded-2xl p-8 md:p-10 shadow-2xl border border-black/10 dark:border-white/10 hover:border-primary/30 dark:hover:border-primary-light/20 transition-all duration-300">
         <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-primary to-primary-dark dark:from-neutral-1 dark:to-neutral-2 bg-clip-text text-transparent">
           {"Let's Build Something Amazing"}

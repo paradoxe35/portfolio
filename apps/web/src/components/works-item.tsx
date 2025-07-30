@@ -4,16 +4,11 @@ import { Project } from "@repo/contracts";
 import { cn } from "@/utils/cn";
 
 interface Work {
-  aosDuration: number;
   project: Project;
   inCarousel?: boolean;
 }
 
-export default function WorksItem({
-  aosDuration = 0,
-  project,
-  inCarousel = false,
-}: Work) {
+export default function WorksItem({ project, inCarousel = false }: Work) {
   return (
     <div
       className={cn(

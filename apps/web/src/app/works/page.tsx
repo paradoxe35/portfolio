@@ -36,7 +36,7 @@ async function WorksItems() {
               className="animate-fadeInUp"
               style={{ animationDelay: `${i * 100}ms` }}
             >
-              <WorksItem project={work} aosDuration={(i + 1) * 100} />
+              <WorksItem project={work} />
             </div>
           ))}
         </div>

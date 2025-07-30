@@ -10,6 +10,12 @@ export default function Header({
   title: string | React.ReactNode;
   subtitle: string | React.ReactNode;
 }) {
+  const background = image
+    ? `url(${image || "/bg-elements.png"}) ${
+        image ? "50% / cover" : "0 no-repeat"
+      }`
+    : undefined;
+
   return (
     <div
       className={cn(
@@ -17,14 +23,7 @@ export default function Header({
         "bg-gradient-to-br from-white via-neutral-1 to-neutral-2",
         "dark:from-dark-bg dark:via-dark-bg-secondary dark:to-black"
       )}
-      style={{
-        background:
-          image === undefined
-            ? undefined
-            : `url(${image || "/bg-elements.png"}) ${
-                image ? "50% / cover" : "0 no-repeat"
-              }`,
-      }}
+      style={{ background }}
     >
       {image && (
         <>

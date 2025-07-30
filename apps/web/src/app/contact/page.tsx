@@ -24,8 +24,13 @@ async function About() {
 
       <Container>
         <div className="relative z-10">
-          <Titles title="About" subtitle="A bit about me" />
-          <div className="prose prose-lg dark:prose-invert max-w-3xl mb-12">
+          <Titles
+            title="About"
+            subtitle="A bit about me"
+            className="animate-fadeUp animation-delay-200"
+          />
+
+          <div className="prose prose-lg dark:prose-invert max-w-3xl mb-12 animate-fadeUp animation-delay-200">
             <p className="text-neutral-7 dark:text-neutral-3 leading-relaxed">
               {`I'm ${site_details.full_name}, a Software Engineer with 
               ${new Date().getFullYear() - 2017} years of hands-on experience
@@ -56,10 +61,11 @@ export default function ContactPage() {
 
           <Container>
             <div className="relative z-10">
-              <ContactForm />
+              <ContactForm className="animate-fadeUp animation-delay-200" />
             </div>
           </Container>
         </section>
+
         <About />
       </main>
     </Application>

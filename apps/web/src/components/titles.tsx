@@ -4,11 +4,13 @@ import { cn } from "@/utils/cn";
 type Title = {
   title: string | React.ReactNode;
   subtitle: string | React.ReactNode;
+  className?: string;
 };
 
 const Titles: React.FC<PropsWithChildren<Title>> = function ({
   title,
   subtitle,
+  className,
 }) {
   return (
     <>
@@ -16,7 +18,8 @@ const Titles: React.FC<PropsWithChildren<Title>> = function ({
         className={cn(
           "text-sm font-semibold uppercase tracking-wider",
           "text-primary dark:text-primary-light",
-          "animate-fadeUp"
+          "animate-fadeUp",
+          className
         )}
       >
         {title}
