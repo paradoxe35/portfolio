@@ -13,7 +13,7 @@ import { cn } from "@/utils/cn";
 
 export const revalidate = 30;
 
-export const dynamicParams = false;
+export const dynamicParams = true;
 
 interface PageProps {
   params: Promise<{ id: string }>;
