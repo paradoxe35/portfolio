@@ -263,18 +263,31 @@ const mediaCollection = buildCollection<EntityCollection<Media>>({
   }),
 
   properties: {
-    file: buildProperty({
-      name: "file",
-      dataType: "string",
-      description: "File: Video, Image, PDF, Document etc.",
+    label: {
+      name: "Label",
       validation: { required: true },
-      storage: {
-        storagePath: FirebaseFilePaths.MEDIAS,
-        maxSize: 1024 * 1024 * 50, // 50MG
-        acceptedFiles: ["application/pdf", "image/*", "video/*"],
-        imageCompression: {
-          maxWidth: 1080,
-          quality: 75,
+      description: "Media label",
+      dataType: "string",
+    },
+
+    file: buildProperty({
+      dataType: "array",
+      name: "Files",
+      description:
+        "You can upload multiple files: Video, Image, PDF, Document etc.",
+      of: {
+        dataType: "string",
+        description: "File: Video, Image, PDF, Document etc.",
+        validation: { required: true },
+        storage: {
+          storagePath: FirebaseFilePaths.MEDIAS,
+          maxSize: 1024 * 1024 * 10, // 10MG
+          acceptedFiles: ["application/pdf", "image/*", "video/*"],
+          cacheControl: "max-age=1000000",
+          imageCompression: {
+            maxWidth: 1080,
+            quality: 75,
+          },
         },
       },
     }),

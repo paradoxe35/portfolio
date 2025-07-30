@@ -15,7 +15,8 @@ export class Skill {
 export class Media {
   constructor(
     public readonly id: string,
-    public readonly file: string
+    public readonly label: string,
+    public readonly file: string[]
   ) {}
 }
 
