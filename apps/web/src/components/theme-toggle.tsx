@@ -9,20 +9,12 @@ export function ThemeToggle() {
   useEffect(() => {
     // Check for saved theme preference or default to dark mode
     const savedTheme = localStorage.getItem("theme") as "light" | "dark" | null;
-    const initialTheme = savedTheme || "dark"; // Default to dark mode
+    setTheme(savedTheme);
 
-    setTheme(initialTheme);
-
-    // Always start with dark mode by default
-    // Remove any existing class first, then add dark if needed
-    document.documentElement.classList.remove("dark");
-    if (initialTheme === "dark") {
+    if (savedTheme === "dark") {
       document.documentElement.classList.add("dark");
-    }
-    
-    // If no saved preference, save dark as default
-    if (!savedTheme) {
-      localStorage.setItem("theme", "dark");
+    } else {
+      document.documentElement.classList.remove("dark");
     }
   }, []);
 
@@ -39,25 +31,22 @@ export function ThemeToggle() {
     }
   };
 
-  if (!theme) return null; // Avoid hydration mismatch
-
   return (
     <button
       onClick={toggleTheme}
       className={cn(
-        "fixed bottom-6 right-6 sm:bottom-8 sm:right-8",
-        "p-3 rounded-full z-[100]",
-        "bg-white/90 dark:bg-neutral-8/90 backdrop-blur-md",
-        "shadow-xl border border-white/30 dark:border-white/20",
+        "p-2 rounded-lg",
+        "bg-white/80 dark:bg-neutral-8/80 backdrop-blur-sm",
+        "shadow-md border border-black/10 dark:border-white/10",
         "hover:bg-white dark:hover:bg-neutral-7",
-        "transition-all duration-300 hover:scale-110",
+        "transition-all duration-300 hover:scale-105",
         "group"
       )}
       aria-label="Toggle theme"
     >
-      {theme === "light" ? (
+      {theme === "light" || theme === null ? (
         <svg
-          className="w-6 h-6 text-neutral-8 group-hover:text-neutral-9 transition-colors"
+          className="w-5 h-5 text-neutral-8 group-hover:text-neutral-9 transition-colors"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -71,7 +60,7 @@ export function ThemeToggle() {
         </svg>
       ) : (
         <svg
-          className="w-6 h-6 text-neutral-1 group-hover:text-white transition-colors"
+          className="w-5 h-5 text-neutral-1 group-hover:text-white transition-colors"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"

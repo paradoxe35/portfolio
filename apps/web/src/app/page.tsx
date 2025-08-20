@@ -1,7 +1,7 @@
 import Titles from "@/components/titles";
 import Application from "@/components/layouts/application";
 import { Container } from "@/components/layouts/layouts";
-import { site_details, SEO } from "@/utils/constants";
+import { site_details, SEO, TECHS_STACK } from "@/utils/constants";
 import { SkillsGrid } from "@/components/skills-grid";
 import { entitiesToJSON } from "@/utils/entity-to-json";
 import { getProjects } from "@/data/actions/project";
@@ -106,7 +106,10 @@ function Hero() {
               <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 animate-fadeUp animation-delay-200">
                 <Link
                   href="/contact"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white/80 dark:bg-white/10 backdrop-blur-md border border-black/10 dark:border-white/20 text-neutral-9 dark:text-neutral-1 font-medium rounded-xl hover:bg-white/90 dark:hover:bg-white/20 transition-all duration-300 hover:scale-105 shadow-lg w-full sm:w-auto"
+                  className={cn(
+                    "inline-flex items-center justify-center gap-2 px-6 py-3 bg-white/80 dark:bg-white/10 backdrop-blur-md border border-black/10 dark:border-white/20 text-neutral-9 dark:text-neutral-1 font-medium rounded-xl ",
+                    "hover:bg-white/90 dark:hover:bg-white/20 transition-all duration-300 hover:scale-105 shadow-md md:shadow-lg w-full sm:w-auto"
+                  )}
                 >
                   Contact Me
                 </Link>
@@ -141,38 +144,7 @@ function Hero() {
                 </div>
 
                 {/* Tech Stack Icons around the avatar */}
-                {[
-                  {
-                    src: "/laravel.svg",
-                    alt: "Laravel",
-                    delay: 0,
-                    position: { top: "20%", left: "10%" },
-                  },
-                  {
-                    src: "/vue.svg",
-                    alt: "VueJs",
-                    delay: 50,
-                    position: { top: "15%", right: "15%" },
-                  },
-                  {
-                    src: "/react.svg",
-                    alt: "React",
-                    delay: 100,
-                    position: { top: "60%", left: "5%" },
-                  },
-                  {
-                    src: "/node.svg",
-                    alt: "NodeJs",
-                    delay: 150,
-                    position: { bottom: "20%", right: "20%" },
-                  },
-                  {
-                    src: "/flutter.svg",
-                    alt: "Flutter",
-                    delay: 200,
-                    position: { top: "40%", right: "10%" },
-                  },
-                ].map((tech, i) => (
+                {TECHS_STACK.map((tech, i) => (
                   <div
                     key={tech.alt}
                     className="absolute animate-float"
@@ -185,7 +157,7 @@ function Hero() {
                       className={cn(
                         "group p-3 md:p-4 rounded-2xl bg-white/80 dark:bg-white/5",
                         "backdrop-blur-md border border-black/10 dark:border-white/10",
-                        "transition-all duration-300 hover:scale-110 cursor-pointer shadow-lg dark:shadow-none",
+                        "transition-all duration-300 hover:scale-110 cursor-default shadow-lg dark:shadow-none",
                         "animate-zoomIn",
                         tech.delay === 50 && "animation-delay-100",
                         tech.delay === 100 && "animation-delay-100",

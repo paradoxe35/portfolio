@@ -19,13 +19,18 @@ export const SEO = {
     template: `%s | ${site_details.full_name}`,
   },
   description: {
-    default: "Experienced Full-Stack Developer specializing in React, Next.js, Laravel, and Node.js. Building scalable web applications with modern technologies.",
+    default:
+      "Experienced Full-Stack Developer specializing in React, Next.js, Laravel, and Node.js. Building scalable web applications with modern technologies.",
     home: `${site_details.full_name} - Full-Stack Developer with ${new Date().getFullYear() - 2017}+ years of experience building scalable web applications with React, Next.js, Laravel, Node.js, and modern technologies.`,
     homeShort: `Experienced developer with ${new Date().getFullYear() - 2017}+ years building scalable web applications. Specializing in React, Next.js, Laravel, and Node.js.`,
-    works: "Explore my portfolio of web development projects. From full-stack applications to innovative solutions using React, Next.js, Laravel, and more.",
-    worksOpenGraph: "Browse through my collection of web development projects showcasing modern technologies and best practices.",
-    contact: "Get in touch to discuss your next project. Let's collaborate and build something amazing together using modern web technologies.",
-    contactOpenGraph: "Ready to start your next project? Get in touch to discuss how we can work together to build exceptional web applications.",
+    works:
+      "Explore my portfolio of web development projects. From full-stack applications to innovative solutions using React, Next.js, Laravel, and more.",
+    worksOpenGraph:
+      "Browse through my collection of web development projects showcasing modern technologies and best practices.",
+    contact:
+      "Get in touch to discuss your next project. Let's collaborate and build something amazing together using modern web technologies.",
+    contactOpenGraph:
+      "Ready to start your next project? Get in touch to discuss how we can work together to build exceptional web applications.",
   },
   keywords: [
     "Full-Stack Developer",
@@ -53,6 +58,39 @@ export const SEO = {
     ],
   },
 };
+
+export const TECHS_STACK = [
+  {
+    src: "/laravel.svg",
+    alt: "Laravel",
+    delay: 0,
+    position: { top: "20%", left: "10%" },
+  },
+  {
+    src: "/vue.svg",
+    alt: "VueJs",
+    delay: 50,
+    position: { top: "15%", right: "15%" },
+  },
+  {
+    src: "/react.svg",
+    alt: "React",
+    delay: 100,
+    position: { top: "60%", left: "5%" },
+  },
+  {
+    src: "/node.svg",
+    alt: "NodeJs",
+    delay: 150,
+    position: { bottom: "20%", right: "20%" },
+  },
+  {
+    src: "/flutter.svg",
+    alt: "Flutter",
+    delay: 200,
+    position: { top: "40%", right: "10%" },
+  },
+];
 
 export const FIREBASE_CONFIG = require("@repo/firebase-config/config.json");
 

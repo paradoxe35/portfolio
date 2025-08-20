@@ -22,7 +22,7 @@ const Navigation: React.FC<PropsWithChildren<{}>> = () => {
             href="/"
             className={cn(
               "relative pr-2 sm:pr-3 py-2 leading-4 pointer-events-auto",
-              "font-bold text-base sm:text-lg",
+              "font-bold text-lg",
               "text-neutral-8 dark:text-neutral-2",
               "hover:text-primary dark:hover:text-primary-light",
               "transition-all duration-200"

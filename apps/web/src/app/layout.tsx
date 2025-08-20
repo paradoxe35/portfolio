@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import "@/styles/globals.css";
 import { Analytics } from "@vercel/analytics/react";
-import { site_details, SEO } from "@/utils/constants";
+import { site_details, SEO, TECHS_STACK } from "@/utils/constants";
 import { StructuredData } from "@/components/seo/structured-data";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || site_details.website;
@@ -57,19 +57,30 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark antialiased">
+    <html lang="en" className="antialiased" suppressHydrationWarning>
       <head>
         <link rel="manifest" href="/manifest.json" />
         <link rel="apple-touch-icon" href="/paradoxe-ngwasi.jpg" />
         <meta name="theme-color" content="#8a693b" />
-        <Script
+        {TECHS_STACK.map((tech) => (
+          <link
+            key={tech.alt}
+            rel="preload"
+            href={tech.src}
+            as="image"
+            type="image/svg+xml"
+          />
+        ))}
+        <script
           id="theme-switcher"
-          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               // Set dark mode by default, can be overridden by theme toggle
-              if (localStorage.getItem('theme') === 'light') {
-                document.documentElement.classList.remove('dark');
+              const _theme = localStorage.getItem('theme');
+              if (_theme === 'light') {
+                document.documentElement.classList.add('light');
+              }else if (_theme === 'dark') {
+                document.documentElement.classList.add('dark');
               }
             `,
           }}
