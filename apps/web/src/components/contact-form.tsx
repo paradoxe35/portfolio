@@ -29,7 +29,12 @@ export function ContactForm({ className }: { className?: string }) {
 
   return (
     <div className={cn("w-full max-w-2xl mx-auto", className)}>
-      <div className="bg-white/80 dark:bg-white/5 backdrop-blur-lg rounded-2xl p-8 md:p-10 shadow-2xl border border-black/10 dark:border-white/10 hover:border-primary/30 dark:hover:border-primary-light/20 transition-all duration-300">
+      <div
+        className={cn(
+          "bg-white/80 dark:bg-white/5 backdrop-blur-lg rounded-2xl p-4 md:p-8 shadow-2xl",
+          "border border-black/10 dark:border-white/10 hover:border-primary/30 dark:hover:border-primary-light/20 transition-all duration-300"
+        )}
+      >
         <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-primary to-primary-dark dark:from-neutral-1 dark:to-neutral-2 bg-clip-text text-transparent">
           {"Let's Build Something Amazing"}
         </h1>
