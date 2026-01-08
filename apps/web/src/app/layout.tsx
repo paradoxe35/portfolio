@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import "@/styles/globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import { site_details, SEO, TECHS_STACK } from "@/utils/constants";
 import { StructuredData } from "@/components/seo/structured-data";
+import { Providers } from "@/components/providers";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || site_details.website;
 
@@ -71,25 +71,13 @@ export default function RootLayout({
             type="image/svg+xml"
           />
         ))}
-        <script
-          id="theme-switcher"
-          dangerouslySetInnerHTML={{
-            __html: `
-              // Set dark mode by default, can be overridden by theme toggle
-              const _theme = localStorage.getItem('theme');
-              if (_theme === 'light') {
-                document.documentElement.classList.add('light');
-              }else if (_theme === 'dark') {
-                document.documentElement.classList.add('dark');
-              }
-            `,
-          }}
-        />
       </head>
       <body>
-        <StructuredData />
-        {children}
-        <Analytics />
+        <Providers>
+          <StructuredData />
+          {children}
+          <Analytics />
+        </Providers>
       </body>
     </html>
   );

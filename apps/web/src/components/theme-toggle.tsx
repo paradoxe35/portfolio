@@ -1,34 +1,27 @@
 "use client";
 
+import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { cn } from "@/utils/cn";
 
 export function ThemeToggle() {
-  const [theme, setTheme] = useState<"light" | "dark" | null>(null);
+  const [mounted, setMounted] = useState(false);
+  const { resolvedTheme, setTheme } = useTheme();
 
+  // Avoid hydration mismatch by only rendering after mount
   useEffect(() => {
-    // Check for saved theme preference or default to dark mode
-    const savedTheme = localStorage.getItem("theme") as "light" | "dark" | null;
-    setTheme(savedTheme);
-
-    if (savedTheme === "dark") {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
+    setMounted(true);
   }, []);
 
-  const toggleTheme = () => {
-    const newTheme = theme === "light" ? "dark" : "light";
-    setTheme(newTheme);
-    localStorage.setItem("theme", newTheme);
+  if (!mounted) {
+    // Return a placeholder with same dimensions to avoid layout shift
+    return (
+      <div className="p-2 w-9 h-9 rounded-lg bg-white/80 dark:bg-neutral-8/80" />
+    );
+  }
 
-    // Toggle the dark class on the html element
-    if (newTheme === "dark") {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
+  const toggleTheme = () => {
+    setTheme(resolvedTheme === "light" ? "dark" : "light");
   };
 
   return (
@@ -42,9 +35,10 @@ export function ThemeToggle() {
         "transition-all duration-300 hover:scale-105",
         "group",
       )}
-      aria-label="Toggle theme"
+      aria-label={`Switch to ${resolvedTheme === "light" ? "dark" : "light"} mode`}
     >
-      {theme === "light" || theme === null ? (
+      {resolvedTheme === "light" ? (
+        // Moon icon - shown in light mode, clicking switches to dark
         <svg
           className="w-5 h-5 text-neutral-8 group-hover:text-neutral-9 transition-colors"
           fill="none"
@@ -59,6 +53,7 @@ export function ThemeToggle() {
           />
         </svg>
       ) : (
+        // Sun icon - shown in dark mode, clicking switches to light
         <svg
           className="w-5 h-5 text-neutral-1 group-hover:text-white transition-colors"
           fill="none"
