@@ -32,9 +32,9 @@
   --color-pink-500: #ec4899;
   --color-pink-600: #db2777;
 
-  /* Dark theme colors */
-  --color-dark-bg: #0a0a0a;
-  --color-dark-bg-secondary: #1a0f1f;
+  /* Dark theme colors - neutral tones for consistency */
+  --color-dark-bg: #111111;
+  --color-dark-bg-secondary: #1a1a1a;
   --color-dark-surface: rgba(255, 255, 255, 0.05);
   --color-dark-border: rgba(255, 255, 255, 0.1);
 

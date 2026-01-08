@@ -2,7 +2,7 @@ export class Resume {
   constructor(
     public readonly id: string,
     public readonly file: string,
-    public readonly active: boolean
+    public readonly active: boolean,
   ) {}
 }
 
@@ -12,7 +12,7 @@ export class Skill {
     public readonly name: string,
     public readonly icons: string[],
     public readonly status?: "published" | "draft" | "archived",
-    public readonly style?: Record<string, string>
+    public readonly style?: Record<string, string>,
   ) {}
 }
 
@@ -20,7 +20,7 @@ export class Media {
   constructor(
     public readonly id: string,
     public readonly label: string,
-    public readonly file: string[]
+    public readonly file: string[],
   ) {}
 }
 
@@ -34,6 +34,6 @@ export class Project {
     public readonly image: string,
     public readonly technology: string,
     public readonly link?: string,
-    public readonly order: number = 0
+    public readonly order: number = 0,
   ) {}
 }

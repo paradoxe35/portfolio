@@ -14,7 +14,7 @@ const Navigation: React.FC<PropsWithChildren<{}>> = () => {
           "backdrop-blur-md",
           "bg-white/90 dark:bg-dark-bg/90",
           "border-b border-neutral-2 dark:border-white/8",
-          "shadow-sm dark:shadow-none"
+          "shadow-sm dark:shadow-none",
         )}
       >
         <Container className="flex justify-between items-center py-4 sm:py-6">
@@ -25,7 +25,7 @@ const Navigation: React.FC<PropsWithChildren<{}>> = () => {
               "font-bold text-lg",
               "text-neutral-8 dark:text-neutral-2",
               "hover:text-primary dark:hover:text-primary-light",
-              "transition-all duration-200"
+              "transition-all duration-200",
             )}
           >
             <span className="text-primary dark:text-primary-light">
@@ -47,7 +47,7 @@ const Navigation: React.FC<PropsWithChildren<{}>> = () => {
                   "text-neutral-7 dark:text-neutral-3",
                   "hover:text-primary dark:hover:text-primary-light",
                   "hover:bg-black/5 dark:hover:bg-dark-surface",
-                  "transition-all duration-200"
+                  "transition-all duration-200",
                 )}
               >
                 Works
@@ -62,7 +62,7 @@ const Navigation: React.FC<PropsWithChildren<{}>> = () => {
                   "text-neutral-7 dark:text-neutral-3",
                   "hover:text-primary dark:hover:text-primary-light",
                   "hover:bg-black/5 dark:hover:bg-dark-surface",
-                  "transition-all duration-200"
+                  "transition-all duration-200",
                 )}
               >
                 Contact
@@ -77,7 +77,7 @@ const Navigation: React.FC<PropsWithChildren<{}>> = () => {
               "sm:hidden p-2 pointer-events-auto",
               "text-neutral-7 dark:text-neutral-3",
               "hover:text-primary dark:hover:text-primary-light",
-              "transition-colors"
+              "transition-colors",
             )}
             aria-label="Toggle menu"
           >
@@ -113,7 +113,7 @@ const Navigation: React.FC<PropsWithChildren<{}>> = () => {
               "sm:hidden backdrop-blur-md",
               "bg-white/98 dark:bg-dark-bg/98",
               "border-t border-neutral-2 dark:border-white/8",
-              "shadow-sm dark:shadow-none"
+              "shadow-sm dark:shadow-none",
             )}
           >
             <Container className="py-4">
@@ -128,7 +128,7 @@ const Navigation: React.FC<PropsWithChildren<{}>> = () => {
                       "text-neutral-7 dark:text-neutral-3",
                       "hover:text-primary dark:hover:text-primary-light",
                       "hover:bg-black/5 dark:hover:bg-dark-surface",
-                      "transition-all duration-200"
+                      "transition-all duration-200",
                     )}
                   >
                     Works
@@ -144,7 +144,7 @@ const Navigation: React.FC<PropsWithChildren<{}>> = () => {
                       "text-neutral-7 dark:text-neutral-3",
                       "hover:text-primary dark:hover:text-primary-light",
                       "hover:bg-black/5 dark:hover:bg-dark-surface",
-                      "transition-all duration-200"
+                      "transition-all duration-200",
                     )}
                   >
                     Contact

@@ -19,7 +19,7 @@ const Titles: React.FC<PropsWithChildren<Title>> = function ({
           "text-sm font-semibold uppercase tracking-wider",
           "text-primary dark:text-primary-light",
           "animate-fadeUp",
-          className
+          className,
         )}
       >
         {title}
@@ -29,7 +29,7 @@ const Titles: React.FC<PropsWithChildren<Title>> = function ({
           "text-3xl md:text-4xl font-bold mb-8",
           "text-neutral-9 dark:text-neutral-1",
           "lg:w-3/4",
-          "animate-fadeUp animation-delay-100"
+          "animate-fadeUp animation-delay-100",
         )}
       >
         {subtitle}

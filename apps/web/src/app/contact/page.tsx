@@ -16,15 +16,7 @@ export const revalidate = 30;
 
 function ContactInfo() {
   return (
-    <div
-      className={cn(
-        "p-6 sm:p-8 rounded-2xl h-full",
-        "bg-white dark:bg-white/8",
-        "border border-neutral-2 dark:border-white/10",
-        "shadow-sm dark:shadow-none",
-        "animate-fadeUp animation-delay-100"
-      )}
-    >
+    <div className={cn("animate-fadeUp animation-delay-100")}>
       <h3 className="text-xl font-bold text-neutral-8 dark:text-neutral-2 mb-6">
         Get in Touch
       </h3>
@@ -35,7 +27,7 @@ function ContactInfo() {
           <div
             className={cn(
               "w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0",
-              "bg-primary/10 dark:bg-white/10"
+              "bg-primary/10 dark:bg-white/10",
             )}
           >
             <svg
@@ -70,7 +62,7 @@ function ContactInfo() {
           <div
             className={cn(
               "w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0",
-              "bg-primary/10 dark:bg-white/10"
+              "bg-primary/10 dark:bg-white/10",
             )}
           >
             <svg
@@ -118,7 +110,7 @@ function ContactInfo() {
               "w-10 h-10 rounded-lg flex items-center justify-center",
               "bg-neutral-2 dark:bg-white/10",
               "hover:bg-primary/10 dark:hover:bg-white/20",
-              "transition-colors"
+              "transition-colors",
             )}
           >
             <svg
@@ -136,7 +128,7 @@ function ContactInfo() {
               "w-10 h-10 rounded-lg flex items-center justify-center",
               "bg-neutral-2 dark:bg-white/10",
               "hover:bg-primary/10 dark:hover:bg-white/20",
-              "transition-colors"
+              "transition-colors",
             )}
           >
             <svg
@@ -154,7 +146,7 @@ function ContactInfo() {
               "w-10 h-10 rounded-lg flex items-center justify-center",
               "bg-neutral-2 dark:bg-white/10",
               "hover:bg-primary/10 dark:hover:bg-white/20",
-              "transition-colors"
+              "transition-colors",
             )}
           >
             <svg
@@ -175,8 +167,7 @@ async function About() {
   const resume = resumeData ? (entityToJSON(resumeData) as Resume) : null;
 
   return (
-    <section className="py-24 bg-white dark:bg-dark-bg-secondary relative overflow-hidden">
-
+    <section className="py-24 bg-white dark:bg-dark-bg relative overflow-hidden">
       <Container>
         <div className="relative z-10">
           <Titles
@@ -211,7 +202,7 @@ export default function ContactPage() {
           title="Contact"
           subtitle="Let's discuss your next project or collaboration opportunity"
         />
-        <section className="py-24 min-h-[60vh] bg-neutral-1/30 dark:bg-dark-bg relative">
+        <section className="py-24 min-h-[60vh] bg-neutral-1/50 dark:bg-dark-bg-secondary relative">
           <BackgroundPattern variant="diagonal" />
 
           <Container>

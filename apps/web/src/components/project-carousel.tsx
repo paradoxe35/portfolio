@@ -65,7 +65,7 @@ export function ProjectCarousel({ projects }: ProjectCarouselProps) {
             "shadow-sm hover:shadow-md",
             "items-center justify-center",
             "hover:scale-105",
-            "transition-all"
+            "transition-all",
           )}
           aria-label="Previous projects"
         >
@@ -96,7 +96,7 @@ export function ProjectCarousel({ projects }: ProjectCarouselProps) {
             "shadow-sm hover:shadow-md",
             "items-center justify-center",
             "hover:scale-105",
-            "transition-all"
+            "transition-all",
           )}
           aria-label="Next projects"
         >
@@ -123,16 +123,13 @@ export function ProjectCarousel({ projects }: ProjectCarouselProps) {
           "flex gap-6 overflow-x-auto scrollbar-hide scroll-smooth pb-4 pt-2",
           "-mx-4 px-4 lg:mx-0 lg:px-0",
           "animate-fadeUp",
-          "items-stretch"
+          "items-stretch",
         )}
       >
         {projects.map((project) => (
           <div
             key={project.id}
-            className={cn(
-              "flex-shrink-0",
-              "w-[300px] sm:w-[340px]"
-            )}
+            className={cn("flex-shrink-0", "w-[300px] sm:w-[340px]")}
           >
             <WorksItem project={project} inCarousel={true} />
           </div>
@@ -147,7 +144,7 @@ export function ProjectCarousel({ projects }: ProjectCarouselProps) {
             className={cn(
               "w-2 h-2 rounded-full",
               "bg-neutral-3 dark:bg-neutral-7",
-              "transition-all"
+              "transition-all",
             )}
           />
         ))}

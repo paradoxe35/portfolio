@@ -48,7 +48,7 @@ export function RenderMarkdown({ children }: { children: string }) {
                   "object-contain",
                   // Add container styling only on large screens
                   "lg:p-8 lg:bg-white/80 dark:lg:bg-white/5",
-                  "lg:backdrop-blur-md lg:border lg:border-neutral-2 dark:lg:border-white/10"
+                  "lg:backdrop-blur-md lg:border lg:border-neutral-2 dark:lg:border-white/10",
                 )}
                 sizes="(max-width: 640px) 100vw, (max-width: 768px) 90vw, (max-width: 1024px) 80vw, 1200px"
                 loading="lazy"
@@ -68,7 +68,7 @@ export function RenderMarkdown({ children }: { children: string }) {
                 "object-contain",
                 // Add container styling only on large screens
                 "lg:p-8 lg:bg-white/80 dark:lg:bg-white/5",
-                "lg:backdrop-blur-md lg:border lg:border-neutral-2 dark:lg:border-white/10"
+                "lg:backdrop-blur-md lg:border lg:border-neutral-2 dark:lg:border-white/10",
               )}
               loading="lazy"
               title={alt || undefined}
@@ -87,7 +87,7 @@ export function RenderMarkdown({ children }: { children: string }) {
                 "text-primary dark:text-primary-light",
                 "underline decoration-primary/30 dark:decoration-primary-light/30",
                 "hover:decoration-primary dark:hover:decoration-primary-light",
-                "transition-colors duration-200"
+                "transition-colors duration-200",
               )}
               target={isExternal ? "_blank" : undefined}
               rel={isExternal ? "noopener noreferrer" : undefined}

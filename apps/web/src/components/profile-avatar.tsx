@@ -41,7 +41,7 @@ export function ProfileAvatar({
           "animation-delay-400": delay === 400,
           "animation-delay-500": delay === 500,
         },
-        className
+        className,
       )}
     >
       <div
@@ -49,7 +49,7 @@ export function ProfileAvatar({
           "w-full h-full rounded-full overflow-hidden",
           "bg-neutral-1 dark:bg-white/5",
           "border border-neutral-2 dark:border-white/10",
-          "flex items-center justify-center"
+          "flex items-center justify-center",
         )}
       >
         {/* Try to load image first, fallback to initials */}
@@ -63,7 +63,7 @@ export function ProfileAvatar({
           className={cn(
             "w-full h-full object-cover object-top",
             "scale-130 hover:scale-135",
-            "transition-transform duration-500"
+            "transition-transform duration-500",
           )}
           onError={(e) => {
             // Fallback to initials if image fails to load

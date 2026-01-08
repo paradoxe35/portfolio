@@ -11,12 +11,41 @@ const Alert: React.FC<PropsWithChildren<{ success?: boolean }>> = function ({
   return (
     <div
       className={cn(
-        "p-4 rounded-lg mb-6 text-sm font-medium animate-fadeUp",
+        "flex items-center gap-2 p-3 rounded-md text-sm mb-5",
         success
-          ? "bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300 border border-green-200 dark:border-green-800/50"
-          : "bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-300 border border-red-200 dark:border-red-800/50"
+          ? "bg-green-500/10 text-green-600 dark:text-green-400"
+          : "bg-red-500/10 text-red-600 dark:text-red-400",
       )}
     >
+      {success ? (
+        <svg
+          className="w-4 h-4"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M5 13l4 4L19 7"
+          />
+        </svg>
+      ) : (
+        <svg
+          className="w-4 h-4"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M6 18L18 6M6 6l12 12"
+          />
+        </svg>
+      )}
       {children}
     </div>
   );
@@ -25,124 +54,109 @@ const Alert: React.FC<PropsWithChildren<{ success?: boolean }>> = function ({
 const FORMBOLD_FORM_ID = "3G55p";
 
 const inputStyles = cn(
-  "w-full px-4 py-3 rounded-lg",
-  "bg-neutral-1 dark:bg-neutral-9/80",
-  "border border-neutral-2 dark:border-neutral-7",
-  "text-neutral-9 dark:text-neutral-1",
-  "placeholder-neutral-5 dark:placeholder-neutral-5",
+  "w-full px-3 py-2 text-sm rounded-md",
+  "bg-neutral-1 dark:bg-white/5",
+  "border border-neutral-3 dark:border-white/15",
+  "text-neutral-9 dark:text-neutral-2",
+  "placeholder:text-neutral-5 dark:placeholder:text-neutral-5",
   "focus:outline-none focus:border-primary dark:focus:border-primary-light",
-  "focus:ring-2 focus:ring-primary/10 dark:focus:ring-primary-light/10",
-  "transition-all duration-200"
+  "transition-colors duration-150",
 );
 
 export function ContactForm({ className }: { className?: string }) {
   const [state, handleSubmit] = useFormBold(FORMBOLD_FORM_ID);
 
   return (
-    <div className={cn("w-full max-w-2xl mx-auto", className)}>
-      <div
-        className={cn(
-          "bg-white dark:bg-neutral-9/50",
-          "border border-neutral-2 dark:border-white/8",
-          "rounded-xl p-6 md:p-8",
-          "shadow-sm"
-        )}
-      >
-        {/* Header */}
-        <div className="mb-6">
-          <h2 className="text-2xl sm:text-3xl font-bold text-neutral-9 dark:text-white mb-2">
-            Send a Message
-          </h2>
-          <p className="text-neutral-7 dark:text-neutral-3">
-            Have a project in mind? Fill out the form below and I'll get back to
-            you soon.
-          </p>
-        </div>
+    <div className={cn("w-full", className)}>
+      {/* Header */}
+      <div className="mb-5">
+        <h2 className="text-[1.325rem] font-semibold text-neutral-8 dark:text-neutral-1 mb-1">
+          Send a Message
+        </h2>
+        <p className="text-sm text-neutral-8 dark:text-neutral-4">
+          Fill out the form below and I'll get back to you soon.
+        </p>
+      </div>
 
-        {/* Alerts */}
-        {state.succeeded && (
-          <Alert success={state.succeeded}>
-            Message sent successfully. I'll get back to you soon.
-          </Alert>
-        )}
-        {state.error.status && (
-          <Alert success={false}>{state.error.message}</Alert>
-        )}
+      {/* Alerts */}
+      {state.succeeded && <Alert success>Message sent successfully!</Alert>}
+      {state.error.status && (
+        <Alert success={false}>{state.error.message}</Alert>
+      )}
 
-        {/* Form */}
-        <form onSubmit={handleSubmit} className="space-y-5" autoComplete="off">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-              <label
-                htmlFor="name"
-                className="block text-sm font-medium text-neutral-7 dark:text-neutral-3 mb-1.5"
-              >
-                Name
-              </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                placeholder="Your name"
-                required
-                minLength={3}
-                className={inputStyles}
-              />
-            </div>
-            <div>
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium text-neutral-7 dark:text-neutral-3 mb-1.5"
-              >
-                Email
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="your@email.com"
-                required
-                className={inputStyles}
-              />
-            </div>
-          </div>
-
+      {/* Form */}
+      <form onSubmit={handleSubmit} className="space-y-4" autoComplete="off">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <label
-              htmlFor="message"
-              className="block text-sm font-medium text-neutral-7 dark:text-neutral-3 mb-1.5"
+              htmlFor="name"
+              className="block text-[0.975rem] font-medium text-neutral-8 dark:text-neutral-3 mb-1"
             >
-              Message
+              Name
             </label>
-            <textarea
-              id="message"
-              name="message"
-              placeholder="Tell me about your project..."
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Your name"
               required
-              minLength={15}
-              rows={5}
-              className={cn(inputStyles, "resize-none")}
+              minLength={3}
+              className={inputStyles}
             />
           </div>
+          <div>
+            <label
+              htmlFor="email"
+              className="block text-[0.975rem] font-medium text-neutral-8 dark:text-neutral-3 mb-1"
+            >
+              Email
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="your@email.com"
+              required
+              className={inputStyles}
+            />
+          </div>
+        </div>
 
-          <button
-            disabled={state.loading}
-            type="submit"
-            className={cn(
-              "w-full sm:w-auto px-6 py-3 rounded-lg",
-              "bg-primary dark:bg-primary-light",
-              "text-white dark:text-neutral-9",
-              "font-medium text-sm",
-              "hover:bg-primary-dark dark:hover:bg-primary",
-              "focus:outline-none focus:ring-2 focus:ring-primary/50",
-              "transition-colors duration-200",
-              "disabled:opacity-50 disabled:cursor-not-allowed"
-            )}
+        <div>
+          <label
+            htmlFor="message"
+            className="block text-[0.975rem] font-medium text-neutral-8 dark:text-neutral-3 mb-1"
           >
-            {state.loading ? "Sending..." : "Send Message"}
-          </button>
-        </form>
-      </div>
+            Message
+          </label>
+          <textarea
+            id="message"
+            name="message"
+            placeholder="Tell me about your project..."
+            required
+            minLength={15}
+            rows={4}
+            className={cn(inputStyles, "resize-none")}
+          />
+        </div>
+
+        <button
+          disabled={state.loading}
+          type="submit"
+          className={cn(
+            "px-4 py-1.5 text-[0.975rem] rounded",
+            "bg-primary dark:bg-primary-light",
+            "text-white dark:text-neutral-9",
+            "font-medium",
+            "hover:bg-primary-dark dark:hover:bg-primary",
+            "focus:outline-none focus:ring-2 focus:ring-primary/20",
+            "transition-colors duration-150",
+            "disabled:opacity-50 disabled:cursor-not-allowed",
+          )}
+        >
+          {state.loading ? "Sending..." : "Send Message"}
+        </button>
+      </form>
     </div>
   );
 }

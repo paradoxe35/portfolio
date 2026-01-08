@@ -61,5 +61,5 @@ function AdminApp() {
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <AdminApp />
-  </React.StrictMode>
+  </React.StrictMode>,
 );

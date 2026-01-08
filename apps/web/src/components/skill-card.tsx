@@ -27,7 +27,7 @@ const validStyleCSS = (style: Record<string, string> | undefined) => {
 
       return acc;
     },
-    {} as Record<string, string>
+    {} as Record<string, string>,
   );
 };
 
@@ -63,7 +63,7 @@ export function SkillCard({ skills, rows }: SkillCardProps) {
                 "animation-delay-300": i === 2,
                 "animation-delay-400": i === 3,
                 "animation-delay-500": i >= 4,
-              }
+              },
             )}
             key={skill.id || i}
           >
@@ -78,7 +78,7 @@ export function SkillCard({ skills, rows }: SkillCardProps) {
                   "h-[36px] sm:h-[40px] md:h-[48px]",
                   "filter brightness-100 dark:invert",
                   "opacity-90 dark:opacity-70 group-hover:opacity-100",
-                  "transition-opacity"
+                  "transition-opacity",
                 )}
                 width={70}
                 height={70}
@@ -100,7 +100,7 @@ export function SkillCard({ skills, rows }: SkillCardProps) {
                         "h-[36px] sm:h-[40px] md:h-[48px]",
                         "filter brightness-100 dark:invert",
                         "opacity-90 dark:opacity-70 group-hover:opacity-100",
-                        "transition-opacity"
+                        "transition-opacity",
                       )}
                     />
                   );
@@ -112,7 +112,7 @@ export function SkillCard({ skills, rows }: SkillCardProps) {
                 "text-sm sm:text-base font-medium mb-0",
                 "text-neutral-8 dark:text-neutral-2",
                 "group-hover:text-primary dark:group-hover:text-primary-light",
-                "transition-colors"
+                "transition-colors",
               )}
             >
               {skill.name}

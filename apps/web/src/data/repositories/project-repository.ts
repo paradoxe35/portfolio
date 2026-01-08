@@ -27,7 +27,7 @@ export class ProjectFirebaseRepository implements ProjectRepository {
 
   async getProjects() {
     const querySnapshot = await getDocs(
-      collection(firestore, FirebaseCollections.PROJECTS)
+      collection(firestore, FirebaseCollections.PROJECTS),
     );
 
     const projects = querySnapshot.docs.map(async (doc) => {
@@ -50,7 +50,7 @@ export class ProjectFirebaseRepository implements ProjectRepository {
       file,
       object.technology,
       object.link,
-      object.order || 0
+      object.order || 0,
     );
   }
 }

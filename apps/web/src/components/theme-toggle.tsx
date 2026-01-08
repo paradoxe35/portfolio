@@ -40,7 +40,7 @@ export function ThemeToggle() {
         "shadow-md border border-black/10 dark:border-white/10",
         "hover:bg-white dark:hover:bg-neutral-7",
         "transition-all duration-300 hover:scale-105",
-        "group"
+        "group",
       )}
       aria-label="Toggle theme"
     >

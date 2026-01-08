@@ -46,7 +46,7 @@ const projectsCollection = buildCollection<EntityCollection<Project>>({
       LOCAL_DATA.setData(
         FirebaseCollections.PROJECTS,
         entityFetchProps.entity.id,
-        entityFetchProps.entity.values as Project
+        entityFetchProps.entity.values as Project,
       );
 
       return entityFetchProps.entity;
@@ -160,7 +160,7 @@ const skillsCollection = buildCollection<EntityCollection<Skill>>({
       LOCAL_DATA.setData(
         FirebaseCollections.SKILLS,
         entityFetchProps.entity.id,
-        entityFetchProps.entity.values as Skill
+        entityFetchProps.entity.values as Skill,
       );
 
       return entityFetchProps.entity;
