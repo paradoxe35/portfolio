@@ -178,12 +178,11 @@ async function About() {
 
           <div className="prose prose-lg dark:prose-invert max-w-3xl mb-12 animate-fadeUp animation-delay-200">
             <p className="text-neutral-7 dark:text-neutral-3 leading-relaxed">
-              {`I'm ${site_details.full_name}, a Software Engineer with
-              ${new Date().getFullYear() - 2017} years of hands-on experience
-              building web applications. My journey began in 2017 as a
-              self-taught developer, and since then, I've honed my skills across
-              the full stack, working with technologies like PHP, Laravel,
-              React.js, Next.js, Node.js, and Go.`.replace(/\s+/g, " ")}
+              {`I'm ${site_details.full_name}, a Software Engineer since 2017,
+              working in web development and DevOps. I build web applications
+              and automation tools using TypeScript, Node.js, PHP, and Go.
+              I also manage cloud infrastructure, CI/CD pipelines, and
+              container deployments.`.replace(/\s+/g, " ")}
             </p>
           </div>
 
