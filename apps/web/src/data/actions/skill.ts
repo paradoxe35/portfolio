@@ -22,7 +22,18 @@ export function getDefaultSkills(): Skill[] {
     {
       name: "NodeJs, Golang",
       icons: ["/node.svg", "/golang.svg"],
-      className: "skills-icons-left",
+    },
+    {
+      name: "Containers & Orchestration",
+      icons: ["/docker.svg", "/kubernetes.svg"],
+    },
+    {
+      name: "Linux & Server Admin",
+      icons: ["/linux.svg"],
+    },
+    {
+      name: "CI/CD & Cloud Infrastructure",
+      icons: ["/cicd.svg"],
     },
   ].map((skill, i) => {
     return new Skill(String(i), skill.name, skill.icons);

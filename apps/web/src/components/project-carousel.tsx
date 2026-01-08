@@ -60,11 +60,11 @@ export function ProjectCarousel({ projects }: ProjectCarouselProps) {
           className={cn(
             "hidden lg:flex absolute left-0 top-1/2 -translate-y-1/2 z-10 -ml-5",
             "w-12 h-12 rounded-full",
-            "bg-white/80 dark:bg-white/10 backdrop-blur-md",
-            "border border-black/10 dark:border-white/20",
-            "shadow-lg hover:shadow-xl",
+            "bg-white dark:bg-white/10",
+            "border border-neutral-2 dark:border-white/15",
+            "shadow-sm hover:shadow-md",
             "items-center justify-center",
-            "hover:scale-110 hover:bg-white/90 dark:hover:bg-white/20",
+            "hover:scale-105",
             "transition-all"
           )}
           aria-label="Previous projects"
@@ -91,11 +91,11 @@ export function ProjectCarousel({ projects }: ProjectCarouselProps) {
           className={cn(
             "hidden lg:flex absolute right-0 top-1/2 -translate-y-1/2 z-10 -mr-5",
             "w-12 h-12 rounded-full",
-            "bg-white/80 dark:bg-white/10 backdrop-blur-md",
-            "border border-black/10 dark:border-white/20",
-            "shadow-lg hover:shadow-xl",
+            "bg-white dark:bg-white/10",
+            "border border-neutral-2 dark:border-white/15",
+            "shadow-sm hover:shadow-md",
             "items-center justify-center",
-            "hover:scale-110 hover:bg-white/90 dark:hover:bg-white/20",
+            "hover:scale-105",
             "transition-all"
           )}
           aria-label="Next projects"
@@ -120,20 +120,18 @@ export function ProjectCarousel({ projects }: ProjectCarouselProps) {
       <div
         ref={scrollRef}
         className={cn(
-          "flex gap-8 overflow-x-auto scrollbar-hide scroll-smooth pb-6 pt-2",
+          "flex gap-6 overflow-x-auto scrollbar-hide scroll-smooth pb-4 pt-2",
           "-mx-4 px-4 lg:mx-0 lg:px-0",
           "animate-fadeUp",
           "items-stretch"
         )}
       >
-        {projects.map((project, i) => (
+        {projects.map((project) => (
           <div
             key={project.id}
             className={cn(
               "flex-shrink-0",
-              "min-w-[320px] max-w-[320px]",
-              "md:min-w-[380px] md:max-w-[380px]",
-              "min-h-[600px]"
+              "w-[300px] sm:w-[340px]"
             )}
           >
             <WorksItem project={project} inCarousel={true} />

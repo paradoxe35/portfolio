@@ -36,7 +36,7 @@ async function Works() {
   ) as Project[];
 
   return (
-    <section className="py-16 sm:py-20 md:py-[120px] pb-12 sm:pb-16 md:pb-[90px] bg-gradient-to-br from-neutral-1 to-white dark:from-dark-bg-secondary dark:to-dark-bg">
+    <section className="py-16 sm:py-20 md:py-[120px] pb-12 sm:pb-16 md:pb-[90px] bg-neutral-1/50 dark:bg-dark-bg-secondary/50">
       <Container>
         <Titles title="Portfolio" subtitle="Selected Works" />
         <div className="mt-8">
@@ -58,7 +58,7 @@ async function Skills() {
   return (
     <section
       id="skills"
-      className="py-16 sm:py-20 md:py-[120px] pb-12 sm:pb-16 md:pb-[90px] scroll-mt-20 bg-gradient-to-br from-white to-neutral-1 dark:from-dark-bg dark:to-dark-bg-secondary"
+      className="py-16 sm:py-20 md:py-[120px] pb-12 sm:pb-16 md:pb-[90px] scroll-mt-20 bg-white dark:bg-dark-bg"
     >
       <Container>
         <Titles title="What I can do" subtitle="Building Digital Experiences" />
@@ -70,10 +70,10 @@ async function Skills() {
 
 function Hero() {
   return (
-    <section className="min-h-screen bg-gradient-to-br from-white via-neutral-1 to-neutral-2 dark:from-dark-bg dark:via-dark-bg-secondary dark:to-black relative overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5 dark:opacity-10">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_25%,_theme(colors.primary.DEFAULT)_0%,_transparent_50%),_radial-gradient(circle_at_75%_75%,_theme(colors.primary.DEFAULT)_0%,_transparent_50%)]" />
+    <section className="min-h-screen bg-gradient-to-b from-white to-neutral-1 dark:from-dark-bg dark:to-dark-bg-secondary relative overflow-hidden">
+      {/* Background Pattern - subtle */}
+      <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.05]">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_25%,_theme(colors.primary.DEFAULT)_0%,_transparent_50%)]" />
       </div>
 
       <div className="relative z-10 min-h-screen flex items-center pt-32 pb-10 sm:pb-16">
@@ -83,19 +83,19 @@ function Hero() {
             <div className="space-y-6 sm:space-y-8">
               {/* Introduction */}
               <div className="space-y-3 sm:space-y-4">
-                <div className="text-lg text-neutral-7 dark:text-neutral-3 animate-fadeUp">
+                <div className="text-lg text-neutral-8 dark:text-neutral-2 animate-fadeUp">
                   {"Hey, I'm "}
                   <span className="text-primary dark:text-primary-light font-semibold">
                     {site_details.firstname}
                   </span>
                 </div>
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-neutral-9 dark:text-neutral-1 leading-tight animate-fadeUp animation-delay-100">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-neutral-9 dark:text-white leading-tight animate-fadeUp animation-delay-100">
                   A{" "}
                   <span className="bg-gradient-to-r from-primary to-primary-dark dark:from-primary-light dark:to-primary bg-clip-text text-transparent">
                     Software Developer
                   </span>
                 </h1>
-                <p className="text-lg text-neutral-6 dark:text-neutral-4 max-w-lg leading-relaxed animate-fadeUp animation-delay-100">
+                <p className="text-lg text-neutral-7 dark:text-neutral-3 max-w-lg leading-relaxed animate-fadeUp animation-delay-100">
                   Building scalable web applications with modern technologies.
                   Passionate about clean code, DevOps, and exceptional user
                   experiences
@@ -155,14 +155,17 @@ function Hero() {
                   >
                     <div
                       className={cn(
-                        "group p-3 md:p-4 rounded-2xl bg-white/80 dark:bg-white/5",
-                        "backdrop-blur-md border border-black/10 dark:border-white/10",
-                        "transition-all duration-300 hover:scale-110 cursor-default shadow-lg dark:shadow-none",
+                        "group p-3 md:p-4 rounded-2xl",
+                        "bg-white/90 dark:bg-white/10",
+                        "backdrop-blur-sm border border-neutral-2 dark:border-white/15",
+                        "transition-all duration-300 hover:scale-110 cursor-default",
+                        "shadow-sm hover:shadow-md dark:shadow-none",
                         "animate-zoomIn",
                         tech.delay === 50 && "animation-delay-100",
                         tech.delay === 100 && "animation-delay-100",
                         tech.delay === 150 && "animation-delay-200",
-                        tech.delay === 200 && "animation-delay-200"
+                        tech.delay === 200 && "animation-delay-200",
+                        tech.delay === 250 && "animation-delay-300"
                       )}
                     >
                       <Image
@@ -170,7 +173,7 @@ function Hero() {
                         alt={tech.alt}
                         width={90}
                         height={90}
-                        className="w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 opacity-80 hover:opacity-100 transition-opacity"
+                        className="w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 tech-icon"
                       />
                     </div>
                   </div>

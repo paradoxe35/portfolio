@@ -11,9 +11,9 @@ const Navigation: React.FC<PropsWithChildren<{}>> = () => {
     <header className="fixed top-0 left-0 right-0 z-50 pointer-events-none">
       <nav
         className={cn(
-          "backdrop-blur-xl",
-          "bg-white/80 dark:bg-white/5",
-          "border-b border-black/10 dark:border-white/10",
+          "backdrop-blur-md",
+          "bg-white/90 dark:bg-dark-bg/90",
+          "border-b border-neutral-2 dark:border-white/8",
           "shadow-sm dark:shadow-none"
         )}
       >
@@ -111,9 +111,9 @@ const Navigation: React.FC<PropsWithChildren<{}>> = () => {
           <div
             className={cn(
               "sm:hidden backdrop-blur-md",
-              "bg-white/95 dark:bg-dark-bg/95",
-              "border-t border-black/10 dark:border-dark-border/20",
-              "shadow-lg dark:shadow-none"
+              "bg-white/98 dark:bg-dark-bg/98",
+              "border-t border-neutral-2 dark:border-white/8",
+              "shadow-sm dark:shadow-none"
             )}
           >
             <Container className="py-4">
