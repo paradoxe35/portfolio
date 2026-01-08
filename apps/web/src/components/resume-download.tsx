@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Resume } from "@repo/contracts";
+import { cn } from "@/utils/cn";
 
 export function ResumeDownload({ resume }: { resume: Resume | null }) {
   return (
@@ -7,7 +8,10 @@ export function ResumeDownload({ resume }: { resume: Resume | null }) {
       {resume?.file && (
         <Link
           href={resume.file}
-          className="inline-flex items-center gap-3 px-8 py-4 bg-white/80 dark:bg-white/10 backdrop-blur-md border border-black/10 dark:border-white/20 text-neutral-9 dark:text-neutral-1 font-medium rounded-xl hover:bg-white/90 dark:hover:bg-white/20 hover:scale-105 hover:shadow-xl transition-all duration-300 group shadow-lg"
+          className={cn(
+            "inline-flex items-center gap-3 px-4 py-4 bg-white/80 dark:bg-white/10 backdrop-blur-md border border-black/10 dark:border-white/20 text-neutral-9 dark:text-neutral-1 font-medium rounded-xl hover:bg-white/90 ",
+            "dark:hover:bg-white/20 hover:scale-105 hover:shadow-xl transition-all duration-300 group shadow-md text-base"
+          )}
           target="_blank"
         >
           Download Resume
