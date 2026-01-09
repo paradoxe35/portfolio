@@ -40,9 +40,9 @@ export function registerProjectTools(server: McpServer) {
     async ({ status, limit = 50 }) => {
       try {
         const db = getAdminFirestore();
-        let query = db
-          .collection(FirebaseCollections.PROJECTS)
-          .orderBy("order", "asc");
+        let query: FirebaseFirestore.Query = db.collection(
+          FirebaseCollections.PROJECTS
+        );
 
         if (status) {
           query = query.where("status", "==", status);
@@ -64,10 +64,13 @@ export function registerProjectTools(server: McpServer) {
               status: data.status,
               image: imageUrl,
               link: data.link || null,
-              order: data.order || 0,
+              order: data.order ?? 0,
             };
           })
         );
+
+        // Sort by order (ascending), projects without order come first
+        projects.sort((a, b) => a.order - b.order);
 
         return {
           content: [
