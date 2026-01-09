@@ -1,11 +1,20 @@
-import {
-  initializeApp,
-  getApps,
-  cert,
-  type ServiceAccount,
-} from "firebase-admin/app";
+import { initializeApp, getApps, cert } from "firebase-admin/app";
 import { getFirestore } from "firebase-admin/firestore";
 import { getStorage } from "firebase-admin/storage";
+
+interface ServiceAccount {
+  type: string;
+  project_id: string;
+  private_key_id: string;
+  private_key: string;
+  client_email: string;
+  client_id: string;
+  auth_uri: string;
+  token_uri: string;
+  auth_provider_x509_cert_url: string;
+  client_x509_cert_url: string;
+  universe_domain: string;
+}
 
 function getServiceAccount(): ServiceAccount {
   const serviceAccountEnv = process.env.FIREBASE_SERVICE_ACCOUNT;
@@ -33,8 +42,8 @@ function getAdminApp() {
   const serviceAccount = getServiceAccount();
 
   return initializeApp({
-    credential: cert(serviceAccount),
-    storageBucket: `${serviceAccount.projectId}.appspot.com`,
+    credential: cert(serviceAccount as any),
+    storageBucket: `${serviceAccount.project_id}.appspot.com`,
   });
 }
 
