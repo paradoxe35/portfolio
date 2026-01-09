@@ -15,6 +15,10 @@
         "!.next/cache/**",
         "dist/**",
         "build/**"
+      ],
+      "env": [
+        "FIREBASE_SERVICE_ACCOUNT",
+        "MCP_API_KEY"
       ]
     },
     "lint": {
