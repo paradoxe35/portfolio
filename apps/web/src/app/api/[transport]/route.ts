@@ -59,17 +59,16 @@ async function verifyToken(
   bearerToken?: string
 ): Promise<AuthInfo | undefined> {
   if (!bearerToken) {
-    return undefined;
+    throw Error("No bearer token provided");
   }
 
   const apiKey = process.env.MCP_API_KEY;
   if (!apiKey) {
-    console.error("MCP_API_KEY environment variable is not set");
-    return undefined;
+    throw Error("MCP_API_KEY not configured");
   }
 
   if (bearerToken !== apiKey) {
-    return undefined;
+    throw Error("Invalid bearer token");
   }
 
   return {
