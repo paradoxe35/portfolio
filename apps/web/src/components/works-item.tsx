@@ -20,7 +20,7 @@ export default function WorksItem({
         "border border-neutral-2 dark:border-white/8",
         "hover:border-neutral-3 dark:hover:border-white/15",
         inCarousel ? "shadow-sm" : "shadow-sm hover:shadow-md",
-        "transition-all duration-300",
+        "transition-all duration-300"
       )}
     >
       {/* Image Section */}
@@ -33,7 +33,7 @@ export default function WorksItem({
           alt={project.title}
           className={cn(
             "w-full h-full object-cover",
-            "transition-transform duration-500 group-hover:scale-105",
+            "transition-transform duration-500 group-hover:scale-105"
           )}
           width={800}
           height={500}
@@ -42,7 +42,7 @@ export default function WorksItem({
         <div
           className={cn(
             "absolute inset-0 bg-black/0 group-hover:bg-black/10",
-            "transition-colors duration-300",
+            "transition-colors duration-300"
           )}
         />
       </Link>
@@ -57,7 +57,7 @@ export default function WorksItem({
               "text-xs font-medium uppercase tracking-wide",
               "text-primary dark:text-primary-light",
               "bg-primary/8 dark:bg-primary-light/10",
-              "rounded",
+              "rounded"
             )}
           >
             {project.technology}
@@ -71,7 +71,7 @@ export default function WorksItem({
               "text-lg sm:text-xl font-semibold mb-2",
               "text-neutral-9 dark:text-neutral-1",
               "group-hover/title:text-primary dark:group-hover/title:text-primary-light",
-              "transition-colors duration-200",
+              "transition-colors duration-200"
             )}
           >
             {project.title}
@@ -82,7 +82,7 @@ export default function WorksItem({
         <p
           className={cn(
             "text-sm text-neutral-7 dark:text-neutral-3",
-            "line-clamp-2 mb-4 flex-1",
+            "line-clamp-2 mb-4 flex-1"
           )}
         >
           {project.description}
@@ -96,7 +96,7 @@ export default function WorksItem({
             "text-sm font-medium",
             "text-neutral-7 dark:text-neutral-3",
             "hover:text-primary dark:hover:text-primary-light",
-            "transition-colors duration-200",
+            "transition-colors duration-200"
           )}
         >
           View project

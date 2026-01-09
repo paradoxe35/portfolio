@@ -32,7 +32,7 @@ export const revalidate = 30;
 // Server Component for Works
 async function Works() {
   const projects = entitiesToJSON(
-    await getProjects(PROJECTS_QUERY_LIMIT),
+    await getProjects(PROJECTS_QUERY_LIMIT)
   ) as Project[];
 
   return (
@@ -108,7 +108,7 @@ function Hero() {
                   href="/contact"
                   className={cn(
                     "inline-flex items-center justify-center gap-2 px-6 py-3 bg-white/80 dark:bg-white/10 backdrop-blur-md border border-black/10 dark:border-white/20 text-neutral-9 dark:text-neutral-1 font-medium rounded-xl ",
-                    "hover:bg-white/90 dark:hover:bg-white/20 transition-all duration-300 hover:scale-105 shadow-md md:shadow-lg w-full sm:w-auto",
+                    "hover:bg-white/90 dark:hover:bg-white/20 transition-all duration-300 hover:scale-105 shadow-md md:shadow-lg w-full sm:w-auto"
                   )}
                 >
                   Contact Me
@@ -165,7 +165,7 @@ function Hero() {
                         tech.delay === 100 && "animation-delay-100",
                         tech.delay === 150 && "animation-delay-200",
                         tech.delay === 200 && "animation-delay-200",
-                        tech.delay === 250 && "animation-delay-300",
+                        tech.delay === 250 && "animation-delay-300"
                       )}
                     >
                       <Image

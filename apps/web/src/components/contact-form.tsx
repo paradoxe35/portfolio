@@ -14,7 +14,7 @@ const Alert: React.FC<PropsWithChildren<{ success?: boolean }>> = function ({
         "flex items-center gap-2 p-3 rounded-md text-sm mb-5",
         success
           ? "bg-green-500/10 text-green-600 dark:text-green-400"
-          : "bg-red-500/10 text-red-600 dark:text-red-400",
+          : "bg-red-500/10 text-red-600 dark:text-red-400"
       )}
     >
       {success ? (
@@ -60,7 +60,7 @@ const inputStyles = cn(
   "text-neutral-9 dark:text-neutral-2",
   "placeholder:text-neutral-5 dark:placeholder:text-neutral-5",
   "focus:outline-none focus:border-primary dark:focus:border-primary-light",
-  "transition-colors duration-150",
+  "transition-colors duration-150"
 );
 
 export function ContactForm({ className }: { className?: string }) {
@@ -151,7 +151,7 @@ export function ContactForm({ className }: { className?: string }) {
             "hover:bg-primary-dark dark:hover:bg-primary",
             "focus:outline-none focus:ring-2 focus:ring-primary/20",
             "transition-colors duration-150",
-            "disabled:opacity-50 disabled:cursor-not-allowed",
+            "disabled:opacity-50 disabled:cursor-not-allowed"
           )}
         >
           {state.loading ? "Sending..." : "Send Message"}

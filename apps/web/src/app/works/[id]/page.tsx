@@ -50,7 +50,7 @@ const Content = ({ project }: { project: Project }) => {
     <section
       className={cn(
         "pb-24 pt-16 min-h-screen bg-gradient-to-br from-white via-neutral-1 to-neutral-2",
-        "dark:from-dark-bg dark:via-dark-bg-secondary dark:to-black",
+        "dark:from-dark-bg dark:via-dark-bg-secondary dark:to-black"
       )}
     >
       <Container>
@@ -58,7 +58,7 @@ const Content = ({ project }: { project: Project }) => {
         <div
           className={cn(
             "bg-white/80 dark:bg-white/5 backdrop-blur-md border border-black/10 dark:border-white/10",
-            "rounded-2xl p-4 sm:p-6 md:p-8 mb-12 shadow-lg dark:shadow-none",
+            "rounded-2xl p-4 sm:p-6 md:p-8 mb-12 shadow-lg dark:shadow-none"
           )}
         >
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
@@ -67,7 +67,7 @@ const Content = ({ project }: { project: Project }) => {
                 className={cn(
                   "inline-block px-3 py-1 text-xs font-semibold uppercase",
                   "tracking-wider text-primary dark:text-primary-light bg-primary/10 dark:bg-primary-light/10 rounded-full mb-4",
-                  "animate-fadeUp animation-delay-100",
+                  "animate-fadeUp animation-delay-100"
                 )}
               >
                 {project.technology}
@@ -85,7 +85,7 @@ const Content = ({ project }: { project: Project }) => {
                   "inline-flex items-center gap-2 px-6 py-3 bg-white/80 dark:bg-white/10 backdrop-blur-md border border-black/10 dark:border-white/20",
                   "text-neutral-9 dark:text-neutral-1 font-medium rounded-xl hover:bg-white/90",
                   "dark:hover:bg-white/20 transition-all duration-300 hover:scale-105 shadow-lg dark:shadow-none",
-                  "animate-fadeUp animation-delay-200",
+                  "animate-fadeUp animation-delay-200"
                 )}
                 target="_blank"
               >
@@ -123,7 +123,7 @@ const Content = ({ project }: { project: Project }) => {
               "prose-blockquote:border-l-primary dark:prose-blockquote:border-l-primary-light",
               "prose-img:rounded-xl prose-img:mx-auto",
               "prose-hr:border-white/20 dark:prose-hr:border-white/10",
-              "animate-fadeUp animation-delay-300",
+              "animate-fadeUp animation-delay-300"
             )}
           >
             <RenderMarkdown>{project.content}</RenderMarkdown>

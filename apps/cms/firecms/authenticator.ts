@@ -19,7 +19,7 @@ export function useAuthenticator() {
 
       return true;
     },
-    [],
+    []
   );
 
   return { GoogleAuthenticator };

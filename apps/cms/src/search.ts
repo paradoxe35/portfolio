@@ -40,7 +40,7 @@ export const LOCAL_DATA = new (class {
   async search<T extends Searchable>(
     type: T,
     searchableFields: (keyof DataType<T>)[],
-    searchString: string,
+    searchString: string
   ): Promise<string[]> {
     const searchValue = searchString.trim().toLowerCase();
     if (!searchValue) {
@@ -77,14 +77,14 @@ export const textSearchController: FirestoreTextSearchController = ({
       return LOCAL_DATA.search(
         FirebaseCollections.PROJECTS,
         ["title"],
-        searchString,
+        searchString
       );
 
     case FirebaseCollections.SKILLS:
       return LOCAL_DATA.search(
         FirebaseCollections.SKILLS,
         ["name"],
-        searchString,
+        searchString
       );
     default:
       return undefined;

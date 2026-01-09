@@ -1,0 +1,27 @@
+# Dependencies
+node_modules
+.pnpm-store
+
+# Build outputs
+.next
+.turbo
+dist
+build
+out
+
+# Generated files
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+
+# Cache
+.cache
+*.tsbuildinfo
+
+# IDE
+.idea
+.vscode
+
+# Misc
+*.min.js
+*.min.css

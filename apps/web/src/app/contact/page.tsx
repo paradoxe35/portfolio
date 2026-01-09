@@ -27,7 +27,7 @@ function ContactInfo() {
           <div
             className={cn(
               "w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0",
-              "bg-primary/10 dark:bg-white/10",
+              "bg-primary/10 dark:bg-white/10"
             )}
           >
             <svg
@@ -62,7 +62,7 @@ function ContactInfo() {
           <div
             className={cn(
               "w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0",
-              "bg-primary/10 dark:bg-white/10",
+              "bg-primary/10 dark:bg-white/10"
             )}
           >
             <svg
@@ -110,7 +110,7 @@ function ContactInfo() {
               "w-10 h-10 rounded-lg flex items-center justify-center",
               "bg-neutral-2 dark:bg-white/10",
               "hover:bg-primary/10 dark:hover:bg-white/20",
-              "transition-colors",
+              "transition-colors"
             )}
           >
             <svg
@@ -128,7 +128,7 @@ function ContactInfo() {
               "w-10 h-10 rounded-lg flex items-center justify-center",
               "bg-neutral-2 dark:bg-white/10",
               "hover:bg-primary/10 dark:hover:bg-white/20",
-              "transition-colors",
+              "transition-colors"
             )}
           >
             <svg
@@ -146,7 +146,7 @@ function ContactInfo() {
               "w-10 h-10 rounded-lg flex items-center justify-center",
               "bg-neutral-2 dark:bg-white/10",
               "hover:bg-primary/10 dark:hover:bg-white/20",
-              "transition-colors",
+              "transition-colors"
             )}
           >
             <svg

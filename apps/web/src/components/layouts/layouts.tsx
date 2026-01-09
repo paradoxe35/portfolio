@@ -31,7 +31,7 @@ export const Footer: React.FC<PropsWithChildren<{}>> = ({ children }) => {
     <div
       className={cn(
         "w-full h-[100px] border-t border-neutral-3",
-        "flex justify-center items-center",
+        "flex justify-center items-center"
       )}
     >
       {children}
@@ -56,13 +56,13 @@ export const Grid = forwardRef<HTMLDivElement, GridProps>(
             "lg:grid-cols-3": col === 3,
             invisible: hidden,
           },
-          className,
+          className
         )}
       >
         {children}
       </div>
     );
-  },
+  }
 );
 
 Grid.displayName = "Grid";
@@ -81,7 +81,7 @@ export const Card: React.FC<
           "transition-all duration-300",
           "hover:border-primary/50 dark:hover:border-primary-light/50",
           "hover:-translate-y-1 hover:bg-white/20 dark:hover:bg-white/10",
-          "group",
+          "group"
         )}
       >
         {children}
@@ -99,7 +99,7 @@ export const CardItem: React.FC<PropsWithChildren<{}>> = ({
       className={cn(
         "basis-full mr-4 mb-4 p-8",
         "border border-neutral-3 rounded-lg",
-        "transition-all duration-300",
+        "transition-all duration-300"
       )}
       {...props}
     >
