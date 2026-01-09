@@ -81,7 +81,7 @@ async function verifyToken(
 
 // Wrap handler with authentication
 const authHandler = withMcpAuth(mcpHandler, verifyToken, {
-  required: true,
+  required: false,
 });
 
 export { authHandler as GET, authHandler as POST, authHandler as DELETE };
