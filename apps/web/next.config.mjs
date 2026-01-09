@@ -3,6 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
   transpilePackages: ["@repo/contracts"],
   images: {
+    qualities: [75, 85],
     remotePatterns: [
       {
         protocol: "https",

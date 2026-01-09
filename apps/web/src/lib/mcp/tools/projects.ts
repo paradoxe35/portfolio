@@ -494,4 +494,165 @@ export function registerProjectTools(server: McpServer) {
       }
     }
   );
+
+  // Publish Project Tool
+  server.registerTool(
+    "publish_project",
+    {
+      title: "Publish Project",
+      description:
+        "Publish a draft project, making it visible on the portfolio.",
+      inputSchema: {
+        id: z.string().min(1).describe("The project ID to publish"),
+      },
+    },
+    async ({ id }) => {
+      try {
+        const db = getAdminFirestore();
+        const docRef = db
+          .collection(FirebaseCollections.PROJECTS)
+          .doc(id as string);
+
+        const doc = await docRef.get();
+
+        if (!doc.exists) {
+          return {
+            content: [
+              {
+                type: "text",
+                text: JSON.stringify({
+                  success: false,
+                  error: "Project not found",
+                }),
+              },
+            ],
+          };
+        }
+
+        const data = doc.data()!;
+        if (data.status === "published") {
+          return {
+            content: [
+              {
+                type: "text",
+                text: JSON.stringify({
+                  success: false,
+                  error: "Project is already published",
+                }),
+              },
+            ],
+          };
+        }
+
+        await docRef.update({ status: "published" });
+
+        return {
+          content: [
+            {
+              type: "text",
+              text: JSON.stringify({
+                success: true,
+                id: id,
+                message: "Project published successfully",
+              }),
+            },
+          ],
+        };
+      } catch (error) {
+        const message =
+          error instanceof Error ? error.message : "Unknown error";
+        return {
+          content: [
+            {
+              type: "text",
+              text: JSON.stringify({
+                success: false,
+                error: message,
+              }),
+            },
+          ],
+        };
+      }
+    }
+  );
+
+  // Unpublish Project Tool
+  server.registerTool(
+    "unpublish_project",
+    {
+      title: "Unpublish Project",
+      description: "Unpublish a project, changing its status back to draft.",
+      inputSchema: {
+        id: z.string().min(1).describe("The project ID to unpublish"),
+      },
+    },
+    async ({ id }) => {
+      try {
+        const db = getAdminFirestore();
+        const docRef = db
+          .collection(FirebaseCollections.PROJECTS)
+          .doc(id as string);
+
+        const doc = await docRef.get();
+
+        if (!doc.exists) {
+          return {
+            content: [
+              {
+                type: "text",
+                text: JSON.stringify({
+                  success: false,
+                  error: "Project not found",
+                }),
+              },
+            ],
+          };
+        }
+
+        const data = doc.data()!;
+        if (data.status === "draft") {
+          return {
+            content: [
+              {
+                type: "text",
+                text: JSON.stringify({
+                  success: false,
+                  error: "Project is already a draft",
+                }),
+              },
+            ],
+          };
+        }
+
+        await docRef.update({ status: "draft" });
+
+        return {
+          content: [
+            {
+              type: "text",
+              text: JSON.stringify({
+                success: true,
+                id: id,
+                message: "Project unpublished successfully",
+              }),
+            },
+          ],
+        };
+      } catch (error) {
+        const message =
+          error instanceof Error ? error.message : "Unknown error";
+        return {
+          content: [
+            {
+              type: "text",
+              text: JSON.stringify({
+                success: false,
+                error: message,
+              }),
+            },
+          ],
+        };
+      }
+    }
+  );
 }
