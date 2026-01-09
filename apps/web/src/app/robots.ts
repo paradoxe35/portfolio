@@ -1,8 +1,6 @@
 import { MetadataRoute } from "next";
 import { site_details } from "@/utils/constants";
 
-export const revalidate = 30;
-
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || site_details.website;
 
 export default function robots(): MetadataRoute.Robots {
