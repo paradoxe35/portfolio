@@ -47,52 +47,66 @@ export async function generateStaticParams() {
 
 const Content = ({ project }: { project: Project }) => {
   return (
-    <section
-      className={cn(
-        "pb-24 pt-16 min-h-screen bg-gradient-to-br from-white via-neutral-1 to-neutral-2",
-        "dark:from-dark-bg dark:via-dark-bg-secondary dark:to-black"
-      )}
-    >
+    <section className="py-16 md:py-20 bg-neutral-1/50 dark:bg-dark-bg-secondary">
       <Container>
-        {/* Project Header */}
-        <div
-          className={cn(
-            "bg-white/80 dark:bg-white/5 backdrop-blur-md border border-black/10 dark:border-white/10",
-            "rounded-2xl p-4 sm:p-6 md:p-8 mb-12 shadow-lg dark:shadow-none"
-          )}
-        >
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-            <div>
-              <span
-                className={cn(
-                  "inline-block px-3 py-1 text-xs font-semibold uppercase",
-                  "tracking-wider text-primary dark:text-primary-light bg-primary/10 dark:bg-primary-light/10 rounded-full mb-4",
-                  "animate-fadeUp animation-delay-100"
-                )}
-              >
-                {project.technology}
-              </span>
+        {/* Back link & Meta */}
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8 animate-fadeUp">
+          <Link
+            href="/works"
+            className={cn(
+              "inline-flex items-center gap-2 text-sm",
+              "text-neutral-8 dark:text-neutral-4",
+              "hover:text-primary dark:hover:text-primary-light",
+              "transition-colors"
+            )}
+          >
+            <svg
+              className="w-4 h-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M15 19l-7-7 7-7"
+              />
+            </svg>
+            Back to Projects
+          </Link>
 
-              <h2 className="text-2xl md:text-3xl font-bold text-neutral-9 dark:text-neutral-1 animate-fadeUp animation-delay-200">
-                Project Overview
-              </h2>
-            </div>
+          <div className="flex items-center gap-3">
+            {/* Technology badge */}
+            <span
+              className={cn(
+                "px-3 py-1 text-xs font-medium",
+                "text-primary dark:text-primary-light",
+                "bg-primary/10 dark:bg-primary-light/10",
+                "rounded-full"
+              )}
+            >
+              {project.technology}
+            </span>
 
+            {/* Live project link */}
             {project.link && (
               <Link
                 href={project.link}
-                className={cn(
-                  "inline-flex items-center gap-2 px-6 py-3 bg-white/80 dark:bg-white/10 backdrop-blur-md border border-black/10 dark:border-white/20",
-                  "text-neutral-9 dark:text-neutral-1 font-medium rounded-xl hover:bg-white/90",
-                  "dark:hover:bg-white/20 transition-all duration-300 hover:scale-105 shadow-lg dark:shadow-none",
-                  "animate-fadeUp animation-delay-200"
-                )}
                 target="_blank"
+                className={cn(
+                  "inline-flex items-center gap-1.5 px-3 py-1 text-xs font-medium",
+                  "text-neutral-7 dark:text-neutral-3",
+                  "bg-white dark:bg-white/10",
+                  "border border-neutral-2 dark:border-white/10",
+                  "rounded-full",
+                  "hover:border-primary/50 dark:hover:border-primary-light/50",
+                  "transition-colors"
+                )}
               >
-                View Live Project
+                View Live
                 <svg
-                  className="w-4 h-4"
-                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-3 h-3"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -110,25 +124,44 @@ const Content = ({ project }: { project: Project }) => {
         </div>
 
         {/* Project Content */}
-        <div className="bg-white/80 dark:bg-white/5 backdrop-blur-md border border-black/10 dark:border-white/10 rounded-2xl p-4 sm:p-6 md:p-8 shadow-lg dark:shadow-none">
+        <article
+          className={cn(
+            "bg-white dark:bg-dark-bg",
+            "border border-neutral-2 dark:border-white/10",
+            "rounded-xl p-6 sm:p-8 md:p-10",
+            "animate-fadeUp animation-delay-100"
+          )}
+        >
           <div
             className={cn(
-              "prose prose-lg max-w-none dark:prose-invert",
+              "prose prose-neutral max-w-none dark:prose-invert",
               "prose-headings:text-neutral-9 dark:prose-headings:text-neutral-1",
+              "prose-headings:font-semibold",
+              "prose-h1:text-2xl prose-h2:text-xl prose-h3:text-lg",
               "prose-p:text-neutral-7 dark:prose-p:text-neutral-3",
-              "prose-a:text-primary dark:prose-a:text-primary-light prose-a:no-underline hover:prose-a:underline",
+              "prose-p:leading-relaxed",
+              "prose-a:text-primary dark:prose-a:text-primary-light",
+              "prose-a:no-underline hover:prose-a:underline",
               "prose-strong:text-neutral-8 dark:prose-strong:text-neutral-2",
-              "prose-code:text-primary dark:prose-code:text-primary-light prose-code:bg-white/20 dark:prose-code:bg-white/10 prose-code:px-2 prose-code:py-1 prose-code:rounded-md prose-code:text-sm",
-              "prose-pre:bg-neutral-9 dark:prose-pre:bg-neutral-8 prose-pre:border prose-pre:border-white/20 dark:prose-pre:border-white/10 prose-pre:rounded-xl",
+              "prose-code:text-sm prose-code:text-primary dark:prose-code:text-primary-light",
+              "prose-code:bg-neutral-1 dark:prose-code:bg-white/10",
+              "prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded",
+              "prose-code:before:content-none prose-code:after:content-none",
+              "prose-pre:bg-neutral-9 dark:prose-pre:bg-neutral-8",
+              "prose-pre:border prose-pre:border-neutral-2 dark:prose-pre:border-white/10",
+              "prose-pre:rounded-lg",
               "prose-blockquote:border-l-primary dark:prose-blockquote:border-l-primary-light",
-              "prose-img:rounded-xl prose-img:mx-auto",
-              "prose-hr:border-white/20 dark:prose-hr:border-white/10",
-              "animate-fadeUp animation-delay-300"
+              "prose-blockquote:text-neutral-6 dark:prose-blockquote:text-neutral-4",
+              "prose-img:rounded-lg",
+              "prose-hr:border-neutral-2 dark:prose-hr:border-white/10",
+              "prose-ul:text-neutral-7 dark:prose-ul:text-neutral-3",
+              "prose-ol:text-neutral-7 dark:prose-ol:text-neutral-3",
+              "prose-li:marker:text-neutral-4 dark:prose-li:marker:text-neutral-5"
             )}
           >
             <RenderMarkdown>{project.content}</RenderMarkdown>
           </div>
-        </div>
+        </article>
       </Container>
     </section>
   );
