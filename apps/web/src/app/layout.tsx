@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "@/styles/globals.css";
-import { Analytics } from "@vercel/analytics/react";
+import { Analytics } from "@vercel/analytics/next";
 import { site_details, SEO, TECHS_STACK } from "@/utils/constants";
 import { StructuredData } from "@/components/seo/structured-data";
 import { Providers } from "@/components/providers";
